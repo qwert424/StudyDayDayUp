@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 详见 手册查阅 ：css3布局.md -->
+
+    <!-- css3布局 -->
+    <!-- css3之前的布局除了常规流和定位仍然可以使用； float一般用于文字环绕 本意不是布局 存在高度坍塌的问题； display：inline-block 不能用于布局 存在空白折叠的问题 -->
+
+    <!-- display:flex 弹性盒布局 -->
+    <!-- 单行或单列布局 -->
+
+    <!-- 内部的子元素为弹性项目 子元素的子元素不为弹性项目 -->
+
+    <!-- 弹性盒特点：默认情况下 弹性项目沿着主轴方向排列 侧轴拉升（不定高度的时候） -->
+
+    <!-- 通过flex-direction改变主轴的方向 弹性特点没变 沿着主轴排列、侧轴拉升！ -->
+
+    <!-- 主轴方向的排列 justify-content -->
+    <!-- 知识点 space-around和space-evenly区别就是 space-around第一个和最后一个间隙是中间的一半 space-evenly是等间隔 -->
+
+    <!-- 侧轴方向的排列 align-itgems -->
+    <!-- 默认值为拉升：stretch; -->
+
+    <!-- 你可以使用align-content来决定行与行之间隔多远。这个属性接受这些值：
+
+    flex-start: 多行都集中在顶部。
+    flex-end: 多行都集中在底部。
+    center: 多行居中。
+    space-between: 行与行之间保持相等距离。
+    space-around: 每行的周围保持相等距离。
+    stretch: 每一行都被拉伸以填满容器。
+    这可能有些容易混淆，但align-content决定行之间的间隔，而align-items决定元素整体在容器的什么位置。只有一行的时候align-content没有任何效果。 -->
+
+    <!-- align-self 设置单个弹性项目的垂直位置 -->
+
+    <!-- order可以设置正值或者负值 单个元素改变位置 -->
+
+    <!-- 弹性盒的第二特点：弹性项目伸缩 -->
+    <!-- 弹性项目沿主轴排列 会存在主轴方向上 额外空间或者不足空间 那么我们可以对弹性项目进行设置flex属性 设置弹性项目的拉伸|收缩比例 -->
+    <!-- flex：拉伸比例 收缩比例 初始尺寸 -->
+    <!-- flex 默认值为： flex：0 1 auto  采用的是 空间足够不拉伸 空间不足比例收缩 初始尺寸自动 flex-grow flex-shrink flex-basis-->
+
+    <!-- 注意点：拉伸或者收缩比例都是剩余空间的进行比例分配 -->
+
+    <!-- 主轴换行：flex-wrap:wrap  英文wrap是换行的意思-->
+    <!-- 用flex-wrap属性把它们分散看看。这个属性接受这些值：
+
+    nowrap: 所有的元素都在一行。
+    wrap: 元素自动换成多行。
+    wrap-reverse: 元素自动换成逆序的多行。 -->
+    <!-- 一般情况 空间情况是弹性项目进行收缩或者拉伸 如果设置了flex-wrap：wrap就是进行换行 但如果设置了主轴换行，则不会压缩，直接换行显示 但是不推荐用弹性布局 布局多行 一般适用于单行或单列布局 -->
+    <!-- 所以换行多行布局一般用网格布局 -->
+
+    <!-- flex-direction和flex-wrap两个属性经常会一起使用，所以有缩写属性flex-flow。这个缩写属性接受两个属性的值，两个值中间以空格隔开。
+
+    举个例子，你可以用flex-flow: row wrap去设置行并自动换行。 -->
+
+
+    <!-- 2、网格布局 多行多列的的最终解决方案 -->
+    <!-- 网格布局默认一列排列 通过属性来设置行和列 -->
+
+    <!-- 网格布局 通过两个属性来设置行和列 
+    行：grid-template-rows 可通过repeat重复书写
+    grid-template-columns不仅仅只接受百分比的值，也接受像像素或em这样的长度单位。你甚至可以将不同的长度单位混合使用。
+    列：grid-template-columns 可通过repeat重复属性 
+    repeat（重复次数，尺寸）
+    -->
+
+    <!-- grid-template是grid-template-rows和grid-template-columns的缩写形式。
+    比如说，grid-template: 50% 50% / 200px;将创建一个具有两行的网格，每一行占据50%，以及一个200像素宽的列。 -->
+
+    <!-- 书写属性的时候 可以直接书写确认值、也可以和弹性布局的flex-grow|flex-shrink类似 就是通过书写1fr即可 吸收剩余空间 -->
+    <!-- 网格系统也引入了一个新的单位，分数fr。每一个fr单元分配一个可用的空间。比如说，如果两个元素分别被设置为1fr和3fr，那么空间就会被平均分配为4份；第一个元素占据1/4，第二个元素占据3/4。 -->
+
+    <!-- 网格布局的排列方式 默认是按行排列 但是可以通过属性：grid-auto-flow：columns 按列排列 -->
+
+    <!-- 设置网格间隙 gap 复写属性 分为：row-gap(行间隙) columns-gap(列间隙) -->
+
+    <!-- 网格单元内部的对齐 -->
+    <!-- 默认情况下 网格内部的单元格时水平垂直拉伸 撑满单元格 -->
+    <!-- 可以通过justify-items设置水平方向 align-items设置垂直方向
+    可能取值相同：
+    justify-items: start 左 | end 右 | center 中 | stretch 拉伸;
+    align-items: start 上 | end 下 | center 中 | stretch 拉伸; 
+
+    复写属性：place-items：垂直对齐方式 水平对齐方式-->
+
+    <!-- 网格项目定位 -->
+    <!-- 默认情况下，网格项目依次排列到单元格中，每个网格占据一个单元格 -->
+    <!-- 但可以对网格项目设置grid-area属性来改变这一行为 -->
+    <!-- grid-area: 起始行线编号/起始列线编号/结束行线编号/结束列线编号; -->
+
+    <!-- grid-column-start: 3;这也是描述网格中从左起第三列边界的另一种方法。 -->
+
+    <!-- 若仅使用grid-column-start，网格默认只占一列。然而，你可以使用grid-column-end属性将网格拓展到多列。 数值是网格的列 1开始 不是网格数  -->
+
+    <!-- grid-column-start 的值比 grid-column-end大 就是反过来 -->
+    <!-- 当将grid-column-start和grid-column-end一起使用时，你也许已经注意到结束的值比起始的值大。但事实证明并非如此！ -->
+    <!-- 如果你想要从右边数网格的列数而不是从左边数，你可以设置grid-column-start和grid-column-end为负值。比如说，你可以设置它为-1来指定为右边的第一列。尝试将grid-column-end设置为负值。 -->
+    <!-- grid-column-start设置负值 就是负值到负值加一那个网格 -->
+
+    <!-- 你可以根据网格的开始和结束位置来定义一个网格项，你也可以用span关键词来指定你所要跨越的宽度。请注意span只能是正值。
+    比如说，你可以通过grid-column-end: span 2; 表示 跨2个 -->
+    <!-- 你也可以将span关键字和grid-column-start一起使用，相对于结束位置来设置其宽度。 -->
+    <!-- span：跨越网格数 -->
+    <!-- 如果每次都输入grid-column-start和grid-column-end两个属性，我们一定会厌烦的。幸运的是，grid-column是一个缩写形式，它可以一次接受两个值，只要用'/'分开就好。 -->
+    <!-- 即：grid-column:?/? 也可以结合span使用！ grid-column:2/span 3 第二列跨3网格-->
+
+    <!-- 同理：grid-row-start就像grid-column-start一样，只不过是在垂直方向指定起始位置。 grid-row复写属性 -->
+    <!-- 如果你觉得同时输入grid-column和grid-row也很复杂，我们还有另一种缩写。grid-area属性接受4个由'/'分开的值：grid-row-start, grid-column-start, grid-row-end, 最后是grid-column-end。 -->
+    <!-- 也就是上面说的 grid-area -->
+
+    <!-- 如果我们有很多个网格项呢？你可以任意覆盖它们不用有任何担心。用grid-area定义第二个网格项为所有未浇水的胡萝卜浇水。 -->
+
+    <!-- 如果网格项不是以grid-area、grid-column、grid-row 等显示的，它们会自动按照它们在源程序中出现的位置摆放。同样我们也可以使用order属性来重写它的顺序，这也是网格布局优于表格布局的好处之一。 -->
+</body>
+
+</html>

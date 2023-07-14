@@ -1,0 +1,144 @@
+/* 横幅区域 */
+#banner {
+    height: 460px;
+    position: relative;
+}
+
+/* 图片样式 */
+#banner a img {
+    width: 1226px;
+    height: 460px;
+}
+
+/* 按钮样式 */
+#banner .btn {
+    position: absolute;
+    width: 40px;
+    height: 70px;
+    top: 50%;
+    margin-top: -20px;
+    line-height: 70px;
+    text-align: center;
+    color: #b8c3cb;
+    cursor: pointer;
+
+}
+
+#banner .btn i {
+    font-size: 30px;
+}
+
+#banner .Rbtn {
+    right: 0;
+}
+
+#banner .Lbtn {
+    left: 234px;
+}
+
+/* 按钮hover样式 */
+#banner .btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+/* 点点样式 */
+#banner .banner-dots {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    font-size: 0;
+}
+
+#banner .banner-dots span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+/* 点点选中样式 */
+#banner .banner-dots span.selected {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+/* 左菜单栏 */
+#banner .Lmenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 234px;
+    background-color: rgba(105, 101, 101, 0.6);
+    padding: 20px 0;
+    height: 100%;
+}
+
+#banner .Lmenu>li>a {
+    padding: 0 20px 0 30px;
+    height: 42px;
+    line-height: 42px;
+    color: #fff;
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+
+}
+
+/* 左菜单hover样式 */
+#banner .Lmenu li:hover {
+    background-color: #ff6700;
+}
+
+#banner .Lmenu li:hover .banner-submenu {
+    display: block;
+}
+
+/* 左菜单 二级菜单 */
+#banner .Lmenu .banner-submenu {
+    position: absolute;
+    left: 234px;
+    top: 0;
+    width: 992px;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid;
+    display: none;
+    z-index: 30;
+}
+
+#banner .Lmenu .banner-submenu a {
+    display: block;
+    width: 25%;
+    font-size: 0;
+    height: 16.666%;
+    padding: 0 20px;
+    color: #666;
+}
+
+#banner .Lmenu .banner-submenu a span {
+    display: inline-block;
+    font-size: 14px;
+    width: 154px;
+    vertical-align: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#banner .Lmenu .banner-submenu a img {
+    display: inline-block;
+    margin-top: 17px;
+    margin-right: 12px;
+    width: 40px;
+    height: 40px;
+}
+
+/* 左菜单 二级菜单 hover样式 */
+#banner .Lmenu .banner-submenu a:hover {
+    color: #ff6700;
+}

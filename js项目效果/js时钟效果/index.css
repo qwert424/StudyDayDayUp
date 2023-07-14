@@ -1,0 +1,104 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #000;
+    }
+
+    /* 时钟容器 */
+    .container {
+        width: 400px;
+        height: 250px;
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* 标题 */
+    .container .title {
+        background-color: #000;
+        color: #fff;
+        border-bottom: 1px solid #fff;
+        height: 20px;
+    }
+
+    /* 主体 */
+    .container .main {
+        height: 230px;
+        color: #fff;
+        background: url(./img/1.jpg) no-repeat center/cover
+    }
+
+    .container .main .clock-item {
+        width: 300px;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0;
+        z-index: 2;
+    }
+
+    .container .main .clock-item span {
+        font-size: 16px;
+    }
+
+    .container .main .clock-item .item {
+        width: 80px;
+        height: 100px;
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
+        font-size: 0;
+    }
+
+    .container .main .clock-item .item::after {
+        content: "";
+        position: absolute;
+        right: -22px;
+        top: 0;
+        height: 100px;
+        line-height: 100px;
+        font-size: 16px;
+        width: 20px;
+        z-index: 3;
+    }
+
+    /* 时 */
+    .container .main .clock-item .item.hour::after {
+        content: "时";
+    }
+
+    /* 分 */
+    .container .main .clock-item .item.minute::after {
+        content: "分";
+    }
+
+    /* 秒 */
+    .container .main .clock-item .item.second::after {
+        content: "秒";
+    }
+
+    .container .main .clock-item .item .block {
+        width: 40px;
+        height: 100px;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .container .main .clock-item .item .imgs {
+        position: relative;
+    }
+
+
+    .container .main .clock-item .item .block img {
+        width: 40px;
+        height: 100px;
+        display: block;
+    }

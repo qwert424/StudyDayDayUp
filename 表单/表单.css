@@ -1,0 +1,146 @@
+@import url(./../reset.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #008c8c;
+    color: #333;
+}
+
+.container {
+    background-color: #fff;
+    width: 400px;
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+
+.container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container .form-item {
+    margin-bottom: 10px;
+}
+
+.container .form-item .sextitle {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.container .form-item .vcinput {
+    width: 240px;
+    border-radius: 5px 0 0 5px;
+}
+
+.container .form-item .vcbtn {
+    border-radius: 0 5px 5px 0;
+}
+
+/* input 统一样式 */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #333;
+    padding: 0 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #008c8c;
+}
+
+input+span {
+    margin: 0 2px;
+}
+
+input[type="radio"]+span {
+    font-size: 14px;
+    vertical-align: top;
+}
+
+input[type="checkbox"]+span {
+    font-size: 12px;
+    vertical-align: top;
+}
+
+/* select统一样式 */
+select {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* textarea统一样式 */
+textarea {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #333;
+    padding: 10px;
+    resize: none;
+}
+
+textarea:focus {
+    border-color: #008c8c;
+}
+
+/* button统一样式 */
+button {
+    width: 100px;
+    height: 30px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* disabled样式 */
+:disabled {
+    background-color: #3338;
+    cursor: not-allowed;
+    color: #fff;
+}
+
+
+/* 选择样式  以及聚焦下placeholder样式*/
+:checked {
+    color: #008c8c;
+}
+
+label input:checked+span {
+    color: #008c8c;
+}
+
+:focus::placeholder {
+    color: #008c8c;
+}
+
+
+/* 浮动统一样式 */
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}

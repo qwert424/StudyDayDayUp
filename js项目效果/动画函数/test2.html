@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>秒杀价：<span>500</span></div>
+    <script src="./动画封装.js"></script>
+    <script>
+        var span = document.querySelector("div span")
+        var options = {
+            from: 500,
+            to: 99,
+            totolTime: 3000,
+            tomove: function (n) { span.innerHTML = n.toFixed(2) },
+            toend: function () {
+                span.style.color = "red";
+            }
+        }
+        createAnimation(options)
+    </script>
+</body>
+
+</html>

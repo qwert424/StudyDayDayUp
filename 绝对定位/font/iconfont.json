@@ -1,0 +1,16 @@
+{
+  "id": "4046451",
+  "name": "test",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "887983",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    }
+  ]
+}

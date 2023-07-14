@@ -1,0 +1,164 @@
+/* 通用样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 英雄查询界面样式 */
+.container {
+    width: 1000px;
+    height: 500px;
+    margin: 20px auto;
+}
+
+/* 查询页面顶部选择样式 */
+.container .search-top {
+    width: 100%;
+    height: 107px;
+    display: flex;
+}
+
+/* 左侧菜单 */
+.container .search-top .left-menu {
+    width: 80px;
+    border-radius: 10px 0 0 10px;
+    background-color: rgb(44, 136, 226);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* 右侧分类 */
+.container .search-top .right-menu {
+    flex-grow: 1;
+    background-color: #fff;
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 40px;
+    position: relative;
+}
+
+.container .search-top .right-menu .menu-top,
+.container .search-top .right-menu .menu-main {
+    display: flex;
+    column-gap: 40px;
+
+}
+
+/* input样式 */
+.container .search-top .right-menu input[type="radio"] {
+    display: none;
+}
+
+.container .search-top label {
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+}
+
+.container .search-top label::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #666;
+    top: 0;
+    left: -27px;
+}
+
+.container .search-top label::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: rgb(44, 136, 226);
+    top: 3px;
+    left: -24px;
+    transform: scale(0);
+    transition: all 0.5s;
+}
+
+.container .search-top label.check::before {
+    transform: scale(1);
+}
+
+
+/* 搜索框样式 */
+.container .search-top .search {
+    position: absolute;
+    top: 50px;
+    right: 0;
+}
+
+.container .search-top .search input {
+    width: 240px;
+    height: 40px;
+    padding: 5px 50px 5px 10px;
+    outline: none;
+    color: #666;
+    border: 1px solid #666;
+    font-size: 14px;
+}
+
+
+.container .search-top .search::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    background: url(./search_icon.png) no-repeat center;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.container .search-top .search::before {
+    content: "";
+    border-right: 1px solid #999;
+    position: absolute;
+    right: 50px;
+    height: 20px;
+    top: 10px;
+}
+
+/* 查询英雄展示样式 */
+.container .main-area {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 80px);
+    justify-content: space-evenly;
+    margin-top: 30px;
+    row-gap: 20px;
+}
+
+.container .main-area .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .main-area .hero .img {
+    border-radius: 10px 0 10px 0;
+    border: 2px solid rgb(44, 136, 226);
+    width: 60px;
+    height: 60px;
+}
+
+.container .main-area .hero span {
+    font-size: 14px;
+}

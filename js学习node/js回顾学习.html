@@ -1,0 +1,2408 @@
+<!-- js学习回顾
+不同于声明式编程 js是命令式编程 本质是处理数据 
+
+数据有三种方式
+变量
+字变量（直接写出来的 如1、null、undefined、。。。) 
+表达式
+
+即任何需要写数据的地方用上面三种数据表达方式都是可以的
+
+标识符：
+程序中自行命名的地方
+
+常用的标识符有：
+变量名 函数名  参数名
+
+js命名规则
+1、可以数字、字母、_、$ 组成
+2、不可以数字起头
+3、不能关键字重名
+4、建议驼峰法
+
+题目：
+$ √
+1$ ×
+$emit √
+var ×
+list style ×
+list-style ×
+list_style √
+_ √
+
+字符串题目：
+用一条语句输出一下内容：
+我不是"傻逼"？
+我就是'傻逼'啊
+
+console.log("我不是\"傻逼\"？\r\n我就是'傻逼'啊")
+
+上面知识点 转义符：
+\' 普通英文单引号
+\" 普通英文双引号
+\n 换行
+\r 回车
+
+一般是\r\n一起 即先回车在换行 这个是习惯 以前打字机是换行和回车不一样的 所以先回滚 
+
+js8种数据类型
+分为两大类 原始数据类型 引用的数据类型
+
+原始的数据类型有：
+number string boolean null undefined 
+引用的数据类型：
+对象（普通对象、数组、函数）
+还有两个之后学习的bigInt symbol
+
+例子1：
+var name="邓哥"；
+var age=60;
+var sex= "male"
+组合成对象
+var obj={
+    name:name,
+    age=age,
+    sex=sex
+}
+console.log(obj)
+
+例子2：
+于谦，72岁，男，职业魔术师，手机号：111111111，人称傻逼，家住北极小新1110路
+他的老爸是王老爷，古汉字专家 喜欢洗澡
+//字符串类型存手机
+
+var yuqian = {
+    name: "于谦",
+    age: 72,
+    ismale: true,
+    job: "魔术师",
+    phone: "111111111",
+    nickname: "傻逼",
+    address: {
+        city: "北极",
+        rord: "小新1110路"
+    },
+    parent: {
+        name: "王老爷",
+        job: "古汉字专家",
+        love: "洗澡"
+    }
+}
+
+console.log(yuqian)
+
+例子3：特殊的对象 他的键值对：
+0：'a'
+1:'b'
+how are you:'fine thank you'
+用字面量表达对象 分别读取他的每个属性输出
+
+var obj={
+    0:'a',
+    1:'b',
+    'how are you':"fine thank you",
+    "haha":{
+        name:"sb"
+    }
+}
+
+知识点：
+对象的所有属性名都是字符串 因此用单引号or双引号包裹 即：'0':'a',
+但是为了书写方便 当对象属性名为数字或者符合命名规范的属性可以省略
+
+console.log(obj.name)==>console.log(obj[name])==>console.log(obj["name"])
+
+知识点 要读取对象属性时，使用[],把要读取的属性名传递到中括号中
+
+console.log(obj.0)//错 
+console.log(obj[0])//对
+console.log(obj['0'])//对
+可多个组合 如：obj['haha']['name']
+
+如果符合标识符规范 可以使用.符号来链接属性
+（内部还是自动转换成[""]类型）
+即 obj[0]和obj["0"]是一样的
+
+例子4 输出某个对象的属性值
+
+fnction test(obj,str){
+    console.log(obj[str]);
+}
+
+var obj={
+    name:"ss",
+    age:33
+}
+test(obj,"name")
+
+数组的本质就是对象
+
+例子1：
+方是 ，男，身高111，老婆2位 ，一位下方， 南方人， 一位消除，北方人；
+
+var fangshi = {
+    name: '方是',
+    ismale: true,
+    height: 111,
+    laopo: [{ name: "下方", area: '南方人' }, { name: '消除', area: "北方人" }]
+}
+
+console.log(fangshi)
+console.log(fangshi.laopo.length)
+console.log(fangshi.laopo[0])
+console.log(fangshi.laopo[0].name)
+
+例子2：综合练习
+邓哥 81岁 爱好香菜、秋葵、遛鸟
+成哥 30岁 爱好扯淡、找邓嫂
+monico 17岁 爱好奶茶、唱歌
+1、思考获得平均年龄
+2、获得所有人爱好总合
+
+
+var teachers = [
+    { name: '邓哥', age: 81, loves: ['香菜', '秋葵', '遛鸟'] },
+    { name: "成哥", age: 30, loves: ['扯淡', '找邓嫂'] },
+    { name: 'monico', age: 17, loves: ['奶茶', '唱歌'] }
+]
+
+console.log((teachers[0].age + teachers[1].age + teachers[2].age) / 3)
+
+console.log(teachers[0].loves.length + teachers[1].loves.length + teachers[2].loves.length)
+
+表达式的运算
+
+算数（数学）运算
+支持：加、减、乘、除、求余
++和- 可以放在单个数据的前面 表示正负 （作用也可以隐式转换成数字类型）
+算数运算表达式一定返回数字，可以进行隐式类型准换
+
+隐式类型转换
+每个运算符都有自己期望的数据比如* 期望两边都是数字
+一旦数据不符合期望 js会悄悄地对数据进行类型准换 然后对其运算 且不改变原数据 即 准换是临时的 
+如：var a="2"; console.log(a*2) //输出4 a还是字符串2 "2"
+
+可以通过 +a 准换从数字（也可以通过a*1进行转换） n+""转换成字符串 !!a转换成boolean
+
++ 看类型 两端有一个是字符串 不进行算数运算 而是字符串拼接 返回string
+
+赋值运算 
+设计运算符：= += *= /= -= %=
+
+注意点 = 也就是赋值 也是表达式 赋值表达式返回赋值结果 可实现连续赋值
+如var b; b = 7 也就是赋值表达式（表达式就会有返回值）返回7 也就是赋值7给b 返回运算结果7
+升华：var a,b; a=b=7;
+注意点 不是将b赋值给a 而是将b=7的运算结果赋值给a 即 7赋值给b 返回7 将7赋值给a
+
+赋值运算 注意点 n += xxx ==》 n = n+（xxx）即先运算左侧 在+ 最后赋值
+如 var a=2； a+=1+2; 先算1+2 在将a加上3 在赋值给a
+
+例子1：对象赋值也一样
+var obj1={
+    n:1
+}
+var obj2={
+    n:2
+}
+obj1.n=obj2.n=10
+console.log(obj1.n,obj2.n)
+
+比较运算符 
+设计的运算符： == === != !== > >= < <=
+注释：实际开发中，没有任何理由使用==和!=，必须始终使用===和！==来比较相等不相等
+
+例子1
+繁琐的代码：
+function test() {
+    var obj = { sex: "男" };
+    if (obj.sex = "男") {
+        obj.ismale = true;
+    } else {
+        obj.ismale = false;
+    }
+    return obj.ismale
+}
+console.log(test())
+
+简介优雅的代码 思路 === 表达式 返回的就是ture/false
+function test() {
+    var obj = { sex: "男" };
+    obj.ismale = obj.sex === "男";//返回的就是ture/false
+    return obj.ismale
+}
+console.log(test())
+
+布尔判断
+false的情况：false '' 0 NaN null undifined
+
+ !!a转换成boolean
+
+&& （并且）真真为真 其他为假 且具有短路规则
+且返回最后一个判定的数据（即第一个为假 就不看后面 第一个为真 第二个就是最后一个判定的数据 所以输出第二个）（找假 有假就返回）
+
+例子：实现exp为真 运算 console.log(exp);
+繁琐的代码
+if(exp){
+    console.log(exp);
+}
+简洁的代码
+exp && console.log(exp);
+
+||（或） 假假为假 其他为真 且有短路规则
+返回最后一个判定的数据（找真 有真就返回）
+
+例子：实现exp有值，将值赋给n 反之默认1
+繁琐的代码
+if(exp){
+    n=exp;
+}else{
+    n=1;
+}
+简洁的代码
+n=exp||1
+
+三元运算式 a ？ b ：c
+a：变量 表达式 字变量
+真 输出b
+假 输出c
+例子：exp真输出n=1;反之输出n=2;
+繁琐的代码
+if(exp){
+    n=1;
+}else{
+    n=2;
+}
+简洁的代码
+n= exp ? 1 :   2
+
+运算知识例子：
+编写一个完美的求和函数
+1、若两个数据是普通数字，求和即可
+2、NaN的数据变成0
+3、其他数据类型的数据需要转换成数字
+
+function sum(a, b) {
+    var a = +a || 0,
+        b = +b || 0;
+    return a + b 
+}
+console.log(sum(1, 'abc'))
+或者： 
+function sum(a, b) {
+    var a = +a ? +a : 0,
+        b = +b ? +b : 0;
+    return a + b
+}
+console.log(sum(1, 'abc'))
+
+例子2：要求不使用if 判断一个年份是否是闰年 输出是否
+闰年规则：1、4年一闰年，百年不闰年 2、400年必闰年 满足其一就可
+var year = 2000;
+var result = (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) ? '是' : '否'
+console.log(result)
+
+例子3：实现不使用if 根据身高、体重 计算健康状况
+健康状况根据BMI = 体重/身高的平方（单位kg m）
+BMI正常值20-25 <20偏瘦 >25偏胖
+输出 正常 偏瘦 偏胖
+var height = 185,
+    weight = 100;
+var BMI = weight / ((height / 100) ^ 2);
+console.log(BMI < 20 ? '偏瘦' : BMI > 25 ? '偏胖' : '正常')
+提示：平方可以用 ** 即 2**3=8 3**3=27
+
+函数的流程 for forin(for(var i in arr)) 等
+
+函数的切割
+减少重复代码、降低整体复杂度 好维护
+
+函数 参数：表示完成流程所需的必要的信息
+函数 返回值：表示完成流程后产生的结果
+函数 函数体：就是具体的流程
+
+且函数的参数、返回值只取决于函数的作用 和函数体无关
+
+
+函数的核心作用就是为了让一段代码流程变简单 
+定义函数时 只需要知道这个函数如何实现 完全不用考虑其他无关的东西
+调用函数时 只需要知道这个函数传入什么参数 如何使用它的返回值 完全不需要考虑函数的实现过程
+
+函数的三要数 函数名 参数 返回值 
+
+完成一个函数声明
+1、分为设计函数
+设计函数如何切分流程 具体要设计三要素 很难 
+2、书写函数体
+根据设计的三要数完成函数体
+   
+/** */ 文档提示 指着函数名有提示  
+
+// 完成下面代码
+// 文档注释
+/**
+ *得到某个数的阶乘
+ * 如果数小于了1，得到0
+ * @param {number} n 要求得到阶乘的数
+ * @return {number} 阶乘结果
+*/
+function factorial(n) {
+    // if (n < 1) {
+    //     return 0
+    // } else if (n === 1) {
+    //     return 1 
+    // }
+    // return n * factorial(n - 1)
+
+    return n < 1 ? 0 : n === 1 ? 1 : n * factorial(n - 1)
+}
+
+console.log(factorial(5))
+
+阶乘不超过1000的数： 
+var isOver = false;
+var n = 0;
+while (!isOver) {
+    // if (factorial(n) <= 1000) {
+    //     console.log(n);
+    //     n++;
+    // } else {
+
+    // }
+    factorial(n) <= 1000 ? console.log(n) : isOver = true;
+    n++;
+}
+
+/** 
+ * 在arr中寻找是否存在Target  
+ * @param {Array} arr 要历遍的数组
+ * @param {any} target 要寻找的目标
+ * @return {boolean} 是否找到
+ */
+
+function include(arr, target) {
+    // var isFind = false
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+            return true;
+        }
+    }
+    // if (isFind) {
+    //     return true;  
+    // } else {
+    //     return false;
+    // }
+    return isFind;
+}
+判断nums是否都在nums内 
+var nums = [1, 3, 8, 2, 5, 1, 9];
+var nums2 = [2, 5, 1];
+isFind = false;
+for (var i = 0; i < nums2.length; i++) {
+    if (!include(nums, nums2[i])) {
+        isFind = true;
+        break;
+    }
+}
+isFind ?console.log("否") :console.log("是")
+
+
+js核心概念学习
+
+1、数据的存储和引用
+值类型 和 引用类型
+值类型是直接存储值的 原始类型：字符串 布尔 数字 null undifined 都是值类型 
+引用类型 就是开辟一个空间 在进行地址引用 引用类型 都是这个方法 
+
+只要遇到对象 就开辟新的内存空间 即
+var sss={
+    name："monica,
+    add:{
+        city:"ss"
+    }
+}
+上面 add存的也是地址 后面的对象开辟了新的内存空间
+
+对象赋值 和 对象传递 都会改变
+var s= sss.add;
+s.add.city="sss";//那么上面的sss.add.city也会改变 这就是引用赋值 赋值的是add存储的地址
+
+/**
+ * 交换两个变量的值
+ * @param {*} a 变量一 
+ * @param {*} b 变量二
+ */
+function swap(a, b) {
+    var temp = a;
+    a = b;
+    b = temp;
+    return a+" "+b;
+}
+var a = 1;
+var b = 2;
+console.log(swap(a, b))
+
+上面是错误的 ❌ 因为参数的值改变了 外面的a、b没有改变 所以无解
+那么不可以直接交换两个数的值 可以 交换进行属性交换吗？
+
+/**
+ * 交换两个属性的值
+ * @param {Object} obj 对象 
+ * @param {string} key1 属性一
+ * @param {string} key2 属性二
+ */
+
+function swap(obj, key1, key2) {
+    var temp = obj[key1];
+    obj[key1] = obj[key2];
+    obj[key2] = temp;
+    return obj;
+}
+
+var obj = {
+    a: 1,
+    b: 2
+}
+
+console.log(swap(obj, "a", "b"));
+
+数组也是对象的一种特殊
+/**
+ * 交换数组的两个位置的值
+ * @param {Array} Array 
+ * @param {number} i1 下标一
+ * @param {number} i2 下标二
+ */
+
+function swap(arr, i1, i2) {
+    var temp = arr[i1];
+    arr[i1] = arr[i2];
+    arr[i2] = temp;
+}
+
+
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+swap(array, 5, 9);
+console.log(array);
+
+/**
+ * 修改对象 仅保留需要的属性
+ * @param  {object} object 修改的对象
+ * @param {Array<string>} keys 保留的关键属性数组 
+ */
+function pick(object, keys) {
+    for (var key in object) {
+        if (!keys.includes(key)) {
+            delete obj[key];
+        }
+    }
+    return object;
+}
+var obj = {
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4
+}
+
+pick(obj, ['a', 'b']);//{a:1,b:2}
+console.log(obj);
+
+面试题：
+// 下面代码输出什么？
+var foo = {
+    n: 0,
+    k: {
+        n: 0
+    },
+};
+var bar = foo.k;
+bar.n++;//n=1
+bar = {
+    n: 10,
+};
+bar = foo;
+bar.n++;
+bar = foo.n;
+bar++;
+console.log(foo.n, foo.k.n);//1 1
+
+// 下面代码输出什么？(京东)
+var foo = {
+    n: 1,
+};
+var arr = [foo];
+
+function method(arr) {
+    var bar = arr[0];
+    arr.push(bar);
+    bar.n++;
+    arr = [bar];
+    arr.push(bar);
+    arr[1].n++;
+}
+function method2(foo) {
+    foo.n++;
+}
+function method3(n) {
+    n++;
+}
+
+method(arr);
+method2(foo);
+method3(foo.n);
+console.log(foo.n, arr.length);//4 2 
+知识点 函数结束形参消失 内部内存消失
+
+// 下面代码输出什么？(字节)
+var foo = { bar: 1 };
+var arr1 = [1, 2, foo];
+var arr2 = arr1.slice(1);
+arr2[0]++;
+arr2[1].bar++;
+foo.bar++;
+arr1[2].bar++;
+console.log(arr1[1] === arr2[0])//false
+console.log(arr1[2] === arr2[1])//true
+console.log(foo.bar)//4
+知识点 slice 截取新数组 不改变原数组
+
+数据作用域
+
+js只有两种作用域 全局作用域 和 函数作用域
+1、内部的作用域能访问外部的，反之不行 访问时从内向外查找 
+2、内部的作用域访问外部的就会产生闭包
+3、内部的作用域访问外部的 取决于定义的位置 和调用的位置无关 （注意点 面试）
+
+例子：
+// 内部的作用域访问外部的 取决于定义的位置 和调用的位置无关
+
+var a = 1;
+function test() {
+    a++;
+}
+
+function test1() {
+    var a = 3;
+    test();
+    console.log(a);//3
+}
+
+test1();
+console.log(a);//2
+
+作用域内定义的变量、函数声明 会提升到顶部
+
+面试题：
+// 下面代码输出什么？
+
+console.log(a, b, c);//undifined,undefined,function
+var a = 1;
+var b = function () { };
+function c() { };
+
+// 下面代码输出什么？
+
+var a = 1,
+    b = 2;
+
+function m1() {
+    console.log(a);//undefined
+    var a = 3;
+    function m2() {
+        console.log(a, b);//3 2
+    }
+    m2();
+}
+m1();
+
+// 下面代码输出什么？
+
+var a = 1;
+
+function m1() {
+    a++;
+}
+
+function m2() {
+    var a = 2;
+    m1();
+    console.log(a);//2
+}
+
+m2();
+console.log(a);//1
+
+全局对象
+无论浏览器环境 还是node环境 都会提供一个全局对象
+
+浏览器环境：window
+node环境：global
+
+1、全局对象的属性可以被直接访问 如window上有个console属性 
+2、没有被声明的变量赋值就是给全局对象属性赋值（千万不要这么干 相当于太空垃圾了！！） 
+3、所有的全局变量、全局函数都会附加到全局对象（在多个js文件的时候就会出现定义变量名 或者函数名冲突）{
+    也别称之为全局污染或者全局暴露 一般觉得 不想要在全局对象出现的属性 称之为污染 然后一起用的属性 称之为暴露
+
+    如果想要解决污染暴露问题 就可以通过立即执行函数来强行改变作用域 （即 将整个js文件放在立即执行函数内 就不会出现变量污染或函数污染）且需要暴露的直接return抛出去 多个就抛出对象
+    立即执行函数又称之为IIFE ：Immediately Involved Function Expression
+    例如：
+    (function () {
+    var a = 1;//不希望污染全局
+    var b = 1;//不希望污染全局
+    function test1() { //希望外部能用这个函数
+        console.log(a + b);
+    }
+    function test2() {
+    }
+    return { 1: test1, 2: test2 }
+}())
+
+    立即执行函数 IIFE 就是强行改变作用域
+}
+
+构造函数 函数名大写 调用构造函数需要new 构造函数名 内部隐式创建 this 返回this
+
+调用函数的次数远远大于声明函数的次数
+
+function Person(firstName, lastName) {
+    // var this={};
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullName = firstName + " " + lastName,
+        this.sayHi = function () {
+            console.log("我叫做：" + this.fullName);
+        }
+}
+
+
+
+var person = new Person("fang",'haha');
+console.log(person)
+person.sayHi(); 
+
+例子题目：
+利用构造函数创建一副扑克牌
+/** 
+ * 利用构造函数创建一副扑克牌
+ * 思路 两个函数 一个是创建单张牌 一个是生成一副牌
+ */
+
+/** 
+ * 生成单张牌
+ * @param {number} num 1-10 A-10 11-J 12-Q 13-K 14-小王 15-大王
+ * @param {number} color 1-♣ 2-♠ 3-♥ 4-♦
+ */
+function Porker(num, color) {
+    this.num = num;
+    this.color = color;
+    this.print = function () {
+        if (this.num === 14) {
+            console.log("小王");
+            return;
+        }
+        if (this.num === 15) {
+            console.log("大王");
+            return;
+        }
+        var array = ["♣", "♠", "♥", "♦"];
+        var number = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "k"]
+        console.log(array[this.color - 1] + number[this.num - 1]);
+    }
+}
+
+/** 
+ * 生成一副牌 
+ */
+function Deck() {
+    this.porkers = [];
+    this.porkers.push(new Porker(14, 0));
+    this.porkers.push(new Porker(15, 0));
+    for (var i = 1; i < 14; i++) {
+        for (var j = 1; j < 5; j++) {
+            this.porkers.push(new Porker(i, j));
+        }
+    }
+    this.print = function () {
+        for (var i = 0; i < this.porkers.length; i++) {
+            this.porkers[i].print();
+        }
+    }
+}
+
+var deck = new Deck();
+deck.print();
+
+原型
+首先上面的扑克牌都有一个相同的print方法 就会造成内存空间的浪费（函数也是对象） 所以就需要学习原型
+
+说到构造函数就要想到原型 原型是什么  原型就是构造函数的一个属性 prototype （每个函数都会自带prototype属性 但是只有构造函数用到 一般函数用不到） 这个属性的值就是一个普通对象 成为原型对象；（就是一个对象）
+
+通过构造函数创建出来的叫做实例  也成为 instance  通过new创建的对象 js所有的对象都是通过构造函数创建的 因此对象均称为实例
+
+每个实例也有一个隐式原型 是实例的特殊属性__proto__ 指向的就是构造函数的prototype 即： 实例.__proto__===构造函数.prototype
+
+那么原型的意义：
+当访问实例成员的时候 先找自身 如果自身不存在 就在隐式原型上找
+开发 在构造函数一般将（99%）方法放在原型上 减少内存占用 使得所有实例共享
+
+console.dir//通过对象的方式展示 
+
+
+修改扑克牌 将方法放在原型上
+/** 
+ * 利用构造函数创建一副扑克牌
+ * 思路 两个函数 一个是创建单张牌 一个是生成一副牌
+ */
+
+/** 
+ * 生成单张牌
+ * @param {number} num 1-10 A-10 11-J 12-Q 13-K 14-小王 15-大王
+ * @param {number} color 1-♣ 2-♠ 3-♥ 4-♦
+ */
+function Porker(num, color) {
+    this.num = num;
+    this.color = color;
+}
+Porker.prototype.print = function () {
+    if (this.num === 14) {
+        console.log("小王");
+        return;
+    }
+    if (this.num === 15) {
+        console.log("大王");
+        return;
+    }
+    var array = ["♣", "♠", "♥", "♦"];
+    var number = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "k"]
+    console.log(array[this.color - 1] + number[this.num - 1]);
+}
+
+/** 
+ * 生成一副牌 
+ */
+function Deck() {
+    this.porkers = [];
+    this.porkers.push(new Porker(14, 0));
+    this.porkers.push(new Porker(15, 0));
+    for (var i = 1; i < 14; i++) {
+        for (var j = 1; j < 5; j++) {
+            this.porkers.push(new Porker(i, j));
+        }
+    }
+}
+Deck.prototype.print = function () {
+    for (var i = 0; i < this.porkers.length; i++) {
+        this.porkers[i].print();
+    }
+}
+
+var deck = new Deck();
+deck.print();
+console.log(deck);
+
+这是什么？ 这 是 this 
+在js中 this 两种情况 
+一种：全局中 指代的是 window 即全局对象 真实开发 不会这样 采用 this.window
+二种：在函数中的this 它的指向 完全取决于 函数怎么被调用 即在书写函数的时候 你是不知道this指向谁的 只有在调用的时候才能知道！！
+
+第二种的几种情况：
+通过new调用 new method() 就是构造函数  此时的函数this指向新对象  
+直接调用函数 method() 就是函数调用 此时的函数this指向全局对象 window
+通过对象调用 obj.method() 对象属性方法 此时的函数this指向前面的对象 obj
+call call就是method()调用方法 只是可以认为的改变this的指向 this是call传入的第一个参数 依次传入参数
+apply 类似于call改变this指向 apply不同于this是除第一个参数 后续传入的参数是数组类型 整体传入参数
+
+例子：
+var obj={
+    a:1,
+    b:2,
+    m:function(){
+        console.log(this)
+    }
+    c:{
+        a:function(){
+            console.log(this)
+        }
+    }
+}
+function test(a,b){
+    console.log(this);//注意点 书写的时候你是不知道this指向的 只有被函数调用方式才能知道this指向
+}
+
+1、new test(); 此时this为{} 构造函数的新对象
+2、test();此时this为window 全局对象
+3、obj.m;此时this为obj 对象
+obj.c.a();此时的this为obj.c
+4、test.call(obj,1,2);//call 此时this是obj
+5、test.apply(obj,[1,2]);//apply 此时this是obj
+
+特殊点
+var m=obj.m;
+m();//此时相当于函数的直接调用 this指向全局对象 window 所以实际开发一般不会这样骚操作
+
+题目：
+var person = {
+    name: "monica",
+    age: 18,
+    sayHi: function () {
+        console.log(this.name, this.age);
+        //console.log(person.name, person.age);//此处要用this 如果用对象名person那么以后在var person1=person;person=123时候 ，person1.sayHi();就会找不到内部的person
+    }
+}
+
+person.sayHi();
+
+//为所有对象添加print方法 打印键值对
+知识点：obj.hasOwnProperty(key) 判断key是不是obj本身的属性 还有一个 属性 in 对象 判断属性是不是在对象及隐式原型上的
+
+Object.prototype.print = function () {
+    for (var prop in this) {
+        if (this.hasOwnProperty(prop)) {
+            console.log(prop, this[prop]);
+        }
+    }
+}
+var obj = {
+    a: 1,
+    b: 2,
+}
+obj.print();
+
+call例子：
+function User(firstname, lastname){
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.fullName = firstname+lastname;
+}
+//能不能不使用new，通过User函数创建对象（不能更改User函数）
+var u={}；
+User.call(u,"haha","sss");
+console.log(u);
+
+原型链
+
+知识点 typeof Object 输出的是什么 这里 Object是构造函数 所以 输出 "function"
+
+已经知道 对象 都是通过构造函数new出来的 那么原型 也是对象 则它 是通过Object 构造函数new出来的 
+那么也符合 原型3角关系 即：Object.prototype===new object().__proto__ 
+
+那么 进行组合 就可以形成组合关系 即
+
+null
+👆（__proto__)
+Object原型 👈（prototype） Object
+👆（__proto__)                |new (原型对象 是通过Object 构造函数new出来的 )
+自定义构造函数原型------------- 👈（prottotype） 自定义构造函数
+👆（__proto__)                     |new
+自定义构造函数实例-------------------
+
+上面特殊的是： Object.prototype.__proto__ = null; 固定指向new
+通过上面可以看除一条链条 为原型链条 读取对象成员时先看自身有没有 没有依次在原型链条查看
+
+然后在一步加深 我们知道 函数也是对象生成 那么function的原型是什么 也就是Object 和 自定义构造函数 和函数之间的原型 又是如何的呢？？
+
+完整的原型链就如同下面：
+null
+👆（__proto__)                                                             Object原型
+Object原型 👈（prototype） Object-------------👉（__proto__）-------    👆(__proto__)
+👆（__proto__)                |new                                  |-------函数原型  👈（__proto__)   函数
+自定义函数原型------<----------  👈（prottotype） 自定义函数 （__proto__)👉  函数原型 👈（prototypoe）    函数
+👆（__proto__)                new               |                                                       |
+自定义构造函数实例------------<--------------------------------------------------<-----------------------
+                                                                                    new
+同事 Object new出函数原型 函数new出 构造函数Object
+上面特殊点 ：函数的__proto__指向函数原型
+
+知识点 函数 有call方法 就是定义在函数原型上的
+
+object原型影响很大范围 但是函数的原型 影响函数 所以可以通过函数原型加属性这个来区分是否为函数
+
+原型链实际开发的影响：
+1、知道更更改原型内容影响范围 
+更改构造函数的原型会对所有原型链上有该构造函数的原型对象产生影响（Object原型 影响所有对象 function原型影响所有函数） 
+
+题目一：
+toString方法属于Object.prototype,他会将对象转换为字符串的形式[Object Object],
+但是这种格式不是所有对象想要的 
+1、解释数组的toString方法为什么可以得到不同的格式？
+2、如果自己的构造函数希望改变toString方法怎么改变？
+
+如果在Object原型上面去改变toString方法影响范围就会是全部对象
+所有数组的toString方法实在自己的原型链上去重写方法
+那么如何通过Object.prototype.toString方法调用数组呢 ？ 直接通过call方法 即：Object.prototype.toString.call(arr)
+自己的构造函数就在原型上写一个toString方法 不要改变Object.prototype.toString因为影响范围太大！、
+
+2、学会使用原型链知识属性
+1、instanceof（常用） 这个属性形式 A.instanceof B 即：A的原型链上是不是存在B的原型 简单理解 就是A是不是B
+例子： var arr=[1,2,3]; arr instanceof Array ; 就是 arr的原型链上（arr.__proto__ .... )上面有没有 Array.Prototye 简单理解 就是 arr是不是数组
+var arr = [1, 2, 3];
+console.log(arr instanceof Array )//ture
+console.log(arr instanceof Object )//ture
+console.log(arr instanceof Function )//false
+
+可以通过instanceof来判断这个数组是不是真数组：
+var arr=[1,2,3];//通过new Array创建 就可以用原型上的方法 
+var arr1={
+    0：1,
+    1:2,
+    2:3,
+    3:4,
+    length:4
+}//不是通过new Array创建的 是一个伪数组
+那么 arr 和 arr1 可以通过 instanceof 判断 
+arr instanceof Array//true
+arr1 instanceof Array//false
+
+2、getPrototypeOf(不常用) 属性形式 Object.geyprototype(B) 即返回Object的隐式原型  定义在Object构造函数上的
+简单理解 就是获得B的隐式原型 即B.__proto__ ===Object.getPrototypeOf(B) 因为不能使用 B.__proto__方法 
+例子：
+var arr=[1,2,3];
+console.log(Object.getPrototypeOf(arr)===Array.prototype);//true
+
+
+3、学会创建空的原型 减少内存占用
+1、不推荐 在实际开发不要用 即 object.__proto__=null; 官方不推荐使用object.__proto__这个属性
+2、通过函数 Object.create(参数) 参数的值 就是 隐式原型指向
+如 Object.create(null) 就是创建一个没有隐式原型的对象 很干净的一个对象
+一般创建 var object={};这个对象 内部是有隐式原型的  
+Object.create(Array.prototype)//就会生成一个对象 指向数组原型 这个对象就是数组
+3、setPrototypeOf (参数一，参数二) 等同于object.__proto__=???给它赋值
+即 object.__proto__=123;
+Object.setPrototypeOf(object,123);//报错 有约束了
+就可以通过Object.setPrototypeof来设置隐式原型的值为null
+
+例子：
+创建一个没有隐式原型的用户对象，随意添加一些属性
+1、var obj=Object.create(null);
+obj.a=1;obj.b=2;
+console.log(obj);
+2、Object.setPrototypeOf(obj,null);
+obj.a=1;obj.b=2;
+
+大厂面试题
+//下面代码输出啥？
+function User(){}
+User.prototype.sayHello = function(){}
+var u1=new User();
+var u2=new User();
+
+console.log(u1.sayhello===u2.sayhello);
+console.log(User.prototype===Function.prototype)
+console.log(User.__proto__===Function.prototype)
+console.log(User.__proto__===Function.__proto__)
+console.log(u1.__proto__===u2.__proto__);
+console.log(u1.__proto__===User.__proto__);
+console.log(Function.__proto__===Object.__proto__)
+console.log(Function.prototype.__proto__===Object.prototype.__proto__);
+console.log(Function.prototype.__proto__===Object.prototype);
+
+function User(){}//自定义构造函数
+User.prototype.sayHello = function(){}//自定义原型
+var u1=new User();//自定义构造函数实例
+var u2=new User();//自定义构造函数实例
+
+console.log(u1.sayhello===u2.sayhello);//true
+console.log(User.prototype===Function.prototype)//false
+console.log(User.__proto__===Function.prototype)//true
+console.log(User.__proto__===Function.__proto__)//true
+console.log(u1.__proto__===u2.__proto__);//ture
+console.log(u1.__proto__===User.__proto__);//false
+console.log(Function.__proto__===Object.__proto__)//true
+console.log(Function.prototype.__proto__===Object.prototype.__proto__);//fasle
+console.log(Function.prototype.__proto__===Object.prototype);//true
+
+//字节：下面输出什么？
+console.log({}instanceof Object);//true
+console.log({}.toString instanceof Function);//true
+console.log(Object instanceof Function);//true
+console.log(Function instanceof Object);//true
+
+//京东:下面输出什么？
+Function.prototype.a=1;
+Object.prototype.b=2;
+function A(){}
+var a=new A();
+console.log(a.a,a.b);//undefined 2
+console.log(A.a,A.b);//1 2
+
+继承
+继承是面向对象的概念，它描述了两个对象类型（类、构造函数）之间的关系
+逻辑上：如果逻辑描述为：A不一定是B，但是B一定是A，则B继承A，A派生B、A是B的父类、B是A的子类
+子类的实例应该自动拥有父类的所有成员（类似于原型链的传递 依次查询原型链）
+继承两个特性：
+1、单根性：子类只有一个父类（原型链链接一个）
+2、传递性：间接父类的成员依次传递给子类
+
+继承 可以通过会员制度来体现
+普通会员 
+    用户名 密码
+    看免费视频
+vip会员
+    普通会员所有属性 会员到期时间
+    普通会员所有方法 看付费视频
+
+VIP会员就是普通用户 普通用户不是vip会员 符合继承的逻辑
+
+实现：
+function User(name, password) {
+    this.name = name;
+    this.password = password;
+}
+User.prototype.Look = function () {
+    console.log("观看免费电影");
+}
+
+function VipUser(name, password, time) {
+    this.name = name;
+    this.password = password;
+    this.time = time;
+}
+VipUser.prototype.Look = function () {
+    console.log("观看免费电影");
+}
+VipUser.prototype.LookVip = function () {
+    console.log("观看付费电影");
+}
+
+以上就会有代码的冗余
+那么对于结构器内部的重复
+
+即处理掉重复代码：this.name = name;this.password = password;
+通过直接调用User()this指向会指向window 如果new User this和本身VipUser不是同一个对象 那么怎么才能是VipUser的this对象有name、、等属性呢 用call将this指向改成VipUser内的this即可
+function User(name, password) {
+    this.name = name;
+    this.password = password;
+}
+User.prototype.Look = function () {
+    console.log("观看免费电影");
+}
+
+function VipUser(name, password, time) {
+    User.call(this, name, password);
+    this.time = time;
+}
+VipUser.prototype.Look = function () {
+    console.log("观看免费电影");
+}
+VipUser.prototype.LookVip = function () {
+    console.log("观看付费电影");
+}
+
+那么原型链上的重复怎么解决 很简单 分析 原本的User.prototype.__proto__=Object.prototype 同样VipUser.prototype.__proto__=Object.prototype  想要VipUser有User的原型方法只要将VipUser的原型隐式原型指向User的原型 那么通过继承的特性 传递性就可以得到原型方法  方法 Object.setPrototypeOf(VipUser,User.prototype)
+
+如何在js、中封装继承函数
+
+function inherit(child, parent) {
+    Object.setPrototypeOf(child.prototype, parent.prototype);
+}
+
+过去，由于没有更改隐式原型的方法，所以这一过程就会很复杂也就是用圣杯模式来完成 不做解释
+
+包装类 就是将原始值number、string、boolean等转换成对象
+
+方法 有静态方法 和 实例方法 
+静态方法：
+function test(){
+
+}
+test.abc=function(){};
+上面的abc就是静态方法 
+
+实例方法：
+function test(){}
+test.prototype.abc=function(){};
+new test().abc;
+那么此时的abc是实例方法
+
+静态方法和静态属性有哪些？如 Number.NaN（就是NaN);Number.isNaN();
+
+Number
+
+Number.NaN 表示一个不存在的数字 可直接书写为NaN
+Number.isNaN(); 判断传入的值是不是NaN 可以直接写isNaN 因为window上也有一个一样的 （window.isNaN();)
+Number.isInteger(); 判断传入的是不是整数
+Number.parseInt(); 转换成整数 不是四舍五入 可以直接书写为parseInt() 因为window.parseInt()===Number.parseInt(); 且可以传入第二个参数 即原型数字是指定进制准换为10进制输出 （2-36）
+Number.parseFloat(); 转换成小数 可以直接书写为parseFloat() 因为window.parseFloat()===Number.parseFloat();
+Number.prototype.toFixed 注意此时是实例方法 不能通过Number.toFixed使用 要通过实例使用 作用是保留指定位数的小数 必要时四舍五入 且返回的是字符串类型
+Number.prototype.toString 也是实例方法 作用将数字转换为字符串返回 且可传入参数二 作用将数字转换为指定进制显示 如n.toString(2)n转换为字符串且是2进制表示 （2-36）
+
+String
+
+String.fromCharCode(n) 提供编码值得到字符 传入一个或多个编码(n)
+String.concat() 连接两个或更多字符串，并返回新的字符串。
+String.prototype.length 得到字符串长度
+String.prototype.charCodeAt(n) 得到某下标的编码 参入参数(n)为下标
+String.prototype.includes(n) 判断当前字符串是否包含某个字符串 参数n为字串
+String.prototype.indexOf(n) 判断某个字符串在当前字符串中第一个的下标 n为判断的字符串
+Sting.prototype.lastIndexOf(n) 判断某个字符串在当前字符串最后一个的下标 n为判断字符串
+String.prototype.endsWith(n) 判断字符串是不是以指定字符串结尾 n为指定字符串
+String.prototype.startsWith(n) 判断字符串是不是以指定字符串开始 n为指定字符串
+Sting.prototype.padStart(n,m) 将字符串开始位置按照指定字符填充至指定位数 n为传入位数 m为填充字符 返回填充后的字符串
+String.prototype.padEnd(n,m) 将字符串结尾位置按照指定字符填充至指定位数 n为传入位数 m为填充字符 返回填充后的字符串
+String.prototype.split(n) 将字符串按照指定字符串进行切割成字符串数组返回 n切割符 不改变原字符串 生成的是新的数组
+String.prototype.slice(n,m) 提取字符串的片断，并在新的字符串中返回被提取的部分。
+String.prototype.substring(n,m) 将字符串返回开始索引至结束索引之间的一个子集 n开始索引 m结束索引 可以不写m就是n到结尾的子集 [n,m) 取不到m
+String.prototype.trim() 将字符串两端的空白字符删除 
+String.prototype.trimStart() 将字符串开头空白字符删除
+String.prototype.trimEnd() 将字符串结尾的空白字符删除
+String.prototype.toUpperCase() 字符串大写并返回
+String.prototype.toLowerCase() 字符串小写并返回
+String.prototype.charAt 范围指定位置的字符
+String.prototype.replace(n,m) 当前字符串第一个n替换为m 不改变原数据
+String.prototype.replaceAll(n,m) 当前字符串替换全部n为m
+
+题目：
+生成一个a-z的字符串 思路 编码 String.fromCharCode 静态方法
+生成一个a-z的字符串
+var z = ""
+for (var i = "a".charCodeAt(0); i <= "z".charCodeAt(0); i++) {
+    z += String.fromCharCode(i);
+}
+console.log(z);
+
+题目二：
+//字符串分割成单个单词 且去掉数组每项的，和. 思路切割 替换
+var str = "Memories of the past, everything is just tangled and tragedy.Once the buildings now indulge in wines and songs, beautiful dance of sleeve.Mantianxing flower is missing, pure, true love and dreams."
+var arr = str.split(" ");
+for (var i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replaceAll(",", "").replaceAll(".", "")
+}
+console.log(arr)
+
+题目三：
+//找到下列字符第一个i和最后一个i之间的字串 思路 下标 subString([start, end) 注意开闭)
+var str = "Memories of the past, everything is just tangled and tragedy.Once the buildings now indulge in wines and songs, beautiful dance of sleeve.Mantianxing flower is missing, pure, true love and dreams."
+var start = str.indexOf("i");
+var end = str.lastIndexOf("i");
+console.log(str.substring(start + 1, end))
+
+题目四：
+// 将rgb(22，224，232)转换成16进制格式 #?????? 思路将rgb替换 然后逗号分隔留下数字 然后tostring方法转16进制
+
+var str = "reg(255,255,255)";
+str = str.replaceAll("reg(", "").replaceAll(")", "")
+var arr = str.split(",");
+var str1 = "#";
+for (var i = 0; i < arr.length; i++) {
+    arr[i] = parseInt(arr[i])
+    str1 += arr[i].toString(16);
+}
+console.log(str1)
+
+题目五：
+name转换成驼峰命名法 思路切割 split 在第一位转大写
+// name转换成驼峰命名法 思路切割 split 在第一位转大写
+var str = "this is my name";
+var result = str.split(" ");
+var str1 = "";
+for (var i = 0; i < result.length; i++) {
+    if (i !== 0) {
+        result[i] = result[i].charAt(0).toUpperCase() + result[i].substring(1)
+    }
+    str1 += result[i];
+}
+console.log(str1);
+
+
+Math
+
+Math.PI;  代表圆周率 Π 命名规则 常量 全大写
+Math.abs(); 绝对值  
+
+Math.ceil(); 向上取整数
+Math.floor(); 向下取整数 随机的地方一般都是采用向下取整
+知识点：Number.parseInt(); )Math.floor(; Math.ceil();三者上面区别 都是取整数
+1、Number.parseInt();是向0取整数 即 4.2 取 4； -1.3 取 -1；
+2、Math.ceil();向正无穷取整 即 4.3 取 5；-1.3 取 -1；
+3、Math.floor(); 向负无穷取整 即 4.3 取4； -1.3 取 -2；
+
+Math.max() 把数列依次传入 求出数列最大值 注直接写数列参数不行！
+那么数列怎么找到最大值？ 1、自己写函数 2、通过apply的第二个参数（数列）即：Math.max.apply(null,arr);
+Math.min();把数列依次传入 求出数列最小值 注直接写数列参数不行！
+
+Math.random() 最常用 得到0-1之间的随机数 且开区间 取不到 1 无参（是可以包括0,但是不包括1!）
+Math.round() 返回四舍五入的整数 如果要小数 就需要Number.prototype.toFixed()发法  -11.5 取-11 ；11.5 取 12  思路 ：将括号内的数+0.5之后，向下取值 Math.round(-11.5)==-11//true
+
+题目：
+/**
+ * 得到一个指定范围内的随机整数
+ * @param {number} min 范围最小值
+ * @param {number} max 范围最大值 （无法取到最大值）
+ * @return {number} 返回的随机整数
+ */
+
+function getRandom(min, max) {
+    // Math.random [0,1)
+    // Math.random() * (max - min) [0,max - min)
+    // Math.random() * (max - min)+min [min,max)
+    // 在向下取整
+    // return min + Math.floor(Math.random() * (max - min));
+    return Math.floor(Math.random() * (max - min) + min)
+}
+getRandom(-1, 10)
+
+题目二：
+// /**
+//  * 得到一个指定长度的随机字符串
+//  * 字符串包含：数字、字母
+//  * @param {number} lenght 指定长度
+//  * @return {string} 随机字符串
+//  */
+
+// function getRandomString(lenght) {
+//     var str = "";
+//     var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+//     var str1 = "abcdefghijklmnopqrstuvwxyz";
+//     for (var i = 0; i < lenght; i++) {
+//         if (Math.random() < 0.5) {
+//             str += str1.charAt(Math.floor(Math.random() * 26))
+//         } else {
+//             str += arr[Math.floor(Math.random() * 10)]
+//         }
+//     }
+//     return str;
+// }
+
+// console.log(getRandomString(10));
+
+
+// 优化：上面思路是写一个包含全部的字符串每次取出一个 大致思路没错 可以利用刚才写的 取出范围内随机整数来优化
+
+// function getRandom(min, max) {
+//     return Math.floor(Math.random() * (max - min) + min);
+// }
+
+// function getRandomString(lenght) {
+//     var str = "";
+//     var str1 = "0123456789abcdefghijklmnopqrstuvwxyz";
+//     for (var i = 0; i < lenght; i++) {
+//         str += str1.charAt(getRandom(0, str1.length));
+//     }
+//     return str;
+// }
+
+// console.log(getRandomString(10));
+
+// 优化的代码 是最基础的 那么 有没有取巧的方法？ 思路：通过toString方法的参数2 输入包含数字和字母的36 在通过substring 获取指定的字串
+
+function getRandomString(length) {
+    return Math.random().toString(36).substring(2, length + 2);
+}
+console.log(getRandomString(8))
+
+题目三：
+/**
+ * 从一个数组中随机取出一项
+ * @param {Array} array 数组
+ * @return {number} 随机的一项
+ */
+
+function getRandomItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+Date 
+时间的基础概念
+单位 ： hour minute second millisecond（毫秒） nanosecond（纳秒）
+
+时区 地球24个时区 北京东8区 本初子午线经过的叫0时区 经过格林威治的时间叫做0时区
+
+GMT 就是格林威治世界时 太阳时间，精确到毫秒 在计算机不够精确 所以用UTC
+UTC 世界协调时 以原子时间计时标准 现在都用这个 精确纳秒 写作和GMT一样
+（国际标准 都统一使用UTC 不在使用GMT）（不管GMT还是UTC都是0时区的时间）
+
+GMT和UTC的文本格式都是 星期，日 月 年 时间 GMT 例如： Thu，27 Aug 2015 08：00：00 GMT
+另外，ISO 国际标准组织规定：ISO 8601标准 建议使用一下时间文本格式： YYYY-MM-DDTHH:mm:ss.000Z 例如：2022-12-1T08：00：00.000Z
+
+注意点 ： （不管是GMT还是UTC还是ISO 8601 表示的时间都是按照0时区的时间
+
+Unix时间戳是Unix系统最早提出的
+他将UTC时间1970年1月1日凌晨作为起始时间，到指定位置经过的秒数（毫秒数）
+
+程序中 存储时间都是使用 UTC 或者 时间戳（大多数）然后在交互的时候 准换为更友好的文本 
+
+例子：英国一名用户在2022-1-1注册生日 中国一名用户在2022-1-1注册生日 那么两者时间戳一样吗？  不一样因为时间戳是0时区的 北京在东8区 所以两者的时间戳不一样 相差8小时（8*3600秒数）
+
+题目：
+用户生日是本地时间还是UTC时间 答：本地时间；
+如果比较两个日期的大小，是比较本地时间 还是 UTC时间 答：UTC时间（0时区）
+如果显示文章发布时间 显示本地时间还是UTC时间 答：本地时间
+北京时间2020-8-28 10：00：00 和格林威治时间2020-8-28 02：00：00 两个时间那个大？那个小？ 答：一样大 因为差8时区 8小时 转换后 时间戳一样 
+北京时间戳 和格林威治时间戳都为0  他们时间一样吗 答：一样 且题目不严谨 时间戳就是0时区 没有北京或者格林威治时间戳的说法
+一个中国用户注册填写的时间为1970-1-1 ，那他出生的UTC是时间差0时区8小时 时间戳差（8*3600秒数）
+
+Date API（Application Program Interface）应用程序接口
+时间也有一个构造函数 
+new Date();//得到一个当前时间的对象 Mon May 22 2023 21:36:43 GMT+0800 (中国标准时间)
+new Date(value);//输入时间戳value 得到相对性时间
+new Date(dateString);//输入标准日期字符串得到日期对象
+new Date(year,monthIndex[,day[,hours[,minutes[,seconds[,milliseconds]]]]]);//必写年、月 日 时 分秒都可以不写 默认值为0
+
+知识点 月是从0开始 取值范围：0-11 
+
+Date API
+静态方法： 
+Date.new() 得到当前时间的时间戳
+实例方法：
+Date.prototype.getFullYear() 获得当前时间的年
+Date.prototype.getMonth() 获得当前时间的月份 0开始
+Date.prototype.getDate() 获得当前时间的日
+Date.prototype.getHours() 获得当前时间的小时
+Date.prototype.getMinutes() 获得当前时间的分
+Date.prototype.getSeconds() 获得当前时间的秒
+Date.prototype.getMilliSeconds() 获得当前时间的毫秒
+Date.prototype.toLocaleString() 得到日期本地的表示方式 字符串类型（完整）
+Date.prototype.toLocaleDateString() 得到日期本地的表示方式 字符串类型（年、月、日）
+Date.prototype.toLocaleTimeString() 得到日期本地的表示方式 字符串类型（时间 小时、分、秒）
+Date.prototype.toUTCString() 得到日期UTC的表示方式 字符串类型
+Date.prototype.toGMTString() 得到日期GMT的表示方式 字符串类型
+Date.prototype.toSIOString() 得到日期SIO的表示方式 字符串类型
+
+例子 简单的时间准换为格式化字符串
+/**
+ * 将日期格式化为字符串
+ * @param {Date} date 要格式化的日期
+ * @param {string} format 格式化字符串 yyyy-年 MM-月 dd-日 HH-小时 mm-分钟 ss-秒 ms-毫秒 不足位补充0
+ * @return {string} 日期字符串
+ */
+
+function formatDate(date, format) {
+    var obj = {
+        year: date.getFullYear().toString().padStart(4, '0'),
+        month: (date.getMonth() + 1).toString().padStart(2, '0'),
+        day: date.getDate().toString().padStart(2, '0'),
+        hour: date.getHours().toString().padStart(2, '0'),
+        minute: date.getMinutes().toString().padStart(2, '0'),
+        second: date.getSeconds().toString().padStart(2, '0'),
+        millisecond: date.getMilliseconds()
+    }
+    return format.replace("yyyy", obj.year).replace("MM", obj.month).replace("dd", obj.day).replace("HH", obj.hour).replace("mm", obj.minute).replace("ss", obj.second).replace("ms", obj.millisecond);
+
+}
+console.log(formatDate(new Date(20,0,1,8), "yyyy年MM月dd日 HH:mm:ss")) 
+
+
+对象补充
+Object.assign() 将对象的多个属性进行混合 后者覆盖前者 且会修改被覆盖的对象 （静态方法）
+例子：
+var arr = {
+    a: 1,
+    b: 2,
+}
+var obj = {
+    a: 2,
+    c: 2
+}
+var obj2 = {
+    c: 3,
+    d: 4,
+    e: 5
+}
+
+Object.assign(arr, obj, obj2)
+console.log(arr)
+此时arr被覆盖了 那么有没有不覆盖原有数据的方法 只要在选择被覆盖的对象是一个空对象就可以 即：Object.assign({},arr,obj,obj2)
+
+数组类 API
+
+Array.prototype.concat() 用于多个数组拼接成新的一个数组 不改变原数组 也可以自己传入参数 类似于push不同于push点在于不改变原数组 push是原数组改变
+Array.prototype.includes() 判断数组是否包含某个值
+Array.prototype.indexOf() 数组中得到某个值的第一个下标 不存在返回-1
+Array.prototype.lastIndexOf() 数组中得到某个值的最后一个下标 不存在返回-1
+Array.prototype.join 数组的每一项通过指定拼接符进行拼接 返回一个字符串
+Array.prototype.push 数组末尾加入一项 （改变原数组）
+Array.prototype.pop 数组的末尾删除一项 （改变原数组）
+Array.prototype.Unshift 数组的开头加入一项 （改变原数组）
+Array.prototype.shift 数组的开头删除一项 （改变原数组）
+Array.prototype.splice(删除下标，删除位数，添加的内容) 一般用于删除中间某一项内容 删除、修改、插入任意位置的值 （改变原数组）
+Array.prototype.reverse 将数组的元素顺序颠倒 （改变原数组）
+
+Array.prototype.sort() 对数组进行排序 （改变原数组）
+不传入参数默认按照转换为字符串 在比较编码大小 
+如：
+var arr=[1,11,4,7,2,3];
+ arr.sort()
+ console.log(arr);//[ 1, 11, 2, 3, 4, 7 ]
+所以需要自己传入参数 参数是一个函数（函数也是一个对象）即：
+function (a,b){
+    //正
+    return a-b;
+    //反
+    return b-a;
+}
+
+Array.prototype.slice() 数组切割到新数组 （参数取值左闭右开） 不写参数全部切割（不改变原数组）
+用处：1、数组克隆 因为存储在新的数组 和原数组数据一样 但是不相同 2、一般用于伪数组变成新数组 即通过Array.prototype.slice.call(切割对象)就可以获得真数组 （伪数组通过 伪数组 instanceOf Array 来是不是数组）还有一种写法：[].slice.call(切割对象)
+
+题目：
+将下面多个数组拼接在一起 注意点 拼接concat是拼接到新数组 不改变原数组
+var num1=[1,2,3];
+var num2=[5,6,7];
+var num3=[7,8,9];
+var arr=num1.concat(num2).concat(num3)
+console.log(arr);
+
+题目：
+//删除数组中所有的字符串 思路 typeof找到字符串 通过数组splice切割当前位置 如果是字符串 删除且下标回1
+var arr = [1, 1, "1", "a", "b", "a", 3, 5, 4, 7];
+
+for (var i = 0; i < arr.length; i++) {
+    if (typeof (arr[i]) === "string") {
+        arr.splice(i, 1);
+        i--;
+    }
+}
+console.log(arr);
+
+题目：
+//数组去重 思路第一个和后面进行对比 有的话splice切割
+var nums = [1, 1, "1", "a", "b", "a", 3, 5, 3, 7];
+
+for (var i = 0; i < nums.length; i++) {
+    for (var j = i + 1; j < nums.length; j++) {
+        if (nums[i] === nums[j]) {
+            nums.splice(j, 1);
+            j--;
+        }
+    }
+}
+console.log(nums);
+
+题目：
+//判断下面的文件是否符合后缀名拼接
+//合法后缀名：.jpg,.gif,.png,.webp,.bmp
+//思路 找到最后一个.的下标 通过数组存储合法的后缀名 在通过includes 判断
+
+var fileName = 'd://files/mymap/3.jpg';
+var lastIndex = fileName.lastIndexOf('.');
+var arr = ['.jpg', '.png', '.gif', '.webp', '.bmp']
+if (arr.includes(fileName.substring(lastIndex))) {
+    console.log('合法')
+} else {
+    console.log('不合法')
+};
+
+题目：
+//给扑克牌写一个洗牌方法
+/** 
+ * 利用构造函数创建一副扑克牌
+ * 思路 两个函数 一个是创建单张牌 一个是生成一副牌
+ */
+
+/** 
+ * 生成单张牌
+ * @param {number} num 1-10 A-10 11-J 12-Q 13-K 14-小王 15-大王
+ * @param {number} color 1-♣ 2-♠ 3-♥ 4-♦
+ */
+function Porker(num, color) {
+    this.num = num;
+    this.color = color;
+}
+Porker.prototype.print = function () {
+    if (this.num === 14) {
+        console.log("小王");
+        return;
+    }
+    if (this.num === 15) {
+        console.log("大王");
+        return;
+    }
+    var array = ["♣", "♠", "♥", "♦"];
+    var number = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "k"]
+    console.log(array[this.color - 1] + number[this.num - 1]);
+}
+
+/** 
+ * 生成一副牌 
+ */
+function Deck() {
+    this.porkers = [];
+    this.porkers.push(new Porker(14, 0));
+    this.porkers.push(new Porker(15, 0));
+    for (var i = 1; i < 14; i++) {
+        for (var j = 1; j < 5; j++) {
+            this.porkers.push(new Porker(i, j));
+        }
+    }
+}
+Deck.prototype.print = function () {
+    for (var i = 0; i < this.porkers.length; i++) {
+        this.porkers[i].print();
+    }
+}
+
+/**
+ * 洗牌 
+*/
+Deck.prototype.shuffle = function () {
+    this.porkers.sort(function () {
+        return 0.5 - Math.random();
+    });
+}
+
+
+var deck = new Deck();
+deck.shuffle();
+deck.print();
+
+题目：
+//得到所有学生姓名形成的字符串
+//学生年龄升序
+
+var obj = [{ name: "aa", age: 11 }, { name: "bb", age: 12 }, { name: "cc", age: 18 }, { name: "dd", age: 14 }, { name: "ee", age: 1 }]
+//得到所有学生姓名形成的字符串
+var arr = [];
+for (var i = 0; i < obj.length; i++) {
+    arr.push(obj[i].name);
+}
+arr.join(', ');
+console.log(arr);
+
+//学生年龄升序
+obj.sort(function (a, b) {
+    return a.age - b.age;
+})
+console.log(obj)
+
+
+WebAPI
+
+和标准库不同，WebAPi是浏览器提供的一套API 用于操作浏览器窗口和界面
+
+WebAPI 包含：
+BOM：Browser Object Model，浏览器模型 提供和浏览器相关的操作
+DOM：Document Object Model 文档模型 提供和页面相关的操作 
+
+javaScript结构：
+                            JavaScript
+            EcmaScript（js官方）            WebAPI（浏览器、非官方） 
+        语言规范       标准库              BOM                DOM
+javaScript 就是由上面组成 除此还有一个Node.js 提供NodeAPI和ECMAScript组成es （且Node.js支持官方ECMAScript 但是不支持WebAPI）
+
+Window 全局对象
+
+API：可以直接调用
+open() 打开一个新的浏览器窗口 返回新窗口的window对象 一般不使用
+close() 关闭浏览器窗口 只能关闭使用open打开的浏览器窗口 一般不使用
+setTimeOut() 设置一个计时器 异步（回调函数） 在一段时间后自动执行某个函数  参数一：函数 无参 （无参this指向window） 参数二：计时的时间（毫秒） 且有返回值 返回值为计时器的id
+clearTimeOut() 清除指定ID的计时器 参数为计时器ID
+setInterval()设置一个计时器 每隔一段时间自动执行某个函数 参数一：函数 无参（this指向window） 参数二：时间（毫秒） 返回计时器的ID
+clearInterval() 清除指定计时器 传入计时器ID
+例子 实现一个start函数 和 stop函数 完成 时间显示的开始和结束
+var timer;
+function start() {
+    if (timer) {
+        return;
+    }
+    timer = setInterval(function () {
+        console.clear()
+        console.log(new Date().toLocaleString())
+    }, 1000)
+}
+function stop() {
+    clearInterval(timer);
+    timer = null;
+}
+上面解决了多次执行函数 生成多个计时器ID的问题 （类似于加了一把锁）
+
+alert() 弹出提示框 不同操作系统外观有差异 一般不用
+confirm() 弹出确认框 不同操作系统外观有差异 且会卡住 一般不用
+
+window.location 提供地址栏的相关操作
+
+API：
+location.href 获取或设置页面的当前地址 设置地址会导致页面跳转 一般js本页面跳转都是通过这个方法 （常用）
+location.protocal 获取或者设置地址中的协议部分 
+location.host 获取或设置抵制中国的主机名和端口号
+location.hostname() 获取或设置地址中的主机名
+location.port() 获取或设置地址中的端口号
+location.pathname() 获取或设置地址中的路径部分 一般就是端口号/后面 
+location.search() 获取或设置地址中的参数部分 一般就是pathname后面搜索部分
+location.hash() 获取或设置地址中的hash部分 一般就是#部分
+location.reload() 刷新页面 （常用）
+
+Window.history 本页面历史记录 一般就是栈存放
+
+API 
+History.back() 后退 
+History.forward() 前进
+History.go()  根据相对于当前页面的偏移量，进入指定记录页 正数forword 负数back
+History.pushState() 在历史记录中添加一条记录 页面不刷新
+History.replaceState() 替换当前界面 页面不刷新
+
+
+DOM 就是一个对象 对应到html中的节点
+
+获取DOM
+document.getElementById() 根据元素id获取dom 得到单个dom
+id定义的属性就是在window上定义的 可以直接在js获取
+
+document.getElementsByTagName()  根据元素名称获取dom  得到的是伪数组（slice切割Array.prototype.slice.call()来得到数组 对象 instanceof Array判断）
+dom.getElementsByTagName()       根据元素名称获取dom  得到的是伪数组 
+
+document.getElementsByClassName()根据元素类样式获取dom 得到的是伪数组
+dom.getElementsByClassName()     根据元素类样式获取dom 得到的是伪数组
+
+document.querySelector()   根据css选择器选择dom    得到第一个匹配的dom 且不是实时的
+dom.querySelector()        根据css选择器选择dom    得到第一个匹配的dom 且不是实时的
+
+遍历、添加事件时一般使用length但是 用querySelector 我们可以用forEach(function(node){
+    console.log(node);//获取每个子元素
+})
+
+document.querySelectorAll()  根据css选择器选择dom    得到匹配的dom伪数组 且不是实时的
+dom.querySelectorAll()       根据css选择器选择dom    得到匹配的dom伪数组 且不是实时的
+
+document.documentElement 获取html元素 等同于 domcument.querySelector('html')
+document.body  获取body元素
+document.head  获取head元素
+
+dom.children   获取dom子元素  得到伪数组
+dom.childNodes 获取dom字节点  得到伪数组
+
+dom.nextElementSibling  获取dom后一个兄弟元素
+dom.previousElementSibling  获取dom前一个兄弟元素
+dom.firstElementChild()  获取dom第一个子元素
+dom.lastElementChild()   获取dom最后一个子元素
+
+dom.parentElement 获取dom父元素
+
+创建DOM 
+
+document.createElement()  创建一个dom并返回 传入元素名称
+
+更改dom结构
+更改DOM树（文档树）
+dom.remove()    从文档树中删除dom    不是删除对象（即对象还在 只是结构改变了）
+dom.removeChild();  删除dom某个子节点  传入dom对象
+dom.instertbefore()  在dom子节点中添加一个新节点 在另外一个节点之前 在null之前 就是相当于appendChild 在最后加入 (已存在就是换位置)
+dom.appendChild() 添加一个新节点到dom的子节点末尾 传入dom对象
+
+dom属性
+
+本节属性指html元素属性
+属性有两种：
+1、标准属性：a：href title input：value img：src
+2、自定义属性：html为定义的属性
+
+所有的标准属性都可以通过dom.属性名得到 且：
+1、布尔属性自动转换为boolean
+2、路径会转换为绝对路径
+3、标准属性始终存在不管你是否有在元素中属性该属性
+
+自定义属性方法：
+setAttribute(name，value);  设置属性键值对
+getAttribute(name);   获取属性值 
+知识点 getAttribute得到的属性是你书写啥属性就是什么属性 行间没有的属性就是null 这点不同于标准属性
+
+dom内容
+
+dom.innerHTML 获取或设置元素Html内容 
+dom.innerText 获取或设置元素文本内容 设置时因为设置文本 会自动进行html实体编译
+
+dom样式 
+在js中有两种样式：
+内联样式：元素的style属性中书写样式
+计算样式：（最终样式）元素计算后出来的样式
+
+js可以获取内联样式和计算样式 但是只能设置内联样式
+
+dom.style：获取元素的内联样式 ，得到样式对象 可读可写
+getComputedStyle(dom)获取元素的计算样式，得到一个样式对象 只读 不可以重新赋值
+
+如果样式赋值为空 即等同于删除样式
+给样式赋值不合法 语句无效 且不报错
+css短语命名在js采用驼峰命名
+
+
+DOM事件：
+
+监听dom事件 ：
+监听事件可以描述为一句话：
+某个DOM发生了某件事后，我需要做某件处理
+某个DOM：监听谁
+某件事（事件类型）：发生了什么事件
+做什么（处理函数）：我要做什么？
+
+表单类事件：
+submit 表单提交 注意：注册到form元素上
+input  文本框改变就立即触发  注意：注册到input、textarea元素上
+change 文本框改变后且失去焦点时后触发（在下拉列表、多选框、单选框改变后立即触发  注意：注册到input、select、textarea元素上
+reset 表单被重置时触发 注意：注册到form元素上
+focus 元素聚焦时触发
+blur 元素失去聚焦时触发
+
+鼠标类事件：
+click 鼠标按下抬起时候触发
+mousedown 鼠标按下时触发
+mouseup 鼠标抬起时触发
+mouseenter 鼠标进入时触发（不冒泡）
+mouseleave 鼠标离开时触发（不冒泡）
+mouseover 鼠标进入时触发 （冒泡）
+mouseout  鼠标离开时触发（冒泡）
+mousemove 鼠标移动时触发
+contextmenu 鼠标右键触发
+wheel 鼠标滚轮滚动时候触发
+
+键盘事件
+keydown 某个按键被按下时触发
+keyup 某个键盘被抬起时触发
+keypress 不推荐使用 区别keydown：keydown不区分大小写 keypress区分
+
+注册事件：
+js提供了三种注册方式：
+1、on+"事件类型" 取消即 on+"事件类型"=null；
+优点：方便监听、覆盖（只能一个 后面会覆盖前面写的） 移除
+缺点：只能注册一个处理函数；某些事件不支持用这个方法注册
+2、将事件注册到元素上 基本被弃用 如：<button onclick="js代码">按钮</button>
+3、addEventListener("事件类型"，执行函数，false) 移除事件removeEventListener("事件类型",同一个执行函数，false)
+
+事件处理函数
+当事件发生时，会自动用事件处理函数，并向函数传入一个参数，该参数称之为事件对象，里面包含了事件的相关信息（如鼠标位置、按键键盘）
+document.addEventListener("click", function(e) {
+    console.log(e);
+},false);
+
+且常有的事件对象有：鼠标事件对象、键盘事件对象
+另外事件处理函数中的this 始终 指向注册事件的dom
+
+阻止浏览器默认行为
+浏览器有很多默认行为 如a标签跳转 form表单submit提交 文本框keydown事件 以及右键菜单contextmenu 使用e.preventDefault()
+即：a.onclick = function(e){e.preventDefault();}
+
+隐藏样式的方法 和 区别：
+display:none;不显示 不占空间 
+visibility:hidden; 不显示 占空间
+opacity:hidden;显示 占空间
+
+
+dom尺寸和位置   
+获取屏幕大小：window.screen.height window.screen.width
+获取浏览器大小：window.outerHeight window.outWidth
+获取包含滚动条的视口大小： window.innerHeight window.innerWidth （ 常用 ）
+获取不包含滚动条的视口大小：document.documentElement.clientHeight document.documentElement.clientWidth （ 常用 ）
+
+获取单个元素尺寸（不包含滚动条和border）（仅包含内容块和padding）：div.clientHeight div.clientWidth
+获取单个元素尺寸（包含滚动条和border）（仅包含内容块和padding）:div.offsetWidth div.offsetHeight
+
+可滚动的区域尺寸：div.scrollHeight div.scrollWidth  （ 常用 ）
+
+滚动了的距离： scrollTop scrollLeft  （ 常用 ）
+可以通过div.scrollTo(x,y)设置滚动的距离 x，y分别表示scrollLeft scrollTop 回到顶部：dom.scrollTO(0,0) （ 常用 ）
+滚动事件监听:scroll
+
+矩形的位置：Element.getBoundingClientRect()  （ 常用 ）
+有四个属性 TOP即距离视口顶部的距离 Left即距离视口左边的距离 Right即右边距离视口左边的距离（距离视口左边的距离+Element宽度的距离） bottom下边距离视口顶部的距离（距离视口顶部的距离+Element高度的距离）
+
+事件传播机制 捕获、冒泡 
+捕获 向下捕获 addEventListener(,,true); 默认false（冒泡）
+冒泡 向上冒泡
+
+冒泡事件中 this 和 e.target 什么区别？
+this指向哪个元素被添加事件 e.target是谁触发了事件（也就是：事件源）
+
+e.target.tagName获取点击事件源的标签名 （大写）用于筛选
+
+阻止冒泡 e.stopPropagation 
+
+事件冒泡捕获例子：
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件委托示例</title>
+    <style>
+      .container {
+        width: 300px;
+        height: 300px;
+        background: lightblue;
+        text-align: center;
+        margin: 0 auto;
+        line-height: 3;
+        margin-bottom: 30px;
+      }
+      .inner {
+        width: 70%;
+        height: 70%;
+        background: #f40;
+        margin: 0 auto;
+      }
+      button {
+        display: block;
+        margin: 0 auto;
+        font-size: inherit;
+        margin-top: 30px;
+      }
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      container
+      <div class="inner">
+        inner
+        <button>button</button>
+      </div>
+    </div>
+
+    <script>
+      var container = document.querySelector('.container');
+      var inner = document.querySelector('.inner');
+      var btn = document.querySelector('button');
+
+      container.addEventListener('mouseover', function (e) {
+        console.log('container mouseover!');
+      });
+
+      inner.addEventListener('mouseover', function (e) {
+        console.log('inner mouseover!');
+      },true);
+
+      btn.addEventListener('mouseover', function (e) {
+        console.log('button mouseover!');
+      });
+    </script>
+  </body>
+</html>
+
+注释：mouseover、mouseout（冒泡） mouseenter、mouseleave（不冒泡）
+先捕获 inner事件 然后触发button点击事件 然后冒泡触发container事件 
+inner mouseover!
+button mouseover!
+container mouseover!
+
+冒泡有什么用呢 ？ 事件委托事件 给父元素添加事件 点击子元素冒泡到父元素触发 适用于子元素动态改变且数量多
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>10</button>
+      <button>11</button>
+      <button>12</button>
+      <button>13</button>
+      <button>14</button>
+      <button>15</button>
+      <button>16</button>
+      <button>17</button>
+      <button>18</button>
+      <button>19</button>
+      <button>20</button>
+      <button>21</button>
+      <button>22</button>
+      <button>23</button>
+      <button>24</button>
+      <button>25</button>
+      <button>26</button>
+      <button>27</button>
+      <button>28</button>
+      <button>29</button>
+      <button>30</button>
+      <button>31</button>
+      <button>32</button>
+      <button>33</button>
+      <button>34</button>
+      <button>35</button>
+      <button>36</button>
+      <button>37</button>
+      <button>38</button>
+      <button>39</button>
+      <button>40</button>
+      <button>41</button>
+      <button>42</button>
+      <button>43</button>
+      <button>44</button>
+      <button>45</button>
+      <button>46</button>
+      <button>47</button>
+      <button>48</button>
+      <button>49</button>
+      <button>50</button>
+      <button>51</button>
+      <button>52</button>
+      <button>53</button>
+      <button>54</button>
+      <button>55</button>
+      <button>56</button>
+      <button>57</button>
+      <button>58</button>
+      <button>59</button>
+      <button>60</button>
+      <button>61</button>
+      <button>62</button>
+      <button>63</button>
+      <button>64</button>
+      <button>65</button>
+      <button>66</button>
+      <button>67</button>
+      <button>68</button>
+      <button>69</button>
+      <button>70</button>
+      <button>71</button>
+      <button>72</button>
+      <button>73</button>
+      <button>74</button>
+      <button>75</button>
+      <button>76</button>
+      <button>77</button>
+      <button>78</button>
+      <button>79</button>
+      <button>80</button>
+      <button>81</button>
+      <button>82</button>
+      <button>83</button>
+      <button>84</button>
+      <button>85</button>
+      <button>86</button>
+      <button>87</button>
+      <button>88</button>
+      <button>89</button>
+      <button>90</button>
+      <button>91</button>
+      <button>92</button>
+      <button>93</button>
+      <button>94</button>
+      <button>95</button>
+      <button>96</button>
+      <button>97</button>
+      <button>98</button>
+      <button>99</button>
+      <button>100</button>
+    </div>
+
+    <script>
+      var container = document.querySelector('.container');
+
+      container.onclick = function (e) {
+        if (e.target.tagName === 'BUTTON') {
+          console.log(e.target.innerText);
+        }
+      };
+    </script>
+  </body>
+</html>
+
+练习：通过事件委托 优化之前的待办事件
+
+
+在循环中注册事件 注意点：通过循环i来注册事件（先注册 在触发 所以 如果要用到i那么i就是循环最后的值）即：
+for(var i=0; i<3;i++){
+    setInterval(function(){
+        console.log(i)
+    },1000)
+}
+会输出3个3 原因：闭包 调用外面全局的i 异步 创建了3个计时器 且i变为3 计时器运行调用全局i
+解决办法：就是有一个自己的变量环境 每次不一样 变量值存储两种方法 1、函数 2、全局 所以用到立即执行函数
+修改：
+for(var i=0; i<3;i++){
+    (function(i){
+        setInterval(function(){
+        console.log(i)
+    },1000)
+    })(i)
+}
+以后会学习到let 每次循环新定义一个变量存储 即：
+for(let i=0; i<3;i++){
+    setInterval(function(){
+        console.log(i)
+    },1000)
+}
+
+例子：10个按钮 点击输出0-9 两种方法 1、事件委托 通过父元素事件 2、循环中定义事件
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+    </div>
+    <script>
+        // 方法一：事件委托来实现
+        // var div = document.querySelector('.container')
+        // div.addEventListener('click', function (e) {
+        //     if (e.target.tagName === "BUTTON") {
+        //         // 怎么获得下标呢？ 用到数组的indexOf  通过Array.prototype.slice()来切割伪数组 获得数组
+        //         console.log(Array.prototype.slice.call(div.children).indexOf(e.target))
+        //     }
+        // });
+
+        // 方法二：循环注册事件
+        // var button = document.querySelectorAll('button');
+        // for (var i = 0; i < button.length; i++) {
+        //     (function (i) {
+        //         button[i].addEventListener('click', function () {
+        //             console.log(i);
+        //         })
+        //     }(i))
+        // }
+        var button = document.querySelectorAll('button');
+        for (let i = 0; i < button.length; i++) {
+            button[i].addEventListener('click', function () {
+                console.log(i);
+            })
+        }
+    </script>
+</body>
+
+</html>
+
+
+回调函数
+js中特别灵活的一个概念 就是通过定义一个函数 其中一个参数不是常量 而是一个函数（由用户提供）然后在定义的函数内 在回来调用（回调）函数 如if判断的时候回调函数返回true 或者 false  实现丰富的效果 简便代码
+如：
+function test(x,fn){
+    if(fn()){
+        ....
+    }
+}
+text(arr,function(){...})
+
+
+函数防抖 
+类似于mousemove keydown事件这类多触发事件 如果中间调用了耗时函数 那么就会一直运行 会耗费大量时间 很多耗时操作没有意义只有最后一次执行有意义
+那么针对于：1、耗时操作 2、只有最后一次操作有意义
+那么就需要用到函数防抖来实现：触发多次 只执行一次 最后一次有意义 实现原理：计时器 多次执行 判断计时器id有删除 重新计时 类似于现实中的电梯 3秒关闭门 有人 就重新等待3秒
+
+实现函数防抖代码：很多地方都可以用 难点：this的指向 和 参数的传入
+function debounce(fn, duration) {
+            var TimerId;
+            return function () {
+                clearInterval(TimerId);
+                var curThis = this;
+                var arg = Array.prototype.slice.call(arguments);
+                TimerId = setTimeout(function () {
+                    fn.apply(curThis, arg);
+                }, duration);
+            }
+        }
+
+优化 加入节流 满足用户在长时间交互下 一直没响应的情况 实现达到一定时间 给予相应
+
+function debounce(fn, duration) {
+            var TimerId;
+            //给一个时间戳
+            var timer = new Date().getTime();
+
+            return function () {
+                clearInterval(TimerId);
+                var curThis = this;
+
+                //判断时间间隔
+                var timer1 = new Date().getTime()
+                if (timer1 - timer >= duration) {
+                    fn.apply(curThis, arg);
+                    timer = new Date().getTime()；
+                }
+
+                var arg = Array.prototype.slice.call(arguments);
+                TimerId = setTimeout(function () {
+                    fn.apply(curThis, arg);
+                }, duration);
+            }
+        }
+
+例子：
+<input type="text" name="" id="">
+    <script>
+        var inp = document.querySelector('input');
+        function debounce(fn, duration) {
+            var TimerId;
+            return function () {
+                clearInterval(TimerId);
+                var curThis = this;
+                var arg = Array.prototype.slice.call(arguments);
+                TimerId = setTimeout(function () {
+                    fn.apply(curThis, arg);
+                }, duration);
+            }
+        }
+
+        var test = debounce(function () {
+            console.log('move', this);
+        }, 2000);
+        var test1 = debounce(function (e) {
+            console.log(this.value);
+        }, 2000)
+
+        inp.oninput = test1;
+        document.onmousemove = test;
+    </script>
+
+
+    正则表达式
+    创建正则表达式
+    1、构造函数
+    new RegExp('规则','标识')
+    2、字面量方法（语法糖）
+    /规则/标识
+
+    正则常用方法
+    1、//reg 正则对象
+    reg.test('字符串')//验证字符串是否满足规则
+    2、//reg 正则对象 str字符串
+    str.replace(reg,'替换目标') //将字符串中匹配的正则部分替换成目标 （替换目标可以是常数可以是函数）
+    如：将字符串正则匹配部分转入到回调函数参数中，将函数返回结果替换
+    str.replace(reg,function(x){
+        return '替换目标'
+    })
+    
+    正则标识 i：ignore 忽略大小写 g：global 全局循环匹配 m：多行匹配
+
+    字符匹配规则（匹配单个）
+    1、直接书写一个普通字符 匹配书写的字符
+    2、[字符规则]  中括号也是匹配一个字符 匹配[]出现的满足字符规则的
+    3、[^字符规则] []中加^表示 也就是非 匹配[]没有出现的字符
+    4、. 匹配任意字符
+    5、\d 匹配任意数字 等价于[0-9]
+    6、\D 匹配不是数字的 等价于[^0-9]
+    7、\s 匹配空白字符 包括空格 换行 回车 制表等
+    8、\S 匹配非空白字符
+    9、\w 匹配单词字符 等价于[a-zA-Z0-9_]
+    10、\W 匹配非单词字符 等价于[^a-zA-Z0-9_]
+    11、^ 匹配字符串开始位置 
+    12、$ 匹配字符串结尾位置
+    13、\\ 匹配\(转义)
+
+    练习的规则
+    1、多个规则可以连续书写 用以匹配多个字符
+    /\d[a-zA-Z]\d$/
+    2、多个规则是一个或者的关系 用 |
+    /\d[a-Z]|[a-Z]\d  /
+
+    规则的重复（量词）
+    一个或一段规则 之后 如果跟量词 表示 前面规则出现的次数 
+    如：/[a-z]/d{3}/ 表示一个数字规则出现3次
+    量次规则：
+    {n} 出现n次
+    {n,m} 出现n-m次
+    {n,} 出现n次以上 至少n次
+    * 出现0次或多次 等同于{0,}
+    ? 出现0-1次 等同于{0,1}
+    + 出现至少一次 等同于{1,}
+
+
+    浏览器渲染
+    流程：获取html 本地或者网络服务器 解析html 找到css 解析css 在继续解析html 获取js 解析js 在继续解析html
+    解析html 也会生成DOM树 js获取的DOM就是DOM树中的dom 这也说明了 js文件在最后导入的原因：1、页面加载速度不会阻塞2、可以获得Dom树 不然找不到元素
+
+    如果要写在前面 需要这样：添加事件监听：DomContentLoaded 或者window上的load事件
+    （8、document对象触发DOMContentLoaded事件 标志程序执行从同步脚本执行阶段到事件驱动阶段
+      9、当所有的async脚本加载执行完成img加载完成后 document.readyState="complete" window对象随后load）
+    <script>
+        document.addEventListener("DomContentloaded",function(e) {
+
+        })
+        window.addEventListener("load",function(){
+
+        });
+    </script>
+    可以对单个外部资源使用load事件 即此资源加载完成后触发
+
+    浏览器一边生成DOM树 一边计算DOM树 同时 中每个节点的样式规则生成渲染树（css解析计算过程发生在这里）
+
+    重排reflow（回流、重排） 浏览器一边生成渲染树 一边计算每个元素的最终尺寸和位置
+
+    完成后 页面所有元素的位置尺寸就确定下来 然后渲染到页面
+    并且重排是页面后续不断重复的 并且js操作均会导致reflow：
+    1、直接获取元素尺寸位置 
+    2、直接或间接改变元素的尺寸位置
+
+    reflow是非常耗时的，浏览器为了优化提高性能 他会对js连续导致重排的代码进行时间点延迟到结束进行，但是如果遇到获取尺寸位置的代码 就会不得已强迫重排
+
+    如：js连续feflow代码：dom.style.width="xx";dom.style.height="xx";dom.style.left="xx"。。。
+    浏览器操作：
+    改变宽度 ————》 改变高度————》改变位置————》reflow
+    如果中间要获取尺寸 就要强行reflow
+
+    例子：js操作会导致重排：
+    dom.onmouseover = function(){
+        div.clientHeight;//每次获取尺寸都会重排 就会很耗时 所以一般对此都是：
+    }
+    var height=div.clientHeight;
+    dom.onmouseover = function(){
+       height//直接读数据 不会强行计算 reflow
+    }
+
+    重绘 repaint
+    浏览器一边重排 一遍重绘（一边进行生成对应的图形绘制页面）
+    所有导致reflow的操作 都会导致repaint
+    绘制过程很快 所以一般能重绘不重排
+    只要是不影响盒子排列，仅影响外观的操作都不会进行重排 仅仅会重绘 如：
+    背景颜色、边框圆角、背景图、字体颜色、、、
+
+
+    异常
+    异常不是坏事 可以发现错误 定位错误 甚至有时候故意抛出错误
+
+    异常分类：（异常就是一个对象 构造函数创建）
+    在js中 异常表现为一个对象 不同对象表达不同的对象类型 不同类型异常对应不同错误
+    SyntaxError 语法错误
+    ReferenceError 引用错误 （往往使用为定义的变量或者函数）
+    TypeError 类型错误 往往是在使用对象一个不存在的成员时候
+    。。。。
+
+    每个异常都是一个对象 都对应构造函数创建
+    每个异常继承Error 
+    浏览器打印异常代码：console.error()
+    
+    当代码运行过程出现错误 js会：
+    1、自动创建对应的异常对象 抛出错误 如new TypeError()
+    2、停止代码的运行
+    3、控制台显示异常对象  
+
+    每个异常对象都至少包含两个关键信息：
+    1、错误信息的描述：抛出错误的原因
+    2、调用堆栈信息：描述异常出现的位置
+
+    例子：
+    function A(){
+        console.log('A started');
+        B();
+        console.log('A finished');
+    }
+    function B(){
+        console.log('B started');
+        C();
+        console.log('B finished');
+    }
+    function C(){
+        console.log('C started');
+        var a ;
+        a.name;
+        console.log('C finished');
+    }
+    A();
+    console.log('global');
+
+    上面代码我们可以知道 全局调用A A调用B B调用C C在运行到a.name时候发现错误 中止代码运行 排除TypeError 错误信息 然后B发生错误在C()这一处 之后A发生错误在B() 导致A也错误不能运行最后一句console.log('global');
+    输处A started；B started；C started
+    
+    捕获异常
+    捕获异常就是处理异常 发生错误时，我们对错误进行相应的处理 让程序不中止
+
+    try{
+        代码一
+    }catch(err){
+        代码二（当代码一出现异常 会执行代码 异常对象传给err中
+    }finally{
+        代码三（可忽略 不过是否有异常 都会执行）
+    }
+    无异常：代码一--》代码三
+    有异常：代码一（中止代码一 抛出异常）--》（捕获异常）代码二--》代码三
+
+    绝大部分时候 无需捕获异常 除非：
+    1、我们能够处理异常 
+    2、我们能够预知异常
+
+    因为捕获异常就是处理异常 如果不满足上述条件 我们不应该捕获异常 不能为了不报错而捕获异常
+
+    下面一段可能使用的异常捕获伪代码 （适用于网络通信 且知道如何处理异常 满足条件）
+    try{
+        var heros=network.getHero();//网络获取数据
+        createHtml(heros)//数组生成HTMl
+    }catch(err){
+        //网络异常 提示框
+        showErrorDialog('网络故障，请检查您的网络连接是否正常。故障原因：'+err.message)
+    }
+
+    手动抛出异常 
+    不仅浏览器可以自动抛出异常 我们还可以手动抛出异常
+    throw 异常对象 //和处理异常一同 发现错误 抛出 停止运行 显示异常
+    当写函数时候 满足下面三种情况 我们可以抛出异常：
+    1、预知执行过程可能会有某个错误
+    2、浏览器不会发出异常 （自己写的函数时候有可能 下面有例子）
+    3、函数无法处理这个错误
+
+    下面展示手动抛出异常的例子：
+    function sum(a,b){
+        return a+b
+    }
+    上面函数 在运行时 如果输入了字符串 浏览器不会报错 但是函数想要合数运算 所以 可能有错误（预知）并且 函数不能处理错误
+    所以 我们可以：手动抛出错误信息
+    /**
+    * 得到两个数组之和
+    * 若传递的不是数字 抛出TypeError
+    * @param {number} a 
+    * @param {number} b 
+    */
+
+    function sum(a, b) {
+        if (typeof a !== 'number' || typeof b !== 'number') {
+            throw new TypeError('必须传入两个数字才能求和')
+        }
+        return a + b;
+    }
+    sum(1, '1')
+
+    手动抛出错误 在我们成为高级工程师可以有大作用！
+
+    断点调试 学会node断点调试 和 浏览器断点调试
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        张晓熟知清史，原本是繁华都市的一名白领，却因一脚踏空而穿越了时空的隧道，化身为十六岁的清朝少女马尔泰·若曦，进入风云诡变的宫廷之中。
+        刚到清廷的她个性张扬，言行举止没有古代女子的保守温婉，反而豪爽大气，她和阿哥斗嘴、和格格打架，连皇上都笑说她是“拼命十三妹”。时光荏苒，当年那个任性的小姑娘渐渐长大，误打误撞被收编到皇上御前奉茶，从此卷入九子夺嫡的暗战之中无法自拔，个人情感夹杂在宫斗的惨烈中备受煎熬。
+        八阿哥清风朗月八面玲珑，让若曦心生仰慕，加上闻知他对姐姐痴情，姐姐却心有所属与他貌合神离，让若曦由怜生爱。八阿哥的默默守护让若曦在彷徨孤独中有依靠，芳心终被打动。若曦全心全意接受八阿哥，更毅然求他放弃争夺皇位，奈何八阿哥最终选择江山，若曦深受打击。
+        步步惊心的皇权争夺，四阿哥毫无戒心的坦诚让她义无反顾相信，当四阿哥下意识舍命相救，若曦决定一生追随。得知几位阿哥相继悲惨收场源于自己，若曦情绪崩溃，心灰意冷离开皇宫。经历几番爱恨嗔痴，若曦身心俱疲再也支撑不住，临终前，她彷佛听到一阵歌声，引她入梦。
+        [8] （画册来源） [9]
+
+    </div>
+
+    <script>
+        var div = document.querySelector('.container');
+        var str = div.innerHTML
+        var reg = /\s+.+/g;
+        var newstr = str.replace(reg, function (s) {
+            s = s.replace(/\s+/, "")
+            return '<p>' + s + '</p>';
+        })
+        div.innerHTML = newstr;
+    </script>
+</body>
+
+</html>

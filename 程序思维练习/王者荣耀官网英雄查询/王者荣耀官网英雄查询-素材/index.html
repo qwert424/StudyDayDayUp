@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+  <!-- 英雄查询界面 -->
+  <div class="container">
+    <!-- 查询页面顶部选择 -->
+    <div class="search-top">
+      <!-- 左侧菜单 -->
+      <div class="left-menu">
+        <span>综合</span>
+        <span>定位</span>
+      </div>
+      <!-- 右侧分类 -->
+      <div class="right-menu">
+        <!-- 周免 推荐 -->
+        <div class="menu-top">
+          <label>
+            <input type="radio" name="x" data-pay="10">
+            本周免费
+          </label>
+          <label>
+            <input type="radio" name="x" data-pay="11">
+            新手选择
+          </label>
+        </div>
+        <!-- 英雄定位 -->
+        <div class="menu-main">
+          <label>
+            <input type="radio" name="pos" data-hero_type='all'>
+            全部
+          </label>
+          <label>
+            <input type="radio" name="pos" data-hero_type='3'>
+            坦克
+          </label>
+          <label>
+            <input type="radio" name="pos" data-hero_type='1'>
+            战士
+          </label>
+          <label>
+            <input type="radio" name="pos" data-hero_type='4'>
+            刺客
+          </label>
+          <label>
+            <input type="radio" name="pos" data-hero_type='2'>
+            法师
+          </label>
+          <label>
+            <input type="radio" name="pos" data-hero_type='5'>
+            射手
+          </label>
+          <label>
+            <input type="radio" name="pos" data-hero_type='6'>
+            辅助
+          </label>
+        </div>
+        <!-- 查询 -->
+        <div class="search">
+          <input type="text" placeholder="请输入你想要的英雄名"></input>
+        </div>
+      </div>
+    </div>
+    <!-- 查询英雄展示 -->
+    <div class="main-area">
+    </div>
+    <a href="" target="_blank"></a>
+  </div>
+
+
+
+
+  <script src="./index.js"></script>
+</body>
+
+</html>

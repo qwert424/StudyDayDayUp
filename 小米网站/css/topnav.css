@@ -1,0 +1,86 @@
+/* 顶部菜单样式 */
+#topnav {
+    background-color: #333;
+    height: 40px;
+    color: #b0b0b0;
+    font-size: 12px;
+    line-height: 40px;
+}
+
+/* a标签样式 */
+#topnav .topnav-menu a {
+    display: inline-block;
+}
+
+#topnav .topnav-menu a:hover {
+    color: #fff;
+}
+
+/* 菜单栏ul li样式 */
+#topnav .topnav-menu li {
+    padding-left: 7px;
+}
+
+#topnav .topnav-menu li:first-child {
+    padding-left: 0;
+}
+
+#topnav .topnav-menu li::after {
+    content: "|";
+    display: inline-block;
+    margin-left: 7px;
+    color: #424242;
+}
+
+#topnav .topnav-menu li:last-child::after {
+    display: none;
+}
+
+/* 购物车样式 */
+#topnav .topnav-car {
+    background-color: #424242;
+    width: 120px;
+    height: 40px;
+    margin-left: 15px;
+    text-align: center;
+    position: relative;
+}
+
+/* 鼠标hover样式 */
+#topnav .topnav-car:hover .link {
+    background-color: #fff;
+    color: #ff6700;
+}
+
+#topnav .topnav-car:hover .topnav-detail {
+    display: block;
+}
+
+/* link样式 */
+#topnav .topnav-car .link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#topnav .topnav-car .link i {
+    vertical-align: -2px;
+    margin-right: 2px;
+}
+
+/* 购物车弹出框样式 */
+#topnav .topnav-car .topnav-detail {
+    text-align: center;
+    line-height: 100px;
+    width: 320px;
+    height: 100px;
+    background-color: #fff;
+    z-index: 50;
+    position: absolute;
+    top: 40px;
+    right: -1px;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+}

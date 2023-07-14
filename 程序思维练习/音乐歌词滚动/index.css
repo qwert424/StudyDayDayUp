@@ -1,0 +1,74 @@
+/* 公共样式开始 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    user-select: none;
+}
+
+/* 公共样式结束 */
+
+html {
+    background-color: black;
+}
+
+/* 容器样式开始 */
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+}
+
+/* 容器样式结束 */
+
+/* 音频样式开始 */
+
+.container .audio-item {
+    width: 100%;
+    height: 80px;
+}
+
+.container .audio-item audio {
+    width: 100%;
+    height: 40px;
+    transform: translate(0, 50%);
+}
+
+/* 音频样式结束 */
+
+/* 歌词容器样式开始 */
+.container .music-container {
+    height: 500px;
+    width: 100%;
+    overflow: hidden;
+    display: none;
+    position: relative;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.container .music-item {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    top: 0;
+    color: #cccccc73;
+    font-size: 14px;
+    transition: all 0.5s;
+}
+
+.container .music-item li {
+    margin: 5px 0;
+    height: 24px;
+    line-height: 24px;
+}
+
+.container .music-item li.selected {
+    color: #fff;
+    font-size: 18px;
+}
+
+/* 歌词容器样式结束 */

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 详见 手册查阅 ：promise async和await.md -->
+    <!-- > 消除回调 -->
+    <!-- > async async关键字用于修饰函数，被它修饰的函数，一定返回Promise -->
+    <!-- > await await关键字表示等待某个Promise完成，它必须用于async函数中 aawait会把后面的数据准换成Promise对象 失败会报错 所以用try-catch await 返回任务对象参数-->
+
+    <script>
+        async function method() {
+            try {
+                const n = await Promise.reject(123); // 这句代码将抛出异常
+                console.log('成功', n)
+            }
+            catch (err) {
+                console.log('失败', err)
+            }
+        }
+
+        method(); // 输出： 失败 123
+    </script>
+</body>
+
+</html>

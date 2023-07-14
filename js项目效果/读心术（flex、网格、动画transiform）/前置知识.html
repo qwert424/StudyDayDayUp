@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 弹性布局 */
+        /* .container {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ccc;
+            display: flex;
+            //flex-direction: column-reverse;
+            //justify-content: center;
+            align-items: ;
+        }
+
+        .container div {
+            width: 100px;
+            border: 1px solid #ccc;
+        } */
+
+        /* 网格布局 */
+        /* .container {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ccc;
+            display: grid;
+            grid-template-columns: 250px 250px;
+            grid-template-columns: repeat(2, 250px);
+            grid-template-rows: 200px 200px;
+        }
+
+        .container div {
+            border: 1px solid #ccc;
+        }
+
+        */
+    </style>
+</head>
+
+<body>
+    <!-- 弹性布局 -->
+    <!-- 1、浮动 是为了 文字环绕效果的 本身不是为了布局的 可以通过设置弹性容器（flex）和弹性项目 使得内部div（弹性项目）实现水平排列的效果 设置display：flex  -->
+    <!-- 如： -->
+    <!-- <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div> -->
+    <!-- flex弹性容器除了这一点 还特供改变主轴方向 flex-direction 参数row-reverse（水平轴改变方向）  column-reverse（垂直轴改变方向） -->
+
+    <!-- 还提供水平垂直方向的方便布局 justify-content（水平排序方式） 参数：flex-start(左排列) flex-end（右排列） space-between（中间平均分配） space-around（左右有一点空格 内部平均分配） center（居中分配） space-evenly（每边平均分配） 
+    align-content(垂直排列方式) 参数：center（居中） flex-start（类似居上 就是主轴开始） flex-end(类似于局下 主轴结束) 默认值：stretch（垂直占满）
+    -->
+
+    <!-- 网格布局 -->
+    <!-- 网格布局类似于弹性布局 网格布局 Grid 和 Flex有一定的相似性 都可以指定容器内部多个项目位置 但是Flex是轴线布局 通过主轴来布局 类似于一维布局 Grid布局 是将容器划分成行和列 产生单元格 然后指定项目单元格 可以看作二维布局 所以 Grid布局 比 Flex布局强大！ -->
+    <!-- display:grid 默认情况下 所指容器为块级元素 但是可以通过display：inline-grid设为行内元素 -->
+    <!-- 网格布局的两个属性： -->
+    <!-- grid-template-columns 定义每一列的列宽  -->
+    <!-- grid-t  emplate-rows  定义每一行的行高 -->
+    <!-- 上面连个属性都可以设置百分比 -->
+    <!-- 例子： -->
+    <!-- <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div> -->
+    <!-- 属性在传入值的时候 如果有多行 多列 就会书写很麻烦 所以需要用到repeat() 传入两个参数 1、重复多少个 2、每个对应多少数值 -->
+
+    <!-- css3过渡效果 transition-->
+    <!-- 动画更丝滑 -->
+    <!-- transition 4个属性可以一起书写  -->
+    <!-- 1、transition-property :规定设置过渡的css属性名称 -->
+    <!-- 2、transition-duration:规定完成过渡效果的时间 -->
+    <!-- 3、transition-timing-function:规定过渡的函数速度曲线 -->
+    <!-- 4、transition-delay：指定开始的延迟时间 -->
+
+    <!-- Css3变形 transform-->
+    <!-- transform 是效果的集合 包括移动 旋转 缩放 倾斜 这4中基本操作 -->
+    <!-- 变形transform可以实现2D和3D两种效果 -->
+    <!-- 1、rotate()旋转函数 -->
+    <!-- 通过指定角度参数 进行相对原点的旋转 主要在二维空间操作 设置一个角度 （旋转x幅度） -->
+    <!-- 正值就是顺时针 负值为逆时针 元素相对原点旋转 （默认相对原点为中心点） -->
+    <!-- 例子 -->
+    <!-- <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        div:hover {
+            transform: rotate(45deg);
+        }
+    </style>
+    <div></div> -->
+    <!-- 2、倾斜函数 skew() -->
+    <!-- 扭曲skew函数能够让元素倾斜显示 它可以将一个对象以其中心位置围绕x轴或者y轴按照一定角度的倾斜 与rotate不同 rotate是旋转 不改变元素 skew不是旋转 是改变元素形状 -->
+    <!-- 可以传入一个或者两个参数：skew(X，Y) -->
+    <!-- 一个参数：skewX(倾斜角度) 表示水平方向的倾斜角度 -->
+    <!-- 两个参数：skew() 第一参数表示水平方向倾斜角度 第二参数表示垂直方向的倾斜角度 -->
+    <!-- skew(30deg);skew(30deg,-40deg) -->
+    <!-- 例子： -->
+    <!-- <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        div:hover {
+            /* transform: skewX(30deg) */
+            /* transform: skewY(30deg) */
+            /* transform: skew(30deg, 40deg) */
+        }
+    </style>
+    <div></div> -->
+
+    <!-- 3、scale 缩放函数 -->
+    <!-- 让元素根据中心原点对象进行缩放 scale()取值默认值为：1 当值为0.01-0.99之间 使元素缩小 当元素大于1.01 让元素放大 -->
+    <!-- 3种情况 -->
+    <!-- transform:scale(x,y) 使元素水平和垂直方向同时缩放 -->
+    <!-- transform:scaleX(x) 使元素水平缩放 -->
+    <!-- transform:scaleY(x) 使元素垂直缩放 -->
+    <!-- 例子： -->
+    <!-- <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 200px;
+        }
+
+        div:hover {
+            /* transform: scaleX(1.5) */
+            /* transform: scale(1.5) */
+            /* transform: scaleY(0.5) */
+        }
+    </style>
+    <div></div> -->
+
+    <!-- 4、translate 偏移函数 -->
+    <!-- translate函数可以将元素像指定方向移动 类似于position中的relative 可以将元素从原来位置移动 而不影响x轴和y轴任何web组件 -->
+    <!-- transform:translate(x,y)水平垂直
+    transform:translateX(x)水平
+    transform:translateY(y)垂直 -->
+    <!-- 例子： -->
+    <!-- <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        div:hover {
+            transform: translate(100px, 100px);
+        }
+    </style>
+    <div></div> -->
+
+    <!-- 5、transform-origin 原点 -->
+    <!-- 任何一元素都有个中心点 默认情况写 中心点居于元素X轴和Y轴的50%处 -->
+    <!-- 在没有重置transform-origin改变元素原点位置，进行元素的旋转、倾斜、缩放、位移都是相对自己中心点进行形变的 -->
+    <!-- transform-origin取值可以具体像数值 可以关键字 可以百分比值 -->
+    <!-- 例子： -->
+    <!-- <style>
+        div {
+            width: 100px;
+            height: 100px;
+            transform-origin: 0 0;
+            background-color: red;
+        }
+        div:hover {
+            transform: rotate(30deg) scale(1.5) translate(100px) skew(30deg);
+        }
+    </style>
+    <div></div> -->
+    
+</body>
+
+</html>

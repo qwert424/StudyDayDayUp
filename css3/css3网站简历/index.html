@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<!-- 
+    效果示例：http://resume.yuanjin.tech/
+    容器尺寸：800
+    文字颜色：#333
+    链接颜色：#0ea5e9
+    链接颜色浅色1：#22d3ee
+    链接颜色浅色2：#f0fdff 
+-->
+
+<body>
+    <!-- 网站简介 -->
+    <!-- 背景 -->
+    <div class="container C333">
+        <!-- 个人信息 -->
+        <div class="provious mB40">
+            <div class="title">
+                <span>邓 旭 明</span>
+                <span class="job">前 端 工 程 师</span>
+            </div>
+            <div class="message-item CMess">
+                <i class="iconfont icon-dianhua"></i>
+                <a href="" class="aC1">138 0101 0101</a>
+                <span class="tR mR20">学历</span>
+                <span class="C333">研究僧</span>
+                <i class="iconfont icon-duanxin"></i>
+                <a href="" class="aC1">dengxuming@duyi-inc.com</a>
+                <span class="tR mR20">生日</span>
+                <span class="C333">2010-01-01</span>
+                <i class="iconfont icon-wangzhan"></i>
+                <a href="" class="aC1">www.dengxuming.com</a>
+                <span class="tR mR20">开发经验</span>
+                <span class="C333">5年</span>
+            </div>
+            <img src="./avatar.png" alt="" class="proImg">
+        </div>
+        <!-- 教育经历 -->
+        <div class="education mB40">
+            <div class="title">
+                <span>教育经历</span>
+            </div>
+            <div class="item CMess">
+                <p>2005 ~ 2009 <span class="C333">克莱登大学</span> 进口挖掘机修理</p>
+                <p>2009 ~ 2013 <span class="C333">西太平洋圣地亚哥大学</span> 母猪的产后护理</p>
+            </div>
+        </div>
+        <!-- 工作经历 -->
+        <div class="job-exp mB40">
+            <div class="title">
+                <span>工作经历</span>
+            </div>
+            <div class="item CMess">
+                <p>2013 ~ 2015 <span class="C333">国家蓝翔战略研究院</span> 挖掘机质检员</p>
+                <div class="detail">
+                    负责对挖掘机的各种零部件进行检测、维修。对生产线的各个环节进行把控，及时发现风险。负责产品质量状态标识工作，严格控制不良品。也会对进口挖掘机的品质进行把控，制定符合公司战略需要的质检标准。</div>
+                <p>2016 ~ 2021 <span class="C333">新东方牛栏山分部</span> 肉质检验师</p>
+                <div class="detail">
+                    负责给新东方厨师训练班的学员提供优质的猪肉，严格控制猪肉质量。同时还要管理生猪，特别是母猪的生产护理，包括母猪产前指导、产后修复，还要负责母猪的产后咨询等。然后.......实在编不下了去了。
+                </div>
+            </div>
+        </div>
+        <!-- 专业技能 -->
+        <div class="skill mB40">
+            <div class="title">
+                <span>专业技能</span>
+            </div>
+            <div class="skill-item aC1">
+                <div class="English cir">英语四级</div>
+                <div class="Computer cir">计算机二级</div>
+                <div class="Excavator-fix cir">挖掘机修理</div>
+                <div class="Excavator-principle cir">挖掘机原理</div>
+                <div class="Meat cir">肉质检查</div>
+                <div class="Analysis cir">猪肉成分分析</div>
+            </div>
+        </div>
+        <!-- 项目经验 -->
+        <div class="Project mB40">
+            <div class="title">
+                <span>项目经验</span>
+            </div>
+            <div>
+                <div class="project-item CMess">
+                    <div class="item-title C333">在线时间管理系统</div>
+                    <div class="main">
+                        <span class="tR">访问地址</span>
+                        <a href="" class="aC1">www.todolist.com</a>
+                        <span class="tR">github</span>
+                        <a href="" class="aC1">github.com/dengxuming/todolist</a>
+                        <span class="tR">项目背景</span>
+                        <span class="C333">本系统在学习 vue 后，凭个人兴趣，开发的用于进行时间管理的系统</span>
+                        <span class="tR">项目实现</span>
+                        <div class="C333 p">
+                            <p>系统包含 <strong>任务清单</strong> 、<strong>任务分类</strong> 、<strong>日志薄</strong>
+                                、<strong>废纸篓</strong> 等模块，本人参与了所有模块的开发。 </p>
+                            <p> 系统分为前后端两个部分。前端部分使用 <strong>vue</strong> 作为框架，并使用脚手架 <strong>vue-cli</strong> 搭建。</p>
+
+                            <p>其中，使用 <strong>vue-router</strong> 处理路由，使用 <strong>vuex</strong> 处理共享数据，使用
+                                <strong>element-ui</strong> 构建界面。
+                            </p>
+                            <p> 后端部分使用 <strong>node</strong> 搭建轻量级服务器，通过 <strong>express</strong> 为前端提供REST风格的接口，数据方面利用
+                                <strong>mysql</strong> 持久化数据，并利用库 <strong>sequelize</strong> 提供的接口操作数据库
+                            </p>
+                            <p> 项目开发中遇到了 <strong>打包体积过大</strong> 的问题，经过研究，最终利用 <strong>tree shaking</strong>
+                                、<strong>dynamic import</strong> 、 <strong>gzip</strong> ，很好的解决了该问题</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="project-item CMess">
+                    <div class="item-title C333">在线时间管理系统</div>
+                    <div class="main">
+                        <span class="tR">访问地址</span>
+                        <a href="" class="aC1">www.todolist.com</a>
+                        <span class="tR">github</span>
+                        <a href="" class="aC1">github.com/dengxuming/todolist</a>
+                        <span class="tR">项目背景</span>
+                        <span class="C333">本系统在学习 vue 后，凭个人兴趣，开发的用于进行时间管理的系统</span>
+                        <span class="tR">项目实现</span>
+                        <div class="C333 p">
+                            <p>系统包含 <strong>任务清单</strong> 、<strong>任务分类</strong> 、<strong>日志薄</strong>
+                                、<strong>废纸篓</strong> 等模块，本人参与了所有模块的开发。 </p>
+                            <p> 系统分为前后端两个部分。前端部分使用 <strong>vue</strong> 作为框架，并使用脚手架 <strong>vue-cli</strong> 搭建。</p>
+
+                            <p>其中，使用 <strong>vue-router</strong> 处理路由，使用 <strong>vuex</strong> 处理共享数据，使用
+                                <strong>element-ui</strong> 构建界面。
+                            </p>
+                            <p> 后端部分使用 <strong>node</strong> 搭建轻量级服务器，通过 <strong>express</strong> 为前端提供REST风格的接口，数据方面利用
+                                <strong>mysql</strong> 持久化数据，并利用库 <strong>sequelize</strong> 提供的接口操作数据库
+                            </p>
+                            <p> 项目开发中遇到了 <strong>打包体积过大</strong> 的问题，经过研究，最终利用 <strong>tree shaking</strong>
+                                、<strong>dynamic import</strong> 、 <strong>gzip</strong> ，很好的解决了该问题</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 个人评价 -->
+        <div class="Personal">
+            <div class="title">
+                <span>个人评价</span>
+            </div>
+            <p class="Personal-item">
+                对用户运营有一定经验，半年内成功扩展300+用户，主持举办了VIP用户交流访谈活动，善于沟通，成功转化60+用户成为忠实用户
+            </p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

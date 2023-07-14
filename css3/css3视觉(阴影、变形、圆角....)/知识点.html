@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 详见 手册查阅 ：css3视觉.md -->
+
+    <!-- css视觉 -->
+    <!-- 所谓的视觉类样式 不影响盒子的位置、尺寸的样式 如：背景图 颜色变化 边框圆角 阴影-->
+
+    <!-- 1、阴影 盒子阴影 文字阴影 -->
+    <!-- 1.1、盒子阴影 box-shadow 属性设置整个盒子的阴影 -->
+    <!-- box-shadow：x水平偏移（必须） y垂直偏移（必须） 模糊半径（选择） 扩散半径（选择） 阴影颜色（必须） 有很多值可以搭配使用-->
+    <!--阴影 可以多个阴影一起写 通过，分隔 且 第一个阴影覆盖后面的阴影 例如：box-shadow：x水平偏移（必须） y垂直偏移（必须） 模糊半径（选择） 扩散半径（选择） 阴影颜色（必须），x水平偏移（必须） y垂直偏移（必须） 模糊半径（选择） 扩散半径（选择） 阴影颜色（必须）  -->
+    <!-- box-shadow：inset 是向内阴影的属性  添加在前面 如：box-shadow：inset x水平偏移（必须） y垂直偏移（必须） 模糊半径（选择） 扩散半径（选择） 阴影颜色（必须）-->
+    <!-- 例子查阅： -->
+    <!-- <iframe src="http://mdrs.yuanjin.tech/html/css-manual/box-shadow.html?v=2" style="height:900px;width: 100%;"> -->
+
+    <!-- 1.2、文字阴影 text-shadow-->
+    <!-- text-shadow:x水平偏移（必须） y垂直偏移（必须） 模糊半径（选择） 阴影颜色（选择 不填写就是文字颜色） -->
+    <!-- 多个方向一起设置阴影 就可以实现文字加边框的效果 -->
+    <!-- 例子查阅： -->
+    <!-- <iframe src="http://mdrs.yuanjin.tech/html/css-manual/text-shadow.html?v=3" style="height:500px;width: 100%;"> -->
+
+    <!-- 2、圆角：border-radius -->
+    <!-- 设置盒子的圆角 相当于每个角画一个圆 半径为你设置的值 -->
+    <!-- 可以设置指定值、百分比、也可以单独设置4个角的值（左上、右上、右下、左下） 设置两个值（左上、右下 和 右上、左下 （对角线）） -->
+    <!-- border-top-right-radius -->
+    <!-- 设置50%就是一个圆 -->
+
+    <!-- 3、背景渐进 linear-gradient-->
+    <!-- 背景除了设置url背景图 还可以通过linear-gradient来设置渐变背景 -->
+    <!-- linear-gradient：方向 背景色1 背景色2 -->
+    <!-- 方向：to bottom（向下）|to top（向上）|to left（向左）|to right（向右）  -->
+    <!-- 例子查阅： -->
+    <!-- <img src="http://mdrs.yuanjin.tech/img/20210512135028.png" alt="" style="height:900px;width: 100%;"> -->
+
+    <!-- 4、变形 transform 盒子的形态发生改变 不影响布局-->
+    <!-- 变形 只改变盒子的形态 视觉效果 不影响布局 即使是平移 相当relative不影响布局 -->
+    <!-- 变形有很多种：旋转rotate、拉升变形skew、平移translate、缩放scale等 -->
+    <!-- 4.1transform:translate 平移  -->
+    <!-- 盒子在原来位置上产生位移 类似于相对定位 -->
+    <!-- 值可以是准确值、百分比 可以设置x、y（单独或者同时） -->
+    <!-- 在没有定义盒子宽度高度的居中 就是用变形平移的方式 -->
+    <!-- 例子查阅： -->
+    <!-- <img src="http://mdrs.yuanjin.tech/img/20210512140643.png" alt="" style="height:900px;width: 100%;"> -->
+
+    <!-- 4.2缩放 transform：scale -->
+    <!-- 缩放 可以使得盒子原来的尺寸发生缩放 视觉 不改变布局 -->
+    <!-- 值可以是准确值、百分比 可以设置x、y（单独或者同时） -->
+    <!-- 例子查阅： -->
+    <!-- <img src="http://mdrs.yuanjin.tech/img/20210512141500.png" alt="" style="height:900px;width: 100%;"> -->
+
+    <!-- 4.3旋转 transform:rotate -->
+    <!-- 旋转 在原图上进行旋转  -->
+    <!-- 值单位可以是：deg（度）、turn（圈） -->
+    <!-- 例子查阅： -->
+    <!-- <iframe src="http://mdrs.yuanjin.tech/html/css-manual/rotate.html" style="height:900px;width: 100%;"> -->
+
+    <!-- 4.4改变变形原点 transform-origin -->
+    <!-- 变形原点会影响变形行为 -->
+    <!-- 默认情况下，变形原点在盒子中心 可以通过transform-origin改变 -->
+    <!-- 值可以设置关键字、具体值、百分比 -->
+    <!-- 例子查阅： -->
+    <!-- <iframe src="http://mdrs.yuanjin.tech/html/css-manual/transform-origin.html?v2" style="height:600px;width: 100%;"> -->
+
+    <!-- 5、变形transform可以同时设置多种变形效果 -->
+    <!-- 但是设置的变形效果先后顺序不同 就会导致坐标系的变化 会有不同的效果 -->
+    <!-- 注意：旋转会导致坐标系也跟着旋转，从而可能影响到后续的变形效果 -->
+    <!-- 所以在进行同时变形效果的时候 要注意先后顺序 坐标系的变化 -->
+    <!-- 例子查阅： -->
+    <!-- <iframe src="http://mdrs.yuanjin.tech/html/css-manual/multi-transform.html" style="height:900px;width: 100%;"> -->
+
+</body>
+
+</html>

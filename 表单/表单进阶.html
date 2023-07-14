@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./表单.css">
+</head>
+
+<body>
+    <!-- 表单区域 -->
+    <!-- form 提交功能 -->
+    <!-- 有刷新样式 内部回车自动提交 -->
+    <!-- input type radio checkbox textarea button select option label... placeholder maxlength checked selected disabled-->
+
+    <form action="" class="container">
+        <h1>用户注册</h1>
+
+        <div class="form-item">
+            <!-- placeholder 提示 可以不用js控制 -->
+            <!-- maxlength 最大长度 -->
+            <input type="text" placeholder="请输入11位手机号" maxlength="11">
+        </div>
+
+        <div class="form-item clearfix">
+            <input type="text" placeholder="请填写验证码" class="fl vcinput">
+            <button type="button" disabled class="fr vcbtn">获取验证码</button>
+        </div>
+
+        <div class="form-item">
+            <input type="password" placeholder="请输入密码">
+        </div>
+
+        <div class="form-item">
+            <input type="password" placeholder="请再次确认密码">
+        </div>
+
+        <div class="form-item">
+            <!-- 特殊样式的多选框 -->
+            <!-- multiple 多个的-->
+            <select name="" id="" multiple>
+                <option value="">爱好1</option>
+                <option value="">爱好2</option>
+                <option value="" selected>爱好3</option>
+                <option value="">爱好4</option>
+                <option value="">爱好5</option>
+                <option value="">爱好6</option>
+                <option value="">爱好7</option>
+                <option value="">爱好8</option>
+                <option value="">爱好9</option>
+                <option value="">爱好10</option>
+            </select>
+        </div>
+
+        <div class="form-item">
+            <!-- name 同一组 -->
+            <!-- 性别：<input type="radio" name="sex" id="">男
+            <input type="radio" name="sex" id="">女 -->
+            <!-- label 关联 for显示关联 或者内嵌隐式-->
+            <!-- 显示： -->
+            <!-- 性别：<input type="radio" name="sex" id="male"><label for="male">男</label>
+            <input type="radio" name="sex" id="female"><label for="female">女</label> -->
+            <!-- 隐式： -->
+            <span class="sextitle">性别：</span>
+            <label>
+                <input type="radio" name="sex" id="male" checked>
+                <span>男</span>
+            </label>
+            <label>
+                <input type="radio" name="sex" id="male">
+                <span>女</span>
+            </label>
+        </div>
+
+        <div class="form-item">
+            <textarea name="" id="" cols="30" rows="10" placeholder="请输入个人简介"></textarea>
+        </div>
+
+        <div class="form-item">
+            <label>
+                <input type="checkbox" name="" id="">
+                <span>同意条约</span>
+            </label>
+
+        </div>
+
+        <div class="form-item clearfix">
+            <button type="submit" disabled class="fl">立即注册</button>
+            <button type="reset" class="fr">重置表单</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

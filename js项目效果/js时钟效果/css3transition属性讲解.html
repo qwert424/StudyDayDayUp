@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: linear;
+            transition-delay: 0.5s;
+            position: relative;
+            left: 0;
+        }
+
+        /* .box:hover {
+            background-color: green !important;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- css3属性 用于一个状态过渡到另外一个状态，用于一定时间内进行元素的平滑过渡，该效果可以在元素被点击 元素被划过或者其他事件触发 实现圆滑的动画效果改变css属性值 -->
+    <!-- 总结：1、动画变化 2、样式改变 3、平滑过渡 -->
+    <!-- transition是复合属性：
+    1、transition-property:规定设置过渡效果css属性名称，通常用“all”全部css属性进行动画效果添加
+    2、transition-duration: 规定过渡效果多少秒或者毫秒
+    3、transition-timing-function：规定过渡函数，规定速度效果的速度曲线 通常用关键字：linear、ease-in、ease-in-out
+    4、transition-delay：规定动画开始延迟时间 -->
+
+    <!-- 知识点 ：通过id定义的元素 是定义在window上的 可以直接使用 -->
+
+    <!-- transition效果展示： -->
+    <div class="box"></div>
+    <button id="btn"></button>
+    <script>
+        var box = document.querySelector('.box');
+        btn.onclick = function () {
+            box.style.left += 100 + 'px';
+        }
+    </script>
+
+</body>
+
+</html>

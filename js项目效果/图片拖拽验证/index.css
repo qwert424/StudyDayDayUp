@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 整体 */
+.container {
+    width: 300px;
+    height: 372px;
+    margin: 100px auto;
+    user-select: none;
+}
+
+/* 整体上部 */
+.container .top {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.container .top img {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.container .top span {
+    font-size: 14px;
+    color: rgb(98, 0, 190);
+    vertical-align: 5px;
+    font-weight: bold;
+}
+
+/* 整体主区域 */
+.container .main {
+    width: 100%;
+    height: 322px;
+    border: 1px solid #666;
+    border-radius: 15px;
+    text-align: center;
+    padding: 10px
+}
+
+/* 整体主区域上部 */
+.container .main .tip {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* 整体主区域图片 */
+.container .main .pic {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.container .main .pic .good {
+    background: url(./imgs/good.png) no-repeat center center /100% 100% #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.container .main .pic .pic-code {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.container .main .pic .white-block,
+.container .main .pic .mark {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: #fff;
+    opacity: 1;
+    border-radius: 5px;
+}
+
+
+
+/* 整体主区域底部 */
+.container .main .main-bottom {
+    margin: 0 auto;
+    width: 97%;
+    height: 30px;
+    background-color: #999;
+    margin-top: 20px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: #eeeeee;
+    position: relative;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+
+.container .main .main-bottom .block,
+.container .main .main-bottom .block img {
+    position: absolute;
+    width: 36px;
+    height: 28px;
+    left: 0;
+    top: 0;
+    border-radius: 13px;
+    background: url(./imgs/yz.png) no-repeat right center/35px 28px #fff;
+}

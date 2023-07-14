@@ -1,0 +1,85 @@
+@import url(./font/iconfont.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 容器 */
+.container {
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 图片容器 */
+.container .imgs {
+    width: 2500px;
+    height: 300px;
+    font-size: 0;
+    position: relative;
+    left: 0;
+}
+
+/* 图片 */
+.container .imgs img {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* 下标按钮 */
+.container .dots-item {
+    font-size: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container .dots-item li {
+    display: inline-block;
+    width: 35px;
+    height: 5px;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+/* 下标选中 */
+.container .dots-item li.selected {
+    background-color: rgb(255, 187, 0);
+}
+
+/* 按钮 */
+.container .btn {
+    position: absolute;
+    top: 0;
+    line-height: 300px;
+    text-align: center;
+    height: 300px;
+    width: 30px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.container .lbtn {
+    left: 0;
+}
+
+.container .rbtn {
+    right: 0;
+}
+
+.container .btn .iconfont {
+    font-size: 30px;
+}
+
+/* 按钮hover */
+.container .btn:hover {
+    background-color: #ccc;
+    color: #000;
+}

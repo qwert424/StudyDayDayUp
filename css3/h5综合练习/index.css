@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 3px 5px;
+}
+
+html {
+    user-select: none;
+    line-height: 1.5;
+}
+
+.container {
+    width: 80vw;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.container video {
+    width: 100%;
+}
+
+.container .item {
+    display: none;
+    margin-top: 10px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.active {
+    background: #ffbd80;
+}

@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(143, 250, 250);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.threemenu {
+    width: 200px;
+    margin: 50px auto;
+}
+
+.threemenu .container {
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 4px 10px;
+    font-size: 14px;
+    height: 35px;
+    line-height: 27px;
+    color: rgb(0, 175, 158);
+}
+
+.threemenu .container span {
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+}
+
+select {
+    border: none;
+    outline: none;
+    margin-left: 5px;
+    width: 130px;
+    height: 27px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

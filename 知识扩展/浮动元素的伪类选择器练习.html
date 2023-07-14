@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .imgs {
+            width: 1000px;
+            margin: 0 auto;
+            outline: 1px solid;
+        }
+
+        .imgs img {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 0 33px;
+        }
+
+        .imgs img:nth-child(4n+1) {
+            margin-left: 0px;
+        }
+
+        .imgs img:nth-child(4n) {
+            margin-right: 0px;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="imgs clearfix">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+        <img src="./../绝对定位/img/e863a3940eabf7c1df7d039c70a7f547.jpg" alt="">
+    </div>
+
+</body>
+
+</html>

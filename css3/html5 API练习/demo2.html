@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .form {
+      width: 200px;
+      margin: 0 auto;
+    }
+
+    .item {
+      margin: 1em 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <div class="form">
+    <div class="item">
+      <label>姓名</label>
+      <input type="text" />
+    </div>
+    <div class="item">
+      <label>年龄</label>
+      <input type="number" />
+    </div>
+    <div class="item">
+      <label>性别</label>
+      <label>
+        <input name="sex" type="radio" />
+        男
+      </label>
+      <label>
+        <input name="sex" type="radio" />
+        女
+      </label>
+    </div>
+  </div>
+  <script>
+
+    // 下面可以优化 暂不处理
+
+    // 填写表单时，保存数据到本地
+    var text = document.querySelector('input[type="text"]')
+    var age = document.querySelector('input[type="number"]')
+    var sexs = document.querySelectorAll('input[type="radio"]')
+    var obj = {
+      'sex': sexs.forEach(function (node) {
+        if (node.value) {
+          return node.value
+        }
+      })
+    }
+    text.onchange = function () {
+      obj['name'] = this.value;
+      localStorage.setItem('mess', JSON.stringify(obj))
+    }
+    age.onchange = function () {
+      obj['age'] = this.value;
+      localStorage.setItem('mess', JSON.stringify(obj))
+    }
+    sexs.forEach(function (sex) {
+      sex.onchange = function () {
+        if (sex.value) {
+          obj['sex'] = this.parentElement.innerText;
+        }
+        localStorage.setItem('mess', JSON.stringify(obj))
+      }
+    })
+    // 打开页面时，从本地加载数据到表单
+    if (localStorage.getItem('mess')) {
+      var obj = JSON.parse(localStorage.getItem('mess'));
+      text.value = obj.name;
+      age.value = obj.age;
+      sexs.forEach(function (sex) {
+        if (sex.parentElement.innerText === obj.sex) {
+          sex.setAttribute('checked', 'checked');
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

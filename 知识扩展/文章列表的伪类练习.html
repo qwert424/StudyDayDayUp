@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            width: 400px;
+            margin: 30px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 40px;
+            margin: 10px 0;
+            text-align: justify;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        a span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+        }
+
+        a:first-child {
+            font-weight: bold;
+            background-color: #ccc;
+            color: #4d2621;
+            text-align: center;
+        }
+
+        a:first-child span {
+            display: none;
+        }
+
+        a:nth-child(even) span {
+            background-color: #e5a7b2;
+        }
+
+        a:nth-child(odd) span {
+            background-color: #e9d2da;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 要求样式： -->
+    <!-- 第一个新闻背景色ccc 文字色4d2621 -->
+    <!-- 偶数新闻数字背景色e5a7b2 -->
+    <!-- 奇数新闻数字背景色e9d2da -->
+
+    <div class="nav">
+        <a href=""><span>1</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>2</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>3</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>4</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>5</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>6</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>7</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>8</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>0</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+        <a href=""><span>10</span>语言基础部分/知识扩展/文章列表的伪类练习</a>
+    </div>
+</body>
+
+</html>

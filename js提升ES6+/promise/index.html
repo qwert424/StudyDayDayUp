@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 详见 手册查阅 ：promise.md -->
+    <!-- 解决回调 回调地狱 callback hell 异步场景问题 -->
+    <!-- > 1. 理解Promise A+规范的基本概念
+    > 2. 学会创建Promise
+    > 3. 学会针对Promise进行后续处理 -->
+    <script>
+        function sendMessage(name) {
+            return new Promise((resove, reject) => {
+                if (Math.random() < 0.5) {
+                    resove(name);
+                } else {
+                    reject(name);
+                }
+            }
+            )
+        }
+        var aaa = sendMessage('aaa').then((name) => { console.log(name) }, (name) => {
+            console.log(`shibai: ${name}`)
+        });
+    </script>
+</body>
+
+</html>

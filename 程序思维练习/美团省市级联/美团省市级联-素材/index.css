@@ -1,0 +1,121 @@
+@import url(./font/iconfont.css);
+
+/* 通用样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    user-select: none;
+}
+
+/* 省市级联容器样式 */
+.container {
+    display: flex;
+    width: 500px;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+/* 展示样式 */
+.container .item {
+    width: 150px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* 选择框样式 */
+.container .item .select {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.container .item .select span {
+    flex: 1 0 auto;
+    max-width: 112px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 选择列表样式 */
+.container .item .options {
+    max-height: 300px;
+    min-width: 150px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #ccc;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    display: grid;
+    grid-auto-flow: column;
+    white-space: nowrap;
+    gap: 10px;
+    grid-template-rows: repeat(auto-fit, 20px);
+    place-items: center;
+    align-content: center;
+    transform: scaleY(0);
+    transition: all 0.25s;
+    transform-origin: center -10px;
+    background-color: #fff;
+}
+
+.container .item .options li {
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px;
+    min-width: 120px;
+}
+
+/* 小尖角 */
+.container .item .options::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 75px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid#ccc;
+    border-bottom: none;
+    border-left: none;
+    background-color: #fff;
+    transform: rotate(-45deg);
+}
+
+.container .item .select.checked+.options {
+    transform: scaleY(1);
+}
+
+/* 箭头方向样式 */
+.container .item .select i {
+    transition: 0.25s;
+}
+
+.container .item .select.checked i {
+    transform: rotate(-180deg);
+}
+
+/* 禁止样式 */
+.container .item.display {
+    opacity: 0.3;
+    cursor: no-drop;
+}
+
+/* 选择样式 */
+.container .item .options li.selected {
+    background-color: rgb(255, 177, 32);
+}

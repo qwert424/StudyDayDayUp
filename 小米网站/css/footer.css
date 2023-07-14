@@ -1,0 +1,113 @@
+/* 页尾顶部 */
+#footer .footer-top {
+    padding: 27px 0;
+    height: 75px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #616161;
+}
+
+#footer .footer-top .item {
+    width: 20%;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+    border-right: 1px solid #e0e0e0;
+    font-size: 16px;
+
+}
+
+#footer .footer-top .item:last-child {
+    border-right: none;
+}
+
+#footer .footer-top .item a {
+    height: 100%;
+    display: inline-block;
+}
+
+#footer .footer-top .item .iconfont {
+    font-size: 26px;
+    vertical-align: -2px;
+    margin-right: 6px;
+}
+
+/* 页尾尾部 */
+#footer .footer-bottom {
+    padding: 40px 0;
+}
+
+#footer .footer-bottom .item {
+    width: 160px;
+    color: #757575;
+    font-size: 12px;
+}
+
+#footer .footer-bottom .item:first-child {
+    margin-left: 160px;
+}
+
+/* 页尾尾部标题 */
+#footer .footer-bottom .item h3 {
+    font-size: 14px;
+    color: #424242;
+    margin-bottom: 26px;
+}
+
+#footer .footer-bottom .item li {
+    margin-top: 10px;
+}
+
+/* 页尾尾部右侧联系 */
+#footer .footer-bottom .footer-contact {
+    width: 251px;
+    text-align: center;
+    border-left: 1px solid #e0e0e0;
+    font-size: 12px;
+    color: #616161;
+}
+
+#footer .footer-bottom .footer-contact .footer-phone {
+    color: #ff6700;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+#footer .footer-bottom .footer-contact a {
+    display: inline-block;
+    width: 120px;
+    border: 1px solid;
+    height: 28px;
+    color: #ff6700;
+    line-height: 28px;
+    margin: 10px 0;
+}
+
+/* 页尾尾部右侧联系 a：hover样式 */
+#footer .footer-bottom .footer-contact a:hover {
+    background-color: #ff6700;
+    color: #fff;
+}
+
+#footer .footer-bottom .footer-contact a .iconfont {
+    font-size: 12px;
+    margin-right: 3px;
+}
+
+#footer .footer-bottom .footer-contact .attention {
+    font-size: 14px;
+}
+
+#footer .footer-bottom .footer-contact .attention .iconfont {
+    font-size: 26px;
+    vertical-align: middle;
+    margin: 0 3px;
+}
+
+#footer .footer-bottom .footer-contact .attention .iconfont:last-child {
+    margin: 0;
+}
+
+/* 页尾尾部右侧联系图标hover样式 */
+#footer .footer-bottom .footer-contact .attention .iconfont:hover {
+    color: #ff6700;
+}

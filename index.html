@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="">
+    <script>
+        var inp = document.querySelector('input');
+        function debounce(fn, duration) {
+            var TimerId;
+            var timer = new Date().getTime();
+            return function () {
+                clearInterval(TimerId);
+                var curThis = this;
+                var arg = Array.prototype.slice.call(arguments);
+                var timer1 = new Date().getTime()
+                if (timer1 - timer >= duration) {
+                    fn.apply(curThis, arg);
+                    timer = new Date().getTime()
+                }
+                TimerId = setTimeout(function () {
+                    fn.apply(curThis, arg);
+                }, duration);
+            }
+        }
+
+        // var test = debounce(function () {
+        //     console.log(arguments[arguments.length - 1]);
+        // }, 20000);
+        var test1 = debounce(function (e) {
+            console.log(this.value);
+        }, 5000)
+
+        inp.oninput = test1;
+        // document.onmousemove = test;
+    </script>
+</body>
+
+</html>

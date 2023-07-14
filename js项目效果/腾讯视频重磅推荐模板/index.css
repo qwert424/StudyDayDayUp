@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-container {
+    position: relative;
+    background-color: rgb(245, 178, 139);
+    height: 300px;
+    background: url() center center/auto 100% no-repeat;
+}
+
+.nav-container .nav-top {
+    height: 50px;
+    background-color: #33333354;
+}
+
+.nav-container .nav-aside {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(43, 42, 42, 0.5);
+    height: 250px;
+    width: 300px;
+    padding: 10px;
+    z-index: 1;
+}
+
+.nav-container .nav-aside .nav-aside-top {
+    height: 35px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.nav-container h2 {
+    color: #e9e9e9da;
+    font-size: 16px;
+    line-height: 20px;
+    height: 20px;
+}
+
+.nav-container h2::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    vertical-align: -3px;
+}
+
+.nav-container .nav-aside .nav-aside-top h2::before {
+    background-image: url(./img/all.png);
+}
+
+.nav-container .nav-aside .nav-aside-main h2::before {
+    background-image: url(./img/tj.png);
+}
+
+.nav-container .nav-aside .nav-aside-main ul {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 10px;
+    max-height: 155px;
+    overflow: hidden;
+}
+
+.nav-container .nav-aside .nav-aside-main ul li {
+    padding-left: 20px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.nav-container .nav-aside .nav-aside-main ul li a {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 25px;
+    line-height: 25px;
+}
+
+.nav-container .nav-aside .nav-aside-main ul li a span {
+    font-size: 10px;
+    display: none;
+    margin-left: 5px;
+}
+
+.nav-container .nav-aside .nav-aside-main ul li.on {
+    color: rgb(241, 108, 12);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-container .nav-aside .nav-aside-main ul li.on span {
+    display: inline;
+
+}

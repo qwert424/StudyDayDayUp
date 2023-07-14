@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 详见 手册查阅 ：css3过渡动画.md -->
+
+    <!-- css3过渡和动画 -->
+    <!-- 使用过渡和动画 能让css属性变化更加丝滑 -->
+    <!-- 过渡和动画无法对所有css属性产生影响 能产生影响的只有数值类属性 如：颜色 字体大小 宽高等  -->
+    <!-- 能用过渡就过渡 实在不行用动画 -->
+
+    <!-- 1、过渡 transition -->
+    <!-- transition：过渡属性 过渡时间 过渡函数 过渡延迟 -->
+    <!-- 过渡属性（property）：针对哪个css属性应用过渡 例如填写transform，则表示针对transform属性进行过渡，一般默认不填写或者all -->
+    <!-- 过渡时间（duration）：css属性变化持续时间 需要带上单位 如3s 0.5s 500ms -->
+    <!-- 过渡函数（timing-function）：本质是css变化的贝塞尔曲线函数，通常直接使用预设值
+    ease默认值
+    ease-in：仅平滑开始
+    ease-out：仅平滑结束
+    ease-in-out：平滑开始、结束
+    linear：线性
+    -->
+    <!-- 过渡延迟（delay）： 书写规则和过渡时间一样 表示过渡延迟多久后执行 不写表示无延迟 -->
+    <!-- 在js中 可以监听元素的 transitionstart transitionend 事件 表示 过渡开始和过渡结束 -->
+
+    <!-- 2、动画 -->
+    <!-- 动画的本质就是预先定义一套css变化的规则 然后给规则取名 （也就是定义关键帧@keyframes） -->
+    <!-- 然后需要用到动画的元素 通过animation来使用规则 -->
+    <!-- animation：规则名（必须） 动画时间（必须） 动画次数（无限次infinite 选择）时间函数（类似transition） 动画方向（alternate 交替变化 选择） 延迟时间  -->
+
+    <!-- 一些细节： -->
+    <!-- 定义规则的 0%可以书写为from 100%可以书写为to-->
+    <!-- 动画次数 无限次就是infinite 无限重复动画 -->
+    <!-- 动画方向 alternate 表示交替改变方向 如 form--》to to--》from 交替进行 -->
+    <!-- 一般在transition解决不了的时候 使用动画 -->
+    <!-- 关键字@keyframes内的百分比 是动画时间的百分比 -->
+
+    <!-- 例子： -->
+    <!-- <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: test 2s ease-in-out 0s infinite alternate;
+            
+        }
+
+
+        @keyframes test {
+            from {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+
+            30% {
+                width: 200px;
+                height: 100px;
+            }
+
+            to {
+                width: 200px;
+                height: 200px;
+                background-color: #008c8c;
+            }
+        }
+    </style>
+    <div></div> -->
+</body>
+
+</html>

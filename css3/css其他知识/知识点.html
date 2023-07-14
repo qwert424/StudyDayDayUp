@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 详见 手册查阅 ：css3其他.md -->
+
+    <!-- 1、box-sizing 很重要 一般我们设置width、height设置的是内容区的大小 需要计算 -->
+    <!-- 通过box-sizing：border-box即可 -->
+    <!-- 默认值box-sizing：content-box -->
+    <!-- * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      } -->
+
+    <!-- 2、字体图标 -->
+    <!-- 是一个css指令 即@font-face 原始用于给定字体的下载路径 来给用户本地加字体 -->
+    <!-- @font-face{
+        font-family：“字体名”；
+        src:url(字体下载路径)；
+    } -->
+    <!-- 但是常用于字体图标 代替 图片 -->
+    <!-- 字体图标本质上是文字，即通过color设置颜色，通过font-size设置尺寸 -->
+
+    <!-- 3、图片内容适应 -->
+    <!-- css3属性object-fit可以控制多媒体内容和与元素的适应方式，通常应用在img或video元素中 -->
+    <!-- object-fit：contain 不改变图片尺寸比例 被替换的内容将被缩放，以在填充元素的内容框时保持其宽高比  -->
+    <!-- object-fit：cover 内容会填充满整个元素容器 不改变尺寸比例 被替换的内容在保持其宽高比的同时填充元素的整个内容框。如果对象的宽高比与内容框不相匹配，该对象将被剪裁以适应内容框。-->
+    <!-- object-fit：fill 被替换的内容正好填充元素的内容框。整个对象将完全填充此框。如果对象的宽高比与内容框不相匹配，那么该对象将被拉伸以适应内容框。 -->
+    <!-- object-fit：none 被替换的内容将保持其原有的尺寸。 -->
+
+    <!-- 4、视口单位 vw、vh -->
+    <!-- css3支持vw、vh作为单位 分别表示：视口宽度 视口高度 即：viewport width、viewport height -->
+    <!-- 1vh 就是表示视口高度的1% 100vh就是视口的高度的100% -->
+
+    <!-- 5、伪元素选择器 ::after； ::before -->
+    <!-- 生成两个子元素 -->
+    <!-- 使用伪元素可以避免在HTML中使用过多的空元素
+    伪元素必须要有content属性，否则不能生效，如果不需要有元素内容，设置content:'' -->
+
+    <!-- 6、平滑滚动 -->
+    <!-- scroll-behavior：smooth 滚动平滑 -->
+</body>
+
+</html>

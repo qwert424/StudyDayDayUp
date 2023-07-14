@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      color: #666;
+      text-align: center;
+      user-select: none;
+    }
+
+    .box {
+      width: 30px;
+      height: 30px;
+      background: #f40;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+  </style>
+  <style>
+    /* 在这里完成作业 */
+    .box {
+      border-radius: 50%;
+      transition: all 0.5s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="ball" class="box"></div>
+  <p>在屏幕上点击任意位置试一试</p>
+  <p>此效果需要用到JS</p>
+  <script>
+    var ball = document.querySelector('#ball');
+    // document.onclick = function (e) {
+    //   ball.style.left = e.pageX + 'px';
+    //   ball.style.top = e.pageY + 'px';
+    //   ball.style.transform = 'translate(-50%,-50%)';
+    // }
+    // 一般我们在做这类的时候一般不采用设置top、left值 因为会导致浏览器重新布局 
+    // 采用变形 translate就不会有重新布局 效率更高
+    window.onclick = function (e) {
+      var x = e.clientX - ball.clientWidth;
+      var y = e.clientY - ball.clientHeight;
+      // ball.style.transform = 'translate(' + x + 'px' + ',' + y + 'px)';
+      ball.style.transform = `translate( ${x}px , ${y}px)`;
+    }
+  </script>
+</body>
+
+</html>
