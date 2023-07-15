@@ -1,0 +1,43 @@
+.mr(@r: 20px) {
+    margin-right: @r;
+}
+
+.mb(@r: 20px) {
+    margin-bottom: @r;
+}
+
+@gray: #333;
+
+a {
+    text-decoration: none;
+    color: @gray;
+}
+
+.container {
+    width: 525px;
+    margin: 50px auto;
+    overflow: hidden;
+
+    .item {
+        float: left;
+        .mr();
+        .mb();
+
+        &::nth-child(5n) {
+            .mr(0)
+        }
+
+        .img {
+            @test: 85px;
+            display: block;
+            width: @test;
+            height: @test;
+            border: 2px solid #448eeb;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+        }
+    }
+}

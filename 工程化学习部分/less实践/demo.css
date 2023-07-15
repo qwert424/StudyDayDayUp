@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+  color: #333;
+}
+.container {
+  width: 525px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+.container .item {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.container .item::nth-child(5n) {
+  margin-right: 0;
+}
+.container .item .img {
+  display: block;
+  width: 85px;
+  height: 85px;
+  border: 2px solid #448eeb;
+}
+.container .item span {
+  display: block;
+  text-align: center;
+}

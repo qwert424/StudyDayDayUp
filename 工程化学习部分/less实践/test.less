@@ -1,0 +1,16 @@
+.container-center(@r:absolute){
+    @test:50%;
+    position:@r;
+    top:@test;
+    left:@test;
+    transition:translate(-@test,-@test);
+}
+.container{
+    position: relative;
+    .item{
+        .container-center(fixed);
+        @test:100px;
+        width: @test;
+        height:@test;
+    }
+}

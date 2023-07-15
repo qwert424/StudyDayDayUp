@@ -1,0 +1,17 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "c": "lessc index.less index.css",
+    "p":"lessc test.less test.css",
+    "demo":"lessc demo.less demo.css",
+    "demo1":"lessc demo1.less demo1.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "less": "^4.1.3"
+  }
+}
