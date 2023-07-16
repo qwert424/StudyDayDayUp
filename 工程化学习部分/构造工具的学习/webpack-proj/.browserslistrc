@@ -1,3 +1,10 @@
 > 1%
 last 3 versions
 not dead
+
+; 1% //市场占有率
+; last 2 version //最后两个版本
+; default：Browserslist 的默认配置（ >0.5%, last 2 versions, Firefox ESR, not dead ）
+; 5%：通过全局情况统计选择的浏览器版本，可以使用 >=，< 和 <=
+; dead：24个月内没有官方支持或更新的浏览器
+; last 2 versions：每个浏览器的最后两个版本

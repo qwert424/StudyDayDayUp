@@ -1,1 +1,1 @@
-export default 'home/index';
+export default 'index';
