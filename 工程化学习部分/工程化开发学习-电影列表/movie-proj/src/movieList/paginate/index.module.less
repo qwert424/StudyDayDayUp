@@ -1,0 +1,27 @@
+@import '@/common.less';
+
+.container {
+    .main-center();
+    .main-flex();
+    column-gap: 10px;
+
+    .item {
+        @size: 50px;
+        width: @size;
+        height: @size;
+        line-height: @size;
+        text-align: center;
+        color: rgb(21, 100, 100);
+        cursor: pointer;
+
+        &.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        &.active {
+            color: #f40;
+            cursor: auto;
+        }
+    }
+}

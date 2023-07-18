@@ -1,0 +1,44 @@
+@import '@/common.less';
+
+.container {
+    .main-center();
+    .main-grid();
+
+    .item {
+        width: 180px;
+        height: 200px;
+        .main-flex(column);
+        @size: 100%;
+
+        .imgItem {
+            width: @size;
+            height: 70%;
+
+            .img {
+                display: block;
+                width: @size;
+                height: @size;
+                object-fit: cover;
+            }
+        }
+
+        .font {
+            font-size: 14px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            width: 90%;
+            .overHidden();
+        }
+
+        .rata {
+            color: rgb(139, 139, 14);
+            font-size: 12px;
+
+            &::first-letter {
+                font-size: 1.5*@size;
+                color: #8A2BE2;
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+.abs-center(@type: absolute) {
+    position: @type;
+    @size: 50%;
+    top: @size;
+    left: @size;
+    transform: translate(-@size, -@size);
+}
+
+.main-center() {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.main-grid(@col: 5) {
+    display: grid;
+    grid-template-columns: repeat(@col, 1fr);
+    justify-items: center;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.main-flex(@direction: row) {
+    display: flex;
+    justify-content: center;
+    flex-direction: @direction;
+    align-items: center;
+}
+
+.overHidden() {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
