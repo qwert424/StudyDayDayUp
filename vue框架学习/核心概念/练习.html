@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- vue模板 -->
+    <div id="app">
+        <h1>标题：{{title}}</h1>
+        <p>作者：{{authod}}</p>
+    </div>
+
+    <script src="./课件/vue.min.js"></script>
+
+    <script>
+        // vue实例
+        const vm = new Vue({
+            el: '',
+            data: {
+                title: '这个是Vue练习',
+                authod: "方",
+            },
+            computed: {
+
+            },
+            methods: {
+
+            },
+    //         template: `<div id="app">
+    //    <h1>标题：{{title}}</h1>
+    //     <p>作者：{{authod}}</p> 
+    // </div>`,
+            // render(h) {
+            //     return h('div', [
+            //         h('h1', `标题：${this.title}`),
+            //         h('p', `作者：${this.authod}`)
+            //     ])
+            // }
+        });
+        vm.$mount('#app');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 模板 数据响应式模板-->
+    <div id="app">
+        <h1>标题：商品管理系统</h1>
+        <ul>
+            <li v-for="(item,i) in produce">
+                商品名称：{{item.name}} 商品数量：<button @click="changeCount(item, item.count-1)">-</button>
+                {{item.count?item.count:'无货'}}
+                <button @click="changeCount(item, item.count+1)">+</button>
+                <button @click="remove(i)">删除</button>
+            </li>
+        </ul>
+        <p>
+            总库存数：{{total}}
+        </p>
+        <img :src="image" alt="">
+    </div>
+    <script src="./../课件/vue.min.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                image:"https://img1.baidu.com/it/u=1265833368,4233996126&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1689872400&t=ea9308183660f33c973148ed2ece0dff",
+                produce: [{
+                    name: 'xiaomi1', count: 10,
+                }, {
+                    name: 'xiaomi2', count: 9,
+                }, {
+                    name: 'xiaomi3', count: 8,
+                }]
+            },
+            computed: {
+                total() {
+                    return this.produce.reduce((a, b) => a + b.count, 0)
+                }
+            },
+            methods: {
+                changeCount(item, newCount) {
+                    if (newCount < 0) {
+                        newCount = 0;
+                    }
+                    item.count = newCount;
+                },
+                remove(index) {
+                    this.produce.splice(index, 1);
+                },
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
