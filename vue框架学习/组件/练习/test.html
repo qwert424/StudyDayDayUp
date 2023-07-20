@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件的练习</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="abb"></div>
+    <script src="./../课件/vue.min.js"></script>
+    <script>
+        const MyButton = {
+            data() {
+                return {
+                    count: 0,
+                }
+            },
+            template: `<button @click="count++">{{count}}</button>`,
+        }
+        // Vue.component('MyButton', MyButton)
+        const Title = {
+            props: ['title', 'sss'],
+            // 不允许这样 会改变单项数据流！ 不能改变不是你的数据
+            template: `<div><h1>{{title}}{{sss}}</h1><button @click="title=1">change</button></div>`,
+        }
+        Vue.component('Title', Title)
+
+        const vm = new Vue({
+            components: {
+                MyButton,
+                Title,
+            },
+            template: `<div>
+            <MyButton></MyButton>
+            <MyButton></MyButton>
+            <MyButton></MyButton>
+            <Title title="标题一" sss="1"></Title>
+            <Title title="标题二"></Title>
+            <Title title="标题三"></Title>
+            </div>`,
+
+        })
+        vm.$mount('#app')
+    </script>
+</body>
+
+</html>
