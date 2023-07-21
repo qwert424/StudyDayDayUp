@@ -117,9 +117,8 @@ export default {
   border-radius: @RadiusSize;
   background-color: @backColor;
   a {
-    @Width: 60px;
     @Height: 40px;
-    width: @Width;
+    padding: 0 10px;
     height: @Height;
     line-height: @Height;
     text-align: center;
@@ -134,6 +133,7 @@ export default {
       cursor: text;
       transition: all 0.2s;
       background: @success;
+      font-weight: bold;
     }
     &.disable {
       background: @gray;
