@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Pager from "./components/Pager";
+import Pager from "./";
 export default {
   data() {
     return {
