@@ -20,7 +20,7 @@ export default {
     },
     path: {
       type: String,
-      default: "/",
+      default: "",
     },
     ClassStyle: {
       type: String,
@@ -32,6 +32,9 @@ export default {
   },
   methods: {
     Contact() {
+      if(!this.path){
+        return;
+      }
       if (this.type === "mail") {
         window.location.href = `mailto:${this.text}`;
       } else if (this.type === "qq") {
@@ -65,6 +68,10 @@ export default {
   }
   .Size{
     font-size:30px
+  }
+  .wxSize{
+    font-size:34px;
+    text-indent:-2px;
   }
   span {
     flex-grow: 1;

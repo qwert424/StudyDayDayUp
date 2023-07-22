@@ -1,6 +1,6 @@
 <template>
   <div class="Menu-container">
-    <Contact type="home" text="首页" classStyle=""></Contact>
+    <Contact type="home" text="首页" path="/" classStyle=""></Contact>
     <Contact type="blog" text="文章" path="/blog" classStyle=""></Contact>
     <Contact type="info" text="关于我" path="/about" classStyle=""></Contact>
     <Contact
@@ -24,7 +24,6 @@ export default {
 
 <style lang="less" scoped>
 .Menu-container {
-
   .Contact-container {
     padding-left: 30px;
   }
