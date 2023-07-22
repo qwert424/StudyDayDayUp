@@ -6,7 +6,7 @@
 
 | 属性名 | 含义               | 类型   | 必填 | 默认值 |
 | ------ | ------------------ | ------ | ---- | ------ |
-| src    | 头像图片路径       | String | 是   | 无     |
+| url    | 头像图片路径       | String | 是   | 无     |
 | size   | 头像尺寸，宽高相等 | Number | 否   | 150    |
 
 # Icon
@@ -27,7 +27,7 @@
 
 <img src="http://mdrs.yuanjin.tech/img/20201130155542.jpg" alt="iShot2020-11-30下午03.47.09" style="zoom:33%;" />
 
-# pager
+# Pager
 
 <img src="http://mdrs.yuanjin.tech/img/20201113130301.png" style="zoom:50%;" />
 
@@ -35,18 +35,16 @@
 
 | 属性名        | 含义       | 类型   | 必填 | 默认值 |
 | ------------- | ---------- | ------ | ---- | ------ |
-| nowCurrent       | 当前页码   | Number | 否   | 1      |
-| totalItems         | 总数据量   | Number | 否   | 0      |
-| showCount         | 页容量     | Number | 否   | 20     |
-| showLimit | 可见页码数 | Number | 否   | 10     |
+| current       | 当前页码   | Number | 否   | 1      |
+| total         | 总数据量   | Number | 否   | 0      |
+| limit         | 页容量     | Number | 否   | 10     |
+| visibleNumber | 可见页码数 | Number | 否   | 10     |
 
 ## 事件
 
 | 事件名     | 含义     | 事件参数 | 参数类型 |
 | ---------- | -------- | -------- | -------- |
-| changeCurrent | 页码变化 | 新的页码 | Number   |
-
-
+| pageChange | 页码变化 | 新的页码 | Number   |
 
 # Empty
 
@@ -88,6 +86,8 @@
   placeholder="https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?w=100"
 />
 ```
+
+
 
 # Contact
 

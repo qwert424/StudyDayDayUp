@@ -1,14 +1,17 @@
 <template>
   <div>
-    <Icon type="info"></Icon>
+    <Icon :type="item" v-for="(item, i) in types" :key="i"></Icon>
   </div>
 </template>
   
 <script>
-import Icon from "./";
+import Icon, { types } from "./";
 export default {
   components: {
     Icon,
+  },
+  data() {
+    return types;
   },
 };
 </script>

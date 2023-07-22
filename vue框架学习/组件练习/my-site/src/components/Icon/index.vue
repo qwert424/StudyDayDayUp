@@ -1,5 +1,5 @@
 <template>
-  <i class="iconfont Icon-container" :class="iconStyle"></i>
+  <i class="iconfont icon-container" :class="fontClass"></i>
 </template>
 
 <script>
@@ -25,10 +25,14 @@ const classMap = {
 export const types = Object.keys(classMap);
 export default {
   props: {
-    type: { type: String, required: true },
+    type: {
+      type: String,
+      required: true,
+    },
   },
   computed: {
-    iconStyle() {
+    // 图标类样式
+    fontClass() {
       return classMap[this.type];
     },
   },
@@ -36,5 +40,9 @@ export default {
 </script>
 
 <style scoped>
-@import "http://at.alicdn.com/t/font_2164449_nalfgtq7il.css";
+@import "//at.alicdn.com/t/font_2164449_nalfgtq7il.css";
+.iconfont {
+  color: inherit;
+  font-size: inherit;
+}
 </style>

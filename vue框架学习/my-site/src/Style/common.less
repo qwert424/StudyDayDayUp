@@ -1,0 +1,30 @@
+// 变量
+@size: 50%;
+@fullsize: 100%;
+@zero: 0;
+
+// 居中样式
+.container-center(@pos: absolute) {
+    position: @pos;
+    left: @size;
+    top: @size;
+    transform: translate(-@size, -@size);
+}
+
+// 弹性盒子
+.flex-container(@dir: row) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: @dir;
+}
+
+// 占满容器样式
+.full-container(@pos: absolute) {
+    position: @pos;
+    left: @zero;
+    top: @zero;
+    width: @fullsize;
+    height: @fullsize;
+    object-fit: cover;
+}
