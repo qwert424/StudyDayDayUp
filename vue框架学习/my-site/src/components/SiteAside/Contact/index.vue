@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Icon from "@/components/Iconfont/";
+import Icon from "@/components/Icon/";
 
 export default {
   props: {
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     Contact() {
-      if(!this.path){
+      if (!this.path) {
         return;
       }
       if (this.type === "mail") {
@@ -63,21 +63,24 @@ export default {
   color: @gray;
   cursor: pointer;
 
-  &:hover{
-    color:@primary
+  &:hover {
+    color: @primary;
   }
-  .Size{
-    font-size:30px
+  .Size {
+    font-size: 30px;
   }
-  .wxSize{
-    font-size:34px;
-    text-indent:-2px;
+  .wxSize {
+    font-size: 34px;
+    text-indent: -2px;
   }
   span {
     flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  &.select {
+    background-color: #2d2d2d;
   }
 }
 </style>

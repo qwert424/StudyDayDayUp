@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Contact from "@/components/Contact/";
+import Contact from "@/components/SiteAside/Contact/";
 export default {
   components: {
     Contact,
