@@ -1,6 +1,10 @@
 <template>
   <div class="ContactAll-container">
-    <Contact type="github" text="Fangdaochu" ClassStyle="Size"></Contact>
+    <Contact
+      type="github"
+      text="Fangdaochu"
+      ClassStyle="Size"
+    ></Contact>
     <Contact
       type="mail"
       text="fangdaochu@gmail.com"
@@ -24,7 +28,6 @@
         />
       </div>
     </div>
-    
   </div>
 </template>
 

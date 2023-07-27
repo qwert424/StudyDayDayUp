@@ -2,11 +2,11 @@
   <div class="Menu-container">
     <Contact
       v-for="items in item"
-      :class="{ select: isSelected(items) }"
       :key="items.Path"
       :type="items.type"
       :text="items.text"
-      :path="items.Path"
+      :path="{ name: items.Name }"
+      :exact="items.exact"
     ></Contact>
   </div>
 </template>
@@ -23,42 +23,31 @@ export default {
         {
           type: "home",
           text: "首页",
-          Path: "/",
+          Name: "Home",
         },
         {
           type: "blog",
           text: "文章",
-          Path: "/blog",
-          startWith: true, //是否模糊匹配 变量比对
+          Name: "Blog",
+          exact: false, //是否精确匹配 变量比对
         },
         {
           type: "info",
           text: "关于我",
-          Path: "/about",
+          Name: "About",
         },
         {
           type: "code",
           text: "项目&效果",
-          Path: "/project",
+          Name: "Project",
         },
         {
           type: "chat",
           text: "留言板",
-          Path: "/message",
+          Name: "Message",
         },
       ],
     };
-  },
-  methods: {
-    isSelected(item) {
-      const link = item.Path;
-      const pathName = location.pathname;
-      if (item.startWith) {
-        return pathName.startsWith(link);
-      } else {
-        return pathName === link;
-      }
-    },
   },
 };
 </script>

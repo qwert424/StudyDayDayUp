@@ -6,7 +6,7 @@
           <SiteAside></SiteAside>
         </div>
       </template>
-      <template #main>main区域 </template>
+      <template #main><router-view></router-view></template>
     </Layout>
   </div>
 </template>

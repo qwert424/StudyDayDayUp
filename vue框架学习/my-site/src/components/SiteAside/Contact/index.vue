@@ -1,5 +1,16 @@
 <template>
-  <div class="Contact-container" @click="Contact">
+  <router-link
+    :exact="exact"
+    :to="path"
+    class="Contact-container"
+    active-class="selected"
+    exact-active-class=""
+    v-if="path"
+  >
+    <Icon :type="type" :class="ClassStyle"></Icon>
+    <span :title="text">{{ text }}</span>
+  </router-link>
+  <div class="Contact-container" @click="Contact" v-else>
     <Icon :type="type" :class="ClassStyle"></Icon>
     <span :title="text">{{ text }}</span>
   </div>
@@ -19,12 +30,15 @@ export default {
       required: true,
     },
     path: {
-      type: String,
-      default: "",
+      type: Object,
     },
     ClassStyle: {
       type: String,
       default: "",
+    },
+    exact: {
+      type: Boolean,
+      default: true,
     },
   },
   components: {
@@ -36,11 +50,6 @@ export default {
         window.location.href = `mailto:${this.text}`;
       } else if (this.type === "qq") {
         window.location.href = `tencent://message/?Menu=yes&uin=${this.text}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`;
-      }
-      if (!this.path) {
-        return;
-      } else {
-        window.location.href = this.path;
       }
     },
   },
@@ -79,7 +88,7 @@ export default {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  &.select {
+  &.selected {
     background-color: #2d2d2d;
   }
 }
