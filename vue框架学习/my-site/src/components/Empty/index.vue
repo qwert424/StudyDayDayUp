@@ -21,8 +21,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~@/Style/color.less";
-@import "~@/Style/common.less";
+@import "~@/Style/color.module.less";
+@import "~@/Style/common.module.less";
 .Empty-container {
   .container-center();
   @size: 200px;

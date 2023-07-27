@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~@/Style/common.less";
+@import "~@/Style/common.module.less";
 
 .ImageLoader-container {
   @size: 100%;

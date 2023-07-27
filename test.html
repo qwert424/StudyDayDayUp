@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跟随鼠标移动的点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #008c8c;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 一个点 它会跟随鼠标移动 宽高自定 颜色自定 -->
+    <div class="container"></div>
+    <script>
+        // 获取dom元素 属性
+        const circle = document.querySelector('.container');
+        const circleW = parseInt(window.getComputedStyle(circle).width);
+        const circleH = parseInt(window.getComputedStyle(circle).height);
+        // 设置初始位置
+        circle.style.left = 0;
+        circle.style.top = 0;
+        // 点击函数
+        const start = () => {
+            window.addEventListener('mousemove', move);
+            circle.addEventListener('mouseup', end);
+        }
+        // 移动函数
+        const move = function (e) {
+            const left = e.clientX - circleW / 2;
+            const top = e.clientY - circleH / 2;
+            circle.style.left = left + 'px';
+            circle.style.top = top + 'px';
+        }
+        // 结束函数
+        const end = function () {
+            window.removeEventListener('mousemove', move);
+            circle.removeEventListener('mouseup', end);
+        }
+        // 绑定事件
+        circle.addEventListener('mousedown', start);
+    </script>
+</body>
+
+</html>

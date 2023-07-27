@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import "./Style/global.less";
+import "./Style/global.module.less";
 
 new Vue({
   render: h => h(App),

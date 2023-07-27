@@ -32,13 +32,13 @@ export default {
   },
   methods: {
     Contact() {
-      if (!this.path) {
-        return;
-      }
       if (this.type === "mail") {
         window.location.href = `mailto:${this.text}`;
       } else if (this.type === "qq") {
         window.location.href = `tencent://message/?Menu=yes&uin=${this.text}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`;
+      }
+      if (!this.path) {
+        return;
       } else {
         window.location.href = this.path;
       }
@@ -48,15 +48,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~@/Style/common.less";
-@import "~@/Style/color.less";
+@import "~@/Style/common.module.less";
+@import "~@/Style/color.module.less";
 .Contact-container {
   @size: 10px;
   height: 4 * @size;
   width: 100%;
   .flex-container();
   justify-content: flex-start;
-  padding-left: @size;
+  padding: 0 @size;
   gap: @size;
   background-color: transparent;
   font-size: 14px;

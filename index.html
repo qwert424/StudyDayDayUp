@@ -39,6 +39,13 @@
 
         inp.oninput = test1;
         // document.onmousemove = test;
+        var obj = { n: 0 }
+        function m(obj) {
+            obj = { n: 1 }
+            console.log(obj.n)
+        }
+        m(obj);
+        console.log(obj.n)
     </script>
 </body>
 

@@ -38,8 +38,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~@/Style/common.less";
-@import "~@/Style/color.less";
+@import "~@/Style/common.module.less";
+@import "~@/Style/color.module.less";
 .ContactAll-container {
   .item {
     position: relative;

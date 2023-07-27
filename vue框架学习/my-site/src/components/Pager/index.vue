@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~@/Style/color.less";
+@import "~@/Style/color.module.less";
 .pager-container {
   @RadiusSize: 8px;
   width: max-content;

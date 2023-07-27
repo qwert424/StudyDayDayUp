@@ -24,8 +24,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~@/Style/color.less";
-@import "~@/Style/common.less";
+@import "~@/Style/color.module.less";
+@import "~@/Style/common.module.less";
 .SiteAside-container {
   @All: 100%;
   @Size: 10px;

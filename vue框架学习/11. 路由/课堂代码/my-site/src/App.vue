@@ -3,17 +3,19 @@
     <Layout>
       <template #left>
         <div class="aside">
-          <SiteAside></SiteAside>
+          <SiteAside />
         </div>
       </template>
-      <template #main>main区域 </template>
+      <template #default>
+        <RouterView />
+      </template>
     </Layout>
   </div>
 </template>
 
 <script>
-import Layout from "@/components/Layout";
-import SiteAside from "@/components/SiteAside";
+import Layout from "./components/Layout";
+import SiteAside from "./components/SiteAside";
 export default {
   components: {
     Layout,
@@ -22,14 +24,13 @@ export default {
 };
 </script>
 
-
 <style lang="less" scoped>
-@import "~@/Style/common.module.less";
+@import "~@/styles/mixin.less";
 .app-container {
-  .full-container(fixed);
-  .aside {
-    width: 250px;
-    height: 100%;
-  }
+  .self-fill(fixed);
+}
+.aside {
+  width: 250px;
+  height: 100%;
 }
 </style>
