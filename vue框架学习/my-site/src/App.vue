@@ -1,11 +1,7 @@
 <template>
-  <div class="app-container">
+  <div class="App-container">
     <Layout>
-      <template #left>
-        <div class="aside">
-          <SiteAside></SiteAside>
-        </div>
-      </template>
+      <template #left><SiteAside></SiteAside></template>
       <template #main><router-view></router-view></template>
     </Layout>
   </div>
@@ -22,14 +18,9 @@ export default {
 };
 </script>
 
-
 <style lang="less" scoped>
-@import "~@/Style/common.module.less";
-.app-container {
-  .full-container(fixed);
-  .aside {
-    width: 250px;
-    height: 100%;
-  }
+.App-container {
+//   width: 100vw;
+//   height: 100vh;
 }
 </style>
