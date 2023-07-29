@@ -20,7 +20,7 @@ export default {
 
 <style lang="less" scoped>
 .App-container {
-//   width: 100vw;
-//   height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 </style>

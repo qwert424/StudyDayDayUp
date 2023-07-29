@@ -1,0 +1,81 @@
+@import "~@/Style/common.module.less";
+@import "~@/Style/color.module.less";
+
+.Home-container {
+    height: @fullsize;
+    width: @fullsize;
+    position: relative;
+    overflow: hidden;
+    transition: .5s;
+
+    &:hover {
+        transform: scale(1.1);
+
+        .icon {
+            transform: translateX(-@size);
+        }
+
+        .dots-container {
+            right: 6%;
+        }
+    }
+
+    .item-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: 1s;
+    }
+
+
+    .icon {
+        font-size: 50px;
+        .container-center();
+        transform: translateX(-@size);
+        transition: 0.5s;
+        cursor: pointer;
+
+        &.top-icon {
+            top: unset;
+            bottom: 5%;
+        }
+
+        &.bottom-icon {
+            top: 5%;
+        }
+
+        &:hover {
+            color: @white;
+            transform: translateX(-@size) scale(1.5);
+        }
+    }
+
+    .dots-container {
+        .flex-container(column);
+        gap: 10px;
+        position: absolute;
+        top: 50%;
+        right: 2%;
+        transform: translateY(-50%);
+        transition: 0.5s;
+
+        .dot {
+            cursor: pointer;
+            @dotsize: 10px;
+            width: @dotsize;
+            height: @dotsize;
+            border-radius: @size;
+            background-color: @backColor;
+            box-shadow: 0 0 1px 2px;
+
+            &.active {
+                background-color: @warn;
+                box-shadow: 0 0 1px 2px @danger;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-50%) scale(1.5);
+        }
+    }
+}

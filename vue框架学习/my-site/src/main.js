@@ -3,7 +3,7 @@ import App from './App.vue';
 import "./Style/global.module.less";
 import router from '@/router';//路由
 
-// import '@/mock';//mockjs模拟拦截数据
+import '@/mock';//mockjs模拟拦截数据
 // import '@/api';//请求远程数据
 
 // 实例方法 消息弹窗
