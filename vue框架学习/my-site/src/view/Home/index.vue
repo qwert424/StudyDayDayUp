@@ -1,18 +1,25 @@
 <template>
-  <div class="Home-container" ref="container" @wheel="handleWheel">
+  <div
+    class="Home-container"
+    ref="container"
+    @wheel="handleWheel"
+    v-Loading="isLoading"
+  >
     <ul
       ref="ItemContainer"
       class="item-container"
       :style="{ top: ItemContainerTop + 'px' }"
       @transitionend="handleWheelEnd"
     >
-        <carousel v-for="item in itemsData" :key="item.id"
-          :src="item.bigImg"
-          :placeholder="item.midImg"
-          :title="item.title"
-          :description="item.description"
-          @load="showControl"
-        ></carousel>
+      <carousel
+        v-for="item in itemsData"
+        :key="item.id"
+        :src="item.bigImg"
+        :placeholder="item.midImg"
+        :title="item.title"
+        :description="item.description"
+        @load="showControl"
+      ></carousel>
     </ul>
     <div v-if="ifshow">
       <Icon
@@ -52,10 +59,12 @@ export default {
       containerWidth: 0, //容器宽度
       containerHeight: 0, //容器高度
       ifWheel: false, //是否正在滚动
+      isLoading: true, //是否加载
     };
   },
   async created() {
     this.itemsData = await getBanner();
+    this.isLoading = false;
   },
   components: {
     carousel,

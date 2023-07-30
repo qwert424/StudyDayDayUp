@@ -4,7 +4,10 @@ import "./Style/global.module.less";
 import router from '@/router';//路由
 
 import '@/mock';//mockjs模拟拦截数据
-// import '@/api';//请求远程数据
+
+// 配置全局指令
+import vLoading from '@/directives/Loading';
+Vue.directive('Loading', vLoading)
 
 // 实例方法 消息弹窗
 import { showMessage } from './utils';
