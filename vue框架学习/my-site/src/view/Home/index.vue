@@ -1,33 +1,38 @@
 <template>
-  <div class="Home-container" ref="container">
-    <ul ref="ItemContainer" class="item-container">
-      <li v-for="item in itemsData" :key="item.id">
-        <carousel
+  <div class="Home-container" ref="container" @wheel="handleWheel">
+    <ul
+      ref="ItemContainer"
+      class="item-container"
+      :style="{ top: ItemContainerTop + 'px' }"
+      @transitionend="handleWheelEnd"
+    >
+        <carousel v-for="item in itemsData" :key="item.id"
           :src="item.bigImg"
           :placeholder="item.midImg"
           :title="item.title"
           :description="item.description"
           @load="showControl"
         ></carousel>
-      </li>
     </ul>
-    <div v-show="ifshow">
+    <div v-if="ifshow">
       <Icon
+        v-show="index < itemsData.length - 1"
         type="arrowDown"
         class="top-icon icon"
-        @click.native="nextImg"
+        @click.native="index++"
       ></Icon>
       <Icon
+        v-show="index >= 1"
         type="arrowUp"
         class="bottom-icon icon"
-        @click.native="provImg"
+        @click.native="index--"
       ></Icon>
       <div class="dots-container" ref="dots">
         <span
-          v-for="count in itemsData.length"
-          :key="count"
-          :class="['dot', { active: ifSelected(count) }]"
-          @click="changeItem(count - 1)"
+          v-for="(item, i) in itemsData"
+          :key="item.id"
+          :class="['dot', { active: i === index }]"
+          @click="changeItem(i)"
         ></span>
       </div>
     </div>
@@ -41,17 +46,12 @@ import carousel from "./carousel.vue";
 export default {
   data() {
     return {
-      itemsData: [],
-      ifshow: false,
-      ItemContainerTop: 0,
-      count: 0,
-      index: 0,
-      containerWidth: 0,
-      containerHeight: 0,
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
+      itemsData: [], //数据
+      ifshow: false, //组件显示
+      index: 0, //下标
+      containerWidth: 0, //容器宽度
+      containerHeight: 0, //容器高度
+      ifWheel: false, //是否正在滚动
     };
   },
   async created() {
@@ -61,111 +61,43 @@ export default {
     carousel,
     Icon,
   },
+  computed: {
+    ItemContainerTop() {
+      return -this.containerHeight * this.index;
+    },
+  },
+  mounted() {
+    this.containerHeight = this.$refs.container.clientHeight;
+    this.containerWidth = this.$refs.container.clientWidth;
+    window.addEventListener("resize", this.handleResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
     showControl() {
       this.ifshow = true;
-      this.count = this.itemsData.length;
     },
-    nextImg() {
-      const num = -(this.count - 1) * 100;
-      if (parseInt(this.ItemContainerTop) <= num) {
-        return;
-      }
-      this.index++;
-      this.$refs.ItemContainer.style.top =
-        parseInt(this.ItemContainerTop) - 100 + "vh";
-      this.ItemContainerTop = this.$refs.ItemContainer.style.top;
-      this.changeClass();
+    changeItem(i) {
+      this.index = i;
     },
-    provImg() {
-      if (parseInt(this.ItemContainerTop) >= 0) {
-        return;
-      }
-      this.index--;
-      this.$refs.ItemContainer.style.top =
-        parseInt(this.ItemContainerTop) + 100 + "vh";
-      this.ItemContainerTop = this.$refs.ItemContainer.style.top;
-      this.changeClass();
+    handleResize() {
+      this.containerHeight = this.$refs.container.clientHeight;
+      this.containerWidth = this.$refs.container.clientWidth;
     },
-    ifSelected(count) {
-      const num = parseInt(this.ItemContainerTop) / 100 + 1;
-      if (num === count) {
-        return true;
-      }
-      return false;
-    },
-    changeClass() {
-      Array.prototype.slice
-        .call(this.$refs.dots.children)
-        .forEach((element) => {
-          element.classList.remove("active");
-        });
-      this.$refs.dots.children[this.index].classList.add("active");
-    },
-    changeItem(count) {
-      this.index = count;
-      this.changeClass();
-      this.$refs.ItemContainer.style.top = -count * 100 + "vh";
-      this.ItemContainerTop = this.$refs.ItemContainer.style.top;
-    },
-    move($event) {
-      if ($event.target.nodeName !== "IMG") {
-        return;
-      }
-      if ($event.offsetY < this.top && $event.offsetX < this.left) {
-        $event.target.style.transform = "translate(-5%,-5%)";
-        return;
-      } else if ($event.offsetY < this.top && $event.offsetX > this.right) {
-        $event.target.style.transform = "translate(5%,-5%)";
-        return;
-      } else if ($event.offsetY > this.bottom && $event.offsetX < this.left) {
-        $event.target.style.transform = "translate(-5%,5%)";
-        return;
-      } else if ($event.offsetY > this.bottom && $event.offsetX > this.right) {
-        $event.target.style.transform = "translate(5%,5%)";
-        return;
-      } else if (
-        $event.offsetY > this.top &&
-        $event.offsetY < this.bottom &&
-        $event.offsetX < this.right &&
-        $event.offsetX > this.left
-      ) {
-        $event.target.style.transform = "none";
-        return;
-      }
-      if ($event.offsetY < this.top) {
-        $event.target.style.transform = "translateY(-5%)";
-      }
-      if ($event.offsetY > this.bottom) {
-        $event.target.style.transform = "translateY(5%)";
-      }
-      if ($event.offsetX < this.left) {
-        $event.target.style.transform = "translateX(-5%)";
-      }
-      if ($event.offsetX > this.right) {
-        $event.target.style.transform = "translateX(5%)";
+    handleWheel(e) {
+      if (this.ifWheel) return;
+      if (e.deltaY > 50 && this.index < this.itemsData.length - 1) {
+        this.ifWheel = true;
+        this.index++;
+      } else if (e.deltaY < -50 && this.index > 0) {
+        this.ifWheel = true;
+        this.index--;
       }
     },
-  },
-  updated() {
-    this.containerHeight = parseInt(
-      getComputedStyle(this.$refs.container).height
-    );
-    this.containerWidth = parseInt(
-      getComputedStyle(this.$refs.container).width
-    );
-    this.top = this.containerHeight / 4;
-    this.bottom = (this.containerHeight / 4) * 3;
-    this.left = this.containerWidth / 4;
-    this.right = (this.containerWidth / 4) * 3;
-    const container = this.$refs.container;
-    container.addEventListener("mousemove", this.move);
-    container.addEventListener("mouseout", function ($event) {
-      if ($event.target.nodeName !== "IMG") {
-        return;
-      }
-      $event.target.style.transform = "none";
-    });
+    handleWheelEnd() {
+      this.ifWheel = false;
+    },
   },
 };
 </script>

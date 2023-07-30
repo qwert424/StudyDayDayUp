@@ -6,47 +6,68 @@
     width: @fullsize;
     position: relative;
     overflow: hidden;
-    transition: .5s;
-
-    &:hover {
-        transform: scale(1.1);
-
-        .icon {
-            transform: translateX(-@size);
-        }
-
-        .dots-container {
-            right: 6%;
-        }
-    }
 
     .item-container {
         position: relative;
         top: 0;
         left: 0;
+        height: @fullsize;
+        width: @fullsize;
         transition: 1s;
     }
-
 
     .icon {
         font-size: 50px;
         .container-center();
-        transform: translateX(-@size);
         transition: 0.5s;
         cursor: pointer;
 
         &.top-icon {
             top: unset;
             bottom: 5%;
+            animation: jump-up 2s infinite;
         }
 
         &.bottom-icon {
             top: 5%;
+            animation: jump-down 2s infinite;
         }
 
         &:hover {
             color: @white;
-            transform: translateX(-@size) scale(1.5);
+            transform: translateX(-@size) scale(1.2);
+            animation: none;
+        }
+
+        @jump: 10px;
+
+        @keyframes jump-up {
+            0% {
+                transform: translate(-@size, @zero);
+            }
+
+            50% {
+                transform: translate(-@size, -@jump);
+            }
+
+            100% {
+                transform: translate(-@size, @zero);
+            }
+        }
+
+        @keyframes jump-down {
+            0% {
+                transform: translate(-@size, @zero);
+            }
+
+            50% {
+                transform: translate(-@size, @jump);
+            }
+
+            100% {
+                transform: translate(-@size, @zero);
+            }
+
         }
     }
 
@@ -54,9 +75,9 @@
         .flex-container(column);
         gap: 10px;
         position: absolute;
-        top: 50%;
+        top: @size;
         right: 2%;
-        transform: translateY(-50%);
+        transform: translateY(-@size);
         transition: 0.5s;
 
         .dot {
@@ -75,7 +96,7 @@
         }
 
         &:hover {
-            transform: translateY(-50%) scale(1.5);
+            transform: translateY(-@size) scale(1.5);
         }
     }
 }
