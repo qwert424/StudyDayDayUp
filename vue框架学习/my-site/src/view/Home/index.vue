@@ -12,7 +12,7 @@
       @transitionend="handleWheelEnd"
     >
       <carousel
-        v-for="item in itemsData"
+        v-for="item in data"
         :key="item.id"
         :src="item.bigImg"
         :placeholder="item.midImg"
@@ -23,7 +23,7 @@
     </ul>
     <div v-if="ifshow">
       <Icon
-        v-show="index < itemsData.length - 1"
+        v-show="index < data.length - 1"
         type="arrowDown"
         class="top-icon icon"
         @click.native="index++"
@@ -36,7 +36,7 @@
       ></Icon>
       <div class="dots-container" ref="dots">
         <span
-          v-for="(item, i) in itemsData"
+          v-for="(item, i) in data"
           :key="item.id"
           :class="['dot', { active: i === index }]"
           @click="changeItem(i)"
@@ -50,21 +50,18 @@
 import Icon from "@/components/Icon";
 import { getBanner } from "@/api/banner";
 import carousel from "./carousel.vue";
+import fetchData from "@/mixins/fetchData.js";
+
 export default {
+  mixins: [fetchData([])],
   data() {
     return {
-      itemsData: [], //数据
       ifshow: false, //组件显示
       index: 0, //下标
       containerWidth: 0, //容器宽度
       containerHeight: 0, //容器高度
       ifWheel: false, //是否正在滚动
-      isLoading: true, //是否加载
     };
-  },
-  async created() {
-    this.itemsData = await getBanner();
-    this.isLoading = false;
   },
   components: {
     carousel,
@@ -84,6 +81,9 @@ export default {
     window.removeEventListener("resize", this.handleResize);
   },
   methods: {
+    async fetchData() {
+      return await getBanner();
+    },
     showControl() {
       this.ifshow = true;
     },
@@ -96,7 +96,7 @@ export default {
     },
     handleWheel(e) {
       if (this.ifWheel) return;
-      if (e.deltaY > 50 && this.index < this.itemsData.length - 1) {
+      if (e.deltaY > 50 && this.index < this.data.length - 1) {
         this.ifWheel = true;
         this.index++;
       } else if (e.deltaY < -50 && this.index > 0) {

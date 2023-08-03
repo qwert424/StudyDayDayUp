@@ -28,3 +28,12 @@
     height: @fullsize;
     object-fit: cover;
 }
+
+// 单行文本溢出隐藏
+.text-overflow-ellipsis(@line:1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+}

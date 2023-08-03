@@ -10,6 +10,8 @@ export default [
     { name: 'Home', path: '/', component: Home },
     // 当匹配到路径 /blog 时，渲染 Blog 组件
     { name: 'Blog', path: '/blog', component: Blog },
+    // 当匹配到路径 /blog 时，渲染 Blog 组件
+    { name: 'categroyBlog', path: '/blog/cate/:categroyId', component: Blog },
     // 当匹配到路径 /about 时，渲染 About 组件
     { name: 'About', path: '/about', component: About },
     // 当匹配到路径 /message 时，渲染 Message 组件

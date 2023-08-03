@@ -22,5 +22,8 @@ export default {
 .App-container {
   width: 100vw;
   height: 100vh;
+  .SiteAside-container {
+    width: 250px;
+  }
 }
 </style>

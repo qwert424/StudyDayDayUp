@@ -109,24 +109,26 @@ export default {
 @import "~@/Style/color.module.less";
 .pager-container {
   @RadiusSize: 8px;
-  width: max-content;
-  height: 60px;
-  margin: 20px auto;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   border-radius: @RadiusSize;
-  background-color: @backColor;
   a {
     @Height: 40px;
     padding: 0 10px;
     height: @Height;
     line-height: @Height;
     text-align: center;
-    margin: 0 10px;
     border-radius: @RadiusSize;
     background: @primary;
     color: @white;
     box-shadow: 3px -2px 5px;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &.active {
       box-shadow: 0 0 0 2px;
       background: none;
