@@ -5,7 +5,7 @@
       v-for="(item, i) in list"
       :key="i"
       class="Item-container"
-      @click="handleChangeId(item)"
+      @click.stop="handleChangeId(item)"
     >
       <div :class="{ select: item.isselect, firstItem: ifFirstItem, item }">
         {{ item.name
@@ -14,7 +14,11 @@
         </span>
       </div>
       <!-- 递归 -->
-      <RightList v-if="item.children" :list="item.children"></RightList>
+      <RightList
+        v-if="item.children"
+        :list="item.children"
+        @changeId="handleChangeId"
+      ></RightList>
     </li>
   </ul>
 </template>
@@ -47,8 +51,12 @@ export default {
 @import "~@/Style/common.module.less";
 .RightList-container {
   width: @fullsize;
+  height: @fullsize;
   color: @words;
   @liHeight: 40px;
+  overflow-y: auto;
+  padding: 10px 15px;
+  background-color: lighten(@gray, 20);
   .Item-container {
     //li容器
     width: @fullsize;

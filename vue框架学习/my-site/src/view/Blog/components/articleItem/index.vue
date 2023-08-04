@@ -6,7 +6,6 @@
           name: 'BlogArticle',
           params: {
             id: item.id,
-            item,
           },
         }"
       >
@@ -20,7 +19,6 @@
             name: 'BlogArticle',
             params: {
               id: item.id,
-              item,
             },
           }"
           class="title"
@@ -110,7 +108,7 @@ export default {
   .articleItem {
     .flex-container();
     margin: @padmar 0;
-    padding: @padmar 0;
+    padding: @padmar;
     border-bottom: 1px solid @gray;
     color: @words;
     transition: 0.5s;
@@ -142,6 +140,9 @@ export default {
             color: @words;
             background-size: 100% 3px;
           }
+        }
+        &:hover {
+          color: @words;
         }
       }
       .details {

@@ -25,8 +25,8 @@ export async function getblog(page = 1, limit = 10, categoryid = -1) {
  * @param {*} id 文章的id
  * @returns 
  */
-export async function getblogdetail(item) {
-    return await require.get(`/api/blog/${item.id}`, { params: { item, id: item.id } })
+export async function getblogdetail(id) {
+    return await require.get(`/api/blog/${id}`)
 }
 
 /**

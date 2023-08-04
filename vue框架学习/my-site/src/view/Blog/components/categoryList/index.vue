@@ -1,11 +1,13 @@
 <template>
-  <div class="categoryList-container" v-loading="isLoading">
+  <div class="categoryList-container">
     <h2 class="title">文章分类</h2>
-    <RightList
-      :list="list"
-      v-if="!isLoading"
-      @changeId="handleChange"
-    ></RightList>
+    <div v-loading="isLoading" class="container">
+      <RightList
+        :list="list"
+        v-if="!isLoading"
+        @changeId="handleChange"
+      ></RightList>
+    </div>
   </div>
 </template>
 
@@ -79,10 +81,6 @@ export default {
   height: @fullsize;
   color: @lightWords;
   @liHeight: 40px;
-  padding: 10px 15px;
-  background-color: lighten(@gray, 20);
-  position: relative;
-  overflow-y: auto;
 
   .title {
     // 标题
@@ -92,7 +90,10 @@ export default {
     line-height: @liHeight;
     border-bottom: 1px solid @gray;
     .text-overflow-ellipsis();
-    margin-bottom: 20px;
+  }
+  .container {
+    position: relative;
+    height: calc(100% - @liHeight);
   }
 }
 </style>
