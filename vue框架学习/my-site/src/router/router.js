@@ -3,6 +3,7 @@ import About from '@/view/About';
 import Message from '@/view/Message';
 import Project from '@/view/Project';
 import Blog from '@/view/Blog';
+import BlogArticle from '@/view/Blog/detail';
 
 export default [
     // 路由规则
@@ -10,8 +11,10 @@ export default [
     { name: 'Home', path: '/', component: Home },
     // 当匹配到路径 /blog 时，渲染 Blog 组件
     { name: 'Blog', path: '/blog', component: Blog },
-    // 当匹配到路径 /blog 时，渲染 Blog 组件
+    // 当匹配到路径 /blog/cate/:categroyId 时，渲染 Blog 组件
     { name: 'categroyBlog', path: '/blog/cate/:categroyId', component: Blog },
+    // 当匹配到路径 /blog/cate/:id 时，渲染 BlogArticle 组件
+    { name: 'BlogArticle', path: '/blog/:id', component: BlogArticle },
     // 当匹配到路径 /about 时，渲染 About 组件
     { name: 'About', path: '/about', component: About },
     // 当匹配到路径 /message 时，渲染 Message 组件

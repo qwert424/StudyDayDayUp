@@ -20,10 +20,10 @@ function createLoadingImg() {
 
 // 因为bind和update都是判断是否有加载图片img元素 进行添加和删除 所以使用简化函数
 export default function (el, bingding) {
-    const LoadingIm = getLoadingImg(el);
-    if (LoadingIm) {
+    const LoadingImg = getLoadingImg(el);
+    if (LoadingImg) {
         if (!bingding.value) {
-            el.removeChild(LoadingIm);
+            el.removeChild(LoadingImg);
         }
     } else {
         if (bingding.value) {
