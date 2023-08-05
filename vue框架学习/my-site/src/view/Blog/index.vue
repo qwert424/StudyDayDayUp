@@ -28,6 +28,9 @@ export default {
     Layout,
     articleList,
   },
+  data() {
+    return { isLoading: true };
+  },
   methods: {
     changeCurrent(msg) {
       this.current = msg;
@@ -48,6 +51,7 @@ export default {
   .main {
     width: 100%;
     height: 100%;
+    position: relative;
   }
 }
 </style>

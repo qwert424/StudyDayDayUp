@@ -1,6 +1,6 @@
 <template>
-  <div class="articleList-container" v-loading="isLoading">
-    <articleItem :articleList="data.rows" ref="container"></articleItem>
+  <div class="articleList-container" ref="container" v-loading="isLoading">
+    <articleItem :articleList="data.rows"></articleItem>
     <Pager
       v-if="data.total"
       :totalItems="data.total"
@@ -23,6 +23,15 @@ export default {
   components: {
     Pager,
     articleItem,
+  },
+  watch: {
+    async $route() {
+      this.isLoading = true;
+      // 滚动高度为0
+      this.$refs.container.scrollTop = 0;
+      this.data = await this.fetchData();
+      this.isLoading = false;
+    },
   },
   computed: {
     getData() {
@@ -63,15 +72,6 @@ export default {
       }
     },
   },
-  watch: {
-    async $route() {
-      this.isLoading = true;
-      // 滚动高度为0
-      this.$refs.container.$refs.container.scrollTop = 0;
-      this.data = await this.fetchData();
-      this.isLoading = false;
-    },
-  },
 };
 </script>
 
@@ -81,10 +81,9 @@ export default {
 .articleList-container {
   width: @fullsize;
   height: @fullsize;
-  position: relative;
-  .articleItem-container {
-    height: 90%;
-  }
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
   .pager-container {
     height: 10%;
   }

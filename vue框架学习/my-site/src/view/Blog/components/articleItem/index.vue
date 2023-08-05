@@ -75,9 +75,6 @@ export default {
       return (this.ifshowdetails =
         +this.$refs.container.clientWidth < 500 ? false : true);
     },
-    handleClick(item) {
-      this.$emit("isclick", item);
-    },
     getrouterData() {
       const limit = this.$route.query.limit;
       const page = this.$route.query.page;
@@ -100,11 +97,8 @@ export default {
 @import "~@/Style/common.module.less";
 .articleItem-container {
   width: @fullsize;
-  height: @fullsize;
   @padmar: 10px;
   padding: @padmar;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
   .articleItem {
     .flex-container();
     margin: @padmar 0;
