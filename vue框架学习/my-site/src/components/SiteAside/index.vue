@@ -1,7 +1,7 @@
 <template>
   <div class="SiteAside-container">
     <Avatar
-      src="https://img1.baidu.com/it/u=3302184040,3713353210&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1689958800&t=c5544548483d80e372afb5e9f2ecfefc"
+      src="https://img0.baidu.com/it/u=2951898357,371941305&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=666"
     ></Avatar>
     <h1 class="title">无敌龙傲天</h1>
     <Menu></Menu>
@@ -48,14 +48,14 @@ export default {
     flex: 1 0 auto;
     margin-top: @Size;
   }
- .title{
-  font-size: 1.2em;
-  text-align: center;
-  color: @white;
- }
- .footer{
-  font-size: 12px;
-  text-align: center;
- }
+  .title {
+    font-size: 1.2em;
+    text-align: center;
+    color: @white;
+  }
+  .footer {
+    font-size: 12px;
+    text-align: center;
+  }
 }
 </style>

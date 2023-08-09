@@ -6,6 +6,11 @@
       :list="data.rows"
       @submit="handleSubmit"
     ></MessageArea>
+    <div
+      class="loading-container"
+      v-show="isLoading"
+      v-loading="isLoading"
+    ></div>
   </div>
 </template>
 
@@ -37,6 +42,32 @@ export default {
       this.data.total++;
       callback({ content: "提交成功", type: "success" });
     },
+    async moreReady() {
+      this.isLoading = true;
+      this.page++;
+      const resp = await this.fetchData(this.page, this.limit, this.blogid);
+      this.data.rows.push(...resp.rows);
+      // this.data.rows = this.data.rows.concat(resp.rows);
+      this.isLoading = false;
+    },
+    ifLoadingMore(data) {
+      if (!data || this.data.rows.length >= this.data.total || this.isLoading) {
+        return;
+      }
+      const scrollTop = data.scrollTop;
+      const clientHeight = data.clientHeight;
+      const scrollHeight = data.scrollHeight;
+      const isLoadingMore = scrollHeight - clientHeight - scrollTop < 500;
+      if (isLoadingMore) {
+        this.moreReady();
+      }
+    },
+  },
+  created() {
+    this.$bus.$on("mainScroll", this.ifLoadingMore);
+  },
+  destroyed() {
+    this.$bus.$off("mainScroll", this.ifLoadingMore);
   },
 };
 </script>
@@ -44,5 +75,9 @@ export default {
 <style lang="less" scoped>
 .detailCommon-container {
   margin: 20px;
+  .loading-container {
+    height: 40px;
+    position: relative;
+  }
 }
 </style>

@@ -17,6 +17,7 @@ import Pager from "@/components/Pager";
 import fetchData from "@/mixins/fetchData";
 import { getblog } from "@/api/blog";
 import articleItem from "../articleItem";
+import { debounce } from "@/utils";
 
 export default {
   mixins: [fetchData({})],
@@ -71,6 +72,28 @@ export default {
         });
       }
     },
+    changeScroll() {
+      this.$bus.$emit("mainScroll", this.$refs.container);
+    },
+    setScroll() {
+      this.$refs.container.scrollTop = 0;
+    },
+  },
+  created() {
+    this.$bus.$on("setScrollToTop", this.setScroll);
+  },
+  mounted() {
+    this.$refs.container.addEventListener(
+      "scroll",
+      debounce(this.changeScroll, 100)
+    );
+  },
+  beforeDestroy() {
+    this.$bus.$emit("mainScroll");
+    this.$refs.container.removeEventListener(
+      "scroll",
+      debounce(this.changeScroll, 100)
+    );
   },
 };
 </script>
@@ -83,7 +106,6 @@ export default {
   height: @fullsize;
   overflow-y: auto;
   scroll-behavior: smooth;
-
   .pager-container {
     height: 10%;
   }

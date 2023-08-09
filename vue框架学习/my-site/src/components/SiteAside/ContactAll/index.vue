@@ -1,10 +1,6 @@
 <template>
   <div class="ContactAll-container">
-    <Contact
-      type="github"
-      text="Fangdaochu"
-      ClassStyle="Size"
-    ></Contact>
+    <Contact type="github" text="Fangdaochu" ClassStyle="Size"></Contact>
     <Contact
       type="mail"
       text="fangdaochu@gmail.com"
@@ -14,7 +10,7 @@
       <Contact type="qq" text="296840095" ClassStyle="Size"></Contact>
       <div class="code">
         <img
-          src="https://img1.baidu.com/it/u=3302184040,3713353210&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1689958800&t=c5544548483d80e372afb5e9f2ecfefc"
+          src="https://img0.baidu.com/it/u=2951898357,371941305&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=666"
           alt=""
         />
       </div>
@@ -23,7 +19,7 @@
       <Contact type="weixin" text="yhssjsjj" ClassStyle="wxSize"></Contact>
       <div class="code">
         <img
-          src="https://img1.baidu.com/it/u=3302184040,3713353210&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1689958800&t=c5544548483d80e372afb5e9f2ecfefc"
+          src="https://img0.baidu.com/it/u=2951898357,371941305&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=666"
           alt=""
         />
       </div>

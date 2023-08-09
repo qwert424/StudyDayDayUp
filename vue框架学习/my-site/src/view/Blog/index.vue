@@ -21,21 +21,13 @@
 import Layout from "@/components/Layout/";
 import categroyList from "./components/categoryList";
 import articleList from "./components/articleList";
-
 export default {
   components: {
     categroyList,
     Layout,
     articleList,
   },
-  data() {
-    return { isLoading: true };
-  },
-  methods: {
-    changeCurrent(msg) {
-      this.current = msg;
-    },
-  },
+ 
 };
 </script>
 
@@ -49,7 +41,6 @@ export default {
     height: 100%;
   }
   .main {
-    width: 100%;
     height: 100%;
     position: relative;
   }

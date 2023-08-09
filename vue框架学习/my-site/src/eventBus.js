@@ -9,9 +9,11 @@
 
 // 方法二：自己写一个事件总线包含$on $off $emit
 
+// 方法三：在vue的原型链上添加$bus
+
 // 方法一：
-import Vue from 'vue'
-export default new Vue({});
+// import Vue from 'vue'
+// export default new Vue({});
 
 // 方法二：
 // const event = {};
@@ -39,6 +41,10 @@ export default new Vue({});
 
 // }
 
+// 方法三：
+import Vue from 'vue';
+Vue.prototype.$bus = new Vue({});
+
 // 测试事件总线
 // import eventBus from "./eventBus"
 
@@ -54,3 +60,6 @@ export default new Vue({});
 // window.eventBus = eventBus;
 // window.handle1 = handle1;
 // window.handle2 = handle2;
+
+// on监听事件：mainScroll(滚动监听) setScrollToTop(回到顶部)
+
