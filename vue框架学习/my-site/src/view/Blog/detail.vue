@@ -3,7 +3,8 @@
     <Layout>
       <template #main>
         <div class="main" v-if="data">
-          <detailMain :data="data"></detailMain>
+          <detailBlog :data="data"></detailBlog>
+          <detailCommon v-if="!isLoading"></detailCommon>
         </div>
       </template>
       <template #right>
@@ -20,14 +21,16 @@ import fetchData from "@/mixins/fetchData";
 import Layout from "@/components/Layout";
 import { getblogdetail } from "@/api/blog";
 import detailTOC from "./components/detailTOC";
-import detailMain from "./components/detailMain";
+import detailCommon from "./components/detailCommon";
+import detailBlog from "./components/detailBlog";
 
 export default {
   mixins: [fetchData(null)],
   components: {
     Layout,
     detailTOC,
-    detailMain,
+    detailCommon,
+    detailBlog,
   },
   methods: {
     async fetchData() {
@@ -50,6 +53,9 @@ export default {
   .main {
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 }
 </style>

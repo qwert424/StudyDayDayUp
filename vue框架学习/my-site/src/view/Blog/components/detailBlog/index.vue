@@ -1,23 +1,28 @@
 <template>
-  <div class="detailMain-container">
+  <div class="detailBlog-container">
     <h2 class="title">{{ data.title }}</h2>
     <aside class="aside">
       <span class="date">日期：{{ data.createDate }}</span>
       <span class="scanNumber">浏览：{{ data.scanNumber }}</span>
-      <a href="" class="commentNumber">评论：{{ data.commentNumber }}</a>
+      <a href="#MessageForm-container" class="commentNumber"
+        >评论：{{ data.commentNumber }}</a
+      >
       <router-link
         :to="{
-          path: `/blog/cate/${data.category.id}`,
+          name: 'categroyBlog',
+          params: {
+            categroyId: data.category.id,
+          },
+          query: {
+            page: 1,
+            limit: 10,
+          },
         }"
         class="category"
         >分类：{{ data.category.id }}</router-link
       >
     </aside>
-    <article
-      class="markdown-body"
-      v-html="data.htmlContent"
-      ref="container"
-    ></article>
+    <article class="markdown-body" v-html="data.htmlContent"></article>
   </div>
 </template>
 
@@ -32,11 +37,6 @@ export default {
       required: true,
     },
   },
-  //   methods: {
-  //     getTop() {
-  //       return (this.itemArr = this.$refs.container.querySelectorAll("h2"));
-  //     },
-  //   },
 };
 </script>
 
@@ -44,11 +44,8 @@ export default {
 @import "~@/Style/common.module.less";
 @import "~@/Style/color.module.less";
 
-.detailMain-container {
+.detailBlog-container {
   width: @fullsize;
-  height: @fullsize;
-  overflow-y: scroll;
-  overflow-x: hidden;
   padding: 20px;
   .title {
     margin-bottom: 20px;

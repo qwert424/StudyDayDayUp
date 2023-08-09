@@ -1,7 +1,7 @@
 <template>
-  <div class="categoryList-container">
-    <h2 class="title">文章分类</h2>
-    <div v-loading="isLoading" class="container">
+  <div class="categoryList-container" v-loading="isLoading">
+    <h2 class="title" v-if="!isLoading">文章分类</h2>
+    <div class="container">
       <RightList
         :list="list"
         v-if="!isLoading"
@@ -81,6 +81,7 @@ export default {
   height: @fullsize;
   color: @lightWords;
   @liHeight: 40px;
+  position: relative;
 
   .title {
     // 标题
@@ -92,7 +93,6 @@ export default {
     .text-overflow-ellipsis();
   }
   .container {
-    position: relative;
     height: calc(100% - @liHeight);
   }
 }

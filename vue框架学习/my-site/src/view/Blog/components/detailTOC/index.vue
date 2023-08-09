@@ -28,11 +28,12 @@ export default {
       location.hash = item.anchor;
     },
     mapTree(item) {
-      const hasChildren = item.children ? true : false;
       return {
         ...item,
         isselect: `#${item.anchor}` === this.$route.hash,
-        children: hasChildren ? item.children.map((i) => this.mapTree(i)) : [],
+        children: item.children
+          ? item.children.map((i) => this.mapTree(i))
+          : [],
       };
     },
   },

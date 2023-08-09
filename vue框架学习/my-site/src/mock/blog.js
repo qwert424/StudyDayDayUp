@@ -294,7 +294,6 @@ Mock.mock('/api/comment', 'post', {
 // 模拟拦截分页获取评论
 Mock.mock(/^\/api\/comment\/?(\?.+)?$/, "get", function (options) {
   const query = qs.parse(options.url);
-
   return Mock.mock({
     code: 0,
     msg: "",
