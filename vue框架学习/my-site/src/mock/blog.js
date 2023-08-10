@@ -35,7 +35,7 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, 'get', function (options) {
           },
           "scanNumber|0-100": 0,//浏览量
           "commentNumber|0-100": 0,//评价量
-          "thumb|1": ["@image('1300x2100', '#50B347', '#FFF', 'Mock.js')", null],//图片
+          "thumb|1": ["@image('1200x900', @color, @natural)", null],//图片
           createDate: '@date("yyyy-MM-dd")'//创建时间
         }
       ]

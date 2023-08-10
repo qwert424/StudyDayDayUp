@@ -9,7 +9,7 @@
           },
         }"
       >
-        <img :src="item.thumb" alt="" class="img" v-if="item.thumb"
+        <img v-lazy="item.thumb" alt="" class="img" v-if="item.thumb"
       /></router-link>
 
       <div class="msg">
@@ -57,7 +57,11 @@
 </template>
 
 <script>
+import lazy from "@/directives/lazy";
 export default {
+  directives: {
+    lazy
+  },
   props: {
     // 文章列表
     articleList: {

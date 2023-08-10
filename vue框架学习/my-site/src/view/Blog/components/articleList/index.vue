@@ -1,5 +1,5 @@
 <template>
-  <div class="articleList-container" ref="container" v-loading="isLoading">
+  <div class="articleList-container" ref="mainContainer" v-loading="isLoading">
     <articleItem :articleList="data.rows"></articleItem>
     <Pager
       v-if="data.total"
@@ -17,10 +17,10 @@ import Pager from "@/components/Pager";
 import fetchData from "@/mixins/fetchData";
 import { getblog } from "@/api/blog";
 import articleItem from "../articleItem";
-import { debounce } from "@/utils";
+import mainScroll from "@/mixins/mainScroll";
 
 export default {
-  mixins: [fetchData({})],
+  mixins: [fetchData({}), mainScroll("mainContainer")],
   components: {
     Pager,
     articleItem,
@@ -29,7 +29,7 @@ export default {
     async $route() {
       this.isLoading = true;
       // 滚动高度为0
-      this.$refs.container.scrollTop = 0;
+      this.$refs.mainContainer.scrollTop = 0;
       this.data = await this.fetchData();
       this.isLoading = false;
     },
@@ -72,28 +72,6 @@ export default {
         });
       }
     },
-    changeScroll() {
-      this.$bus.$emit("mainScroll", this.$refs.container);
-    },
-    setScroll() {
-      this.$refs.container.scrollTop = 0;
-    },
-  },
-  created() {
-    this.$bus.$on("setScrollToTop", this.setScroll);
-  },
-  mounted() {
-    this.$refs.container.addEventListener(
-      "scroll",
-      debounce(this.changeScroll, 100)
-    );
-  },
-  beforeDestroy() {
-    this.$bus.$emit("mainScroll");
-    this.$refs.container.removeEventListener(
-      "scroll",
-      debounce(this.changeScroll, 100)
-    );
   },
 };
 </script>

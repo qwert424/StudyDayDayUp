@@ -43,7 +43,10 @@
 
 // 方法三：
 import Vue from 'vue';
-Vue.prototype.$bus = new Vue({});
+const app = new Vue({});
+Vue.prototype.$bus = app;
+
+export default app;
 
 // 测试事件总线
 // import eventBus from "./eventBus"
@@ -61,5 +64,5 @@ Vue.prototype.$bus = new Vue({});
 // window.handle1 = handle1;
 // window.handle2 = handle2;
 
-// on监听事件：mainScroll(滚动监听) setScrollToTop(回到顶部)
+// on监听事件：mainScroll(滚动监听) setScrollToTop(回到顶部) onloadComplete(加载完成)
 

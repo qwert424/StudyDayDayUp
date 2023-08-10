@@ -30,6 +30,7 @@ export default {
     },
     ifShowTop(data) {
       if (!data) {
+        this.isShow = false;
         return;
       }
       const top = data.scrollTop;
@@ -41,7 +42,7 @@ export default {
   },
   destroyed() {
     this.$bus.$emit("setScrollToTop");
-    this.$bus.$off("mainScrol", this.ifShowTop);
+    this.$bus.$off("mainScroll", this.ifShowTop);
   },
 };
 </script>

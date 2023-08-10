@@ -78,6 +78,7 @@ export default {
   .loading-container {
     height: 40px;
     position: relative;
+    margin-top: 10px;
   }
 }
 </style>
