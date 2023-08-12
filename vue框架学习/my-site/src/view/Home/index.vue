@@ -48,12 +48,10 @@
 
 <script>
 import Icon from "@/components/Icon";
-import { getBanner } from "@/api/banner";
 import carousel from "./carousel.vue";
-import fetchData from "@/mixins/fetchData.js";
+import { mapState } from "vuex";
 
 export default {
-  mixins: [fetchData([])],
   data() {
     return {
       ifshow: false, //组件显示
@@ -71,6 +69,10 @@ export default {
     ItemContainerTop() {
       return -this.containerHeight * this.index;
     },
+    ...mapState("banner", ["isLoading", "data"]),
+  },
+  created() {
+    this.$store.dispatch("banner/asyncGetBanner");
   },
   mounted() {
     this.containerHeight = this.$refs.container.clientHeight;
@@ -81,9 +83,6 @@ export default {
     window.removeEventListener("resize", this.handleResize);
   },
   methods: {
-    async fetchData() {
-      return await getBanner();
-    },
     showControl() {
       this.ifshow = true;
     },

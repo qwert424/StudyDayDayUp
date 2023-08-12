@@ -1,8 +1,16 @@
 import Vue from "vue";
 import VueRouter from 'vue-router'
 import routes from '@/router/router'
+import { setTitleControl } from '@/utils'
 Vue.use(VueRouter); // Vue.use(插件)  在Vue中安装插件
-export default new VueRouter({
+const router = new VueRouter({
     routes,
     mode: 'history'
 });
+
+router.afterEach((to, from) => {
+    if (to.meta.title) {
+        setTitleControl.setRouterTitleControl(to.meta.title)
+    }
+})
+export default router;

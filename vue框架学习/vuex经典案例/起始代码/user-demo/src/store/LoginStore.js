@@ -3,7 +3,6 @@ import { Login, LoginOut, whoAmI } from '@/api/user'
 
 export default {
     namespaced: true,
-    strict: true,
     state: {
         userData: null,
         isLoading: false,

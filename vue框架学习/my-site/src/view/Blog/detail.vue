@@ -24,9 +24,10 @@ import { getblogdetail } from "@/api/blog";
 import detailTOC from "./components/detailTOC";
 import detailCommon from "./components/detailCommon";
 import detailBlog from "./components/detailBlog";
+import { setTitleControl } from "@/utils";
 
 export default {
-  mixins: [fetchData(null),mainScroll("mainContainer")],
+  mixins: [fetchData(null), mainScroll("mainContainer")],
   components: {
     Layout,
     detailTOC,
@@ -35,7 +36,11 @@ export default {
   },
   methods: {
     async fetchData() {
-      return await getblogdetail(this.$route.params.id);
+      const resp = await getblogdetail(this.$route.params.id);
+      if (resp.title) {
+        setTitleControl.setRouterTitleControl(resp.title);
+      }
+      return resp;
     },
   },
   updated() {

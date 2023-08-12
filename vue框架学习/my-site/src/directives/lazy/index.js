@@ -2,10 +2,6 @@
 import EventBus from '@/eventBus';
 import lazyLoading from '@/assets/lazyLoading.gif';
 
-// 监听滚轮滚动
-EventBus.$on('mainScroll', handleSetImgs)
-EventBus.$on('onloadComplete', handleSetImg)
-
 // 存储需要加载的图片
 let imgs = [];
 
@@ -40,6 +36,9 @@ function handleSetImgs() {
 export default {
     // 被绑定元素插入父节点时调用
     inserted(el, binding) {
+        // 监听滚轮滚动
+        EventBus.$on('mainScroll', handleSetImgs)
+        EventBus.$on('onloadComplete', handleSetImg)
         const imgsObj = {
             el,
             src: binding.value

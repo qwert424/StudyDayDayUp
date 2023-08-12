@@ -1,12 +1,12 @@
 <template>
   <div class="SiteAside-container">
-    <Avatar
-      src="https://img0.baidu.com/it/u=2951898357,371941305&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=666"
-    ></Avatar>
-    <h1 class="title">无敌龙傲天</h1>
-    <Menu></Menu>
+    <template v-if="data">
+      <Avatar :src="Avatarsrc"></Avatar>
+      <h1 class="title">{{ data.siteTitle }}</h1>
+      <Menu></Menu>
+    </template>
     <ContactAll></ContactAll>
-    <p class="footer">网站备案号</p>
+    <p class="footer" v-if="data">{{ data.icp }}</p>
   </div>
 </template>
 
@@ -14,7 +14,14 @@
 import Avatar from "@/components/Avatar/";
 import Menu from "./Menu/";
 import ContactAll from "./ContactAll/";
+import { mapState } from "vuex";
 export default {
+  computed: {
+    ...mapState("Mysetting", ["data"]),
+    Avatarsrc() {
+      return this.data.avatar ? this.data.avatar : "";
+    },
+  },
   components: {
     Avatar,
     Menu,
