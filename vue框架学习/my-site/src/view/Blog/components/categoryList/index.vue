@@ -4,9 +4,10 @@
     <div class="container">
       <RightList
         :list="list"
-        v-if="!isLoading"
+        v-if="!isLoading && list.length !== 1"
         @changeId="handleChange"
       ></RightList>
+      <Empty v-if="data.length === 0 && !isLoading"></Empty>
     </div>
   </div>
 </template>
@@ -15,10 +16,12 @@
 import RightList from "../RightList/";
 import fetchData from "@/mixins/fetchData";
 import { getblogtype } from "@/api/blog";
+import Empty from "@/components/Empty";
 
 export default {
   mixins: [fetchData([])],
   components: {
+    Empty,
     RightList,
   },
   computed: {
@@ -94,6 +97,7 @@ export default {
   }
   .container {
     height: calc(100% - @liHeight);
+    position: relative;
   }
 }
 </style>

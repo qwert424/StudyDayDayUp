@@ -9,6 +9,7 @@
       :showCount="getData.limit"
       @changeCurrent="changeCurrent"
     ></Pager>
+    <Empty v-if="data.rows.length === 0 && !isLoading" class="Empty"></Empty>
   </div>
 </template>
 
@@ -18,12 +19,14 @@ import fetchData from "@/mixins/fetchData";
 import { getblog } from "@/api/blog";
 import articleItem from "../articleItem";
 import mainScroll from "@/mixins/mainScroll";
+import Empty from "@/components/Empty";
 
 export default {
-  mixins: [fetchData({}), mainScroll("mainContainer")],
+  mixins: [fetchData({ total: 0, rows: [] }), mainScroll("mainContainer")],
   components: {
     Pager,
     articleItem,
+    Empty,
   },
   watch: {
     async $route() {

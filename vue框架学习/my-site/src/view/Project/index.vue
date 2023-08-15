@@ -1,6 +1,7 @@
 <template>
   <div class="Project-container" v-loading="isLoading" ref="mainContainer">
     <ProjectItem v-for="item in data" :key="item.id" :data="item"></ProjectItem>
+    <Empty v-if="data.length === 0 && !isLoading"></Empty>
   </div>
 </template>
 
@@ -8,10 +9,12 @@
 import { mapState } from "vuex";
 import ProjectItem from "./components/ProjectItem";
 import mainScroll from "@/mixins/mainScroll";
+import Empty from "@/components/Empty";
 export default {
   mixins: [mainScroll("mainContainer")],
   components: {
     ProjectItem,
+    Empty,
   },
   computed: {
     ...mapState("project", ["isLoading", "data"]),

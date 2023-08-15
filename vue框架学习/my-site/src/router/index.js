@@ -2,7 +2,10 @@ import Vue from "vue";
 import VueRouter from 'vue-router'
 import routes from '@/router/router'
 import { setTitleControl } from '@/utils'
-Vue.use(VueRouter); // Vue.use(插件)  在Vue中安装插件
+if(!window.VueRouter){
+    // CDN 会污染全局变量
+    Vue.use(VueRouter); // Vue.use(插件)  在Vue中安装插件
+}
 const router = new VueRouter({
     routes,
     mode: 'history'

@@ -6,14 +6,19 @@
       class="about-content"
       @load="handleLoad"
     ></iframe>
+    <Empty v-if="data === '' && !isLoading"></Empty>
   </div>
 </template>
 
 <script>
+import Empty from "@/components/Empty";
 import { mapState } from "vuex";
 export default {
   data() {
     return { isIframeLoading: true };
+  },
+  components: {
+    Empty,
   },
   computed: {
     ...mapState("about", ["isLoading", "data"]),

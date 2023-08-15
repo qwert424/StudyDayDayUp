@@ -11,6 +11,7 @@
       v-show="isLoading"
       v-loading="isLoading"
     ></div>
+    <Empty v-if="data.total === 0 && !isLoading" class="Empty"></Empty>
   </div>
 </template>
 
@@ -18,8 +19,12 @@
 import { getblogcomment, postblogcomment } from "@/api/blog";
 import fetchData from "@/mixins/fetchData";
 import message from "@/mixins/message";
+import Empty from "@/components/Empty";
 
 export default {
+  components: {
+    Empty,
+  },
   mixins: [fetchData({ total: 0, rows: [] }), message],
   methods: {
     async fetchData() {
@@ -38,11 +43,17 @@ export default {
 
 <style lang="less" scoped>
 .detailCommon-container {
+  position: relative;
   margin: 20px;
   .loading-container {
     height: 40px;
     position: relative;
     margin-top: 10px;
+  }
+  .Empty {
+    bottom: -210px;
+    top: unset;
+    transform: translateX(-50%);
   }
 }
 </style>
