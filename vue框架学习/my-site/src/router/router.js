@@ -86,11 +86,11 @@ export default [
     },
     // 当匹配到路径 /* 时，渲染 404 组件
     {
-        name: 'notFound',
-        path: '/*',
+        name: 'NotFound',
+        path: '*',
         component: notFount,
         meta: {
-            title: '404 not found',
+            title: '404 Not Found',
         }
     },
 ]
