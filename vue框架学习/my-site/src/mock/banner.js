@@ -1,5 +1,6 @@
 import Mock from "mockjs";
 
+// 拦截导航标语
 Mock.mock('/api/banner', 'get',
   {
     "code": 0, // 错误码

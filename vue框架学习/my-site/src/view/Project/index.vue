@@ -1,10 +1,34 @@
 <template>
-  <div class="Project-container">项目</div>
+  <div class="Project-container" v-loading="isLoading" ref="mainContainer">
+    <ProjectItem v-for="item in data" :key="item.id" :data="item"></ProjectItem>
+  </div>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+import ProjectItem from "./components/ProjectItem";
+import mainScroll from "@/mixins/mainScroll";
+export default {
+  mixins: [mainScroll("mainContainer")],
+  components: {
+    ProjectItem,
+  },
+  computed: {
+    ...mapState("project", ["isLoading", "data"]),
+  },
+  created() {
+    this.$store.dispatch("project/asyncGetProject");
+  },
+};
 </script>
 
-<style>
+<style lang="less" scoped>
+.Project-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0 30px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
 </style>

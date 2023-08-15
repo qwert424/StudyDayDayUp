@@ -1,5 +1,7 @@
 import { getSetting } from '@/api/setting';
 import { setfavicon, setTitleControl } from '@/utils'
+
+// 全局设置仓库
 export default {
     namespaced: true,
     state: {

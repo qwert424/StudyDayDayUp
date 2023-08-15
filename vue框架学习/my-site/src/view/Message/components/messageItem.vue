@@ -1,7 +1,7 @@
 <template>
-  <div class="detailCommon-container">
+  <div class="messageItem-container">
     <MessageArea
-      title="评论列表"
+      title="留言板"
       :subTitle="data.total + ''"
       :list="data.rows"
       @submit="handleSubmit"
@@ -15,19 +15,18 @@
 </template>
 
 <script>
-import { getblogcomment, postblogcomment } from "@/api/blog";
 import fetchData from "@/mixins/fetchData";
+import { getMessage, postMessage } from "@/api/message";
 import message from "@/mixins/message";
 
 export default {
   mixins: [fetchData({ total: 0, rows: [] }), message],
   methods: {
     async fetchData() {
-      return await getblogcomment(this.page, this.limit, this.blogid);
+      return await getMessage(this.page, this.limit);
     },
     async handleSubmit(data, callback) {
-      const blogId = this.$route.params.id;
-      const comment = await postblogcomment({ ...data, blogId });
+      const comment = await postMessage({ ...data });
       this.data.rows.unshift(comment);
       this.data.total++;
       callback({ content: "提交成功", type: "success" });
@@ -37,8 +36,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.detailCommon-container {
-  margin: 20px;
+.messageItem-container {
+  width: 100%;
+  height: 100%;
+  .MessageArea-container {
+    width: 800px;
+    margin: 50px auto 0;
+  }
   .loading-container {
     height: 40px;
     position: relative;

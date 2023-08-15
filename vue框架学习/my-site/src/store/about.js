@@ -1,11 +1,11 @@
-import { getBanner } from "@/api/banner";
+import { getAbout } from '@/api/about'
 
-// 导航标语仓库
+// 关于我仓库
 export default {
     namespaced: true,
     state: {
         isLoading: false,
-        data: []
+        data: ""
     },
     mutations: {
         setData(state, payload) {
@@ -16,14 +16,15 @@ export default {
         }
     },
     actions: {
-        async asyncGetBanner(context) {
-            if (context.state.data.length) {
+        async asyncGetAbout(context) {
+            if (context.state.data) {
                 return;
             }
             context.commit('setIsLoading', true);
-            const resp = await getBanner();
+            const resp = await getAbout();
             context.commit('setData', resp);
             context.commit('setIsLoading', false);
         }
+
     }
 }
