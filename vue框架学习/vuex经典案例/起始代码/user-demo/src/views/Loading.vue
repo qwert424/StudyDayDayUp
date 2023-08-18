@@ -10,7 +10,6 @@ export default {
     this.unWatch = this.$watch(
       (status) => store.getters["LoginStore/status"],
       (status) => {
-        console.log(status);
         if (status !== "loading") {
           this.$router
             .push({

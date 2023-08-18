@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Storage =>{
+        localStorage,
+        sessionStorage,
+    } -->
+    <!-- 一个属性 5个方法 -->
+    <!-- 属性：length 存储的数量 -->
+    <!-- key() 通过索引获取存储 鸡肋！ -->
+    <!-- setItem()  设置存储 键值对-->
+    <!-- removeItem() 删除存储 -->
+    <!-- getItem() 通过“key”获取存储 -->
+    <!-- clear() 删除所有存储 -->
+    <!-- ***存储的值会转换为字符串*** -->
+    <!-- 区别Cookie：{
+        1、不依托于http 在file也可以
+        2、存储不同于cookie（4kb，50条） 可以存储5mb
+        3、简单 属性少 利于分工 cookie解决通信“恢复” Storage解决本地存储
+    } -->
+    <script>
+        console.dir(Storage)
+        console.log(localStorage, sessionStorage)
+        localStorage.setItem('color', ['red', 'green'])//"red,green"
+        console.log(localStorage.getItem('color'))//"red,green"
+        localStorage.setItem('color', 'blue')//会覆盖
+        console.log(localStorage.getItem('color'))//"blue"
+        localStorage.removeItem('color')
+        localStorage.clear();//清空
+        localStorage.setItem('name', 'kaivon');
+        localStorage.setItem('age', '18');
+        localStorage.setItem('sex', 'male');
+        localStorage.setItem('insterest', 'drink'); //顺序会变 所以通过索引的key方法就很鸡肋
+        // 存储对象 通过 JSON.stringify() 转字符串 通过JSON.parse()转化回来 不然存储的就是[object Object]
+        localStorage.setItem('testObj', {
+            name: "111"
+        }); //[object Object]
+        localStorage.setItem('test1Obj', JSON.stringify({
+            "name": "111"
+        }));
+        console.log(JSON.parse(localStorage.getItem('test1Obj')))
+    </script>
+</body>
+
+</html>
