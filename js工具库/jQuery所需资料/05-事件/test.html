@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            font-size: 20px;
+            color: #fff;
+            line-height: 40px;
+            padding: 0 15px;
+            background: green;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 事件名称函数 -->
+    <!-- <button id="btn1">事件名称函数</button> -->
+
+    <!-- 通过on添加 -->
+    <!-- <button id="btn2">通过on添加</button> -->
+    <!-- <div id="btn3">
+        <h2>事件委托例子</h2>
+        <p>段落</p>
+        <ul>
+            <li>haha</li>
+        </ul>
+    </div> -->
+
+    <!-- 通过one添加 -->
+    <!-- <div id="btn4">
+        <button>通过one添加</button>
+    </div> -->
+
+    <!-- 解除事件 -->
+    <!-- <button id="btn5">解除事件</button>
+    <button id="testOff">请解除我身上的事件</button> -->
+
+    <!-- trigger触发事件和triggerHandler触发事件 -->
+    <!-- <button id="btn6">trigger触发事件</button>
+    <button id="btn7">triggerHandler触发事件</button>
+    <div id="test">
+        <h2>title</h2>
+        <p>paragraph</p>
+    </div> -->
+
+    <!-- trigger与triggerHandler的区别 -->
+
+    <!-- 区别1：默认行为 -->
+    <!-- <button id="trigger">trigger</button>
+    <button id="triggerHandler">triggerHandler</button>
+    <br>
+    <input type="text" value="获取焦点"> -->
+
+    <!-- 区别2：执行事件的元素的数量 -->
+    <!-- <button id="trigger">trigger</button>
+    <button id="triggerHandler">triggerHandler</button>
+    <ul id="color">
+        <li>red</li>
+        <li>green</li>
+        <li>blue</li>
+        <li>yellow</li>
+    </ul> -->
+
+    <!-- 区别3：是否冒泡 -->
+    <!-- <button id="trigger">trigger</button>
+    <button id="triggerHandler">triggerHandler</button>
+    <div id="bubble">
+        <h2>
+            <span>陈学辉</span>
+        </h2>
+    </div> -->
+
+    <!-- 区别4：链式操作 -->
+    <!-- <button id="btn8">链式操作</button> -->
+
+    <!-- trigger 和 triggerHandler 触发自定义事件 -->
+    <!-- <button id="btn9">自定义事件</button>
+    <button id="trigger">trigger</button>
+    <button id="triggerHandler">triggerHandler</button> -->
+
+    <!-- 事件对象 对比原生js和jQuery的event事件对象区别 -->
+    <!-- <button id="btn10">jQuery事件对象</button>
+    <button id="btn11">原生js事件对象</button> -->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 事件名称函数 click mousemove .....
+        // 通过事件名称作为函数名，来绑定事件
+        // $('#btn1').click(function () {
+        //     console.log('click事件名称函数');
+        // })
+
+        // 通过on添加事件 4个参数 1：原生事件名称 2：事件委托对象(处理函数的内部this指向委托对象)(好像只能一个值) 3：参数对象(存在event.data) 4：事件处理函数（event）参数
+        // 且可以自定义事件名称 通过下面的trigger自动触发
+        // 形式1：原生事件名称+事件处理函数
+        // $('#btn2').on('click', function () {
+        //     $(this).css('background', 'red');
+        // })
+        // 形式2：原生事件名称+参数+事件处理函数（event）参数
+        // $('#btn2').on('click', { color: "red" }, function (e) {
+        //     $(this).css('background-color', e.data.color);
+        //     console.log(e, e.data)
+        // })
+        // 形式3：原生事件名称+事件委托对象+（参数）+事件处理函数（event）参数
+        // $('#btn3').on('click', 'h2', function () {
+        //     console.log(this)//处理函数的内部this指向委托对象
+        //     $(this).css('background', 'red')
+        // })
+        // 形式4：对象参数
+        // $('#btn3').on({
+        //     mouseover: function () {
+        //         console.log(1)
+        //     },
+        //     click: function () {
+        //         console.log(2)
+        //     }
+        // })
+
+        // 通过one添加事件 参数和on一样 为4个 区别：只能执行一次
+        // 形式1：原生事件名称+事件处理函数
+        // $('#btn4').one('click', function () {
+        //     $(this).css('background', 'red');
+        //     console.log('one只触发一次')
+        // })
+        // 形式2：原生事件名称+参数+事件处理函数（event）参数
+        // $('#btn4').one('click', { color: "red" }, function (e) {
+        //     $(this).css('background-color', e.data.color);
+        //     console.log(e, e.data)
+        // })
+        // 形式3：原生事件名称+事件委托对象+（参数）+事件处理函数（event）参数
+        // $('#btn4').one('click', 'button', function () {
+        //     console.log(this)//处理函数的内部this指向委托对象
+        //     $(this).css('background', 'red')
+        // })
+        // 形式4：对象参数
+        // $('#btn4').one({
+        //     mouseover: function () {
+        //         console.log(1)
+        //     },
+        //     click: function () {
+        //         console.log(2)
+        //     }
+        // })
+
+        // 解除事件 off() 可传入参数 不传参数：删除所有事件 传入参数：删除指定事件
+        // $('#testOff').click(function () {
+        //     $(this).css('background', 'red');
+        // })
+        // $('#testOff').mousemove(function () {
+        //     $(this).css('background', 'pink');
+        // })
+        // $('#btn5').click(function () {
+        //     // $('#testOff').off();
+        //     $('#testOff').off('click');
+        // })
+
+        // trigger触发事件和triggerHandler触发事件 都需要传入参数
+        // 上面的添加事件都是需要我们点击 或者 达到了某些事件条件后主动触发的
+        // 下面通过trigger和triggerHandler来达到事件的自动触发 并介绍两者的区别
+        // 例子:通过trigger和triggerHandler来达到事件的自动触发
+        // $('#test').on({
+        //     click: function () {
+        //         $(this).css('background', 'red');
+        //     }
+        // })
+        // $('#btn6').click(function () {
+        //     $('#test').trigger('click');
+        //     console.log('trigger clicked')
+        // })
+        // $('#btn7').click(function () {
+        //     $('#test').triggerHandler('click');
+        //     console.log('triggerHandler clicked')
+        // })
+        // // 或者定时器
+        // setTimeout(function () {
+        //     $('#test').trigger('click');
+        // }, 500)
+        // setTimeout(function () {
+        //     $('#test').triggerHandler('click');
+        // }, 500)
+
+        // trigger和triggerHandler的4大区别:
+        // 区别1:默认事件的触发 trigger:会触发默认事件 比如input focus会触发聚焦样式 triggerHandler:不会触发默认事件
+        // $('input').focus(function () { console.log('focus') });
+        // $('#trigger').click(function () {
+        //     $('input').trigger('focus');
+        //     console.log('trigger clicked')
+        // })
+        // $('#triggerHandler').click(function () {
+        //     $('input').triggerHandler('focus');
+        //     console.log('triggerHandler clicked')
+        // })
+
+        // 区别2:执行事件的元素的数量 trigger:触发全部 triggerHandler:触发元素第一个的事件
+        // $("#color li").on({
+        //     click: function () {
+        //         console.log($(this).html() + "" + $(this).index())
+        //     }
+        // })
+        // $("#trigger").click(function () {
+        //     console.log("trigger clicked")
+        //     $("#color li").trigger('click')//触发全部li事件
+        // })
+        // $('#triggerHandler').click(function () {
+        //     console.log("triggerHandler clicked")
+        //     $("#color li").triggerHandler('click')//只触发第一个li事件
+        // })
+
+        // 区别3：是否冒泡 trigger触发冒泡 triggerHandler不触发冒泡
+        // $('#bubble span').click(function () {
+        //     console.log('bubble span clicked')
+        // })
+        // $('#bubble h2').click(function () {
+        //     console.log('bubble h2 clicked')
+        // })
+        // $('#trigger').click(function () {
+        //     $('#bubble span').trigger('click')//冒泡
+        // })
+        // $('#triggerHandler').click(function () {
+        //     $('#bubble span').triggerHandler('click');//不冒泡
+        // })
+
+        // 区别4：链式操作 本质trigger返回事件本身对象 triggerHandler返回undefined
+        // $('#btn8').on('click',function(){
+        //     console.log('click')
+        // })
+        // $('#btn8').on('mouseover',function(){
+        //     $(this).css('background',"red")
+        // })
+        // // $('#btn8').trigger('click').trigger('mouseover')// 链式
+        // $('#btn8').triggerHandler('click').triggerHandler('mouseover')//Uncaught TypeError: Cannot read properties of undefined (reading 'triggerHandler') 只需要在click事件返回触发事件本身(this)即可:
+        // $('#btn8').on('click',function(){
+        //     console.log('click')
+        //     return $(this);
+        // })
+        // $('#btn8').on('mouseover',function(){
+        //     $(this).css('background',"red")
+        // })
+        // $('#btn8').triggerHandler('click').triggerHandler('mouseover')//链式
+
+        // trigger 和 triggerHandler 触发自定义事件
+        // $('#btn9').on({
+        //     click(){
+        //         console.log("clicked")
+        //     },
+        //     end(){
+        //         $(this).css("background","red")
+        //     }
+        // })
+        // $('#trigger').click(function(){
+        //     $('#btn9').trigger('end')
+        // })
+        // $('#triggerHandler').click(function(){
+        //     $('#btn9').triggerHandler('end')
+        // })
+
+        // 事件对象
+        // $('#btn10').click(function(event){
+        //     console.log(event)
+        // })
+        // $("#btn11")[0].onclick=function(event){
+        //     console.log(event)
+        // }
+    </script>
+</body>
+
+</html>

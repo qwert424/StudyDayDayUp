@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: #fff;
+            font-size: 18px;
+            padding: 5px 10px;
+            background: green;
+            border: none;
+        }
+
+        #box {
+            width: 400px;
+            height: 400px;
+            padding: 20px;
+            margin: 20px;
+            background: #ccc;
+            border: 10px solid green;
+            position: relative;
+        }
+
+        #box img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 基本特效 -->
+    <!-- <button id="hide">隐藏</button>
+    <button id="show">显示</button>
+    <button id="toggle">隐藏/显示切换</button> -->
+
+    <!-- 滑动特效 -->
+    <!-- <button id="slideUp">滑动隐藏</button>
+    <button id="slideDown">滑动显示</button>
+    <button id="slideToggle">滑动隐藏/显示切换</button> -->
+
+    <!-- 渐变特效 -->
+    <!-- <button id="fadeOut">淡出隐藏</button>
+    <button id="fadeIn">淡入显示</button>
+    <button id="fadeToggle">淡出隐藏/淡入显示切换</button>
+    <button id="fadeTo">透明度变化</button> -->
+
+    <!-- 自定义动画 -->
+    <!-- <button id="animate">自定义动画</button> -->
+
+    <!-- 自定义动画链式操作 -->
+    <!-- <button id="animateChainType">自定义动画链式操作</button> -->
+
+    <!-- 控制动画  delay-->
+    <!-- <button id="stop">暂停动画</button> -->
+    <!-- <button id="finish">完成动画</button> -->
+
+    <!-- 图片容器 -->
+    <!-- <div id="box">
+        <img src="./06-内置特效/images/img_02.jpg" alt="">
+    </div> -->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 基本特效 hide show toggle 都有很多参数 speed/duration fn 动画过程中盒模型的属性一直在改变 最终到达display：none
+        // $('#hide').click(function () {
+        //     // $('#box').hide();
+        //     // $('#box').hide('slow');
+        //     $('#box').hide(4000, function () {
+        //         console.log('hide动画完成了');
+        //     })
+        // })
+        // $('#show').click(function () {
+        //     $('#box').show(4000, function () {
+        //         console.log('show动画完成了')
+        //     })
+        // })
+        // $('#toggle').click(function () {
+        //     $('#box').toggle(4000, function () {
+        //         console.log('toggle动画完成了')//hide show 动画结束都会输出
+        //         // 可以通过定义变量 如 let n=0；每次n++；通过n%2来判断当前是隐藏还是显示
+        //     })
+        // })
+
+        // 滑动特效 类似卷帘门效果 slideUP(收起 滑动隐藏) slideDown（放下 滑动显示） slideToggle 参数都大体一致
+        // $('#slideUp').click(function () {
+        //     $('#box').slideUp(4000, function () {
+        //         console.log('slideUp动画完成了')
+        //     });
+        // })
+        // $('#slideDown').click(function () {
+        //     $('#box').slideDown(4000, function () {
+        //         console.log('slideDown动画完成了')
+        //     });
+        // })
+        // $('#slideToggle').click(function () {
+        //     $('#box').slideToggle(4000, function () {
+        //         console.log('slideToggle动画完成了')
+        //         // 可以通过定义变量 如 let n=0；每次n++；通过n%2来判断当前是隐藏还是显示
+        //     });
+        // })
+
+        // 渐变特效 fadeIn(显示) fadeOut(隐藏) fadeToggle(切换) fadeTo(透明度)  主要通过改变opacity 来显示、隐藏
+        // $('#fadeIn').click(function () {
+        //     $('#box').fadeIn(4000, function () {
+        //         console.log('fadeIn动画完成了')
+        //     });
+        // })
+        // $('#fadeOut').click(function () {
+        //     $('#box').fadeOut(4000, function () {
+        //         console.log('fadeOut动画完成了')
+        //     });
+        // })
+        // $('#fadeToggle').click(function () {
+        //     $('#box').fadeToggle(4000, function () {
+        //         console.log('fadeToggle动画完成了')
+        //         // 可以通过定义变量 如 let n=0；每次n++；通过n%2来判断当前是隐藏还是显示
+        //     });
+        // })
+        // $('#fadeTo').click(function () {
+        //     $('#box').fadeTo('fast', 0.5, function () {
+        //         console.log('fadeTo动画完成了')
+        //     });//三个参数 1：速度speed 2：opacity 透明度 3：回调函数
+        // })
+
+        // 自定义动画 animation 众多参数(params speed fn...) 所有指定的属性必须用骆驼形式
+        // $('#animate').click(function () {
+        //     // $("#box").animate({ width: 200 }, 4000, function () { console.log("animation finished") })
+        //     $("#box").animate({
+        //         width: 200,
+        //         height: "toggle",//高度在0-目前高度切换
+        //         left: "+=100"
+        //     }, 4000, function () { console.log("animation finished") })
+        // })
+
+        // 自定义动画链式操作 +delay() 延迟动画
+        // $('#animateChainType').click(function () {
+        //     $('#box').animate({ width: 200 }, "fast", function () {
+        //         console.log("width改变了，目前" + $('#box').width())
+        //     }).delay(1000).animate({ height: 200 }, "slow", function () { console.log("height改变了，目前" + $('#box').height()) }).animate({ opacity: 0.5 }, 'normal', function () {
+        //         console.log("opacity改变")
+        //     })
+        // })
+
+        // 控制动画 stop(clearQueue传入参数ture 是的保持当前暂停的状态 false为如果队列中有等待执行的动画，他们将被马上执行;第二个参数是立即完成当前动画) finish
+        // $('#stop').click(function () {
+        //     // $('#box').stop(true)//保持当前动画暂停状态
+        //     // $('#box').stop()//等待队列的动画立即完成
+        //     // $('#box').stop(true, true)//等待队列的动画立即完成
+        // })
+        // $('#finish').click(function () {
+        //     $('#box').finish();//立刻完成状态 将盒模型直接改到最终状态
+        // })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li,
+        p {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 获取后代元素 -->
+    <!-- <ul class="child">
+        <li>red</li>
+        <li>
+            <ul>
+                <li>green</li>
+                <li class="lispan"><span>blue</span></li>
+            </ul>
+        </li>
+        <p>hshs</p>
+        <li><span>yellow</span></li>
+    </ul> -->
+
+    <!-- 获取祖先元素 -->
+    <!-- <ul class="parent" style="position: relative;">
+        <li>white</li>
+        <li>
+            <ul>
+                <li>black</li>
+                <li>orange</li>
+                <li>gold</li>
+            </ul>
+        </li>
+        <li>grey</li>
+    </ul> -->
+
+    <!-- 获取祖先元素.closest() -->
+    <!-- <ul class="closest">
+        <li>
+            <ul>
+                <li>pink</li>
+                <li>green</li>
+            </ul>
+        </li>
+    </ul> -->
+
+    <!-- 获取后面的兄弟元素 -->
+    <!-- <ul class="next">
+        <li>purple</li>
+        <li>cyan</li>
+        <li>
+            <ul>
+                <li>pink</li>
+            </ul>
+        </li>
+        <p>brown</p>
+        <div>skyblue</div>
+    </ul> -->
+
+    <!-- 获取前面的兄弟元素 -->
+    <!-- <ul class="prev mb">
+        <div>skyblue</div>
+        <p>brown</p>
+        <li>
+            <ul>
+                <li>pink</li>
+            </ul>
+        </li>
+        <li>cyan</li>
+        <li>purple</li>
+    </ul> -->
+
+    <!-- 获取所有的兄弟节点 -->
+    <ul class="siblings">
+        <li>red</li>
+        <li class="select">green</li>
+        <li>blue</li>
+        <li class="select">yellow</li>
+        <li>
+            <ul>
+                <li>pink</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 获取后代元素 children find 
+        // $('.child').children().css('border-color', 'red');
+        // // children可传入参数：选择器 进行结果赛选
+        // $('.child').children('li').css('border-color', 'green');
+        // // find 和 children 区别：find可以找到当前元素下的所有子节点(后代元素) children只能找到当前元素下的直接子节点(第一层子节点)
+        // $('.child').find('.lispan').css('border-color', 'blue');
+
+        // 获取祖先元素 parent parents parentUntil offsetParent(定位父级)
+        // parent可以传入参数：选择器 进行结果筛选
+        // parents可以传入参数：选择器 进行结果筛选
+        // parentUntil传入参数：选择器 进行范围限制
+        // $('.parent ul li:eq(1)').css('border-color', 'red');
+        // $('.parent ul li:eq(1)').parent().css('border', '1px solid green'); // 获取父级
+        // $('.parent ul li:eq(1)').parent('div').css('border', '1px solid green'); // 获取父级且是div
+        // // parents 找到上面的所有父级 层层向上
+        // $('.parent ul li:eq(1)').parents().css('border', '1px solid blue');
+        // console.log($('.parent ul li:eq(1)').parents())
+        // $('.parent ul li:eq(1)').parents('.parent').css('border', '1px solid blue');//赛选 不影响其一直向上找父级
+        // $('.parent ul li:eq(1)').parentsUntil('.parent').css('border', '1px solid blue');//对范围进行限制 找到处了选择器的父级的所有父级
+        // $('.parent').css('position', 'relative');
+        // $('.parent ul li:eq(1)').offsetParent().css('border', '1px solid #f00'); // 找到定位父级 最近的 没有就是根节点 html
+
+        // 获取祖先元素.closest() 不推荐使用 区别于parents：closest找到自身符合就返回自身 层层查找 要给参数 返回找到的‘closest元素’
+        // $('.closest ul li').closest('ul').css('border', '1px solid #f00');
+        // $('.closest ul li').closest('li').css('border', '1px solid #f00');// 自己是父级 自己就是祖先
+
+        // 获取后面的兄弟元素 next nextAll nextUntil
+        // next可以传入参数：选择器 进行结果筛选
+        // nextAll可以传入参数：选择器 进行结果筛选
+        // nextUntil传入参数：选择器 进行范围限制
+        // $('.next li:first').css('border', '1px solid #f00');
+        // $('.next li:first').next().css('border', '1px solid pink');
+        // $('.next li:first').next('div').css('border', '1px solid green');
+        // $('.next li:first').nextAll('li').css('border', '1px solid purple');
+        // $('.next li:first').nextUntil('div').css('border', '1px solid teal');//直到（除了）div兄弟节点的其他兄弟节点
+
+        // 获取前面的兄弟元素 prev prevAll prevUntil
+        // prev可以传入参数：选择器 进行结果筛选
+        // prevAll可以传入参数：选择器 进行结果筛选
+        // prevUntil传入参数：选择器 进行范围限制
+        // $('.prev li:last').prev().css('border', '1px solid #f00');
+        // $('.prev li:last').prev('div').css('border', '1px solid green');
+        // $('.prev li:last').prevAll().css('border', '1px solid purple');
+        // $('.prev li:last').prevAll('li').css('border', '1px solid purple');
+        // $('.prev li:last').prevUntil('p').css('border', '1px solid teal');
+
+        // 获取所有的兄弟节点 siblings
+        // siblings可以传入参数：选择器 进行结果筛选
+        // $('.siblings li:eq(3)').css('border', '1px solid #f00');
+        // $('.siblings li:eq(3)').siblings().css('border', '1px solid purple ');
+        // $('.siblings li:eq(2)').siblings('.select').css('border', '1px solid purple ');//添加了参数，进行过滤
+
+    </script>
+</body>
+
+</html>

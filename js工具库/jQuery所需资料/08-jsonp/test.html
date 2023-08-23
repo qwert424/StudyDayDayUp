@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jsonp学习 了解如何解决跨域问题</title>
+
+</head>
+
+<body>
+    <!-- Jsonp Json With Padding -->
+    <!-- 通过 script src 来将数据请求到页面中，然后当作js来执行 -->
+
+    <!-- jsonp -->
+    <button id="jsonp">jsonp</button>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jsonp练习
+        // $('#jsonp').click(function () {
+        //     $.ajax({
+        //         url: "https://api.douban.com/v2/movie/in_theaters",
+        //         dataType: "jsonp",
+        //         method: "post",
+        //         success: function (data) {
+        //             console.log(data)
+        //         }
+        //     })
+        // })
+
+        // jsonp简单实现
+        const jsonp = {
+            ajax(opations) {
+                const url = opations.url;//url
+                const dataType = opations.dataType;//返回类型
+                const method = opations.method;//请求类型
+
+                // 用于判断是否同源
+                let targetProtocol = ""//用户地址的协议
+                let targetHost = ""//用户地址的域名和端口
+                if (url.indexOf('http') === 0) {
+                    // 说明用户传入的地址是一个绝对地址
+                    const newUrl = new URL(url);
+                    targetProtocol = newUrl.protocol;
+                    targetHost = newUrl.host;
+                } else {
+                    targetProtocol = location.protocol;
+                    targetHost = location.host;
+                }
+                if (dataType !== "jsonp") {
+                    return
+                }
+                if (targetProtocol === location.protocol && targetHost === location.host) {
+                    $.ajax({
+                        url,
+                        method,
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    })
+                } else {
+                    const callback = 'cb' + Math.floor(Math.random() * 100000);	//随机生成一个函数名
+                    window[callback] = options.success;
+                }
+                //生成script标签
+                var script = document.createElement('script');
+                if (url.indexOf('?') > 0) {
+                    //这个条件成立说明用户传的url里面有参数（带问号了）
+                    script.src = url + '&callback=' + callback;
+                } else {
+                    script.src = url + '?callback=' + callback;
+                }
+
+                document.head.appendChild(script);
+            }
+        }
+
+        jsonp.ajax({
+            url: "https://api.douban.com/v2/movie/in_theaters",
+            dataType: "jsonp",
+            method: 'get'
+        })
+
+    </script>
+</body>
+
+</html>

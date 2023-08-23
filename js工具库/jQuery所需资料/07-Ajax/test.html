@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- get请求 -->
+    <!-- <button id="get">get请求</button>
+    <button id="ajaxGet">ajax get请求</button> -->
+
+    <!-- post请求 -->
+    <!-- <div id="login">
+        <div>
+            <label for="username">用户名</label>
+            <input type="text" name="account">
+        </div>
+        <div>
+            <label for="password">密码</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <button id="loginBtn1">登录(post请求)</button>
+            <button id="loginBtn2">登录(ajax post请求)</button>
+        </div>
+    </div> -->
+
+    <!-- getJSON请求 通过 HTTP GET 请求载入 JSON 数据。-->
+    <!-- <button id="json">JSON请求</button> -->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // get请求 4个参数 1：url地址 2：param 3：回调函数 4：返回类型格式
+        // $("#get").click(function () {
+        //     $.get("https://study.duyiedu.com/api/user/exists", { loginId: "admin" }, function (data) {
+        //         console.log(data);
+        //     }, 'json')
+        // })
+        // ajax get请求 对象参数 success成功请求回调 type请求类型 url请求地址 data请求参数 dataType返回类型格式 error失败回调
+        // $("#ajaxGet").click(function () {
+        //     $.ajax({
+        //         url: "https://study.duyiedu.com/api/user/exists",
+        //         type: "get",
+        //         data: { loginId: "admin" },
+        //         dataType: "json",
+        //         success: function (data) {
+        //             console.log(data);
+        //         },
+        //         error: function (err) {
+        //             console.log(err);
+        //         }
+        //     })
+        // })
+
+        // post请求
+        // $('#loginBtn1').click(function () {
+        //     const loginId = $('input[name="account"]').val();
+        //     const loginPwd = $('input[name="password"]').val();
+        //     $.post("https://study.duyiedu.com/api/user/login", {
+        //         loginId, loginPwd
+        //     }, function (resp) {
+        //         console.log(resp)
+        //     }, 'json');
+        // })
+        // ajax post请求
+        // $('#loginBtn2').click(function () {
+        //     $.ajax({
+        //         url: "https://study.duyiedu.com/api/user/login",
+        //         type: "post",
+        //         data: {
+        //             loginId: $('input[name="account"]').val(),
+        //             loginPwd: $('input[name="password"]').val()
+        //         },
+        //         dataType: "json",
+        //         success: function (data) {
+        //             console.log(data);
+        //         },
+        //         error: function (err) {
+        //             console.log(err);
+        //         }
+        //     })
+        // })
+
+        // JSON请求
+        // $('#json').click(function () {
+        //     $.getJSON("https://study.duyiedu.com/api/user/exists", { loginId: "admin" }, function (data) { console.log(data) })
+        // })
+    </script>
+</body>
+
+</html>

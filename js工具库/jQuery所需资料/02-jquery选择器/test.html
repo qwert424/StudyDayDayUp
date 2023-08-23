@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+
+        ul {
+            width: 500px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            padding: 20px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 基础选择器 -->
+    <!-- <ul id="list1">
+        <li>red</li>
+        <li class="red">red</li>
+        <li>red</li>
+        <li>red</li>
+        <li>red</li>
+    </ul>
+    <ul id="list2">
+        <li>red</li>
+        <li>red</li>
+        <li class="red">red</li>
+        <li>red</li>
+        <li>red</li>
+    </ul>
+    <p class="red">red</p> -->
+
+    <!-- 层级选择器 子类选择器 -->
+    <!-- <div>
+        <a href="#" class="link">链接</a>
+        <a href="#">链接</a>
+        <a href="#">链接</a>
+        <a href="#">链接</a>
+        <p>
+            <a href="#">链接</a>
+        </p>
+    </div> -->
+
+    <!-- 属性选择器 -->
+    <!-- <ul id="ulColor">
+        <li class="red">color</li>
+        <li title="blue">color</li>
+        <li title="css-1">color</li>
+        <li id="color1-green">color</li>
+        <li id="red-1color">color</li>
+        <li lang="encnhk">color</li>
+        <li lang="en cn">color</li>
+        <li class="cl" name="kaivon">color</li>
+    </ul> -->
+
+    <!-- 基础过滤选择器 -->
+    <!-- <ol id="olColor">
+        <li>color</li>
+        <li>color</li>
+        <li lang="it">color</li>
+        <li lang="en">color</li>
+        <li id="tar">color</li>
+        <li>color</li>
+        <li>color</li>
+        <li>color</li>
+        <p lang="it">color</p>
+    </ol>
+    <h1>h1</h1>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4> -->
+
+    <!-- 子元素过滤器 -->
+    <!-- <div id="paragraph">
+        <p>段落</p>
+        <p>段落</p>
+        <span>段落</span>
+        <p>段落</p>
+        <span>段落</span>
+        <p>段落</p>
+        <span>段落</span>
+    </div>
+    <div id="only">
+        <p>唯一的一个子元素</p>
+    </div>
+    <div id="only-two">
+        <span>span</span>
+        <p>p</p>
+    </div> -->
+
+    <!-- 内容过滤选择器 -->
+    <!-- <div id="content">kaivon</div>
+    <div></div>
+    <div id="has">
+        <div>
+            <p>段落</p>
+        </div>
+    </div>
+    <div>
+        <h1 id="title">大标题</h1>
+    </div> -->
+
+    <!-- 表单过滤选择器 -->
+    <!-- <input type="button" value="按钮1">
+    <button>按钮2</button>
+    <div id="sex">
+        <input type="radio">男
+        <input type="checkbox" disabled>女
+    </div>
+    <div>
+        <input type="checkbox" checked>男
+        <input type="checkbox">女
+    </div> -->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 基础选择器
+        // $('li').css("background", "red");
+        // $('.red').css("background", "green");
+        // $('#list1').css("background", "yellow");
+        // $('*').css('border', '1px solid pink');
+        // $("li,p").css("border", "1px solid blue");
+
+        // 层级选择器
+        // $("div a").css("color", "red");
+        // $("div>a").css("color", "green");
+        // $("div a.link").css("color", "pink");
+        // $("div a.link ~a").css("color", "purple");
+        // $("div a.link +a").css("color", "blue");
+
+        // 属性选择器
+        // $("#ulColor li[class]").css("background", "yellow");
+        // $("#ulColor li[title=blue]").css("background", "blue");
+        // $("#ulColor li[title!=blue]").css("background", "gray");
+        // $("#ulColor li[title|=css]").css("background", "teal");
+        // $("#ulColor li[id^=color]").css("background", "yellow");
+        // $("#ulColor li[id$=color]").css("background", "red");
+        // $("#ulColor li[lang*=cn]").css("background", "purple");
+        // $("#ulColor li[lang~=cn]").css("background", "pink");
+        // $("#ulColor li[class=cl][name=kaivon]").css("background", "black");
+
+        // 基础过滤选择器
+        // $("#olColor li:eq(2)").css("background", "yellow");
+        // $("#olColor li:gt(3)").css("background", "red");
+        // $("#olColor li:lt(2)").css("background", "blue");
+        // $("#olColor li:not(#olColor li:eq(2))").css("background", "gray");
+        // $("#olColor li:first").css("background", "green");
+        // $("#olColor li:last").css("background", "teal");
+        // $("#olColor li:even").css("background", "purple");
+        // $("#olColor li:odd").css("background", "lightblue");
+        // $("#olColor li:lang(it)").css("background", "lightgreen");
+        // $("#olColor li:target(tar)").css("background", "brown");
+        // $(':root').css("background", "black");
+        // $(":header").css("background", "pink")
+
+        //子元素过滤器
+        // $("#paragraph p:first-child").css("background", "red");
+        // $("#paragraph span:last-child").css("background", "blue");
+        // $("#paragraph span:first-of-type").css("background", "yellow");
+        // $("#paragraph p:last-of-type").css("background", "brown");
+        // $("#paragraph p:nth-child(1)").css("background", "teal");
+        // $("#paragraph span:nth-of-type(1)").css("background", "green");
+        // $('#only p:only-child').css("background", "red")
+        // $('#only-two p:only-of-type').css("background", "blue");
+
+        //内容过滤选择器
+        // $("#content:contains(kaivon)").css("background", "red");
+        // $("div:empty").css({
+        //     width: "100px",
+        //     height: "100px",
+        //     background: "green"
+        // })
+        // $("#has:has(div p:parent)").css("background", "blue");
+        // $("#title:parent").css("background", "yellow");
+
+        // <!-- <input type="button" value="按钮1">
+        // <button>按钮2</button>
+        // <div id="sex">
+        //     <input type="radio">男
+        //     <input type="checkbox">女
+        // </div>
+        // <div>
+        //     <input type="checkbox" checked>男
+        //     <input type="checkbox">女
+        // </div>
+        //表单过滤选择器
+        // $(":button").css("background", "red");
+        // $(":input[type=checkbox]").wrap("<span></span>").parent().css("background", "black");
+        // $("#sex :checkbox").wrap("<span></span>").parent().css("background", "yellow");
+        // $("#sex :radio").wrap("<span></span>").parent().css("background", "purple");
+        // $(":checked").wrap("<span></span>").parent().css("background", "teal");
+        // $(":disabled").wrap("<span></span>").parent().css("background", "brown");
+        // $(":enabled").wrap("<span></span>").parent().css("background", "black");
+        // ...
+    </script>
+</body>
+
+</html>

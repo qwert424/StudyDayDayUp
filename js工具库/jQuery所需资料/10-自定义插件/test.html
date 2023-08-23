@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 自定义插件：
+    1、在jquery对象本身上扩展方法 $.abc() 通过$.extend(),
+    如：$.extend({
+        abc: function(value) {
+            console.log(value);
+        }
+    })
+
+    2、在dom对象上扩展方法 $('#box').abc() 通过$.fn.extend()
+    如：$.fn.extend({
+        ...
+    });
+    $.fn.test=function(val){
+        console.log(val);
+    }
+-->
+    <div class="box"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 自定义封装一个dom对象上的插件 实现拖拽功能
+        // 实现传入参数limit（限制范围）默认为false
+        $.fn.extend({
+            // 拖拽 
+            drag(options) {
+                const Options = options || {};// 参数
+                const limit = Options.limit || false;//限制
+                const This = $(this);//this对象
+                // 配置
+                $(this).css({
+                    cursor: 'pointer',
+                    position: 'relative',
+                })
+                // 拖拽功能实现
+                $(this).mousedown(function (e) {
+                    const disX = e.pageX - $(this).offset().left;
+                    const disY = e.pageY - $(this).offset().top;
+
+                    $(document).mousemove(function (e) {
+                        let newdisX = e.pageX - disX;
+                        let newdisY = e.pageY - disY;
+                        // 限制
+                        if (limit) {
+                            // 限制x轴
+                            const limitX = $(document).innerWidth() - This.outerWidth() - 2 * parseInt($('body').css('margin'));
+                            if (newdisX <= 0) {
+                                newdisX = 0;
+                            } else if (newdisX >= limitX) {
+                                newdisX = limitX;
+                            }
+                            // 限制y轴
+                            const limitY = $(document).innerHeight() - This.outerHeight() - 2 * parseInt($('body').css('margin'));
+                            if (newdisY <= 0) {
+                                newdisY = 0;
+                            } else if (newdisY >= limitY) {
+                                newdisY = limitY;
+                            }
+                        }
+                        This.css({
+                            left: newdisX,
+                            top: newdisY,
+                        })
+                    })
+                    $(document).mouseup(function () {
+                        $(this).off();
+                    })
+                })
+
+                return $(this);
+            },
+            test() {
+                console.log(1)
+            }
+        })
+        // $('.box').test()
+        $('.box').drag({
+            limit: true,
+        })
+
+    </script>
+</body>
+
+</html>
