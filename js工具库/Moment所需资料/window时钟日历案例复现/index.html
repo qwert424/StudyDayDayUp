@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟日历案例</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4225604_7lkcedukbn2.css">
+</head>
+
+<body>
+    <!-- 项目容器 -->
+    <div class="item-container">
+        <!-- 标题 -->
+        <h1>时钟日历案例</h1>
+        <!-- 日历容器 -->
+        <div class="clock-container">
+            <!-- 日历时间标题容器 -->
+            <div class="time-title-container">
+                <span class="time-short"></span>
+                <span class="time-main"></span>
+            </div>
+            <!-- 日历内容容器 -->
+            <div class="time-main-container">
+                <!-- 切换区域 -->
+                <div class="change-container">
+                    <span class="time"></span>
+                    <span class="dire iconfont icon-shangjiantou"></span>
+                    <span class="dire iconfont icon-xiajiantou"></span>
+                </div>
+                <!-- 日历主区域 -->
+                <div class="main-container">
+                    <!-- 星期容器 -->
+                    <div class="title"></div>
+                    <!-- 主区域 -->
+                    <ul class="main"></ul>
+                </div>
+            </div>
+            <!-- 显示容器 -->
+            <div class="showSelectTime-container"></div>
+        </div>
+    </div>
+    <script src="../08-案例-2/js/moment-with-locales.js"></script>
+    <script src="../08-案例-2/js/calendar.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

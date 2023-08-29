@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 项目容器 */
+.item-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 460px;
+    text-align: center;
+}
+
+/* 标题 */
+.item-container h1 {
+    color: #008c8c;
+    margin-bottom: 10px;
+}
+
+/* 日历容器 */
+.item-container .clock-container {
+    background-color: rgb(38, 38, 38);
+    border-radius: 10px;
+}
+
+/* 日历时间标题容器 */
+.item-container .clock-container .time-title-container {
+    color: #fff;
+    height: 110px;
+    text-align: left;
+    padding: 20px;
+    border-bottom: 1px solid rgb(70, 70, 70);
+    font-weight: 100;
+}
+
+.item-container .clock-container .time-title-container .time-short {
+    font-size: 40px;
+    letter-spacing: 4px;
+    display: block;
+    height: 50px;
+}
+
+.item-container .clock-container .time-title-container .time-main {
+    color: rgb(180, 202, 218);
+    font-size: 14px;
+}
+
+.item-container .clock-container .time-title-container .time-main:hover {
+    color: rgb(188, 211, 228)
+}
+
+/* 日历内容容器 */
+.item-container .clock-container .time-main-container {
+    padding: 20px;
+    border-bottom: 1px solid rgb(70, 70, 70);
+}
+
+/* 切换区域 */
+.item-container .clock-container .time-main-container .change-container {
+    height: 20px;
+    color: rgb(183, 183, 183);
+    display: flex;
+    align-items: center;
+}
+
+.item-container .clock-container .time-main-container .change-container .time {
+    flex: 1 1 auto;
+    text-align: left;
+    cursor: pointer;
+
+}
+
+.item-container .clock-container .time-main-container .change-container .dire {
+    width: 65px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.item-container .clock-container .time-main-container .change-container .dire:hover,
+.item-container .clock-container .time-main-container .change-container .time:hover {
+    color: rgb(209, 209, 209);
+}
+
+/* 日历主区域 */
+.item-container .clock-container .time-main-container .main-container {
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(7, 54px);
+    grid-template-rows: repeat(7, 54px);
+    grid-gap: 6px;
+    grid-auto-flow: row
+}
+
+/* 星期容器 */
+.item-container .clock-container .time-main-container .main-container .title {
+    grid-area: 1/1/2/8;
+    display: flex;
+    height: 60px;
+    width: 100%;
+    justify-content: space-around;
+    line-height: 60px;
+}
+
+/* 主区域 */
+.item-container .clock-container .time-main-container .main-container .main {
+    grid-area: 2/1/8/8;
+    display: grid;
+    grid-template-columns: repeat(7, 54px);
+    grid-template-rows: repeat(6, 54px);
+    color: rgb(237, 237, 237);
+    gap: 6px;
+    justify-content: center;
+}
+
+.item-container .clock-container .time-main-container .main-container .main .item {
+    width: 54px;
+    height: 54px;
+    text-align: center;
+    cursor: pointer;
+    max-height: 54px;
+    max-width: 54px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-container .clock-container .time-main-container .main-container .main .item span:nth-child(2) {
+    font-size: 14px;
+}
+
+.item-container .clock-container .time-main-container .main-container .main .item:hover {
+    border: 3px solid rgb(124, 124, 124);
+}
+
+
+.item-container .clock-container .time-main-container .main-container .main .item.selected {
+    border: 3px solid #000;
+    color: #fff;
+    background-color: rgb(2, 117, 213);
+    box-shadow: 0 0 0 3px rgb(2, 117, 213);
+}
+
+.item-container .clock-container .time-main-container .main-container .main .item.selected:hover {
+    box-shadow: 0 0 0 3px rgb(102, 174, 231)
+}
+
+.item-container .clock-container .time-main-container .main-container .main .item.notselect {
+    color: rgb(99, 99, 99)
+}
+/* 显示容器 */
+.item-container .clock-container .showSelectTime-container{
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    text-align: left;
+    color: #fff;
+    font-size: 20px;
+}
