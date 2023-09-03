@@ -1,12 +1,10 @@
-import { loginApi, logout, getInfo } from '@/api/user'
-// import { getToken, setToken, removeToken } from '@/utils/auth'
-// import { resetRouter } from '@/router'
+import { loginApi, getInfoApi } from '@/api/user'
+import { getToken, removeToken } from '@/utils/auth'
+import { resetRouter } from '@/router'
 
 const getDefaultState = () => {
   return {
-    // token: getToken(),
-    // name: '',
-    // avatar: '',
+    token: getToken(),//Token
     userInfo: null,//用户信息
   }
 }
@@ -14,18 +12,12 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const mutations = {
-  // RESET_STATE: (state) => {
-  //   Object.assign(state, getDefaultState())
-  // },
-  // SET_TOKEN: (state, token) => {
-  //   state.token = token
-  // },
-  // SET_NAME: (state, name) => {
-  //   state.name = name
-  // },
-  // SET_AVATAR: (state, avatar) => {
-  //   state.avatar = avatar
-  // },
+  RESET_STATE: (state) => {
+    Object.assign(state, getDefaultState())
+  },
+  SET_TOKEN: (state, token) => {
+    state.token = token
+  },
   SET_USERINFO: (state, payload) => {
     state.userInfo = payload
   }
@@ -39,6 +31,7 @@ const actions = {
       const { data } = resp;
       if (data) {
         commit('SET_USERINFO', data)
+        commit('SET_TOKEN', getToken())
         resolve();
       } else {
         reject(resp);
@@ -46,49 +39,38 @@ const actions = {
     })
   },
 
-  // get user info
-  // getInfo({ commit, state }) {
-  //   return new Promise((resolve, reject) => {
-  //     getInfo(state.token).then(response => {
-  //       const { data } = response
+  // get user info token恢复用户信息 whoami
+  getInfo({ commit, token }) {
+    return new Promise(async (resolve, reject) => {
+      const resp = await getInfoApi(token);
+      const { data } = resp;
+      if (data) {
+        commit('SET_USERINFO', data)
+        resolve();
+      } else {
+        reject(resp);
+      }
+    })
+  },
 
-  //       if (!data) {
-  //         return reject('Verification failed, please Login again.')
-  //       }
+  // user logout 退出登录
+  logout({ commit }) {
+    return new Promise((resolve) => {
+      removeToken() // must remove  token  first
+      resetRouter()
+      commit('RESET_STATE')
+      resolve();
+    })
+  },
 
-  //       const { name, avatar } = data
-
-  //       commit('SET_NAME', name)
-  //       commit('SET_AVATAR', avatar)
-  //       resolve(data)
-  //     }).catch(error => {
-  //       reject(error)
-  //     })
-  //   })
-  // },
-
-  // user logout
-  // logout({ commit, state }) {
-  //   return new Promise((resolve, reject) => {
-  //     logout(state.token).then(() => {
-  //     removeToken() // must remove  token  first
-  //     resetRouter()
-  //     commit('RESET_STATE')
-  //     resolve()
-  //     }).catch(error => {
-  //     reject(error)
-  //     })
-  //   })
-  // },
-
-  // remove token
-  // resetToken({ commit }) {
-  //   return new Promise(resolve => {
-  //     removeToken() // must remove  token  first
-  //     commit('RESET_STATE')
-  //     resolve()
-  //   })
-  // }
+  // remove token 删除无效本地token
+  resetToken({ commit }) {
+    return new Promise(resolve => {
+      removeToken() // must remove  token  first
+      commit('RESET_STATE')
+      resolve()
+    })
+  }
 }
 
 export default {

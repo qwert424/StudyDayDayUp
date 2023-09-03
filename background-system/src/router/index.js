@@ -51,7 +51,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '控制台', icon: 'dashboard' }
+      meta: { title: '控制台', icon: 'dashboard', auth: true }
     }]
   },
 
@@ -63,7 +63,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'HomePage',
         component: () => import('@/views/homePage/index'),
-        meta: { title: '首页标语', icon: 'el-icon-s-home' }
+        meta: { title: '首页标语', icon: 'el-icon-s-home', auth: true }
       }
     ]
   },
@@ -73,25 +73,25 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/blog/blogList',
     name: 'Blog',
-    meta: { title: '文章管理', icon: 'el-icon-tickets' },
+    meta: { title: '文章管理', icon: 'el-icon-tickets', auth: true },
     children: [
       {
         path: 'blogList',
         name: 'BlogList',
         component: () => import('@/views/blog/blogList/index'),
-        meta: { title: '文章列表', icon: 'el-icon-s-order' }
+        meta: { title: '文章列表', icon: 'el-icon-s-order', auth: true }
       },
       {
         path: 'blogType',
         name: 'BlogType',
         component: () => import('@/views/blog/blogType/index'),
-        meta: { title: '文章分类', icon: 'el-icon-menu' }
+        meta: { title: '文章分类', icon: 'el-icon-menu', auth: true }
       },
       {
         path: 'addBlog',
         name: 'AddBlog',
         component: () => import('@/views/blog/addBlog/index'),
-        meta: { title: '添加文章', icon: 'el-icon-circle-plus' }
+        meta: { title: '添加文章', icon: 'el-icon-circle-plus', auth: true }
       },
     ]
   },
@@ -101,19 +101,19 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/project/projectList',
     name: 'Project',
-    meta: { title: '项目管理', icon: 'el-icon-s-help' },
+    meta: { title: '项目管理', icon: 'el-icon-s-help', auth: true },
     children: [
       {
         path: 'projectList',
         name: 'ProjectList',
         component: () => import('@/views/project/projectList/index'),
-        meta: { title: '项目列表', icon: 'el-icon-notebook-2' }
+        meta: { title: '项目列表', icon: 'el-icon-notebook-2', auth: true }
       },
       {
         path: 'addProject',
         name: 'AddProject',
         component: () => import('@/views/project/addProject/index'),
-        meta: { title: '项目添加', icon: 'el-icon-upload' }
+        meta: { title: '项目添加', icon: 'el-icon-upload', auth: true }
       },
     ]
   },
@@ -126,7 +126,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'Comment',
         component: () => import('@/views/comment/index'),
-        meta: { title: '评论管理', icon: 'el-icon-chat-line-round' }
+        meta: { title: '评论管理', icon: 'el-icon-chat-line-round', auth: true }
       }
     ]
   },
@@ -139,7 +139,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'Message',
         component: () => import('@/views/message/index'),
-        meta: { title: '留言板', icon: 'el-icon-headset' }
+        meta: { title: '留言板', icon: 'el-icon-headset', auth: true }
       }
     ]
   },
@@ -151,7 +151,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'About',
         component: () => import('@/views/about/index'),
-        meta: { title: '关于我', icon: 'el-icon-s-custom' }
+        meta: { title: '关于我', icon: 'el-icon-s-custom', auth: true }
       }
     ]
   },
@@ -163,7 +163,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'MySetting',
         component: () => import('@/views/mySetting/index'),
-        meta: { title: '设置', icon: 'el-icon-s-tools' }
+        meta: { title: '设置', icon: 'el-icon-s-tools', auth: true }
       }
     ]
   },

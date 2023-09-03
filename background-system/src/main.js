@@ -13,7 +13,9 @@ import store from './store'
 import router from './router'
 
 import '@/icons' // icon
-// import '@/permission' // permission control
+import '@/permission' // permission control 鉴权
+
+import { getToken } from '@/utils/auth'
 
 /**
  * If you don't want to use mock-server
@@ -34,6 +36,14 @@ Vue.use(ElementUI, { locale })
 // Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+
+// 恢复登录 whoami
+if (getToken()) {
+  store.dispatch('user/getInfo', getToken()).catch(() => {
+    store.dispatch('user/resetToken')
+  });
+}
+
 
 new Vue({
   el: '#app',
