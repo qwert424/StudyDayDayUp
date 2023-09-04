@@ -53,10 +53,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.hader-new-drop {
-  top: 50px !important;
-  left: 1260px !important;
-}
 .navbar {
   height: 50px;
   overflow: hidden;

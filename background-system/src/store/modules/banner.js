@@ -13,9 +13,6 @@ export default {
     },
     actions: {
         async asyncGetBanner(context) {
-            if (context.state.data.length) {
-                return;
-            }
             const resp = await getBanner();
             const newresp = resp.data.map(item => {
                 const initMidImg = baseURL + item.midImg;

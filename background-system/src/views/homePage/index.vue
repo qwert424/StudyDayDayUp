@@ -45,35 +45,104 @@
             align="center"
             width="150"
           >
-            <el-tooltip
-              class="item"
-              effect="dark"
-              content="编辑"
-              :hide-after="1000"
-              placement="top"
-            >
-              <el-button
-                type="primary"
-                icon="el-icon-edit"
-                circle
-                size="mini"
-              ></el-button>
-            </el-tooltip>
+            <template slot-scope="scope">
+              <el-tooltip
+                class="item"
+                effect="dark"
+                content="编辑"
+                :hide-after="1000"
+                placement="top"
+              >
+                <el-button
+                  type="primary"
+                  icon="el-icon-edit"
+                  circle
+                  size="mini"
+                  @click="handelEditClick(scope.row)"
+                ></el-button>
+              </el-tooltip>
+            </template>
           </el-table-column>
         </el-table>
       </template>
+      <el-dialog
+        title="首页 标语"
+        :visible.sync="centerDialogVisible"
+        width="45%"
+        center
+      >
+        <el-form :model="form">
+          <el-form-item label="标题">
+            <el-input v-model="form.title"></el-input>
+          </el-form-item>
+          <el-form-item label=" 描述">
+            <el-input
+              type="textarea"
+              v-model="form.description"
+              resize="none"
+            ></el-input>
+          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="首页中图">
+                <uploadComp v-model="form.midImg"></uploadComp> </el-form-item
+            ></el-col>
+            <el-col :span="12"
+              ><el-form-item label="首页大图">
+                <uploadComp v-model="form.bigImg"></uploadComp> </el-form-item
+            ></el-col>
+          </el-row>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="centerDialogVisible = false" class="PopUpBtn"
+            >取 消</el-button
+          >
+          <el-button type="primary" @click="handleEditConfirm" class="PopUpBtn"
+            >确 定</el-button
+          >
+        </span>
+      </el-dialog>
     </div>
   </div>
 </template>
 
 <script>
+import uploadComp from "@/components/uploadComp/uploadComp.vue";
 import { mapState, mapActions } from "vuex";
+import { setBanner } from "@/api/banner";
 export default {
+  data() {
+    return {
+      centerDialogVisible: false,
+      form: {
+        title: "",
+        description: "",
+      },
+    };
+  },
+  components: {
+    uploadComp,
+  },
   computed: {
     ...mapState("banner", ["data"]),
   },
   methods: {
     ...mapActions("banner", ["asyncGetBanner"]),
+    handelEditClick(resp) {
+      this.form = { ...resp };
+      return (this.centerDialogVisible = !this.centerDialogVisible);
+    },
+    async handleEditConfirm() {
+      console.log(this.form);
+      for (let i = 0; i < this.data.length; i++) {
+        if (this.data[i].id == this.form.id) {
+          this.data[i] = this.form;
+        }
+      }
+      const resp = await setBanner(this.data);
+      this.asyncGetBanner();
+      this.centerDialogVisible = false;
+    },
   },
   created() {
     this.asyncGetBanner();
@@ -84,5 +153,11 @@ export default {
 <style lang="scss" scoped>
 .data-container {
   padding: 30px;
+}
+.el-input input {
+  height: 300px;
+}
+.PopUpBtn {
+  margin: 0 10%;
 }
 </style>
