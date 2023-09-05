@@ -7,7 +7,7 @@
             type="index"
             :index="1"
             label="序号"
-            width="50"
+            width="80"
             fixed
             align="center"
           ></el-table-column>
@@ -19,21 +19,21 @@
             align="center"
           >
           </el-table-column>
-          <el-table-column prop="description" label="描述" width="350">
+          <el-table-column prop="description" label="描述" width="400">
           </el-table-column>
-          <el-table-column label="中图预览" width="200" align="center">
+          <el-table-column label="中图预览" width="230" align="center">
             <template slot-scope="scope">
               <el-image
-                style="width: 100px; height: 100px"
+                style="width: 150px"
                 :src="scope.row.initMidImg"
                 fit="contain"
               ></el-image>
             </template>
           </el-table-column>
-          <el-table-column label="大图预览" width="200" align="center">
+          <el-table-column label="大图预览" width="230" align="center">
             <template slot-scope="scope">
               <el-image
-                style="width: 100px; height: 100px"
+                style="width: 150px"
                 :src="scope.row.initBigImg"
                 fit="contain"
               ></el-image>
@@ -133,7 +133,6 @@ export default {
       return (this.centerDialogVisible = !this.centerDialogVisible);
     },
     async handleEditConfirm() {
-      console.log(this.form);
       for (let i = 0; i < this.data.length; i++) {
         if (this.data[i].id == this.form.id) {
           this.data[i] = this.form;
@@ -142,6 +141,10 @@ export default {
       const resp = await setBanner(this.data);
       this.asyncGetBanner();
       this.centerDialogVisible = false;
+      this.$message({
+        message: "修改成功",
+        type: "success",
+      });
     },
   },
   created() {
