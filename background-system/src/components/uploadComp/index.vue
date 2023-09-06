@@ -42,28 +42,25 @@ export default {
 };
 </script>
 
-<style>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-</style>
-
 <style lang="scss" scoped>
 .uploadComp-container {
+  .avatar-uploader .el-upload {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
   .avatar-uploader-icon {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
     font-size: 28px;
     color: #8c939d;
     width: 178px;
     height: 178px;
     line-height: 178px;
     text-align: center;
+  }
+  .avatar-uploader-icon:hover {
+    border-color: #409eff;
   }
   .avatar {
     width: 178px;

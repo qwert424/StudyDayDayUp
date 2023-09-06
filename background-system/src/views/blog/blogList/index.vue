@@ -18,13 +18,14 @@
             fixed
             align="center"
           ></el-table-column>
-          <el-table-column fixed prop="title" label="文章名称" width="250">
+          <el-table-column fixed label="文章名称" width="250">
             <template slot-scope="scope">
               <el-popover
                 placement="top-start"
                 title="首图预览"
                 width="160"
                 trigger="hover"
+                v-if="scope.row.formatThumb"
               >
                 <el-image
                   style="width: 130px; height: 130px"
@@ -41,16 +42,25 @@
                   >{{ scope.row.title }}</a
                 >
               </el-popover>
+              <a
+                v-else
+                slot="reference"
+                class="essayTitle"
+                @click.prevent="handleEssayClick(scope.row)"
+                target="_blank"
+                href="#"
+                >{{ scope.row.title }}</a
+              >
             </template>
           </el-table-column>
           <el-table-column prop="description" label="描述" width="400">
           </el-table-column>
-          <el-table-column
-            prop="category.name"
-            label="所属分类"
-            width="100"
-            align="center"
-          >
+          <el-table-column label="所属分类" width="100" align="center">
+            <template slot-scope="scope">
+              {{
+                scope.row.category === null ? "未分类" : scope.row.category.name
+              }}
+            </template>
           </el-table-column>
           <el-table-column
             prop="scanNumber"
@@ -114,43 +124,6 @@
           </el-table-column>
         </el-table>
       </template>
-      <!-- <el-dialog
-        title="首页 标语"
-        :visible.sync="centerDialogVisible"
-        width="45%"
-        center
-      >
-        <el-form :model="form">
-          <el-form-item label="标题">
-            <el-input v-model="form.title"></el-input>
-          </el-form-item>
-          <el-form-item label=" 描述">
-            <el-input
-              type="textarea"
-              v-model="form.description"
-              resize="none"
-            ></el-input>
-          </el-form-item>
-          <el-row>
-            <el-col :span="12">
-              <el-form-item label="首页中图">
-                <uploadComp v-model="form.midImg"></uploadComp> </el-form-item
-            ></el-col>
-            <el-col :span="12"
-              ><el-form-item label="首页大图">
-                <uploadComp v-model="form.bigImg"></uploadComp> </el-form-item
-            ></el-col>
-          </el-row>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="centerDialogVisible = false" class="PopUpBtn"
-            >取 消</el-button
-          >
-          <el-button type="primary" @click="handleEditConfirm" class="PopUpBtn"
-            >确 定</el-button
-          >
-        </span>
-      </el-dialog> -->
     </div>
     <!-- 分页容器 -->
     <div class="page-container">
@@ -178,23 +151,14 @@
 import { getBlog, deleteBlog } from "@/api/blog";
 import { formatDate } from "@/utils/tool";
 import { baseURL, FrontEndURL } from "@/basis_URL";
+import getPage from "@/mixins/pageData.js";
 export default {
+  mixins: [getPage([])],
   data() {
     return {
-      isloading: false, //加载数据中
-      data: [], //数据
-      totalBlog: 0, //总文章数
-      currentPage: 1, //当前页
       pageSize: 8, //每页显示多少条
       srcList: [], //预览图数组
-      // centerDialogVisible: false, //控制弹框
     };
-  },
-  computed: {
-    AllPageSize() {
-      //总页数
-      return Math.ceil(+this.totalBlog / this.pageSize);
-    },
   },
   methods: {
     // 获取数据
@@ -205,7 +169,7 @@ export default {
       this.srcList = [];
       this.data = resp.data.rows.map((item) => {
         const formatTime = formatDate(item.createDate);
-        const formatThumb = `${baseURL}${item.thumb}`;
+        const formatThumb = item.thumb === "" ? "" : `${baseURL}${item.thumb}`;
         this.srcList.push(formatThumb);
         return {
           ...item,
@@ -248,29 +212,16 @@ export default {
           });
         });
     },
+    // 添加文章
+    handelEditClick(data) {
+      this.$router.push({
+        path: `editBlog/${data.id}`,
+      });
+    },
     // 跳转对应文章
     handleEssayClick(data) {
       window.open(`${FrontEndURL}/blog/${data.id}`);
     },
-    // 分页相关操作
-    handelSizeChange(pageSize) {
-      this.pageSize = parseInt(pageSize);
-      this.currentPage = 1;
-      this.fetchData();
-    },
-    handelCurrentChange(pageNum) {
-      this.currentPage = parseInt(pageNum);
-      this.fetchData();
-    },
-    handelPrevClick() {
-      this.currentPage--;
-    },
-    handelNextClick() {
-      this.currentPage++;
-    },
-  },
-  created() {
-    this.fetchData();
   },
 };
 </script>

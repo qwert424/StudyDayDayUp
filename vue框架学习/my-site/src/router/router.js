@@ -48,7 +48,7 @@ export default [
             title: '文章'
         }
     },
-    // 当匹配到路径 /blog/cate/:id 时，渲染 BlogArticle 组件
+    // 当匹配到路径 /blog/:id 时，渲染 BlogArticle 组件
     {
         name: 'BlogArticle',
         path: '/blog/:id',

@@ -37,6 +37,7 @@ export default {
   methods: {
     async fetchData() {
       let resp = await getblogdetail(this.$route.params.id);
+      console.log(resp);
       if (!resp) {
         this.$router.push({ path: "/404" });
         return;

@@ -80,6 +80,7 @@
               type="textarea"
               v-model="form.description"
               resize="none"
+              :rows="4"
             ></el-input>
           </el-form-item>
           <el-row>
@@ -107,7 +108,7 @@
 </template>
 
 <script>
-import uploadComp from "@/components/uploadComp/uploadComp.vue";
+import uploadComp from "@/components/uploadComp/";
 import { mapState, mapActions } from "vuex";
 import { setBanner } from "@/api/banner";
 export default {

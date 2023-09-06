@@ -67,7 +67,7 @@ export default {
     // 展示最小数
     MinPager() {
       let min = this.nowCurrent - Math.floor(this.showLimit / 2);
-      min > this.AllPager - 9
+      min < this.AllPager - 9
         ? (min = this.AllPager - 9)
         : min < 1
         ? (min = 1)

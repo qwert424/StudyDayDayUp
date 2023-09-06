@@ -1,6 +1,6 @@
 <template>
   <ul class="articleItem-container" ref="container">
-    <li v-for="item in articleList" :key="item.id" class="articleItem">
+    <li v-for="item in newdata" :key="item.id" class="articleItem">
       <router-link
         :to="{
           name: 'BlogArticle',
@@ -9,7 +9,7 @@
           },
         }"
       >
-        <img v-lazy="item.thumb" alt="" class="img" v-if="item.thumb"
+        <img v-lazy="item.imgsrc" alt="" class="img" v-if="item.thumb"
       /></router-link>
 
       <div class="msg">
@@ -27,7 +27,7 @@
         </router-link>
         <div class="details" v-show="ifshowdetails">
           <!-- 文章日期 -->
-          <span class="date">日期:{{ item.createDate }}</span>
+          <span class="date">日期:{{ item.time }}</span>
           <!-- 文章浏览 -->
           <span class="over">浏览:{{ item.scanNumber }}</span>
           <!-- 文章评论 -->
@@ -45,7 +45,7 @@
               },
             }"
             class="tag"
-            v-if="+item.category.id !== -1"
+            v-if="item.category"
             >{{ item.category.name }}</router-link
           >
         </div>
@@ -57,16 +57,29 @@
 </template>
 
 <script>
+import { serveURL } from "@/basis_URL";
 import lazy from "@/directives/lazy";
+import formatTime from "@/utils/formatTime";
+
 export default {
   directives: {
-    lazy
+    lazy,
   },
   props: {
-    // 文章列表
-    articleList: {
+    list: {
       type: Array,
       default: () => [],
+    },
+  },
+  computed: {
+    newdata() {
+      return this.list.map((item) => {
+        return {
+          ...item,
+          imgsrc: item.thumb === "" ? "" : serveURL + item.thumb,
+          time: formatTime(item.createDate),
+        };
+      });
     },
   },
   data() {
@@ -110,6 +123,7 @@ export default {
     border-bottom: 1px solid @gray;
     color: @words;
     transition: 0.5s;
+    height: 150px;
     &:hover {
       border-color: transparent;
       box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);

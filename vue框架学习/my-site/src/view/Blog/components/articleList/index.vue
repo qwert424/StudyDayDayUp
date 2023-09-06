@@ -1,11 +1,11 @@
 <template>
   <div class="articleList-container" ref="mainContainer" v-loading="isLoading">
-    <articleItem :articleList="data.rows"></articleItem>
+    <articleItem :list="data.rows"></articleItem>
     <Pager
       v-if="data.total"
       :totalItems="data.total"
       :nowCurrent="getData.nowCurrent"
-      :showLimit="10"
+      :showLimit="8"
       :showCount="getData.limit"
       @changeCurrent="changeCurrent"
     ></Pager>
@@ -41,7 +41,7 @@ export default {
     getData() {
       const nowCurrent = +this.$route.query.page || 1;
       const limit = +this.$route.query.limit || 10;
-      const categoryid = +this.$route.params.categroyId || -1;
+      const categoryid = this.$route.params.categroyId || -1;
       return { nowCurrent, limit, categoryid };
     },
   },

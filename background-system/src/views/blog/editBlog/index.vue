@@ -1,10 +1,10 @@
 <template>
   <div class="addBlog-container">
-    <editBlogArticle mode="add"></editBlogArticle>
+    <editBlogArticle mode="edit"></editBlogArticle>
   </div>
 </template>
-
-<script>
+  
+  <script>
 import editBlogArticle from "@/components/editBlogArticle";
 export default {
   components: {
@@ -12,8 +12,8 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
+  
+  <style lang="scss" scoped>
 .addBlog-container {
   padding: 30px;
 }

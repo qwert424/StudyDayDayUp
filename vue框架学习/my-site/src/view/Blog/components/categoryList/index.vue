@@ -27,7 +27,7 @@ export default {
   computed: {
     getcategoryId() {
       //获取路由信息
-      return +this.$route.params.categroyId || -1;
+      return this.$route.params.categroyId || -1;
     },
     list() {
       //修改数据类型 使其符合组件

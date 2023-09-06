@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import "./Style/global.module.less";
-import '@/mock';//mockjs模拟拦截数据
+// import '@/mock';//mockjs模拟拦截数据
 import router from '@/router';//路由
 import '@/eventBus';//事件总线
 import store from '@/store';//vuex

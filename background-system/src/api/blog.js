@@ -26,10 +26,11 @@ export function getBlogType() {
 }
 
 // 文章分类添加
-export function addBlogType() {
+export function addBlogType(data) {
     return request({
         url: '/api/blogtype',
         method: 'post',
+        data
     })
 }
 
@@ -42,9 +43,39 @@ export function deleteBlogType(id) {
 }
 
 // 文章分类修改
-export function changeBlogType(id) {
+export function changeBlogType(editData) {
     return request({
-        url: `/api/blogtype/${id}`,
+        url: `/api/blogtype/${editData.id}`,
         method: 'put',
+        data: {
+            name: editData.name,
+            order: editData.order
+        }
+    })
+}
+
+// 文章发布
+export function addBlogArticle(data) {
+    return request({
+        url: '/api/blog',
+        method: 'post',
+        data
+    })
+}
+
+// 文章修改
+export function editBlogArticle(blogArticleData) {
+    return request({
+        url: `/api/blog/${blogArticleData.id}`,
+        method: 'put',
+        data: blogArticleData.data
+    })
+}
+
+// 通过id获取文章信息
+export function getOneBlogArticle(id) {
+    return request({
+        url: `/api/blog/${id}`,
+        method: 'get',
     })
 }
