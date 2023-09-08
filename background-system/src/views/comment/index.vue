@@ -1,9 +1,16 @@
 <template>
-  <div class="comment-container">评论管理</div>
+  <div class="comment-container">
+    <getMsgAndCommonComp mode="common"></getMsgAndCommonComp>
+  </div>
 </template>
 
 <script>
-export default {};
+import getMsgAndCommonComp from "@/components/getMsgAndCommonComp";
+export default {
+  components: {
+    getMsgAndCommonComp,
+  },
+};
 </script>
 
 <style>

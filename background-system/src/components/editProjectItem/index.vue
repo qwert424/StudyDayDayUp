@@ -174,7 +174,6 @@ export default {
           if (this.mode === "add") {
             // 添加文章
             const resp = await addProject(obj);
-            console.log(resp, obj);
             if (typeof resp !== "string") {
               this.$router.push({
                 name: "ProjectList",

@@ -1,9 +1,16 @@
 <template>
-  <div class="message-container">留言板</div>
+  <div class="message-container">
+    <getMsgAndCommonComp mode="msg"></getMsgAndCommonComp>
+  </div>
 </template>
 
 <script>
-export default {};
+import getMsgAndCommonComp from "@/components/getMsgAndCommonComp";
+export default {
+  components: {
+    getMsgAndCommonComp,
+  },
+};
 </script>
 
 <style>

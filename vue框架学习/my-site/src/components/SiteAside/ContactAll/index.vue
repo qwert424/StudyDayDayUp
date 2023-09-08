@@ -9,7 +9,7 @@
       <Contact type="mail" :text="data.mail" ClassStyle="Size"></Contact>
       <div class="item">
         <Contact type="qq" :text="data.qq" ClassStyle="Size"></Contact>
-        <div class="code">
+        <div class="code" v-if="data.qqQrCode !== ''">
           <img :src="data.qqQrCode" alt="" />
         </div>
       </div>
@@ -19,7 +19,7 @@
           :text="data.weixin"
           ClassStyle="wxSize"
         ></Contact>
-        <div class="code">
+        <div class="code" v-if="data.weixinQrCode !== ''">
           <img :src="data.weixinQrCode" alt="" />
         </div>
       </div>

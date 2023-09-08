@@ -157,6 +157,10 @@ export default {
         };
       });
       this.totalBlog = this.data.length;
+      this.data = this.data.slice(
+        (this.currentPage - 1) * this.pageSize,
+        this.currentPage * this.pageSize
+      );
       this.isloading = false;
       // 删除项目时可能出现下面情况
       if (this.currentPage > this.AllPageSize) {
