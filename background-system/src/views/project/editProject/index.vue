@@ -1,10 +1,10 @@
 <template>
   <div class="addBlog-container">
-    <editProjectItem mode="add"></editProjectItem>
+    <editProjectItem mode="edit"></editProjectItem>
   </div>
 </template>
-
-<script>
+  
+  <script>
 import editProjectItem from "@/components/editProjectItem";
 export default {
   components: {
@@ -12,8 +12,8 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
+  
+  <style lang="scss" scoped>
 .addBlog-container {
   padding: 30px;
 }

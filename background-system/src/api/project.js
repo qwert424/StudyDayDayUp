@@ -27,10 +27,10 @@ export function deleteProject(id) {
 }
 
 // 项目列表修改
-export function putProject(data) {
+export function putProject(projectData) {
     return request({
-        url: `/api/project/${data.id}`,
+        url: `/api/project/${projectData.id}`,
         method: 'put',
-        data: data.data
+        data: projectData.data
     })
 }

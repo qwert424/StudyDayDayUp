@@ -17,6 +17,8 @@ import '@/permission' // permission control 鉴权
 
 import { getToken } from '@/utils/auth'
 
+import '@/fontAssets/iconfont.css'//iconfont.css
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

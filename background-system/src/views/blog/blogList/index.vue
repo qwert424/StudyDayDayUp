@@ -182,6 +182,7 @@ export default {
       // 删除文章时可能出现下面情况
       if (this.currentPage > this.AllPageSize) {
         this.currentPage = this.AllPageSize;
+        this.fetchData();
       }
     },
     // 删除文章

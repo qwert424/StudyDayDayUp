@@ -40,6 +40,7 @@
           v-model="ruleForm.category"
           placeholder="文章分类"
           @change="handleChange"
+          class="select-container"
         >
           <el-option
             v-for="item in category"
@@ -201,6 +202,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.select-container {
+  width: 120px;
+  text-align: center;
+}
 .btn-container {
   display: flex;
   width: 500px;

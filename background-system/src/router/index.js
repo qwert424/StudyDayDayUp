@@ -122,6 +122,13 @@ export const constantRoutes = [
         component: () => import('@/views/project/addProject/index'),
         meta: { title: '项目添加', icon: 'el-icon-upload', auth: true }
       },
+      {
+        path: 'editProject/:id',
+        name: 'EditProject',
+        hidden: true,
+        component: () => import('@/views/project/editProject/index'),
+        meta: { title: '修改项目', icon: 'el-icon-circle-plus', auth: true }
+      },
     ]
   },
 
