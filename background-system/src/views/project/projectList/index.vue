@@ -36,7 +36,7 @@
             <template slot-scope="scope">
               <el-image
                 style="width: 150px"
-                :src="scope.row.formatThumb"
+                :src="scope.row.thumb"
                 fit="contain"
               ></el-image>
             </template>
@@ -130,7 +130,7 @@
 
 <script>
 import { getProject, deleteProject } from "@/api/project";
-import { baseURL } from "@/basis_URL";
+// import { baseURL } from "@/basis_URL";
 import getPage from "@/mixins/pageData.js";
 export default {
   mixins: [getPage([])],
@@ -150,10 +150,10 @@ export default {
         return;
       }
       this.data = resp.data.map((item) => {
-        const formatThumb = item.thumb === "" ? "" : `${baseURL}${item.thumb}`;
+        // const formatThumb = item.thumb === "" ? "" : `${baseURL}${item.thumb}`;
         return {
           ...item,
-          formatThumb,
+          // formatThumb,
         };
       });
       this.totalBlog = this.data.length;

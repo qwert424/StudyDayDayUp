@@ -25,11 +25,11 @@
                 title="首图预览"
                 width="160"
                 trigger="hover"
-                v-if="scope.row.formatThumb"
+                v-if="scope.row.thumb"
               >
                 <el-image
                   style="width: 130px; height: 130px"
-                  :src="scope.row.formatThumb"
+                  :src="scope.row.thumb"
                   fit="contain"
                   :preview-src-list="srcList"
                 ></el-image>
@@ -150,7 +150,7 @@
 <script>
 import { getBlog, deleteBlog } from "@/api/blog";
 import { formatDate } from "@/utils/tool";
-import { baseURL, FrontEndURL } from "@/basis_URL";
+// import { baseURL, FrontEndURL } from "@/basis_URL";
 import getPage from "@/mixins/pageData.js";
 export default {
   mixins: [getPage([])],
@@ -169,12 +169,12 @@ export default {
       this.srcList = [];
       this.data = resp.data.rows.map((item) => {
         const formatTime = formatDate(item.createDate);
-        const formatThumb = item.thumb === "" ? "" : `${baseURL}${item.thumb}`;
-        this.srcList.push(formatThumb);
+        // const formatThumb = item.thumb === "" ? "" : `${baseURL}${item.thumb}`;
+        this.srcList.push(item.thumb);
         return {
           ...item,
           formatTime,
-          formatThumb,
+          // formatThumb,
         };
       });
       this.totalBlog = resp.data.total;
@@ -221,7 +221,8 @@ export default {
     },
     // 跳转对应文章
     handleEssayClick(data) {
-      window.open(`${FrontEndURL}/blog/${data.id}`);
+      // window.open(`${FrontEndURL}/blog/${data.id}`);
+      window.open(`./blog/${data.id}`);
     },
   },
 };

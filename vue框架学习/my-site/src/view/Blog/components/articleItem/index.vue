@@ -9,7 +9,7 @@
           },
         }"
       >
-        <img v-lazy="item.imgsrc" alt="" class="img" v-if="item.thumb"
+        <img v-lazy="item.thumb" alt="" class="img" v-if="item.thumb"
       /></router-link>
 
       <div class="msg">
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { serveURL } from "@/basis_URL";
+// import { serveURL } from "@/basis_URL";
 import lazy from "@/directives/lazy";
 import formatTime from "@/utils/formatTime";
 
@@ -76,7 +76,7 @@ export default {
       return this.list.map((item) => {
         return {
           ...item,
-          imgsrc: item.thumb === "" ? "" : serveURL + item.thumb,
+          // imgsrc: item.thumb === "" ? "" : serveURL + item.thumb,
           time: formatTime(item.createDate),
         };
       });

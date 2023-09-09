@@ -4,7 +4,7 @@
       :href="data.url ? data.url : `javascript:alert('该项目无法通过外网访问')`"
       :target="data.url ? '_blank' : '_self'"
     >
-      <img v-lazy:src="imgURL" class="imgItem" />
+      <img v-lazy:src="data.thumb" class="imgItem" />
     </a>
     <div class="msg">
       <h2 class="title">
@@ -36,7 +36,7 @@
 
 <script>
 import lazy from "@/directives/lazy";
-import { serveURL } from "@/basis_URL";
+// import { serveURL } from "@/basis_URL";
 export default {
   props: {
     data: {
@@ -47,11 +47,11 @@ export default {
   directives: {
     lazy,
   },
-  computed: {
-    imgURL() {
-      return serveURL + this.data.thumb;
-    },
-  },
+  // computed: {
+  //   imgURL() {
+  //     return serveURL + this.data.thumb;
+  //   },
+  // },
 };
 </script>
 

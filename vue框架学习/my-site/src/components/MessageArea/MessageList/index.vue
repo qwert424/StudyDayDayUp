@@ -1,6 +1,6 @@
 <template>
   <div class="MessageList-container">
-    <div class="avatar"><img :src="imgURL" /></div>
+    <div class="avatar"><img :src="data.avatar" /></div>
     <div class="desc">
       <div class="nickname">{{ data.nickname }}</div>
       <div class="content">{{ data.content }}</div>
@@ -11,7 +11,7 @@
 
 <script>
 import { formatTime } from "@/utils";
-import { serveURL } from "@/basis_URL";
+// import { serveURL } from "@/basis_URL";
 export default {
   props: {
     data: {
@@ -19,11 +19,11 @@ export default {
       required: true,
     },
   },
-  computed: {
-    imgURL() {
-      return serveURL + this.data.avatar;
-    },
-  },
+  // computed: {
+  // imgURL() {
+  //   return serveURL + this.data.avatar;
+  // },
+  // },
   methods: {
     formatTime,
   },

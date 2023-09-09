@@ -11,7 +11,7 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatarImgUrl" class="user-avatar" />
+          <img :src="avatar" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown hader-new-drop">
@@ -36,7 +36,7 @@
 import { mapGetters } from "vuex";
 import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
-import { baseURL } from "@/basis_URL";
+// import { baseURL } from "@/basis_URL";
 export default {
   components: {
     Breadcrumb,
@@ -44,9 +44,9 @@ export default {
   },
   computed: {
     ...mapGetters(["sidebar", "avatar"]),
-    avatarImgUrl() {
-      return baseURL + this.avatar;
-    },
+    // avatarImgUrl() {
+    //   return baseURL + this.avatar;
+    // },
   },
   methods: {
     toggleSideBar() {

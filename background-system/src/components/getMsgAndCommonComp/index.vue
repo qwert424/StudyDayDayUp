@@ -103,7 +103,7 @@ import { getCommon, deleteCommon } from "@/api/common";
 import { getMessage, deleteMessage } from "@/api/message";
 import getPage from "@/mixins/pageData.js";
 import { formatDate } from "@/utils/tool";
-import { baseURL } from "@/basis_URL";
+// import { baseURL } from "@/basis_URL";
 export default {
   mixins: [getPage([])],
   props: ["mode"],
@@ -134,7 +134,7 @@ export default {
       this.isloading = false;
       resp.data.rows.map((item) => {
         item.createDate = formatDate(item.createDate);
-        item.avatar = baseURL + item.avatar;
+        // item.avatar = baseURL + item.avatar;
       });
       this.data = resp.data.rows;
       // 删除文章分类时可能出现下面情况

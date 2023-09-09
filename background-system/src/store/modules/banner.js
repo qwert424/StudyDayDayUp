@@ -1,5 +1,5 @@
 import { getBanner } from "@/api/banner";
-import { baseURL } from "@/basis_URL";
+// import { baseURL } from "@/basis_URL";
 // 导航标语仓库
 export default {
     namespaced: true,
@@ -15,12 +15,12 @@ export default {
         async asyncGetBanner(context) {
             const resp = await getBanner();
             const newresp = resp.data.map(item => {
-                const initMidImg = baseURL + item.midImg;
-                const initBigImg = baseURL + item.bigImg;
+                // const initMidImg = baseURL + item.midImg;
+                // const initBigImg = baseURL + item.bigImg;
                 return {
                     ...item,
-                    initMidImg,
-                    initBigImg
+                    // initMidImg,
+                    // initBigImg
                 }
             })
             context.commit('setData', newresp);

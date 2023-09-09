@@ -26,7 +26,7 @@
       <el-form-item label="网站头像" prop="avatar">
         <el-image
           style="width: 100px; height: 100px"
-          :src="ruleForm.initavatar"
+          :src="ruleForm.avatar"
           fit="contain"
           v-show="ifdisabled"
         ></el-image>
@@ -60,7 +60,7 @@
       <el-form-item label="QQ二维码" class="item-container">
         <el-image
           style="width: 100px; height: 100px"
-          :src="ruleForm.initqqQrCode"
+          :src="ruleForm.qqQrCode"
           fit="contain"
           v-show="ifdisabled"
         ></el-image>
@@ -76,7 +76,7 @@
       <el-form-item label="微信二维码" class="item-container">
         <el-image
           style="width: 100px; height: 100px"
-          :src="ruleForm.initweixinQrCode"
+          :src="ruleForm.weixinQrCode"
           fit="contain"
           v-show="ifdisabled"
         ></el-image>
@@ -108,7 +108,7 @@
 
 <script>
 import { getSetting, setSetting } from "@/api/setting";
-import { baseURL } from "@/basis_URL";
+// import { baseURL } from "@/basis_URL";
 import uploadComp from "@/components/uploadComp";
 export default {
   components: {
@@ -161,12 +161,12 @@ export default {
     // 获取数据
     async fetchData() {
       const resp = await getSetting();
-      resp.data.initavatar =
-        resp.data.avatar === "" ? "" : baseURL + resp.data.avatar;
-      resp.data.initweixinQrCode =
-        resp.data.weixinQrCode === "" ? "" : baseURL + resp.data.weixinQrCode;
-      resp.data.initqqQrCode =
-        resp.data.qqQrCode === "" ? "" : baseURL + resp.data.qqQrCode;
+      // resp.data.initavatar =
+      //   resp.data.avatar === "" ? "" : baseURL + resp.data.avatar;
+      // resp.data.initweixinQrCode =
+      //   resp.data.weixinQrCode === "" ? "" : baseURL + resp.data.weixinQrCode;
+      // resp.data.initqqQrCode =
+      //   resp.data.qqQrCode === "" ? "" : baseURL + resp.data.qqQrCode;
       this.ruleForm = { ...resp.data };
     },
     // 编辑事件

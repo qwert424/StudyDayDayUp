@@ -8,14 +8,14 @@
       :show-file-list="false"
       :on-success="handleAvatarSuccess"
     >
-      <img v-if="value" :src="imgURL" class="avatar" />
+      <img v-if="value" :src="value" class="avatar" />
       <i v-else class="el-icon-plus avatar-uploader-icon"></i>
     </el-upload>
   </div>
 </template>
 
 <script>
-import { baseURL } from "@/basis_URL";
+// import { baseURL } from "@/basis_URL";
 
 export default {
   props: ["value"],
@@ -25,11 +25,11 @@ export default {
         Authorization: "Bearer " + localStorage.getItem("adminAuthentication"),
       };
     },
-    imgURL() {
-      if (this.value) {
-        return baseURL + this.value;
-      }
-    },
+    // imgURL() {
+    //   if (this.value) {
+    //     return baseURL + this.value;
+    //   }
+    // },
   },
   methods: {
     handleAvatarSuccess(resp) {

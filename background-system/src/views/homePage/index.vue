@@ -25,7 +25,7 @@
             <template slot-scope="scope">
               <el-image
                 style="width: 150px"
-                :src="scope.row.initMidImg"
+                :src="scope.row.midImg"
                 fit="contain"
               ></el-image>
             </template>
@@ -34,7 +34,7 @@
             <template slot-scope="scope">
               <el-image
                 style="width: 150px"
-                :src="scope.row.initBigImg"
+                :src="scope.row.bigImg"
                 fit="contain"
               ></el-image>
             </template>
