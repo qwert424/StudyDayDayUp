@@ -52,6 +52,13 @@ export const constantRoutes = [
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
       meta: { title: '控制台', icon: 'dashboard', auth: true }
+    },
+    {
+      path: '/userInfo',
+      name: 'UserInfo',
+      hidden: true,
+      component: () => import('@/views/userInfo/index'),
+      meta: { title: '个人中心', icon: 'user', auth: true }
     }]
   },
 

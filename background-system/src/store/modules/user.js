@@ -6,6 +6,7 @@ const getDefaultState = () => {
   return {
     token: getToken(),//Token
     userInfo: null,//用户信息
+    avatar: "/static/avatar/happy.gif"//头像
   }
 }
 

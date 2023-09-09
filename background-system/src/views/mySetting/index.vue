@@ -188,15 +188,16 @@ export default {
     // 修改表单
     submitForm(formName) {
       this.$refs[formName].validate(async (valid) => {
+        console.log(1);
         if (valid) {
-          const resp = await setSetting(this.ruleForm);
-          if (typeof resp !== "string") {
-            this.$message.success("保存成功!");
-            this.ifdisabled = !this.ifdisabled;
-            this.fetchData();
-          } else {
-            this.$message.error("保存失败!");
-          }
+          // const resp = await setSetting(this.ruleForm);
+          // if (typeof resp !== "string") {
+          //   this.$message.success("保存成功!");
+          //   this.ifdisabled = !this.ifdisabled;
+          //   this.fetchData();
+          // } else {
+          //   this.$message.error("保存失败!");
+          // }
         } else {
           this.$message.error("请将所有必填选项填写上!");
           return false;

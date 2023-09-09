@@ -16,3 +16,13 @@ export function getInfoApi() {
     method: 'get',
   })
 }
+
+
+// 获取修改用户信息 
+export function setInfoApi(data) {
+  return request({
+    url: '/api/admin',
+    method: 'put',
+    data
+  })
+}

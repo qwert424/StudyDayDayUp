@@ -46,7 +46,6 @@ if (getToken()) {
   });
 }
 
-
 new Vue({
   el: '#app',
   router,

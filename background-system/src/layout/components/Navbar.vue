@@ -11,11 +11,16 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
+          <img :src="avatarImgUrl" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown hader-new-drop">
-          <router-link to="/">
+          <router-link
+            :to="{
+              name: 'UserInfo',
+              path: '/userInfo',
+            }"
+          >
             <el-dropdown-item> 个人中心 </el-dropdown-item>
           </router-link>
           <el-dropdown-item divided @click.native="logout">
@@ -31,7 +36,7 @@
 import { mapGetters } from "vuex";
 import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
-
+import { baseURL } from "@/basis_URL";
 export default {
   components: {
     Breadcrumb,
@@ -39,6 +44,9 @@ export default {
   },
   computed: {
     ...mapGetters(["sidebar", "avatar"]),
+    avatarImgUrl() {
+      return baseURL + this.avatar;
+    },
   },
   methods: {
     toggleSideBar() {
