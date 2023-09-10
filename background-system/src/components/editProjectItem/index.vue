@@ -36,7 +36,7 @@
         <el-button @click="addDomain">新增项目描述</el-button>
       </el-form-item>
       <!-- 项目地址url -->
-      <el-form-item label="项目地址" prop="url">
+      <el-form-item label="项目地址">
         <el-input
           placeholder="请输入项目网址"
           v-model="ruleForm.webAddress"
@@ -77,7 +77,10 @@
       </el-form-item>
       <!-- 预览图 -->
       <el-form-item label="预览图" prop="thumb">
-        <uploadComp v-model="ruleForm.thumb"></uploadComp>
+        <uploadComp
+          v-model="ruleForm.thumb"
+          @input="handleInput('ruleForm')"
+        ></uploadComp>
       </el-form-item>
       <!-- btn -->
       <div class="btn-container">
@@ -85,6 +88,9 @@
           mode === "add" ? "添加项目" : "修改项目"
         }}</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
+        <el-button v-if="mode === 'edit'" @click="backForm('ruleForm')"
+          >返回</el-button
+        >
       </div>
     </el-form>
   </div>
@@ -103,7 +109,7 @@ export default {
       ruleForm: {
         //约束表单内容
         name: "", //项目名称
-        description: [{ value: "" }], //项目描述
+        description: [], //项目描述
         github: "", //项目github地址
         thumb: "", //项目预览图
         order: "", //项目权重
@@ -114,11 +120,12 @@ export default {
       rules: {
         //约束规则
         name: [{ required: true, message: "请输入项目名称", trigger: "blur" }],
-        order: [{ required: true, message: "请选择项目权重", trigger: "blur" }],
-        thumb: [
-          { required: true, message: "请选择项目预览图", trigger: "blur" },
+        order: [
+          { required: true, message: "请选择项目权重", trigger: "change" },
         ],
-        url: [{ required: true, message: "请填写项目地址", trigger: "blur" }],
+        thumb: [
+          { required: true, message: "请选择项目预览图", trigger: "change" },
+        ],
       },
     };
   },
@@ -136,7 +143,7 @@ export default {
               value: item,
             };
           });
-          data.protocol = data.url.split("/")[0] + "//";
+          data.protocol = data.url === "" ? "" : data.url.split("/")[0] + "//";
           data.webAddress = data.url.split("/")[2];
           this.ruleForm = {
             ...data,
@@ -221,6 +228,14 @@ export default {
     handleChange() {
       this.$forceUpdate();
     },
+    // 返回列表
+    backForm() {
+      this.$router.push({
+        name: "ProjectList",
+        path: "/projectList",
+      });
+      this.$message("取消项目修改!");
+    },
     // 删除项目描述
     removeDomain(item) {
       const index = this.ruleForm.description.indexOf(item);
@@ -233,6 +248,10 @@ export default {
       this.ruleForm.description.push({
         value: "",
       });
+    },
+    // 移除该表单项的校验结果
+    handleInput(formName) {
+      this.$refs[formName].clearValidate();
     },
   },
   created() {

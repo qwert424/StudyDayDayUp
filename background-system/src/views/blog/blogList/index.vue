@@ -222,7 +222,7 @@ export default {
     // 跳转对应文章
     handleEssayClick(data) {
       // window.open(`${FrontEndURL}/blog/${data.id}`);
-      window.open(`./blog/${data.id}`);
+      window.open(`/blog/${data.id}`);
     },
   },
 };

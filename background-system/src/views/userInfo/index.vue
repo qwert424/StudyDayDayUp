@@ -10,7 +10,7 @@
     >
       <h2 class="title">用户信息</h2>
       <el-form-item label="用户名" class="item-container">
-        <el-input v-model="userInfo.name" :disabled="ifdisabled"></el-input>
+        <el-input v-model="ruleForm.name" :disabled="ifdisabled"></el-input>
       </el-form-item>
       <el-form-item label="账号" class="item-container">
         <el-input
@@ -43,7 +43,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { setInfoApi, getInfoApi } from "@/api/user";
+import { setInfoApi } from "@/api/user";
 export default {
   data() {
     const checkLoginId = (rule, value, callback) => {
@@ -97,6 +97,9 @@ export default {
   },
   computed: {
     ...mapGetters(["userInfo"]),
+    // userInfoName() {
+    //   this.userInfo === null ? "" : this.userInfo.name;
+    // },
   },
   methods: {
     // 提交表单

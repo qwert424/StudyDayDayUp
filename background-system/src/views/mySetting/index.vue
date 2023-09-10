@@ -100,7 +100,9 @@
         <el-button @click="resetForm('ruleForm')" v-show="!ifdisabled"
           >重置</el-button
         >
-        <el-button @click="backForm" v-show="!ifdisabled">返回</el-button>
+        <el-button @click="backForm('ruleForm')" v-show="!ifdisabled"
+          >返回</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
@@ -174,8 +176,9 @@ export default {
       this.ifdisabled = !this.ifdisabled;
     },
     // 返回事件
-    backForm() {
+    backForm(formName) {
       this.ifdisabled = !this.ifdisabled;
+      this.$refs[formName].clearValidate();
       this.fetchData();
       this.$message("取消更改!");
     },
@@ -188,16 +191,15 @@ export default {
     // 修改表单
     submitForm(formName) {
       this.$refs[formName].validate(async (valid) => {
-        console.log(1);
         if (valid) {
-          // const resp = await setSetting(this.ruleForm);
-          // if (typeof resp !== "string") {
-          //   this.$message.success("保存成功!");
-          //   this.ifdisabled = !this.ifdisabled;
-          //   this.fetchData();
-          // } else {
-          //   this.$message.error("保存失败!");
-          // }
+          const resp = await setSetting(this.ruleForm);
+          if (typeof resp !== "string") {
+            this.$message.success("保存成功!");
+            this.ifdisabled = !this.ifdisabled;
+            this.fetchData();
+          } else {
+            this.$message.error("保存失败!");
+          }
         } else {
           this.$message.error("请将所有必填选项填写上!");
           return false;
