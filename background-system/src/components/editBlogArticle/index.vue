@@ -143,7 +143,6 @@ export default {
             description: this.ruleForm.description,
             createDate: new Date().getTime(),
             categoryId: this.ruleForm.category,
-            toc: [],
             thumb: this.ruleForm.thumb,
             htmlContent: this.ruleForm.htmlContent,
             markdownContent: this.ruleForm.markContent,
@@ -166,6 +165,7 @@ export default {
               id: this.ruleForm.id,
               data: obj,
             });
+            console.log(resp);
             if (typeof resp !== "string") {
               this.$router.push({
                 name: "BlogList",

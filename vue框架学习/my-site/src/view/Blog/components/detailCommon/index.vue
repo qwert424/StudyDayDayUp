@@ -28,7 +28,8 @@ export default {
   mixins: [fetchData({ total: 0, rows: [] }), message],
   methods: {
     async fetchData() {
-      return await getblogcomment(this.page, this.limit, this.blogid);
+      const blogId = this.$route.params.id;
+      return await getblogcomment(this.page, this.limit, blogId);
     },
     async handleSubmit(data, callback) {
       const blogId = this.$route.params.id;

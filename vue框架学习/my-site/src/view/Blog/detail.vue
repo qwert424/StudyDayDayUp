@@ -8,7 +8,7 @@
         </div>
       </template>
       <template #right v-if="data">
-        <div class="right">
+        <div class="right" v-if="data.toc.length !== 0">
           <detailTOC :list="data.toc"></detailTOC>
         </div>
       </template>

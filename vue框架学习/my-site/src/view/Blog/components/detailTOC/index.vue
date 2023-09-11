@@ -35,6 +35,7 @@ export default {
     // 点击事件
     handleChangeId(item) {
       location.hash = item.anchor;
+      this.anchorHash = item.anchor;
     },
     // 递归调用
     mapTree(item = []) {
