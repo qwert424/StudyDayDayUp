@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1、手风琴 */
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .box-container {
+            width: 200px;
+            margin: 100px auto;
+            background-color: #ccc;
+            border: 1px solid #666;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .box-container h1 {
+            font-size: 20px;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #666;
+        }
+
+        .box-container li {
+            margin: 10px 0;
+            line-height: 30px;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        .box-container li a {
+            color: #fff;
+            display: block;
+        }
+
+        .box-container a:hover {
+            background-color: #666;
+        }
+
+        div[id]:not(:target) {
+            display: none;
+        }
+
+        div[id] span {
+            display: block;
+            font-size: 12px;
+        } */
+    </style>
+    <style>
+        /* 2、选项卡 */
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .box-container {
+            margin: 100px auto;
+            width: 400px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        .btn-container {
+            padding: 20px 0;
+        }
+
+        .btn-container a {
+            color: #fff;
+            padding: 10px;
+            background-color: aqua;
+            margin: 0 10px;
+        }
+
+        .show-container {
+            border: 1px solid #ccc;
+        }
+
+        div[id]:not(:target) {
+            display: none;
+        }
+
+        div[id]:target {
+            height: 300px;
+        }
+
+        div[id='red']:target {
+            background-color: red;
+        }
+
+        div[id='green']:target {
+            background-color: green;
+        }
+
+        div[id='grey']:target {
+            background-color: grey;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- Relationship Selectors  关系选择器 -->
+    <!-- E + F （下一个满足条件的兄弟元素节点）； E ~ F（满足条件的兄弟元素节点）； -->
+
+    <!-- Attribute Selectors 属性选择器 -->
+    <!-- E[attr] 存在属性 attr； E[attr=val] 属性 attr 等于 val； E[attr~=val] 属性 attr 以val开始；E[attr^=val] 属性 attr 以 val 开头； E[attr$=val] 属性 attr 以 val 结尾； E[attr*=val] 属性 attr 包含 val；-->
+
+    <!-- Pseudo-Element Selectors 伪元素选择器  -->
+    <!-- ::placeholder（input。。。） ::selection(右键选择文本的样式 背景 文字阴影 文字颜色) -->
+
+    <!-- Pseudo-Classes Selectors 伪类选择器
+    E:not(s) E:root（根节点 包含 html 即如果在xml就不是HTML） E:target（锚链接选择时 例子 锚链接的手风琴）
+    E:first-child E:last-child E:only-child E:nth-child(n) E:nth-last-child(n)  ||上面均受其他元素的影响
+    E:first-of-type E:last-of-type E:only-of-type E:nth-of-type(n) E:nth-of-last-type(n)
+    E:empty E:checked E:enabled E:disabled
+    E:read-only E:read-write -->
+
+    <!-- 作业 用css3的选择器 完成以下作业 -->
+    <!-- 1、手风琴 -->
+    <!-- 2、选项卡 -->
+
+
+    <!-- 1、手风琴 -->
+    <!-- <ul class="box-container">
+        <h1>手风琴效果</h1>
+        <li>
+            <a href="#one">选项一</a>
+            <div id="one">
+                <span>选择一</span>
+                <span>选择二</span>
+            </div>
+        </li>
+        <li>
+            <a href="#two">选项二</a>
+            <div id="two">
+                <span>选择一</span>
+                <span>选择二</span>
+                <span>选择三</span>
+                <span>选择四</span>
+            </div>
+        </li>
+        <li>
+            <a href="#three">选项三</a>
+            <div id="three">
+                <span>选择一</span>
+            </div>
+        </li>
+    </ul> -->
+
+
+    <!-- 2、选项卡 -->
+    <!-- <div class="box-container">
+        <div class="btn-container">
+            <a href="#red">选项卡一</a>
+            <a href="#green">选项卡二</a>
+            <a href="#grey">选项卡三</a>
+        </div>
+        <div class="show-container">
+            <div id="red"></div>
+            <div id="green"></div>
+            <div id="grey"></div>
+        </div>
+    </div> -->
+
+</body>
+
+</html>

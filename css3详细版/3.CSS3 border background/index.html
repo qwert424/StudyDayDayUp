@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* border-radius 边框圆角 */
+        /* div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 1px solid #000;
+            border-radius: 10px 20px 30px 40px / 10px 20px 30px 40px;
+        } */
+        /* box-shadow 盒子阴影  */
+        html {
+            background-color: #000;
+        }
+
+        /* 效果一 */
+        /* div {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: calc(50% - 150px);
+            top: calc(50% - 150px);
+            border-radius: 50%;
+            box-shadow:
+                inset 0 0 80px #fff,
+                inset -30px 0 80px #61045f,
+                inset 30px 0 80px #5fc3e4,
+                inset -30px 0 150px #61045f,
+                inset 30px 0 150px #5fc3e4,
+                0 0 80px #fff,
+                20px 0 50px #61045f,
+                -20px 0 50px #5fc3e4
+        } */
+        /* 效果二 */
+        /* div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: calc(50% - 25px);
+            top: calc(50% - 25px);
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow:
+                0 0 100px 50px #fff,
+                0 0 250px 100px #ff0
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- border-radius 边框圆角 -->
+    <!-- 简写属性：
+        1、border-radius 
+        2、border-top-left-radius | border-top-right-radius | border-bottom-left-radius |border-bottom-right-radius（先写top|bottom 再写left|right）
+        3、border-top-left-radius：xpx ypx;(两个值 一个 x 方向的半径 一个 y 方向的半径) （通过 这个可以画出很多“奇怪”形状的边框）（椭圆）
+        4、border-radius：10px 20px 30px 40px \ 10px 20px 30px 40px;(前面对象4个方向的x轴半径 后面y轴半径) 
+    -->
+    <!-- <div></div> -->
+
+    <!-- box-shadow 盒子阴影 -->
+    <!-- box-shadow:xpx ypx mpx npx color;//分别对应x轴偏移量 y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色 -->
+    <!-- 特点：
+    1、inset设置内部阴影
+    2、可以不段覆盖 做出炫酷效果图
+    3、内部阴影在盒子内容下方 背景的上方；外部阴影在背景下方
+    -->
+
+    <!-- 炫酷效果 -->
+    <!-- <div></div> -->
+
+
+</body>
+
+</html>
