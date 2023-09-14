@@ -51,6 +51,65 @@
                 0 0 250px 100px #ff0
         } */
     </style>
+    <style>
+        /* border-image 边框图片 */
+        /* div { */
+        /* width: 300px; */
+        /* height: 300px; */
+        /* position: absolute; */
+        /* left: calc(50% - 200px); */
+        /* top: calc(50% - 200px); */
+        /* background-color: #fff; */
+        /* border: 100px solid pink; */
+        /* border-image: linear-gradient(to bottom, red, yellow) 100 ; */
+        /* border-image-source: url(./u=1870651102\,2013743040&fm=253&fmt=auto&app=138&f=PNG.png); */
+        /* border-image-slice: 100; */
+        /* border-image-repeat: space; */
+        /* border-image-outset: 0; */
+        /* border-image-width: 50px 100px; */
+        /* } */
+    </style>
+    <style>
+        /* 文字背景图 */
+        /* div {
+            padding: 50px;
+            width: 400px;
+            height: 200px;
+            text-align: center;
+            position: absolute;
+            left: calc(50% - 200px);
+            top: calc(50% - 200px);
+            line-height: 200px;
+            font-size: 80px;
+            border: 50px solid transparent;
+            background: url(./bg.png) no-repeat 0 0 /cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        } */
+    </style>
+    <style>
+        /* background-attachment例子  */
+        /* body {
+            margin-bottom: 1000px;
+        } */
+
+        /* div { */
+        /* width: 500px;
+            height: 500px;
+            border: 1px solid #fff;
+            color: #fff;
+            margin: 0 auto;
+            overflow: scroll;
+            background: url(./bg.png) no-repeat 100px 100px /300px 250px; */
+        /* 跟随滚动 */
+        /* background-attachment: scroll; */
+        /* 跟随文本 */
+        /* background-attachment: local; */
+        /* 固定一个位置 但是所属父元素消失 他也消失 */
+        /* background-attachment: fixed; */
+        /* background-position: 350px 100px; */
+        /* } */
+    </style>
 </head>
 
 <body>
@@ -74,6 +133,81 @@
     <!-- 炫酷效果 -->
     <!-- <div></div> -->
 
+    <!-- border-image 边框背景 -->
+    <!-- 速写、简写属性：border-image-source | border-image-slice | border-image-width | border-image-outset | border-image-repeat -->
+    <!-- 一般分开写 便于区分 -->
+    <!-- border-image-source 背景图片源 url() 可以渐变色  linear-gradient-->
+    <!-- border-image-slice 背景切割 4个数值+一个“值” 4个值分别代表上切割线 右切割线 下切割线 左切割线 通过这几个切割线将背景图切割成9块 分别填充在相应位置 还可以加一个值：fill 即将内容块也用边框图填充 类似于background-image 所以略显鸡肋 -->
+    <!-- border-image-width 边框图像宽度 用于设置由border-image-slice属性生成的边框图像切片的宽度 默认值为1 且一般不超过border-width的值 假如border-image-width大于已指定的border-width，那么它将向内部(padding/content)扩展.上右下左4个值 取值为auto就是slice值加上px-->
+    <!-- border-image-outset 边框图像扩展 默认值为0 即不扩展 值越大 边框图像向外扩展越大 值越小 向外扩展越小 不小于0(不能向内)-->
+    <!-- border-image-repeat 边框图像平铺方式 默认值为stretch 即拉伸 值还可以是 repeat（重复且“负责” 只要有一点超出 就添加）round（类似repeat但是它是在拉伸至边框宽度一半添加一个（压缩）总体呈现先压缩在拉伸的情况） space（就是类似round 它不同于round是他用空白来填充）最多两个值--水平|垂直-->
+
+    <!-- 例子 -->
+    <!-- <div></div> -->
+
+
+    <!-- background 背景相关css -->
+    <!-- 1、background-image 背景图 可以用lenear-gradient,url()-->
+    <!-- background-image: url(),url() 可以传入两个url 类似于图片预加载 第一个图没加载出来 先用后面的值 -->
+    <!-- 2、background-position 背景位置 默认值是center center 值可以是百分比 也可以是像素 还可以是关键字 关键字有top right bottom left 如果多个url可以用逗号分隔，设置两个图位置 -->
+    <!-- 3、background-repeat 背景平铺 默认值是repeat 还可以是space space就是先填充空白再平铺 还可以是round round就是先压缩在拉伸（图片一般的时候加入） 还可以设置no-repeat-->
+    <!-- 4、background-color 背景不足时候的背景填充颜色 背景图覆盖背景色 -->
+    <!-- 5、background-size 背景图大小 默认值是auto auto 值可以是像素 也可以是百分比 还可以是cover 还可以是contain -->
+    <!-- 6、background-origin 背景图填充区域起始位置 默认值是padding-box 还可以是border-box 还可以是content-box 是起始 不是结束点 也就是说从padding-box开始会在高度上向border-box延伸 -->
+    <!-- 7、background-clip 背景填充区域结束点 （区域开始向外裁剪背景）默认值是border-box 还可以是padding-box 还可以是content-box 还可以是text（做文字背景 通过 -webkit-text-fill-color 属性，可以做出一些例如渐变文字和镂空文字的效果。 --webkit-background-clip=text） -->
+    <!-- 8、background-attachment 背景是否跟随滚动 默认值是scroll 还可以是fixed（如果超过了内容高度 也会消失 position相对于视口） 还可以是local（跟随文字） -->
+
+    <!-- 例子 -->
+    <!-- 1、文字背景 -->
+    <!-- <div>文字背景图</div> -->
+    <!-- 2、background-attachment例子 -->
+    <!-- <div>作为一种AI对话产品，我很难生成完全随机的1000字文本，因为这需要考虑到各种因素，如上下文、语法、语义等等。不过我可以尝试为您生成一段随机的文本。以下是一个随机生成的1000字文本示例：
+
+        在这个时代，人工智能已经成为了我们生活中不可或缺的一部分。它不仅仅是一种技术，更是一种新的思维方式和生活方式。然而，人工智能在发展过程中也遇到了一些问题和挑战。
+
+        首先，人工智能的数据隐私和安全性问题备受关注。人工智能需要大量的数据支持，但这些数据的来源和使用方式都存在很多争议。同时，人工智能算法的透明度和可解释性也受到了质疑，这使得人们很难信任人工智能的决策过程。
+
+        其次，人工智能的劳动就业问题也备受关注。随着人工智能技术的不断发展，越来越多的工作被自动化取代，导致失业人数增加和就业机会减少。同时，人工智能算法的偏见和不公平性问题也日益突出，这些问题可能会对个人和社会带来不良影响。
+
+        为了解决这些问题和挑战，我们需要采取一些措施。首先，我们需要加强人工智能数据隐私和安全性的保护。这可以通过制定更加严格的法律法规和技术措施来实现，以确保人工智能算法的透明度和可解释性。其次，我们需要采取措施解决人工智能对劳动就业的影响。这可以通过推广人工智能教育、提高劳动力素质和创造新的就业机会等方式来实现。同时，我们也需要加强对人工智能算法的监管和审查，以确保算法的公正性和公平性。
+
+        未来，人工智能将会继续得到广泛应用和发展。随着技术的不断进步和应用场景的不断扩展，我们相信人工智能将会为人类带来更多的福利和发展机会。但同时，我们也需要关注和解决人工智能所带来的问题和挑战。
+
+        在这个时代，我们需要采取更加积极的态度来面对人工智能的发展。我们需要认真思考和探讨人工智能所带来的机遇和挑战，并采取措施来应对这些挑战。同时，我们也需要积极探索和发展人工智能技术的新的应用场景和领域，以推动人工智能技术的不断进步和发展。
+
+        除此之外，我们也需要关注人工智能技术的伦理和社会影响。我们需要认真思考和探讨人工智能技术的伦理原则和社会责任，以确保人工智能技术为人类带来更多的福利和发展机会，而不是负面影响和问题。
+
+        总之，人工智能已经成为了我们生活中不可或缺的一部分。它不仅仅是一种技术，更是一种新的思维方式和生活方式。我们需要认真思考和探讨人工智能所带来的机遇和挑战，并采取措施来应对这些挑战。同时，我们也需要积极探索和发展人工智能技术的新的应用场景和领域，以推动人工智能技术的不断进步和发展。
+    </div> -->
+
+
+    <!-- 颜色相关css -->
+    <!-- 1、HSL(H,S,L)
+    H:Hue(色调)。0(或360)表示红色，120表示绿色，240表示蓝色，也可取其他数值来指定颜色。取值为：0 - 360
+    S：Saturation(饱和度)。取值为：0.0% - 100.0%
+    L：Lightness(亮度)。取值为：0.0% - 100.0% -->
+    <!-- 2、HSLA 多一个阿尔法透明度 -->
+    <!-- 3、currentColor 在CSS1和CSS2中定义了border-color属性的默认值是color属性的值，但却没有为此定义一个相应的关键字。 所以border-color：currentColor 就是让border的颜色和color的颜色一样。 -->
+
+
+    <!-- linear-gradient radial-gradient 渐变 -->
+    <!-- 1、linear-gradient linear-gradient(direction, color-stop1, color-stop2, ..., color-stopN): 创建一个线性渐变背景，渐变方向由direction参数指定，渐变的颜色由color-stop参数指定。 direction参数可以使用任何角度值（如45deg）或者关键词（如to right，to bottom等）。此外，color-stop参数可以指定多个颜色，以及颜色的位置。0deg就是to top-->
+    <!-- 例子：linear-gradient(45deg,red 20px,green 60px,blue 100px)  后面的数字就是颜色起始的位置-->
+    <!-- 2、使用repeating-linear-gradient()函数来定义重复线性渐变。 -->
+    <!-- 3、radial-gradient 径向渐变 中心定义 创建一个径向渐变,也必须至少定义两种颜色节点。同时,也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）-->
+    <!-- position：渐变起点的位置，可以为百分比，默认是图形的正中心。
+    shape：渐变的形状，ellipse表示椭圆形，circle表示圆形。默认为ellipse，如果元素形状为正方形的元素，则ellipse和circle显示一样。 -->
+    <!-- size：渐变的大小，即渐变到哪里停止，它有四个值。
+    closest-side：最近边； farthest-side：最远边；
+    closest-corner：最近角； farthest-corner：最远角
+    参照菜鸟教程演示代码（带有不同尺寸大小关键字的径向渐变：size at position）：
+    background-image: radial-gradient(closest-side at 60% 55%, red, yellow, black) ;
+    background-image: radial-gradient(farthest-side at 60% 55%, red, yellow, black) ;
+    background-image: radial-gradient(closest-corner at 60% 55%, red, yellow, black) ;
+    background-image: radial-gradient(farthest-corner at 60% 55%, red, yellow, black) ;
+    -->
+    <!-- 4、重复的径向渐变 repeating-radial-gradient() 函数用于重复径向渐变：（与线性相同）
+    background-image: repeating-radial-gradient(red, yellow 10%, green 15%) ; -->
 
 </body>
 

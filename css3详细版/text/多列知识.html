@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div {
+            column-count: 4;
+            column-gap: 50px;
+            column-rule: 1px dashed black;
+        }
+
+        p {
+            color: red;
+            column-span: all;
+            -webkit-column-break-before: always;
+            -webkit-column-break-after: always;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- 多列 不适合用于瀑布流布局 因为和他自身的算法有关 
+    最适合的场景可以是小说文章的滑动阅读 -->
+    <!-- 1、columns 设置或检索对象的列数和每列的宽度。复合属性 -->
+    <!-- 一般不适用这个复合属性因为 column-width不准确 一般单独设置一个值-->
+    <!-- columns：<' column-width '> || <' column-count '> -->
+    <!-- <' column-width '>：
+    设置或检索对象每列的宽度
+    <' column-count '>：
+    设置或检索对象的列数 -->
+
+    <!-- 2、column-width 设置或检索对象每列的宽度 -->
+    <!-- column-width：<length> | auto
+    <length>：
+    用长度值来定义列宽。不允许负值
+    auto：
+    根据 <' column-count '> 自定分配宽度 -->
+
+    <!-- 3、column-count 设置或检索对象的列数 -->
+    <!-- column-count：<integer> | auto -->
+    <!-- <integer>：
+    用整数值来定义列数。不允许负值
+    auto：
+    根据 <' column-width '> 自定分配宽度 -->
+
+    <!-- 4、column-gap 设置或检索对象的列与列之间的间隙 -->
+    <!-- column-gap：<length> | normal -->
+    <!-- <length>：
+    用长度值来定义列与列之间的间隙。不允许负值
+    normal：
+    与 <' font-size '> 大小相同。假设该对象的font-size为16px，则normal值为16px，类推。 -->
+
+    <!-- 5、column-rule 设置或检索对象的列与列之间的边框。复合属性 就是和border一样的 -->
+    <!-- column-rule：<' column-rule-width '> || <' column-rule-style '> || <' column-rule-color '> -->
+    <!-- <' column-rule-width '>：
+    设置或检索对象的列与列之间的边框厚度。
+    <' column-rule-style '>：
+    设置或检索对象的列与列之间的边框样式。
+    <' column-rule-color '>：
+    设置或检索对象的列与列之间的边框颜色。 -->
+
+    <!-- 6、column-rule-width 设置或检索对象的列与列之间的边框厚度。-->
+    <!-- column-rule-width：<length> | thin | medium | thick -->
+
+    <!-- 7、column-rule-style 设置或检索对象的列与列之间的边框样式。-->
+    <!-- column-rule-style：none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset -->
+
+    <!-- 8、column-rule-color 设置或检索对象的列与列之间的边框颜色。-->
+    <!-- column-rule-color：<color> -->
+
+    <!-- 9、column-span 设置或检索对象元素是否横跨所有列。 类似于标题 突出显示
+    -->
+    <!-- column-span：none | all -->
+    <!-- none：
+    不跨列
+    all：
+    横跨所有列 -->
+
+    <!-- 10、column-fill 设置或检索对象所有列的高度是否统一。 -->
+    <!-- column-fill：auto | balance -->
+    <!-- auto：
+    列高度自适应内容
+    balance：
+    所有列的高度以其中最高的一列统一 -->
+
+    <!-- 11、column-break-before 设置或检索对象之前是否断行。即单独分列  一般兼容性 要加上厂商前缀
+    只有always有效果-->
+    <!-- column-break-before：auto | always | avoid | left | right | page | column | avoid-page | avoid-column -->
+    <!-- auto：
+    既不强迫也不禁止在元素之前断行并产生新列
+    always：
+    总是在元素之前断行并产生新列
+    avoid：
+    避免在元素之前断行并产生新列 -->
+
+    <!-- 12、column-break-before  -->
+    <!-- 13、column-break-inside -->
+
+    <!-- 例子： -->
+    <!-- <div>据机场信息显示，该航班当天延误1个多小时起飞，并在下午2点51分顺利到达舟山普陀机场。
+        12日下午，成都航空工作人员表示：“经核实，该名旅客是癌症晚期的患者，公司有明确规定，针对此类患者不予承运，防止旅客在飞行途中身体不适。”
+        癌症旅客不能坐飞机？
+        不一定！
+        <p>那么，癌症病人是不是一定不能坐飞机呢？</p>
+        对此，记者查阅了成都航空《旅客、行李国内运输总条件(EU05 版)》的6.1.3中提到，拒绝运输和限制运输中“癌症晚期患者”属于“经成都航同意进行特别安排外，不予承运”的旅客。
+        这样的旅客还包括：近期遭受过严重外伤或因重大疾病而进行过外科手术，伤口未完全愈合者；上机后需要输液或机上医用氧气服务等11种情形。
+        同时，在该6.1.2中也明确，如怀孕36周(含以上)或预产期不确定但已知为多胎分娩或预计有分娩并发症者；产后不足7天(含)的产妇；预产期在4周(含)以内者等12种情形，则明确不予承运。
+        也就是说，对于成都航空来说，“癌症晚期患者”并不是一刀切“不予承运”，而是要经航司同意，进行特别安排。
+    </div> -->
+
+</body>
+
+</html>

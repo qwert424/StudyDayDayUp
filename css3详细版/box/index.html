@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- box 知识 -->
+    <!-- W3C Standards mode
+    boxWidth = width + padding(2) + border(2)
+    IE 6 Quirks mode
+    boxWidth = width -->
+
+    <!-- 1、box-sizing:border-box  css3 设置或检索对象的盒模型组成模式-->
+    <!-- box-sizing：content-box | border-box -->
+
+    <!-- 2、overflow 定义了元素处理溢出内容的方式。 -->
+    <!-- overflow：visible | hidden | scroll | auto | clip -->
+    <!-- 除了当overflow-x,overflow-y之一设置为非 visible时另一个属性会自动将默认值visible计算为auto -->
+
+    <!-- 3、resize   设置或检索对象的区域是否允许用户缩放，调节元素尺寸大小。 -->
+    <!-- 如果希望此属性生效，需要设置对象的overflow属性，值可以是auto,hidden或scroll。 且性能消耗太大 慎用 -->
+    <!-- resize：none | both | horizontal | vertical -->
+    <!-- none：
+    不允许用户调整元素大小。
+    both：
+    用户可以调节元素的宽度和高度。
+    horizontal：
+    用户可以调节元素的宽度
+    vertical：
+    用户可以调节元素的高度。 -->
+
+    <!-- 4、display：flex 弹性盒-->
+    <!-- 4.1、flex-direction 该属性通过定义flex容器的主轴方向来决定felx子项在flex容器中的位置。这将决定flex需要如何进行排列-->
+    <!-- flex-direction：row | row-reverse | column | column-reverse -->
+    <!-- row：
+    主轴与行内轴方向作为默认的书写模式。即横向从左到右排列（左对齐）。
+    row-reverse：
+    对齐方式与row相反。
+    column：
+    主轴与块轴方向作为默认的书写模式。即纵向从上往下排列（顶对齐）。
+    column-reverse：
+    对齐方式与column相反。 -->
+    <!-- 4.2、flex-wrap  该属性控制flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向。 -->
+    <!-- flex-wrap：nowrap | wrap | wrap-reverse -->
+    <!-- nowrap：
+    flex容器为单行。该情况下flex子项可能会溢出容器
+    wrap：
+    flex容器为多行。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行
+    wrap-reverse：
+    反转 wrap 排列。 -->
+
+    <!-- flex-flow 复合属性。设置或检索弹性盒模型对象的子元素排列方式。  -->
+    <!-- flex-flow：<' flex-direction '> || <' flex-wrap '> -->
+
+    <!-- 4.3、justify-content 设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。 -->
+    <!-- justify-content：flex-start | flex-end | center | space-between | space-around -->
+    <!-- 4.4、align-items 定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。 -->
+    <!-- 一般用于单行flex子项对齐 注意区别align-content对其 -->
+    <!-- align-items：flex-start | flex-end | center | baseline | stretch -->
+    <!-- 4.5、align-content 当伸缩容器的侧轴还有多余空间时，本属性可以用来调准「伸缩行」在伸缩容器里的对齐方式，这与调准伸缩项目在主轴上对齐方式的 <' justify-content '> 属性类似。请注意本属性在只有一行的伸缩容器上没有效果。 -->
+    <!-- 区别align-items就是这是多行文本的时候对其方式 单行不起作用 -->
+    <!-- 4.6、align-self 定义flex子项单独在侧轴（纵轴）方向上的对齐方式。 -->
+    <!-- 注意 其优先级大于align-items 但是小于align-content  即如果值为「auto」，则计算值为父元素的 <' align-items '> 值，否则为指定值。-->
+    <!-- align-self：auto | flex-start | flex-end | center | baseline | stretch -->
+    <!-- 4.7、order 设置或检索弹性盒模型对象的子元素出現的順序。 -->
+    <!-- 默认是为0 所以一般设置负值-->
+    <!-- order：<integer> -->
+    <!-- <integer>：
+    用整数值来定义排列顺序，数值小的排在前面。可以为负值。 -->
+    <!-- 4.8、flex 复合属性。设置或检索弹性盒模型对象的子元素如何分配空间。 -->
+    <!-- flex：none | <' flex-grow '> <' flex-shrink >'? || <' flex-basis '> -->
+    <!-- 4.9、flex-grow 设置或检索弹性盒的扩展比率。 -->
+    <!-- flex-grow：<number>-->
+    <!-- <number>：
+    用数值来定义扩展比率。不允许负值 -->
+    <!-- 4.10、flex-shrink 设置或检索弹性盒的收缩比率。 -->
+    <!-- flex-shrink：<number> -->
+    <!-- <number>：
+    用数值来定义收缩比率。不允许负值 -->
+    <!-- 注意点 其不同于flex-grow比例 他的计算是看权重的 即：一个总盒子宽度600px 包含3个小盒子A B C，A宽度200px，B宽度200px，C宽度400px，三个盒子的flex-shrink收缩比例为1：1：3，计算公式为：200/(200*1+200*1+400*3)*(200+200+400-600)=25 依次计算权重 可以得到ABC宽度为：175，175，150-->
+    <!-- 且注意 上面的计算盒子的宽度 使用的是content-box的宽度 不是border-box的宽度 -->
+    <!-- 4.11、flex-basis 设置或检索弹性盒伸缩基准值。 -->
+    <!-- 可以当作就是flex子项的宽度设置 width -->
+    <!-- flex-basis：<length> | <percentage> | auto | content -->
+    <!-- <length>：
+    用长度值来定义宽度。不允许负值
+    <percentage>：
+    用百分比来定义宽度。不允许负值
+    auto：
+    无特定宽度值，取决于其它属性值
+    content：
+    基于内容自动计算宽度 -->
+
+
+    <!-- 提升注意点 -->
+    <!-- 1、flex-basis 设置或检索弹性盒伸缩基准值。 和自己定义的width的区别 -->
+    <!-- 当width未被设置时,flex-basis的宽度为最小宽度 即min-width 其会被内容 给撑开 -->
+    <!-- 当width被设置时,flex-basis的宽度为最小宽度 容器的宽度为flex-basis<W<width  即设置的width为最大宽度-->
+    <!-- 但是当存在不会换行的一个被内容撑开的容器,其不会计算压缩属性即flex-shrink 所以一般需要设置word-space:break-all -->
+
+    <!-- 2、通过display:flex可以实现: -->
+    <!-- flex 居中 justify-content align-items -->
+    <!-- 可动态增加的导航栏 flex属性 -->
+    <!-- 等分布局 flex:0 1 auto 改变这个属性 -->
+    <!-- 固定宽度布局\固定一个宽度或者多个 一个子项flex:0 0 固定宽度;其他子项参与伸缩-->
+    <!-- 圣杯模式 顶部底部固定basis 内容区左右固定basis 然后内容区进行拉伸收缩 内容中心区进行拉伸收缩 即当存在不会换行的一个被内容撑开的容器,其不会计算压缩属性 -->
+    <!-- 流式布局 类似float布局 即设置align-content:flex-start即可 -->
+
+</body>
+
+</html>

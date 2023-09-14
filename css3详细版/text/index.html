@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            background-color: #000;
+        }
+
+        /* 特效一：浮雕 */
+        /* div {
+            width: 700px;
+            height: 300px;
+            color: #ddd;
+            font-size: 80px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 300px;
+            text-shadow: 3px 3px 3px #008c8c;
+        } */
+
+        /* 特效二：镂刻 */
+        /* div {
+            width: 700px;
+            height: 300px;
+            color: #ddd;
+            font-size: 80px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 300px;
+            text-shadow: -3px -3px 3px #008c8c;
+        } */
+
+        /* 特效二：类似火焰文  */
+        /* div {
+            width: 700px;
+            height: 300px;
+            color: #ddd;
+            font-size: 80px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 300px;
+            text-shadow: 0px -5px 10px #008c8c, 0 -10px 20px #008c8c, 0 -15px 30px #008c8c;
+            transition: all 1.5s;
+        }
+
+        div:hover {
+            text-shadow: 0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00;
+        }
+
+        div::before {
+            content: "NO";
+            margin-right: 50px;
+            opacity: 0;
+            transition: all 1.5s;
+            text-shadow: 0px -5px 10px #f00, 0 -10px 20px #f00, 0 -15px 30px #f00;
+        }
+
+        div:hover::before {
+            opacity: 1;
+        } */
+    </style>
+    <style>
+        /* 特效四：死神来咯 */
+        /* div {
+            width: 400px;
+            height: 150px;
+            font-size: 80px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 150px;
+            transition: all 1.5s;
+            background: url(./v2-159af9ca9798a9011f817668c275bc28_720w.jpg) -400px -50px / 400px 200px no-repeat;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            text-shadow: 20px 20px 3px #008c8c7c, -20px -20px 3px #dddddd59;
+            font-weight: bold;
+        }
+
+        div:hover {
+            background-position: 0 -50px;
+        } */
+    </style>
+    <style>
+        /* 特效五 重叠阴影 */
+        /* div {
+            width: 400px;
+            height: 200px;
+            font-size: 80px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 200px;
+            transition: all 1.5s;
+            color: blueviolet;
+        }
+
+        div:hover {
+            text-shadow: 10px 10px 3px rgba(255, 0, 0, 0.5),
+                10px -10px 3px rgba(255, 0, 255, 0.5),
+                -10px 10px 3px rgba(255, 255, 0, 0.5),
+                -10px -10px 3px #ffffff50,
+                -20px -20px 3px #00f,
+                -20px 20px 3px #0ff
+        } */
+        /* 特效六：特殊描边 -webkit-text-stroke：宽度 颜色；字体simsun  */
+        /* div {
+            width: 400px;
+            height: 200px;
+            font-size: 80px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 200px;
+            font-weight: bold;
+            color: transparent;
+            font-family: simsun;
+            -webkit-text-stroke: 1px blue;
+        } */
+    </style>
+    <style>
+        /* white-space */
+        /* div {
+            white-space: nowrap;
+            width: 100px;
+            margin: 0 auto;
+            font-weight: bold;
+            color: #fff;
+            border: 1px solid red;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- 1、text-shadow 文字阴影 可以设置4个方向 x y blur color -->
+    <!-- 可以通过text-shadow设置雕刻 镂空 火焰文字 等特效 -->
+    <!-- 特效一：浮雕 -->
+    <!-- <div>text-shadow</div> -->
+    <!-- 特效二：镂刻 -->
+    <!-- <div>text-shadow</div> -->
+
+    <!-- 特效三：类似火焰文 -->
+    <!-- <div>Access</div> -->
+
+    <!-- 特效四：死神来咯 -->
+    <!-- <div>死神来咯</div> -->
+    <!-- 注意点：在使用-webkit-text-fill-color、-webkit-background-clip=text的时候文字会变成背景 在这时候使用text-shadow就会覆盖文字 （text-shadow就是文字 文字在背景上方） -->
+
+    <!-- 特效五：重叠阴影 -->
+    <!-- <div>come in it</div> -->
+
+    <!-- 特效六：特殊描边 -webkit-text-stroke：宽度 颜色；字体simsun -->
+    <!-- <div>仇儿大臭B</div> -->
+
+
+    <!-- 字体family @font-face -->
+    <!-- @fant-face{
+    font-family:"hello",
+    url:""
+    }
+    div{
+    font-family:"hello"
+    } -->
+    <!-- 字体格式： 
+    truetype .ttp    微软 苹果
+    opentype .opt    微软 abode “.ttp升级” 
+    woff     .woff   压缩上面两个字体
+             .eat
+             .svg
+    -->
+
+
+    <!-- 文本知识 -->
+    <!-- 1、white-space -->
+    <!-- white-space：normal | pre | nowrap | pre-wrap | pre-line -->
+    <!-- normal：
+    默认处理方式。会将序列的空格合并为一个，内部是否换行由换行规则决定。
+    pre：
+    原封不动的保留你输入时的状态，空格、换行都会保留，并且当文字超出边界时不换行。等同 pre 元素效果
+    nowrap：
+    与normal值一致，不同的是会强制所有文本在同一行内显示。
+    pre-wrap：
+    与pre值一致，不同的是文字超出边界时将自动换行。
+    pre-line：
+    与normal值一致，但是会保留文本输入时的换行。 -->
+    <!-- 例子 -->
+    <!-- <div> 我就是上帝v哈迪斯 uv八四u全额负担vvfdbwe w的肥肉认为不dfbweve</div> -->
+
+    <!-- 2、tab-size 定义元素内容中制表符的长度 兼容不好 不用基本 -->
+
+    <!-- 3、word-break 定义元素内容文本的字间与字符间的换行行为。-->
+    <!-- word-break：normal | keep-all | break-all | break-word -->
+    <!-- normal：
+    默认的换行规则。依据各自语言的规则，允许在字间发生换行。
+    keep-all：
+    对于 CJK（中文，韩文，日文）文本不允许在字符内发生换行。Non-CJK 文本表现同normal
+    break-all：
+    对于 Non-CJK 文本允许在任意字符内发生换行。该值适合包含一些非亚洲文本的亚洲文本，比如使连续的英文字符断行。
+    break-word：
+    与break-all相同，不同的地方在于它要求一个没有断行破发点的词必须保持为一个整体单位。这与word-wrap的break-word值效果相同 -->
+
+    <!-- 4、text-align 文字对齐方式 定义元素内容的水平对齐方式 -->
+    <!-- text-align：start | end | left | right | center | justify | match-parent | justify-all -->
+    <!-- left：
+    内容左对齐。
+    center：
+    内容居中对齐。
+    right：
+    内容右对齐。
+    justify：
+    内容两端对齐，但对于强制打断的行（被打断的这一行）及最后一行（包括仅有一行文本的情况，因为它既是第一行也是最后一行）不做处理。（CSS3）
+    start：
+    内容对齐开始边界。（CSS3）
+    end：
+    内容对齐结束边界。（CSS3）
+    match-parent：
+    这个值和inherit表现一致，只是该值继承的start或end关键字是针对父母的direction值并计算的，计算值可以是 left 和 right 。（CSS3）
+    justify-all：
+    效果等同于justify，不同的是最后一行也会两端对齐。（CSS3） -->
+
+    <!-- 5、text-align-last 定义块内文本内容的最后一行（包括块内仅有一行文本的情况，这时既是第一行也是最后一行）或者被强制打断的行的对齐方式 -->
+    <!-- text-align-last：auto | start | end | left | right | center | justify -->
+
+    <!-- 6、text-justify 兼容性差 不使用 -->
+
+    <!-- 7、word-spacing 指定单词之间的额外间隙。 -->
+    <!-- word-spacing：normal | <length> | <percentage></percentage> -->
+    <!-- normal：
+    默认间隔。计算值为0
+    <length>：
+    用长度值指定单词间隔。可以为负值。
+    <percentage>：
+    用百分比指定单词间隔。可以为负值。（CSS3） -->
+
+    <!-- 8、letter-spacing 指定字符之间的额外间隙。-->
+    <!-- letter-spacing：normal | <length> -->
+    <!-- normal：
+    默认间隔。计算值为0
+    <length>：
+    用长度值指定字符间隔。可以为负值。 -->
+
+    <!-- 8、text-indent 定义块内文本内容的缩进。-->
+    <!-- text-indent：[ <length> | <percentage> ] && hanging? && each-line? -->
+    <!-- <length>：
+    用长度值指定文本的缩进。可以为负值。
+    <percentage>：
+    用百分比指定文本的缩进。可以为负值。
+    each-line：
+    定义缩进作用在块容器的第一行或者内部的每个强制换行的首行，软换行不受影响。（CSS3）
+    hanging：
+    反向所有被缩进作用的行。（CSS3） -->
+
+    <!-- 9、vertical-align 定义行内元素在行框内的垂直对齐方式。 -->
+    <!-- vertical-align：baseline | sub | super | top | text-top | middle | bottom | text-bottom | <percentage> | <length></length> -->
+    <!-- baseline：
+    把当前盒的基线与父级盒的基线对齐。如果该盒没有基线，就将底部外边距的边界和父级的基线对齐
+    sub：
+    把当前盒的基线降低到合适的位置作为父级盒的下标（该值不影响该元素文本的字体大小）
+    super：
+    把当前盒的基线提升到合适的位置作为父级盒的上标（该值不影响该元素文本的字体大小）
+    text-top：
+    把当前盒的top和父级的内容区的top对齐
+    text-bottom：
+    把当前盒的bottom和父级的内容区的bottom对齐
+    middle：
+    把当前盒的垂直中心和父级盒的基线加上父级的半x-height对齐
+    top：
+    把当前盒的top与行盒的top对齐
+    bottom：
+    把当前盒的bottom与行盒的bottom对齐
+    <percentage>：
+    把当前盒提升（正值）或者降低（负值）这个距离，百分比相对line-height计算。当值为0%时等同于baseline。
+    <length>：
+    把当前盒提升（正值）或者降低（负值）这个距离。当值为0时等同于baseline。（CSS2） -->
+
+    <!-- 10、line-height 定义元素中行框的最小高度。 -->
+    <!-- line-height：normal | <length> | <percentage> | <number></number> -->
+    <!-- normal：
+    允许内容顶开或溢出指定的容器边界。
+    <length>：
+    用长度值指定行高。不允许负值。
+    <percentage>：
+    用百分比指定行高，其百分比基于文本的font-size进行换算。不允许负值。
+    <number>：
+    用乘积因子指定行高。不允许负值。 -->
+
+    <!-- 11、text-size-adjust 定义移动端页面中元素文本的大小如何调整。
+    该属性只在移动设备上生效；
+    如果你的页面没有定义meta viewport，此属性定义将无效；
+    小心兼容性
+    -->
+    <!-- text-size-adjust：auto | none | <percentage> -->
+    <!-- auto：
+    文本大小根据设备尺寸进行调整。
+    none：
+    文本大小不会根据设备尺寸进行调整。
+    <percentage>：
+    用百分比来指定文本大小在设备尺寸不同的情况下如何调整。 -->
+
+    <!-- 12、text-transform 定义元素的文本如何转换大小写。 -->
+    <!-- text-transform：none | capitalize | uppercase | lowercase | full-width -->
+    <!-- none：
+    无转换
+    capitalize：
+    将每个单词的第一个字母转换成大写
+    uppercase：
+    将每个单词转换成大写
+    lowercase：
+    将每个单词转换成小写
+    full-width：
+    将所有字符转换成fullwidth形式。如果字符没有相应的fullwidth形式，将保留原样。这个值通常用于排版拉丁字符和数字等表意符号。（CSS3） -->
+
+    
+</body>
+
+</html>
