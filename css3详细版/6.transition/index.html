@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 效果一：打字效果 */
+        /* div {
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            margin: 100px auto;
+            text-align: center;
+            background-color: #008c8c;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 7px;
+            overflow: hidden;
+            font-family: monospace;
+            animation: widthChange 10s steps(12, end) infinite forwards,
+                borderChange 1s steps(1, end) infinite;
+        }
+
+        @keyframes widthChange {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 200px;
+            }
+        }
+
+        @keyframes borderChange {
+            from {
+                border-right: 1px solid #000;
+            }
+
+            50% {
+                border-right: 1px solid transparent;
+            }
+
+            to {
+                border-right: 1px solid #000;
+            }
+        } */
+    </style>
+    <style>
+        /* 效果二：钟表效果 */
+        /* .clock {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        .sHand,
+        .mHand {
+            border: 1px solid #000;
+            display: block;
+            width: 0;
+            height: 44px;
+            transform: translate(48px, 4px);
+            transform-origin: bottom right;
+        }
+
+        .sHand {
+            animation: sHand 60s steps(60, end) infinite;
+        }
+
+        .mHand {
+            transform-origin: top right;
+            animation: sHand 3600s steps(60, end) infinite;
+        }
+
+        @keyframes sHand {
+            from {
+                transform: translate(48px, 4px);
+            }
+
+            to {
+                transform: translate(48px, 4px) rotate(360deg);
+            }
+        } */
+    </style>
+    <style>
+        /* 效果三：赛马效果 */
+        /* div {
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+            margin: 100px auto;
+            border: 1px solid #000;
+        }
+
+        img {
+            animation: run 10s steps(12, end) infinite;
+        }
+
+        @keyframes run {
+            from {
+                transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(-2400px);
+
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- 1、transition 过渡 复合属性。检索或设置对象变换时的过渡。 多个值逗号分隔-->
+    <!-- <single-transition> = [ none | <single-transition-property> ] || <time> || <single-transition-timing-function> || <time></time> -->
+    <!-- <' transition-property '>：
+    检索或设置对象中的参与过渡的属性
+    <' transition-duration '>：
+    检索或设置对象过渡的持续时间
+    <' transition-timing-function '>：
+    检索或设置对象中过渡的动画类型
+    <' transition-delay '>：
+    检索或设置对象延迟过渡的时间 -->
+    <!-- 1.1、transition-property：检索或设置对象中的参与过渡的属性。 多个值逗号分隔-->
+    <!-- transition-property：none | <single-transition-property>[ ,<single-transition-property> ]* -->
+    <!-- none：
+    不指定过渡的css属性
+    all：
+    所有可以进行过渡的css属性
+    <IDENT>：
+    指定要进行过渡的css属性 -->
+    <!-- 1.2、transition-duration 检索或设置对象过渡的持续时间。 -->
+    <!-- 1.3、transition-timing-function 检索或设置对象中过渡的动画类型。 -->
+    <!-- <single-transition-timing-function> = ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps(<integer>[, [ start | end ] ]?) | cubic-bezier(<number>, <number>, <number>, <number>) -->
+    <!-- linear：
+    线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0)
+    ease：
+    平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0)
+    ease-in：
+    由慢到快。等同于贝塞尔曲线(0.42, 0, 1.0, 1.0)
+    ease-out：
+    由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0)
+    ease-in-out：
+    由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)
+    step-start：
+    等同于 steps(1, start)
+    step-end：
+    等同于 steps(1, end)
+    steps(<integer>[, [ start | end ] ]?)：
+    接受两个参数的步进函数。第一个参数必须为正整数，指定函数的步数。第二个参数取值可以是start或end，指定每一步的值发生变化的时间点。第二个参数是可选的，默认值为end。
+    cubic-bezier(<number>, <number>, <number>, <number>)：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内 -->
+    <!-- 1.4、transition-delay 检索或设置对象延迟过渡的时间。 -->
+
+
+    <!-- 2、animation 动画 复合属性。检索或设置对象所应用的动画特效。 多个动画逗号分隔-->
+    <!-- <single-animation> = <single-animation-name> || <time> || <single-animation-timing-function> || <time> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state></single-animation-play-state> -->
+    <!-- <' animation-name '>：
+    检索或设置对象所应用的动画名称
+    <' animation-duration '>：
+    检索或设置对象动画的持续时间
+    <' animation-timing-function '>：
+    检索或设置对象动画的过渡类型
+    <' animation-delay '>：
+    检索或设置对象动画延迟的时间
+    <' animation-iteration-count '>：
+    检索或设置对象动画的循环次数
+    <' animation-direction '>：
+    检索或设置对象动画在循环中是否反向运动
+    <' animation-fill-mode '>：
+    检索或设置对象动画时间之外的状态
+    <' animation-play-state '>：
+    检索或设置对象动画的状态。w3c正考虑是否将该属性移除，因为动画的状态可以通过其它的方式实现，比如重设样式 已经取消了-->
+    <!-- 2.1、animation-name 检索或设置对象所应用的动画名称，必须与规则@keyframes配合使用，因为动画名称由@keyframes定义 -->
+    <!-- 2.2、animation-duration 检索或设置对象动画的持续时间 -->
+    <!-- 2.3、animation-timing-function 检索或设置对象动画的过渡类型 -->
+    <!-- 2.4、animation-delay 检索或设置对象动画的延迟时间 -->
+    <!-- 2.5、animation-iteration-count 检索或设置对象动画的循环次数 默认值1 infinite：无限循环 -->
+    <!-- 注意点：如果设置了delay延迟时间 所有次数看作一个动画 即只执行一次延迟时间 而不是每次执行完动画都等待 -->
+    <!-- 2.6、animation-direction 检索或设置对象动画在循环中是否反向运动 -->
+    <!-- <single-animation-direction> = normal | reverse | alternate | alternate-reverse -->
+    <!-- normal：
+    正常方向
+    reverse：
+    反方向运行
+    alternate：
+    动画先正常运行再反方向运行，并持续交替运行
+    alternate-reverse：
+    动画先反运行再正方向运行，并持续交替运行 -->
+    <!-- 2.7、animation-play-state 弃用 -->
+    <!-- 2.8、animation-play-state 检索或设置对象动画时间之外的状态-->
+    <!-- <single-animation-fill-mode> = none | forwards | backwards | both -->
+    <!-- none：
+    默认值。不设置对象动画之外的状态
+    forwards：
+    设置对象状态为动画结束时的状态 即设置动画结束为最后一针的样式 即to
+    backwards：
+    设置对象状态为动画开始时的状态 即设置动画开始时为第一针的样式 即from
+    both：
+    设置对象状态为动画结束或开始的状态 -->
+
+    <!-- 例子、 -->
+    <!-- <style>
+        @keyframes run {
+            from {}
+
+            25% {}
+
+            50% {}
+
+            to {}
+        }
+
+        div {
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: run 4s ease 0 infinite alternate forwards;
+        }
+    </style> -->
+
+
+    <!-- 补充点：animation-timing-function 内有一个steps变化动画过程 -->
+    <!-- steps(num,end/start) steps一步到位 不像animation渐变 他根据num的值 将动画分为num个步骤 -->
+    <!-- steps(1,end)===step-end; steps(1,start)===step-start; -->
+    <!-- end: 保留最开始针的状态 -->
+    <!-- start：保留结束针的状态  -->
+    <!-- 例如  
+    @keyframes run{
+        from {
+
+        }
+        50%{
+
+        }
+        to{
+
+        }
+    }
+    end就是在from到50%的动画过程中 保留from的状态 50%到to保留50%的状态 给人最后一针一闪而过的感觉 通过forwards来看到最后一帧效果
+    start反之 from到50%的动画过程中 保留50%的状态 50%到to保留to的状态 给人刚开始一针一闪而过的感觉
+    -->
+
+    <!-- steps和animation实现： -->
+    <!-- 1、打字效果 -->
+    <!-- 2、钟表效果 -->
+    <!-- 3、赛马效果 -->
+
+    <!-- 效果一：打字效果 -->
+    <!-- <div>ABCDEFGHI</div> -->
+
+    <!-- 2、钟表效果 -->
+    <!-- <div class="clock">
+        <div class="sHand"></div>
+        <div class="mHand"></div>
+    </div> -->
+    <!-- 3、赛马效果 -->
+    <!-- <div><img src="./horse.png" alt=""></div> -->
+
+    
+</body>
+
+</html>

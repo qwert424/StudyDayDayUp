@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            perspective: 800px;
+            transform-style: preserve-3d;
+            perspective-origin: 300px 300px;
+        }
+
+        /* div {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            perspective: 800px;
+            transform-style: preserve-3d;
+        } */
+
+        /* img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            transform-origin: 0 0; */
+        /* transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg); */
+        /* transform: rotate3d(1, 1, 1, 45deg);
+        } */
+    </style>
+    <style>
+        /* 效果：钟摆图片 */
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            perspective: 800px;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes run {
+            from {
+                transform: rotateX(-45deg)rotateY(-45deg);
+            }
+
+            to {
+                transform: rotateX(45deg)rotateY(45deg);
+            }
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            transform-origin: 0 0;
+            animation: run 2s cubic-bezier(0.8, 0.2, 0.4, 1) infinite alternate;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- route 旋转 -->
+    <!-- rotate() = rotate(<angle>)
+    rotate3d() = rotate3d(<number>,<number>,<number>,<angle>)
+    rotatex() = rotatex(<angle>)
+    rotatey() = rotatey(<angle>)
+    rotatez() = rotatez(<angle>) -->
+
+    <!-- 学习注意点： -->
+    <!-- 1、注意坐标轴 即图片在旋转过程中 坐标轴谁之旋转 即不同的X、Y轴旋转顺序会带来不同的效果 -->
+    <!-- 2、route3d 时坐标轴矢量方向 -->
+    <!-- 3、单位deg、turn（360deg 一圈） -->
+    <!-- 3d视角的效果 ：prespective：800px属性 prespective-origin:300px 300px 和transform-style：preserve-3d  -->
+
+    <!-- 例子尝试 -->
+    <!-- <div><img src="../4.text/bg.png" alt=""></div> -->
+
+    <!-- 特效：翻转图片 -->
+    <div><img src="../4.text/bg.png" alt=""></div>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            perspective: 2000px;
+            perspective-origin: center top;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes run {
+            from {
+                transform: translate(-50%, -50%) rotateY(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotateY(360deg);
+            }
+        }
+
+        .container {
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 400px 150px -108px;
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: run 10s linear infinite;
+        }
+
+        img {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+        } */
+
+        /* img:nth-of-type(1) { */
+        /* transform: rotateY(45deg) translateZ(22px) translateX(291px); */
+        /* transform: rotateY(45deg) translateZ(100px) translateX(291px); */
+        /* } */
+
+        /* img:nth-of-type(2) { */
+        /* transform: rotateY(90deg) translateZ(86px) translateX(105px); */
+        /* transform: rotateY(90deg) translateZ(-70px) translateX(105px); */
+        /* } */
+
+        /* img:nth-of-type(3) { */
+        /* transform: rotateY(135deg) translateZ(29px); */
+        /* transform: rotateY(135deg) translateZ(-50px); */
+        /* } */
+
+        /* img:nth-of-type(4) { */
+        /* transform: rotateY(180deg) translateZ(-9px); */
+        /* } */
+
+        /* img:nth-of-type(5) { */
+        /* transform: rotateY(225deg) translateZ(29px)translateX(-8px); */
+        /* transform: rotateY(225deg) translateZ(-29px)translateX(-8px); */
+        /* } */
+
+        /* img:nth-of-type(6) { */
+        /* transform: rotateY(270deg) translateZ(80px)translateX(-111px); */
+        /* transform: rotateY(270deg) translateZ(-300px)translateX(-111px); */
+        /* } */
+
+        /* img:nth-of-type(7) { */
+        /* transform: rotateY(315deg) translateZ(13px)translateX(-283px); */
+        /* transform: rotateY(315deg) translateZ(-213px)translateX(-283px); */
+        /* } */
+
+        /* img:nth-of-type(8) { */
+        /* transform: rotateY(360deg) translateZ(-225px)translateX(-394px); */
+        /* transform: rotateY(360deg) translateZ(331)translateX(-394px); */
+        /* } */
+    </style>
+    <style>
+        /* 优化 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            perspective: 2000px;
+            perspective-origin: center top;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes run {
+            from {
+                transform: translate(-50%, -50%) rotateY(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotateY(360deg);
+            }
+        }
+
+        .container {
+            width: 300px;
+            height: 350px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            animation: run 10s linear infinite;
+        }
+
+        img {
+            position: absolute;
+            width: 300px;
+            max-height: 350px;
+            object-fit: cover;
+        }
+
+        img:nth-of-type(1) {
+            transform: rotateY(45deg) translateZ(500px);
+        }
+
+        img:nth-of-type(2) {
+            transform: rotateY(90deg) translateZ(500px);
+        }
+
+        img:nth-of-type(3) {
+            transform: rotateY(135deg) translateZ(500px);
+        }
+
+        img:nth-of-type(4) {
+            transform: rotateY(180deg) translateZ(500px);
+        }
+
+        img:nth-of-type(5) {
+            transform: rotateY(225deg) translateZ(500px);
+        }
+
+        img:nth-of-type(6) {
+            transform: rotateY(270deg) translateZ(500px);
+        }
+
+        img:nth-of-type(7) {
+            transform: rotateY(315deg) translateZ(500px);
+        }
+
+        img:nth-of-type(8) {
+            transform: rotateY(360deg) translateZ(500px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="./img/1.jpg" alt="">
+        <img src="./img/2.jpg" alt="">
+        <img src="./img/3.jpg" alt="">
+        <img src="./img/4.jpg" alt="">
+        <img src="./img/5.jpg" alt="">
+        <img src="./img/6.jpg" alt="">
+        <img src="./img/7.jpg" alt="">
+        <img src="./img/8.jpg" alt="">
+    </div>
+
+    <!-- 上面的方法 很麻烦 因为平铺 不好生成八边形 可以采用：将图片绝对定位 然后在旋转不同的角度 使他们变成八边形 -->
+    <!-- 思路就是将其形成8边形 360/8的角度 然后在Z轴500px即可-->
+
+    <!-- 优化 -->
+    <script>
+        document.body.onmousemove = function (e) {
+            this.style.perspectiveOrigin = `${e.pageX}px ${e.pageY}px`;
+        }
+    </script>
+</body>
+
+</html>

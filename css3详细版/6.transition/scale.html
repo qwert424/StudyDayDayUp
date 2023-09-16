@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body {
+            perspective: 800px;
+            perspective-origin: 300px 300px;
+            transform-style: preserve-3d;
+        } */
+
+        /* div { */
+        /* width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background: url(../4.text/bg.png) no-repeat center center/contain;
+            transform-origin: 0 0; */
+        /* scale不改变原宽高 */
+        /* transform: scale(2) translate(100px, 100px); */
+
+        /* scale 的效果可以叠加 */
+        /* transform: scale(0.5) scale(3); */
+        /* transform: scale(1.5); */
+
+        /* scale坐标轴会随着route旋转而旋转 */
+        /* transform: rotateY(45deg) scale(2); */
+        /* transform: scale(2) rotateY(45deg); */
+        /* } */
+    </style>
+</head>
+
+<body>
+    <!-- scale 缩放 -->
+    <!-- scale() = scale(<number>[,<number>]?)
+    scale3d() = scale3d(<number>,<number>,<number>)
+    scalex() = scalex(<number>)
+    scaley() = scaley(<number>)
+    scalez() = scalez(<number>) -->
+
+    <!-- 学习注意点 -->
+    <!-- 1、scale不改变原宽高 只是此元素坐标轴刻度的变化 -->
+    <!-- 2、scale坐标轴会随着route旋转而旋转 顺序效果不一样 因为scale的效果会保留 所以先旋转在伸缩和先伸缩在旋转就不一样-->
+    <!-- 3、scale 的效果可以叠加 例如 scale(0.5,0.5) scale(3,3)===scale(1.5,1.5) -->
+
+    <!-- 例子展示 -->
+    <!-- 1、scale不改变原宽高 transiform 移动的刻度就会随之改变 例如：scale(2) translate(100px,100px) 此时的100px对应刻度为200px -->
+    <!-- 3、scale 的效果可以叠加 -->
+    <div></div>
+</body>
+
+</html>

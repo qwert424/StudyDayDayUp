@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body { */
+        /* 透视效果 景深*/
+        /* perspective: 1000px; */
+        /* 未设置Z轴偏移时 改变景深距离 没效果 成像大小未变 */
+        /* perspective: 800px; */
+        /* 设置Z轴偏移负值时 改变景深距离 成像变小 */
+        /* perspective: 600px; */
+        /* } */
+
+        /* div { */
+        /* width: 200px;
+            height: 200px;
+            background: url(../4.text/bg.png) no-repeat center center/contain;
+            position: relative;
+            top: 200px;
+            left: 200px; */
+        /* Z轴平移 */
+        /* transform: rotateY(90deg) translateZ(100px); */
+        /* Z轴变大变小 */
+        /* transform: translateZ(100px); */
+        /* Z轴设置负值 观察成像 */
+        /* transform: translateZ(-100px); */
+        /* } */
+    </style>
+    <style>
+        /* 效果： 不同perspective-origin */
+        /* body { */
+        /* perspective: 800px; */
+        /* } */
+
+        /* div { */
+        /* width: 200px;
+            height: 200px;
+            background: url(../4.text/bg.png) no-repeat center center/contain;
+            position: absolute;
+            top: 200px;
+            left: 200px; */
+        /* transform: rotateY(45deg); */
+        /* 自身属性 perspective  且注意 会和父元素的景深向“重合”相互影响*/
+        /* transform: perspective(800px) rotateY(45deg); */
+        /* } */
+
+        /* div:nth-of-type(2) {
+            left: 400px;
+        }
+
+        div:nth-of-type(3) {
+            left: 600px;
+        }
+
+        div:nth-of-type(4) {
+            left: 800px;
+        }
+
+        div:nth-of-type(5) {
+            left: 1000px;
+        } */
+    </style>
+    <style>
+        /* 例子：通过眼睛（perspective-origin）使得在元素的上方 让元素Z轴移动 观察背景颜色和背景图案的分离  */
+
+        /* body {
+            perspective: 800px;
+            perspective-origin: 300px 100px;
+            transform-style: preserve-3d;
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            transform-style: preserve-3d;
+            transform: rotateY(45deg);
+        }
+
+        .demo {
+            transform: translateZ(100px);
+            width: 200px;
+            height: 200px;
+            background: url(../4.text/bg.png) no-repeat center center/contain;
+        } */
+    </style>
+    <style>
+        /* 空间3D 简约*/
+        /* body {
+            perspective: 800px;
+            perspective-origin: 300px 300px;
+            transform-style: preserve-3d;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background: url(../4.text/bg.png) no-repeat center center/contain;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            transform-style: preserve-3d;
+            transform-origin: 100px 100px 100px;
+            animation: circleRun 4s linear infinite;
+        }
+
+        @keyframes circleRun {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        } */
+    </style>
+    <style>
+        body {
+            perspective: 800px;
+            perspective-origin: 300px 300px;
+            transform-style: preserve-3d;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background: url(../4.text/bg.png) no-repeat center center/contain;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            transform-style: preserve-3d;
+            /* transform: rotateY(45deg) translateZ(100px) ; */
+            transform: translateZ(100px) rotateY(45deg);
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- translate 平移 移动-->
+    <!-- translate() = translate(<translation-value>[,<translation-value>]?)
+    translate3d() = translate3d(<translation-value>,<translation-value>,<length>)
+    translatex() = translatex(<translation-value>)
+    translatey() = translatey(<translation-value>)
+    translatez() = translatez(<length>) -->
+
+    <!-- 一般用于 当此元素宽高不知的情况下的居中对齐 translate(-50%，-50%) -->
+    <!-- 想要看到Z轴平移效果 需要沿着Y轴旋转 且要在父级上加上景深这个属性 -->
+    <!-- 如果不旋转 直接Z轴平移 不会看到效果-->
+
+    <!-- 景深：perspective 父元素上 相当于 将其变成一个 拥有深度的容器 可以理解成一个眼睛距离屏幕的距离  -->
+    <!-- perspective的参数 就是眼睛距离屏幕的距离 perspective-origin：就是眼睛的位置 不同的位置 会有不同的视角-->
+    <!-- 想要看到3d效果需要在父元素上加上这个属性 -->
+
+    <!-- 添加上景深效果后 Z轴的平移就会变大变小 来模拟眼睛看到的效果 原理还是成像原理 即物体在screen上的成像  -->
+    <!-- 例子：当你设置景深 但是未设置Z轴偏移的时候 你的眼睛（景深距离）移动 是不影响效果呈现的 因为物体在screen上的成像大小没变化  -->
+    <!-- 例子：当你的元素设置Z轴偏移为负值的时候 你的眼睛（景深距离）移动靠近 会发现原来越小 是不是不符合认知？（越靠近越大）其实根本原因就是物体在screen上的成像大小 -->
+
+    <!-- <div></div> -->
+
+    <!-- 效果：不同的perspective-origin 会看到哪些效果？ -->
+
+    <!-- <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div> -->
+
+    <!-- <script>
+        document.addEventListener("mousemove", function (e) {
+            document.body.style.perspectiveOrigin = `${e.pageX}px ${e.pageY}px`;
+        })
+    </script> -->
+
+    <!-- perspective是添加在父元素上的 还有一个与之相同的属性 添加在自身元素transform:perspective(800px) 且必须添加在其他变化的前面 不然浏览器可能不识别 -->
+    <!-- 且：不能设置perspective-origin 其就相当于眼睛在自身中心 可以通过这个属性实现统一（相同）的偏移效果 -->
+    <!-- 且注意 会和父元素的景深向“重合”相互影响、 -->
+
+    <!-- <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div> -->
+
+    <!-- 要用到3d一般添加上transform-style:preserve-3d 不然渲染不出 -->
+
+    <!-- 例子：通过眼睛（perspective-origin）使得在元素的上方 让元素Z轴移动 观察背景颜色和背景图案的分离 -->
+    <!-- 因为浏览器渲染问题 所以要添加上transform-style:preserve-3d -->
+    <!-- <div class="container">
+        <div class="demo"></div>
+    </div> -->
+
+    <!-- 原点：transform-origin 设置或检索对象以某个原点进行转换。 -->
+    <!-- 默认值：50% 50% 效果等同于center center -->
+    <!-- transform-origin：[ <percentage> | <length> | left | center① | right ] [ <percentage> | <length> | top | center② | bottom ]? -->
+
+    <!-- 学习注意点 ：原点的坐标 可以设置三个值 即空间Z轴也可 -->
+    <!-- 可以通过这个实现空间3d的效果 -->
+    <!-- 例子： -->
+    <div></div>
+
+</body>
+
+</html>
