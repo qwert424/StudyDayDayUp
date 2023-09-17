@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            border: 1px solid;
+        }
+
+        .box1 {
+            left: 0;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            left: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- dataTransfer 可拖动方针，darg event 方针的存在一个 dataTransfter 特点。 -->
+    <!-- dropEffect none, copy(拷贝到新方位), link(树立联系) 或 move（拖拽元素将被移动）。
+    effectAllowed 供给一切可用的操作类型。必须是 none,copy,copyLink,copyMove,link,linkMove,move,alloruninitialized 之一。 -->
+
+    <!-- effectAllowed 是在deagstart事件的时候赋值才有效果 -->
+    <!-- dropEffect 实在drop事件触发时赋值才有效果 -->
+
+    <!-- 例子 -->
+    <div class="box box1" draggable="true">
+    </div>
+    <div class="box box2"></div>
+    <script>
+        const box1 = document.querySelector('.box1');
+        const box2 = document.querySelector('.box2');
+        box1.addEventListener('dragstart', function (e) {
+            e.dataTransfer.effectAllowed = 'move';
+        })
+        box2.addEventListener('dragover', function (e) {
+            e.preventDefault();
+        })
+        box2.addEventListener('drop', function (e) {
+            e.dataTransfer.dropEffect = 'link';
+            console.log(e)
+        })
+    </script>
+
+</body>
+
+</html>

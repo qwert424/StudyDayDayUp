@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: #abcdef;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- draggable 能否被拖拽 -->
+    <!-- 默认值为 false 拖拽的兼容性还可以-->
+    <!-- a标签、img是可以被拖拽的 即draggable:true -->
+    <!-- <a href="">hello</a>
+    <img src="../css3详细版/4.text/bg.png" alt="" style="width: 100px;height: 100px;"> -->
+
+    <!-- 拖拽的声明周期是什么  怎么组成拖拽 -->
+    <!-- 1、拖拽开始 即dragstart 鼠标按下且移动那一瞬间触发（按下的瞬间时不会触发的） -->
+    <!-- 2、拖拽进行时 即drag 鼠标在抬起之前的移动 都是拖拽进行时  -->
+    <!-- 3、拖拽结束 即dragend 鼠标抬起触发 -->
+
+    <!-- 学习 ：被拖拽的物体 和 目标区域 -->
+
+    <!-- 例子： -->
+    <div class="container" draggable="true"></div>
+
+    <script>
+        const dragContainer = document.querySelector('.container');
+        let leftdis, topdis;//top 实际是上层 window 对象
+
+        // 拖拽开始
+        dragContainer.addEventListener('dragstart', function (e) {
+            leftdis = e.pageX;
+            topdis = e.pageY;
+        })
+        // 拖拽进行时
+        dragContainer.addEventListener('drag', function (e) {
+        })
+        // 拖拽结束
+        dragContainer.addEventListener('dragend', function (e) {
+            const disX = e.pageX - leftdis;
+            const disY = e.pageY - topdis;
+            dragContainer.style.left = parseInt(getComputedStyle(dragContainer).left) + disX + 'px';
+            dragContainer.style.top = parseInt(getComputedStyle(dragContainer).top) + disY + 'px';
+        })
+    </script>
+
+    <!-- <script>
+        // 防抖函数
+        function debounce(fn, delay) {
+            let timer = null;
+            return function () {
+                let context = this;
+                let args = arguments;
+                if (timer) {
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(function () {
+                    fn.apply(context, args);
+                }, delay);
+            }
+        }
+
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- contentEditAble 属性 -->
+    <!-- 1、该属性可以被继承 -->
+    <!-- 2、没有兼容性问题 -->
+    <!-- 3、默认值false -->
+    <!-- 4、如果设置为true，则内容可编辑 -->
+    <!-- 5、注意一下操作为不合理操作 不要这样使用contentEditAble属性 -->
+    <div contenteditable="true">
+        <span contenteditable="false">姓名：</span>xxx<br />
+        <span contenteditable="false">性别：</span>yyy
+    </div>
+    <!-- span标签虽然设置了contenteditable为false不能修改内部信息 但是 如果这样写 会导致删除时把整个span标签都删除了 -->
+
+</body>
+
+</html>

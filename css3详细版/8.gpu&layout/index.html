@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- cup：逻辑计算 -->
+    <!-- gpu:高精度的浮点数运算 -->
+
+    <!-- gpu ---》好几个cpu -->
+
+    <!-- 浏览器渲染 -->
+
+    <!-- 重排 reflow 重绘 repaint -->
+    <!-- 重排必定导致重绘 -->
+    <!-- 消耗性能 减少重排 -->
+    <!-- 重排 reflow：
+    改变宽口大小 
+    改变文字大小
+    内容改变 输入框输入文字
+    激活伪类 :hover
+    操作class类
+    脚本操作DOM
+    style设置属性 所以 多次style设置 不如放在一个class类减少次数
+    offsetWidth、offsetHeight计算
+    -->
+    <!-- 重绘 repaint：
+    背景色改变 
+    文字颜色改变
+    边框颜色 
+    及其周围或者内部布局的属性
+    -->
+
+    <!-- repaint速度比reflow快 -->
+
+    <!-- 1、通过绝对定位|固定定位使得脱离文档流 2、样式集中改变 3、或者transiform通过gpu绘制 减少重排（回流）4、通过设置display：none 之后不会触发重排 处理完 在display显示  -->
+
+    <!-- gpu加速 -->
+    <!-- 触发gpu渲染(生成另外一个层渲染)：通过设置opcity、transform：translate3d/transform:translateZ(0);(hack)会触发另外一个层 -->
+    <!-- 官方的：通过属性will-change 提早告诉浏览器可能将后面的属性发生变化 提早生成一个层 注意使用 因为时刻监听也会浪费性能 所以提早一点告诉浏览器即可 如点击事件 可以在hover的时候告诉浏览器 -->
+
+    <!-- 还和浏览器的刷新频率有关 -->
+</body>
+
+</html>

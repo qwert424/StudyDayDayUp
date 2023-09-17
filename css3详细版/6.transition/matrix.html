@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            background: url(../4.text/bg.png) no-repeat center center/contain;
+            transform: matrix(-1, 0, 0, 1, 0, 0);/* 镜像 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- matrix 矩阵  当你遇到不能够处理的变幻时 可以用矩阵来实现-->
+    <!-- 所有的transform变化 都是基于选中的 matrix 矩阵的 -->
+
+    <!--
+    | 1 0 e |   | x | | x+e |
+    | 0 1 f | * | y |=| y+f |
+    | 0 0 1 |   | 1 | | 1   | 
+    上面的矩阵 x y 为元素原有的位置 e f为我们传入的参数
+    所以 matrix(1,0,0,1,e,f)===translate(e,f) 平移
+
+    相应的 我们可以得到scale的矩阵形式
+    | e 0 0 |   | x | | ex |
+    | 0 f 0 | * | y |=| fy |
+    | 0 0 1 |   | 1 | | 1  | 
+    所以 matrix(e,0,0,f,0,0)===sacle(e,f) 缩放
+
+    相应的 旋转：
+    | cos(O) -sin(O) 0 |   | x | | cos(O)x-sin(O)y |
+    | sin(O) cos(O)  0 | * | y |=| sin(O)x+cos(O)y |
+    | 0      0       1 |   | 1 | | 1  | 
+    所以 matrix(cos(O),sin(O),-sin(O),cos(O),0,0)===sacle(e,f) 旋转
+
+    对于3d的matrix矩阵就是变成4维矩阵
+    | 1 0 0 e |   | x | | x+e |
+    | 0 1 0 f | * | y |=| y+f |
+    | 0 0 1 g |   | z | | z+g  | 
+    | 0 0 0 1 |   | 1 | | 1 |
+    所以 matrix(1,0,0,0,1,0,0,0,1,e,f,g) 平移 
+    ....
+-->
+    <!-- 下面做出一个简单的矩阵变化 即 镜像 类似反着看图片的效果 -->
+    <div></div>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 画矩形 方法很多 -->
+    <!-- 1、通过线条画矩形 麻烦 -->
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.moveTo(100, 100);
+        ctx.lineTo(200, 100);
+        ctx.lineTo(200, 200);
+        ctx.lineTo(100, 200);
+        ctx.closePath();
+        ctx.stroke()
+    </script> -->
+    <!-- 2、通过rect绘制矩形 （x,y,z,m）x:起始点x坐标；y：起始点y坐标；z：矩形宽度；m:矩形高度 -->
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.rect(100, 100, 200, 200);
+        ctx.stroke()
+    </script> -->
+    <!-- 3、通过strokeRect绘制矩形 最简便 （x,y,z,m）x:起始点x坐标；y：起始点y坐标；z：矩形宽度 -->
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.strokeRect(100, 100, 200, 200);
+    </script> -->
+    <!-- 4、通过fillRect绘制矩形 和strokeRect一样 这个是填充矩形 （x,y,z,m）x:起始点x坐标；y：起始点y坐标；z -->
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.fillRect(100, 100, 200, 200);
+    </script> -->
+
+    <!-- 注意点：fill和stroke一样 都是绘画的形式 所以 fillRect和strokeRect 都是比较便利的 填充矩形/绘制矩形 -->
+
+</body>
+
+</html>

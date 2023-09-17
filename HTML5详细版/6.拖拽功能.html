@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .box {
+            width: 100px;
+            min-height: 30px;
+            border: 1px solid #ccc;
+            padding: 10px 5px;
+            border-radius: 5px;
+            background-color: #008c8c;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .box1 {
+            left: 10%;
+        }
+
+        .box2 {
+            left: unset;
+            right: 10%
+        }
+
+        .box li {
+            background-color: #fff;
+            height: 30px;
+            line-height: 26px;
+            text-align: center;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 12px;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 拖拽功能实现： -->
+    <!-- 1、两个盒子内部进行拖拽 实现内部元素到另外一个盒子 -->
+
+    <ul class="box1 box"></ul>
+    <ul class="box2 box"></ul>
+
+    <script>
+        const box1 = document.querySelector('.box1');
+        const box2 = document.querySelector('.box2');
+
+        // 生成盒子内部元素
+        for (let i = 0; i < 5; i++) {
+            const li = document.createElement('li');
+            li.setAttribute('draggable', 'true'); // 设置可拖拽属性
+            li.innerText = '拖拽元素' + i;
+            box1.appendChild(li);
+        }
+
+        let dragItem;        // 获取当前被拖拽的元素
+        box1.addEventListener('dragstart', function (e) {
+            dragItem = e.target
+        })
+        box2.addEventListener('dragstart', function (e) {
+            dragItem = e.target
+        })
+
+        // 阻止默认事件
+        box2.addEventListener('dragover', function (e) {
+            e.preventDefault();
+        })
+        box1.addEventListener('dragover', function (e) {
+            e.preventDefault();
+        })
+
+
+        //放下元素
+        box1.addEventListener('drop', function (e) {
+            box1.appendChild(dragItem);
+        })
+        box2.addEventListener('drop', function (e) {
+            box2.appendChild(dragItem);
+        })
+    </script>
+</body>
+
+</html>

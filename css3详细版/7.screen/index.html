@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .container {
+            display: flex;
+        }
+
+        .demo {
+            width: 1px;
+            height: 10px
+        }
+
+        .demo:nth-of-type(odd) {
+            background-color: red;
+        }
+
+        .demo:nth-of-type(even) {
+            background-color: blue;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- screen 屏幕 -->
+    <!-- 屏幕有很多像素 一个像素由三个像素点组成 （每个像素点都由三个子像素点组成,即 红 蓝 黄） -->
+    <!-- 通过空间混色法  使得 我们看到的颜色 更加真实 -->
+
+    <!-- 例子 通过栅格形的并排方格 我们模拟 空间混合法 红蓝呈现紫色 -->
+    <!-- <div class="container">
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+    </div> -->
+
+    <!-- 点距 crt显示屏的点距求法的方法意义 几乎所有屏幕适用 -->
+
+    <!-- 像素 说到底是一个相对单位 -->
+
+    <!-- 物理像素 就是每个厂商生产出产时候的像素大小 -->
+
+    <!-- 逻辑像素 就是css中设置的像素大小 -->
+
+    <!-- 单位：dpi 即一个英寸（1in=2.54cm）有多少个像素点 -->
+
+    <!-- 如老旧电脑96dpi 就可以看到 96dpi≈2.54cm/96 得到每个像素的大小 ≈0.25mm -->
+
+    <!-- 每个像素点在0.10mm 0.15mm 就是很精细的像素大小了 -->
+
+    <!-- 手机屏幕的dpi就会相对高 -->
+
+    <!-- 分辨率1980*1080 不是分辨好坏的标准 因为屏幕尺寸不同 需要用到一个比例 dpr（设备像素比） -->
+
+    <!-- 但是 我们知道 通过dpi 即一英寸对应多少像素 会得到 不同的屏幕的像素大小是不同的 那么 我们的css样式 是如何一致的呢 那就需要一个标准 -->
+    <!-- css样式也就是逻辑像素 它通过一个参照对象 即设备的像素比dpr -->
+    <!-- 像素比 dpr=物理像素 / 逻辑像素 -->
+    <!-- 例如： 将96dpi的屏幕作为参照对象 如果显示css样式100px 那么它的dpr就是96/100=0.96 这时候 有一个假如182dpi的屏幕想要显示相对应的100px 就需要通过计算 182/100=1.82 是参照对象的2倍 即需要2×100=200像素才能展现出100px的样式 （通俗一点就是 例子中的两个屏幕dpr相差1倍 所以可知 一个屏幕的像素大小为参照物的一般 想要用100个像素展示的效果 就需要200个像素才能实现） -->
+
+    <!-- 像素越多 图像更精细 -->
+
+    <!-- 苹果6的dpr为2 如果苹果6一张图像素为400*400 那么他在css样式 就需要除以2 为200px 200px-->
+
+</body>
+
+</html>

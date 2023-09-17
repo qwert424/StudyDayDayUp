@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 画布 -->
+    <!-- canvas 也就是一个标签 是一块画布的意思 -->
+    <!-- canvas设置宽高是 直接在标签内设置 -->
+    <canvas width="500px" height="500px"></canvas>
+
+    <!-- canvas 的 2d 绘图上下文 是通过js来进行绘画的 -->
+    <script>
+        const canvas = document.querySelector('canvas');
+        // 通过获得画布内部的2d绘图上下文
+        const ctx = canvas.getContext('2d');
+
+        // ctx就是我们的“画笔”
+        // 通过moveTo 设置起始点 通过lineTo规划路线 通过LineWidth设置线条粗细（不管写在哪里 都是在当前path的moveTo前面） 通过stroke进行绘制 通过fill进行填充 通过closePath可以闭合当前的“线路”
+
+        // 注意点：
+        // 1、lineTo只是规划路线 还没有画出来 要通过stroke才能绘制
+        // 2、所有的lineTo规划的路线 在stroke绘制的时候是一笔完成的 想要不同的线条粗细或者其他起点 就需要通过beginPath开一个新的“线路”
+        // 3、不知道具体初始坐标 通过closePath可以闭合当前的“线路”  不是绘画 也是规划
+
+        // 例子：canvas画一个线条
+
+        ctx.moveTo(100, 100)//起始点坐标
+        ctx.lineWidth = 10;//线条粗细
+        ctx.lineTo(200, 200);//规划线条路径到结束坐标
+        ctx.stroke();//绘制线条
+
+        ctx.beginPath();//开始新的“线路”
+        ctx.lineWidth = 1;
+        ctx.moveTo(200, 200);
+        ctx.lineTo(100, 200);
+        ctx.lineTo(100, 300);
+        ctx.closePath();//闭合线路
+        ctx.stroke();
+        ctx.fill()
+    </script>
+
+
+</body>
+
+</html>
