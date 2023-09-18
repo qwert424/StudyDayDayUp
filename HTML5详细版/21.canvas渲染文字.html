@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 渲染文字 -->
+
+    <!-- 知识点： -->
+    <!-- 1、通过font设置字体相关参数 参数一：文字大小 参数二：文字类型（font-family） -->
+    <!-- 2、两种方式输出文字 -->
+    <!-- 2.1、通过strokeText()方法输出文字 -->
+    <!-- 2.2、通过fillText()方法输出文字 -->
+    <!-- 两者的区别是：strokeText()方法是文字描边 中空文字的一个效果；fillText()方法是文字填充 填充文字的一个效果 可以通过fillStyle修改颜色。 -->
+    <!-- 3、如果文字字体大小很小 就会感觉strokeText的文字会很粗的感觉 -->
+
+    <canvas width="500px" height="500px"></canvas>
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.save();
+
+        ctx.beginPath();
+        ctx.font = '30px Arial';
+        ctx.strokeText('nihao', 200, 200)
+        ctx.fillStyle = 'red'
+        ctx.fillText('nihao', 200, 250)
+    </script>
+
+</body>
+
+</html>

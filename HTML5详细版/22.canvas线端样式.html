@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 线段样式 -->
+
+    <!-- 知识点： -->
+    <!-- 1、线段样式 顾名思义就是线的端点的样式 它也包括线端点的样式和线交会处的样式 -->
+    <!-- 2、通过lineCap属性可以设置线段端点的样式，lineCap属性有三个值：butt（原有样式）、round(半圆弧|变长）和square（方块|变长） -->
+    <!-- 3、通过lineJoin属性可以设置线段交汇处的样式，lineJoin属性有三个值：miter（原有样式|可以设置miterLimit）、round（圆弧、圆滑）、bevel（截断） -->
+
+
+    <canvas width="500px" height="500px"></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.save();
+
+        ctx.beginPath();
+        ctx.moveTo(100, 100);
+        ctx.lineWidth = 10;//线条粗细
+        ctx.lineCap = 'round';//线条端点样式
+        // ctx.lineCap = 'butt';//线条端点样式
+        // ctx.lineCap = 'square';//线条端点样式
+        ctx.lineJoin = 'round';//线段交汇处的样式 圆滑
+        // ctx.lineJoin = 'miter';//线段交汇处的样式 原先
+        // ctx.miterLimit = 5;
+        // ctx.lineJoin = 'bevel';//线段交汇处的样式 截断
+        ctx.lineTo(200, 100);
+        ctx.lineTo(50, 150);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>
