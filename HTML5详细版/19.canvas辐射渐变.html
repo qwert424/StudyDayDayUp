@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 辐射渐变 -->
+
+    <!-- 知识点： -->
+    <!-- 1、辐射渐变 你可以想象成望远镜设计 两个圆  也和坐标系圆心有关-->
+    <!-- 2、参数 第一个圆（起始圆）的圆心、半径 第二个圆（结束圆）的圆心、半径 -->
+    <!-- 3、参考网络上的博客学习 -->
+
+    <canvas width="500px" height="500px"></canvas>
+
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.save();
+
+        ctx.beginPath();
+        // const bg = ctx.createRadialGradient(50, 50, 10, 100, 100, 100);
+        // const bg = ctx.createRadialGradient(100, 100, 10, 100, 100, 100);
+
+        bg.addColorStop(0, 'red');
+        bg.addColorStop(0.5, 'green ');
+        bg.addColorStop(1, 'blue');
+        ctx.fillStyle = bg;
+        ctx.translate(100, 100)
+        ctx.fillRect(0, 0, 200, 200)
+    </script> -->
+
+</body>
+
+</html>

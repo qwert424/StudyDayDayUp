@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 画贝塞尔曲线 主要是数学方面的知识 -->
+    <!-- 二次贝塞尔曲线 即 P1点 到 P2点 想要有一个圆滑的曲线 那么我们需要一个 P0点 
+    连接P1和P0、P0和P2 然后两个点从P1到P0、从P0到P1 连接两个点的直线的切线画一个曲线
+    -->
+    <!-- 同理三次贝塞尔曲线 就是多取一个点 同样的连接 取小点进行运动 画曲线 -->
+
+    <!-- 通过接口：二次贝塞尔曲线：quadraticCurveTo 三次贝塞尔曲线：bezierCurveTo 
+    二次贝塞尔曲线：quadraticCurveTo 需要参数（P0点坐标、P2点坐标） 通过moveTo设置起始点
+    三次贝塞尔曲线：bezierCurveTo 需要参数（P0点坐标、P2点坐标、p3点坐标） 通过moveTo设置起始点
+    -->
+    <canvas width="500px" height="300px"></canvas>
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.moveTo(100, 100);
+        // ctx.quadraticCurveTo(150, 50, 200, 100);//二次
+        ctx.bezierCurveTo(150, 50, 200, 300, 300, 100);//三次
+        ctx.stroke()
+    </script> -->
+
+    <!-- 例子：波浪形的变化图形 
+    思路 画一个不规则的波浪 通过sin()值设置波浪幅度
+    通过计时器 来使得图案运动 
+    通过设置偏移量 使其运动
+    -->
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        const canvasWidth = 500;
+        const canvasHeight = 300;
+        let angle = 0;//角度 
+        let offset = 0;//偏移量
+        setInterval(function () {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            ctx.beginPath();
+            ctx.moveTo(0 + offset, canvasHeight / 2);
+            ctx.quadraticCurveTo(canvasWidth / 4 + offset, canvasHeight / 2 + Math.sin(angle) * 120, canvasWidth / 2 + offset, canvasHeight / 2)
+            ctx.quadraticCurveTo(canvasWidth * 3 / 4 + offset, canvasHeight / 2 - Math.sin(angle) * 120, canvasWidth + offset, canvasHeight / 2)
+            ctx.stroke();
+            // 画一个相同的 但是偏移一个canvas宽度
+            ctx.beginPath();
+            ctx.moveTo(0 - canvasWidth + offset, canvasHeight / 2);
+            ctx.quadraticCurveTo(canvasWidth / 4 + offset - canvasWidth, canvasHeight / 2 + Math.sin(angle) * 120, canvasWidth / 2 + offset - canvasWidth, canvasHeight / 2)
+            ctx.quadraticCurveTo(canvasWidth * 3 / 4 + offset - canvasWidth, canvasHeight / 2 - Math.sin(angle) * 120, canvasWidth + offset - canvasWidth, canvasHeight / 2)
+            ctx.stroke();
+            angle += 0.01;
+            offset += 10
+            offset %= 500;
+        }, 100)
+        ctx.stroke();
+    </script> -->
+</body>
+
+</html>

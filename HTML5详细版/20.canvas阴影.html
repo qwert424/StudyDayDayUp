@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- canvas 阴影 shadow -->
+
+    <!-- 知识点： -->
+    <!-- 1、通过shadowColor设置阴影颜色 -->
+    <!-- 2、通过shadowBlur设置阴影模糊度 -->
+    <!-- 3、通过shadowOffsetX/Y设置阴影偏移量 -->
+    <!-- 4、阴影是横跨在线上面的 即内外均有 -->
+
+    <!-- 例子： -->
+    <canvas></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 500;
+        canvas.height = 500;
+        canvas.style.border = '1px solid #000';
+
+        ctx.save();
+
+        ctx.beginPath();
+        ctx.translate(100, 100)
+        ctx.shadowColor = '#008c8c'
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 10;
+        ctx.fillRect(0, 0, 100, 100);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas线性渐变 -->
+
+    <!-- 知识点： -->
+    <!-- 1、线性渐变 也是通过fillStyle填充 只是填充的是一个线性渐变的颜色 -->
+    <!-- 2、通过createLinearGradient 设置线性渐变的方向 即传入 两个点的坐标  -->
+    <!-- 3、通过addColorStop 来设置渐变的颜色 初始颜色及颜色位置 0-1之间  -->
+    <!-- 4、且线性渐变 也是根据当前坐标系原点渐变的 -->
+
+    <canvas width="500px" height="500px"></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.save();
+
+        // ctx.beginPath();
+        // const bg = ctx.createLinearGradient(0, 0, 200, 0)
+        // bg.addColorStop(0, "white");
+        // bg.addColorStop(1, "black");
+        // ctx.fillStyle = bg;
+        // ctx.fillRect(100, 100, 200, 200)//可以观察到当前渐变严肃的原点在左上角
+
+        // 那么进行坐标轴平移
+        // ctx.beginPath();
+        // const bg = ctx.createLinearGradient(0, 0, 200, 200)
+        // bg.addColorStop(0, "white");
+        // bg.addColorStop(1, "black");
+        // ctx.fillStyle = bg;
+        // ctx.translate(100, 100);
+        // ctx.fillRect(0, 0, 200, 200)
+
+    </script>
+
+</body>
+
+</html>

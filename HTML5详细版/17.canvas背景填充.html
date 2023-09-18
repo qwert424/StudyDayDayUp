@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 背景填充 -->
+
+    <!-- 知识点： -->
+    <!-- 1、canvas支持图片背景的填充 -->
+    <!-- 2、图片请求是异步的 所以可能出现图片还没请求完 背景就填充了 所以需要用到图片的onload事件 监听图片是否加载完成 加载完成后再填充背景 -->
+    <!-- 3、背景纹理 填充是根据坐标系原点来操作的 所以要将坐标系平移才能观察到 擅用save restore -->
+    <!-- 4、用到接口 createPattern 创建图片对象 返回值为canvasPattern对象 然后将canvasPattern对象作为参数传入fillStyle中即可 -->
+    <!-- 5、通过fillStyle 改变填充颜色 (property) CanvasFillStrokeStyles.fillStyle: string | CanvasGradient | CanvasPattern -->
+
+    <!-- 例子 -->
+    <canvas width="500px" height="500px"></canvas>
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.save()//保存原始坐标系
+
+        // ctx.beginPath();
+        // ctx.fillStyle = 'red';//改变颜色 (property) CanvasFillStrokeStyles.fillStyle: string | CanvasGradient | CanvasPattern
+        // ctx.fillRect(100, 100, 100, 50)
+
+        // 怎么填充图片呢？
+        const img = new Image(50, 50);
+        img.src = './bg.png'
+        img.onload = function () {
+            //先把加载好的图片绘制在一个临时的画布上
+            let tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 50;
+            tempCanvas.height = 50;
+            let tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(this, 0, 0, this.width, this.height);
+            // 创建一个绘制背景图的模式
+            let pattern = ctx.createPattern(tempCanvas, 'repeat');
+            ctx.fillStyle = pattern;
+
+            // 平移坐标系 因为纹理填充根据坐标系原点
+            ctx.translate(100, 100)
+            // const bg = ctx.createPattern(this, 'no-repeat');//不重复
+            // ctx.fillStyle = bg
+            ctx.fillRect(0, 0, 100, 100)
+        }
+
+    </script>
+
+
+</body>
+
+</html>

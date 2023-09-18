@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 小方块下落 -->
+    <!-- 主要学习接口clearRect 清除之前的矩形 在给定矩形内清空一个矩形：
+    x	要清除的矩形左上角的 x 坐标。
+    y	要清除的矩形左上角的 y 坐标。
+    width	要清除的矩形的宽度，以像素计。
+    height	要清除的矩形的高度，以像素计。 -->
+
+    <!-- 例子：小方块下落  -->
+    <canvas width="500px" height="500px"></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        let timer;
+        let height = 100;//当前高度 
+        const height_init = 100;//初始高度
+        const runItemWidth = 50;//方块宽度
+        const runItemHeight = 50;//方块高度
+        let flag = "down";//运动方向
+        let activeHeight = canvas.height - height_init - runItemHeight;//下来最大高度
+        timer = setInterval(function () {
+            // 清除矩形
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeRect(100, height, runItemWidth, runItemHeight)
+            if (flag === "down" && height <= canvas.height - runItemHeight) {
+                height += 5;
+                return;
+            } else {
+                flag = "up";
+            }
+            if (flag === "up" && height > canvas.height - activeHeight / 2 - runItemHeight) {
+                height -= 5;
+            } else {
+                flag = "down";
+                activeHeight /= 2
+            }
+        }, 1000 / 10);
+    </script>
+</body>
+
+</html>

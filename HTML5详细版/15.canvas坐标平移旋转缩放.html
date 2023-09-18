@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 坐标平移、旋转(坐标系原点旋转）、缩放 -->
+
+    <!-- 注意：所有的平移、旋转、缩放都是基于当前坐标系原点进行的。 -->
+    <!-- 但是他们的操作顺序很重要 ！！ -->
+    <!-- 1、如果在moveTo之前进行操作 后续操作都将按照新的坐标系原点进行操作 -->
+    <!-- 2、如果在moveTo之后进行操作 起始点仍然是左上角的坐标系确定的位置 后续操作都将按照之后的坐标系原点进行操作 ？？不太一样 不理解 -->
+    <!-- 3、如果在lineTo之后操作 已经确认路线 无效 -->
+
+    <!-- 缩放scale是将所有x y 乘缩放比例 所以位置也会改变  且要在绘画之前改变-->
+
+    <!-- canvas默认的坐标系原点在画布的左上角，x轴水平向右，y轴垂直向下。 -->
+    <!-- 坐标平移 -->
+    <canvas width="500px" height="500px"></canvas>
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        // 旋转 moveTo前
+        // ctx.rotate(Math.PI / 4);//沿着原点旋转 
+        // ctx.moveTo(100, 100);
+        // ctx.lineTo(200, 100);
+
+        // 旋转 moveTo后
+        // ctx.moveTo(100, 100);
+        // ctx.rotate(Math.PI / 4);//沿着原点旋转 
+        // ctx.lineTo(200, 100);
+
+        // 先将坐标系平移 moveTo前
+        // ctx.translate(100, 100);
+        // ctx.rotate(Math.PI / 4)
+        // ctx.moveTo(0, 0);//根据新的坐标系原点进行操作
+        // ctx.lineTo(100, 0);
+
+        // 先将坐标系平移 moveTo后
+        // ctx.moveTo(100, 100);//根据原先的坐标系原点进行操作
+        // ctx.translate(100, 100);
+        // ctx.rotate(Math.PI / 4)
+        // ctx.lineTo(100, 0);
+
+        // 缩放
+        // ctx.scale(1, 2)//矩形坐标y轴数值乘2，高度乘2
+        // ctx.rect(100, 100, 100, 100);
+
+        // ctx.stroke()
+    </script> -->
+</body>
+
+</html>

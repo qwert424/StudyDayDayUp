@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas 画圆角矩形 -->
+    <!-- 麻烦的方法：画4条不相连的直线 在画4个1/4的圆 -->
+
+    <!-- 知识点：通过一个方法arcTo（参数：B点 和 C点 和 半径） 画圆角矩形 
+    画圆角矩形 需要参数：
+    1、A点 起始点 通过moveTo设置
+    2、B点 线段的结束点（注意是结束点、但是因为是圆角 所以是弧度不会到B点）
+    3、C点 是圆弧的“方向” 即 这个圆弧向哪个方向偏 只是代表一个方向 多远多长都无所谓 （提供方向）
+    4、半径 圆弧的半径多大
+    -->
+
+    <!-- 例子画圆角矩形 -->
+    <!-- 注意点 因为是弧度 所以在设置起始点的时候 也要注意最后一个角的问题  -->
+    <!-- <canvas width="500px" height="500px"></canvas> -->
+
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.moveTo(100, 110);
+        ctx.arcTo(100, 300, 300, 300, 10);//起点100，110
+        ctx.arcTo(300, 300, 300, 100, 10);//当前“起点”100，300
+        ctx.arcTo(300, 100, 100, 100, 10);//当前“起点”300，300
+        ctx.arcTo(100, 100, 100, 300, 10);//当前“起点”300，100
+        ctx.stroke();
+    </script> -->
+
+    <!-- 总结 arcTo要注意闭合点的坐标（起始点） -->
+    <!-- arcTo参数是B点坐标、C点坐标（提供方向）、半径 -->
+    <!-- 可以fill -->
+</body>
+
+</html>

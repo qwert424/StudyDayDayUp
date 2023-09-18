@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- canvas的 save 和 restore -->
+
+    <!-- 知识点： -->
+    <!-- 1、canvas的translate(平移)、scale(缩放)、rotate(旋转)等方法,作用的值都是全局的 会影响其他元素的坐标 -->
+    <!-- 2、那么如果不想要其他元素受到这个元素操作后的坐标系影响，可以使用save和restore方法，将当前的坐标系保存起来，在restore之后，再将之前保存的坐标系还原。 -->
+    <!-- 3、要学会擅用save和restore 其保存原始坐标轴的平移、缩放、旋转的数据 -->
+
+    <!-- 例子、 -->
+    <canvas width="500px" height="500px"></canvas>
+    <!-- <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // ctx.beginPath();
+        // ctx.translate(100, 100);//平移
+        // ctx.rotate(Math.PI / 4)//旋转
+        // ctx.strokeRect(0, 0, 100, 50)
+
+        // ctx.beginPath();
+        // ctx.fillRect(200, 0, 100, 50)//此时这个填充矩形受到了改变后的坐标影响
+
+        // 怎么办呢？ 通过save保存原始坐标系 restore还原即可
+
+        // ctx.save();
+
+        // ctx.beginPath();
+        // ctx.translate(100, 100);//平移
+        // ctx.rotate(Math.PI / 4)//旋转
+        // ctx.strokeRect(0, 0, 100, 50)
+
+        // ctx.beginPath();
+        // ctx.restore();
+        // ctx.fillRect(200, 0, 100, 50)//此时这个填充矩形不受改变后的其他坐标系影响
+
+    </script> -->
+</body>
+
+</html>
