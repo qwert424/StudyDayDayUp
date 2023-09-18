@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            border: 1px solid black;
+        }
+
+        line {
+            /* 通过stroke去画 */
+            stroke: red;
+            stroke-width: 10;
+        }
+
+        /* 特殊线条通过class自己定义样式 */
+        .line2 {
+            stroke: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- svg 画线 和 画矩形 -->
+
+    <!-- 知识点： -->
+    <!-- 1、svg和canvas都是html5的画图工具 -->
+    <!-- 2、svg是矢量图，canvas是位图，矢量图在放大时不会失真，而位图在放大时会失真 -->
+    <!-- 3、svg适用于少动画、简单的场景 即大面积贴图的地方； canvas通过js画 适用于动画 小面积（不然内存消耗大）-->
+    <!-- 4、svg通过标签和css取画 -->
+    <!-- 5、svg 画线通过line标签 （参数：两个点的坐标） css通过class设置样式 通过stroke属性去画 -->
+    <!-- 6、svg的闭合图案 如rect标签是不用通过stroke去画的 （参数：起始坐标 宽、高 x轴圆角rx y轴圆角ry）且默认是fill填充的-->
+
+    <!-- 例子 -->
+    <svg width="500" height="500">
+        <!-- 线条 -->
+        <line x1="100" y1="100" x2="100" y2="200"></line>
+        <line x1="100" y1="200" x2="200" y2="200" class="line2"></line>
+
+        <!-- 矩形 坐标：x、y 宽：width 高：height x轴圆角：rx-->
+        <rect x="300" y="300" width="100" height="100" rx="10"></rect>
+    </svg>
+
+</body>
+
+</html>

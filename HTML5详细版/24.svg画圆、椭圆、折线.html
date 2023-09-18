@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            border: 1px solid black;
+        }
+
+        circle {
+            fill: transparent;
+            stroke: red;
+            stroke-width: 2px;
+        }
+
+        ellipse {
+            fill: transparent;
+            stroke: red;
+            stroke-width: 2px;
+        }
+
+        polyline {
+            fill: transparent;
+            stroke: red;
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- svg 画圆、椭圆、折线 -->
+
+    <!-- 知识点： -->
+    <!-- 1、也是通过标签来实现的 即 circle、ellipse、polyline -->
+    <!-- 2、默认是填充的 通过css样式的 fill：transparent 来实现取消填充 通过stroke 来实现边框 也可以写在标签上-->
+    <!-- 3、circle参数（半径r 圆心cx、cy）ellipse参数（x轴半径rx y轴半径ry 圆心cx、cy） polyline参数（points每个连接点的坐标）-->
+
+    <!-- 例子： -->
+    <svg width="500" height="500">
+        <!-- 圆 -->
+        <!-- <circle cx="100" cy="100" r="50" fill="transparent" stroke="red"></circle> -->
+        <!-- <circle cx="100" cy="100" r="50"></circle> -->
+
+        <!-- 椭圆 -->
+        <!-- <ellipse rx="100" ry="30" cx="100" cy="100" fill="transparent" stroke="red"></ellipse> -->
+        <!-- <ellipse rx="100" ry="30" cx="100" cy="100"></ellipse> -->
+
+        <!-- 折线 -->
+        <!-- <polyline points="0 0 ,50 50 ,50 100,100 100"  fill="transparent" stroke="red"></polyline> -->
+        <!-- <polyline points="0 0 ,50 50 ,50 100,100 100"></polyline> -->
+    </svg>
+</body>
+
+</html>

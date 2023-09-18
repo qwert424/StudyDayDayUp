@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            border: 1px solid black;
+        }
+
+        polyline {
+            fill: red;
+            stroke-width: 10;
+            stroke: blue;
+            fill-opacity: 0.3;
+            stroke-opacity: 0.3;
+            stroke-linecap: round;
+            stroke-linejoin: bevel;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- svg透明样式和线条样式 -->
+
+    <!-- 知识点： -->
+    <!-- 1、透明度 有边框透明度 还有 填充透明度 css属性 stroke-opacity、fill-opacity -->
+    <!-- 2、线条样式 和canvas的线条样式一样 包括 线段 和 交汇点 stroke-linecap stroke-linejoin -->
+    <!-- 3、线条是横跨在设置的位置的 即如果一个线宽度10 设置在h100的位置 那么这条线顶上就是在h95的位置 -->
+
+    <!-- 例子： -->
+    <svg width="500" height="500">
+        <!-- <polyline points="0,0 100,100 200,100 150,10"></polyline> -->
+    </svg>
+</body>
+
+</html>

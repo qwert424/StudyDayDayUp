@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            border: 1px solid #000;
+        }
+
+        text {
+            /* 描边 */
+            stroke: red;
+            font-size: 30px;
+            /* 无填充 */
+            fill: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- svg 多边形、文本 -->
+
+    <!-- 知识点： -->
+    <!-- 1、多边形 polygon 和polyline（折线）相似 区别就是 polygon会连接成闭合图形 类似于（canvas的closePath的操作） -->
+    <!-- 2、文本 通过text标签 设置 x y 坐标 为显示在哪个位置 -->
+    <!-- 3、文本css中 stroke仍然有效 -->
+    <!-- 4、均是填充状态 -->
+
+    <!-- 例子： -->
+    <svg width="500" height="500">
+        <!-- 折线 -->
+        <!-- <polyline points="200,100 250,150 100,150" stroke="red" fill="none" stroke-width="5" /> -->
+        <!-- 多边形 闭合-->
+        <!-- <polygon points="200,100 250,150 100,150" stroke="red" fill="none" stroke-width="5" /> -->
+        <!-- 文本 -->
+        <!-- <text x="200" y="200">无敌龙傲天</text> -->
+    </svg>
+
+
+</body>
+
+</html>
