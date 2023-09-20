@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            border: 1px solid black;
+        }
+
+        line {
+            stroke: red;
+            /*  设置虚线 参数为数组 第一个值是实线长度 第二个值是虚线长度 第三个值是实线长度 以此类推 */
+            stroke-dasharray: 10px 20px 30px;
+            /* 设置偏移量 */
+            stroke-dashoffset: 50px;
+        }
+
+        .line1 {
+            stroke: red;
+            stroke-dasharray: 200px;
+            stroke-dashoffset: 200px;
+            animation: move 3s linear infinite;
+
+        }
+
+        @keyframes move {
+            from {
+                stroke-dashoffset: 200px;
+            }
+
+            to {
+                stroke-dashoffset: -200px;
+            }
+        }
+
+        circle {
+            stroke: red;
+            stroke-width: 5;
+            stroke-dasharray: 314px;
+            stroke-dashoffset: 314px;
+            transition: all 3s;
+        }
+
+        circle:hover {
+            stroke-dashoffset: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- svg 虚线及简单动画 -->
+
+    <!-- 知识点： -->
+    <!-- 1、css属性 stroke-dasharray将线段变成虚线 传入的参数为“数组” 将线段按照给定的值分成对应的线段-->
+    <!-- 2、通过 stroke-dashoffset 设置虚线偏移量  -->
+    <!-- 3、结合上述两个属性，可以实现动画效果 -->
+    <!-- 4、stroke-dasharray为一个参数时： 其实是表示虚线长度和每段虚线之间的间距；两个参数或者多个参数时：一个表示长度，一个表示间距 -->
+    <!-- 5、stroke-dashoffset这个属性是相对于起始点的偏移，正数偏移x值的时候，相当于往左移动了x个长度单位，负数偏移x的时候，相当于往右移动了x个长度单位。 -->
+
+    <!-- 例子 -->
+    <!-- <svg width="500" height="500">
+        <line x1="100" y1="100" x2="300" y2="100" stroke-width="5"></line>
+    </svg> -->
+
+    <!-- 特效：线段从无到有 -->
+    <!-- <svg width="500" height="500">
+        <line x1="100" y1="100" x2="300" y2="100" stroke-width="5" class="line1"></line>
+    </svg> -->
+
+    <!-- 特效：圆的边框从无到有 -->
+    <!-- <svg width="500" height="500">
+        <circle r="50" cx="100" cy="100"></circle>
+    </svg> -->
+
+</body>
+
+</html>

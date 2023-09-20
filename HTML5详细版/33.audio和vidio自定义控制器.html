@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .player-container {
+            width: 1100px;
+            margin: 0 auto;
+            height: 500px;
+            position: relative;
+        }
+
+        .player-container video {
+            display: block;
+            width: 1000px;
+            height: 100%;
+            object-fit: cover;
+            margin: 0 auto;
+        }
+
+        .player-container .player-controls {
+            transform-origin: bottom center;
+            transform: scaleY(0);
+            width: 100%;
+            height: 45px;
+            padding: 0 40px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all 1s;
+            background: linear-gradient(to bottom, #ccc, #333);
+            display: flex;
+            align-items: center;
+        }
+
+        .player-container:hover .player-controls {
+            transform: scaleY(1);
+        }
+
+        .player-container .player-controls .play {
+            font-size: 16px;
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .player-container .player-controls .play .iconfont {
+            font-size: 22px;
+            vertical-align: middle;
+        }
+
+        .player-container .player-controls .time-container {
+            font-size: 16px;
+            width: 170px;
+            text-align: center;
+            cursor: text;
+            color: #fff;
+            flex: 1 0 auto;
+        }
+
+        .player-container .player-controls .progress-bar {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            background-color: gray;
+            width: 100%;
+            height: 0px;
+            cursor: pointer;
+            height: 4px;
+        }
+
+        .player-container .player-controls .progress-bar .progress {
+            background-color: orange;
+            height: 100%;
+            width: 0;
+        }
+
+        .player-container .player-controls .progress-bar .dot {
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            position: absolute;
+            top: -1px;
+            box-shadow: 0 0 3px #000;
+            display: none;
+            left: -4px;
+        }
+
+        .player-container .player-controls .progress-bar:hover {
+            height: 8px;
+            top: -4px;
+        }
+
+        .player-container .player-controls .progress-bar:hover .dot {
+            width: 12px;
+            height: 12px;
+            top: -2px;
+        }
+
+        .player-container .player-controls .quick-container {
+            font-size: 14px;
+            text-align: center;
+            width: 60px;
+            cursor: pointer;
+            color: #fff;
+            margin-left: 400px;
+            padding: 6px 0;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .player-container .player-controls .quick-container .quick-change {
+            position: absolute;
+            left: 0;
+            top: -152px;
+            list-style: none;
+            text-align: center;
+            width: 60px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, .5);
+            display: none;
+        }
+
+        .player-container .player-controls .quick-container .quick-change::before {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0, 0, 0, .5);
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .player-container .player-controls .quick-container .quick-change li {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .player-container .player-controls .quick-container .quick-change li:hover {
+            color: #008c8c;
+            font-weight: bold;
+        }
+
+        .player-container .player-controls .volume-container {
+            color: #fff;
+            margin-left: 50px;
+        }
+
+        .player-container .player-controls .volume-container .iconfont {
+            font-size: 22px;
+        }
+
+        .player-container .player-controls .fullScreen {
+            margin-left: 60px;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .player-container .player-controls .fullScreen .iconfont {
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- audio 和 vidio 自定义控制器 -->
+
+    <!-- 知识点： -->
+    <!-- 1、audio音频 vidio视频 都有自己的原生控制器 controls但是不同浏览器 样式不同 所以要自己写一个控制器 -->
+
+    <!-- 例子：自定义控制器 -->
+    <div class="player-container">
+        <video src="./test.mp4" class="player"></video>
+        <div class="player-controls">
+            <div class="play">
+                <i class="iconfont icon-shipinbofang"></i>
+                <span>播放</span>
+            </div>
+            <div class="time-container"></div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="quick-container">
+                <span class="nowQuick">倍数</span>
+                <ul class="quick-change">
+                    <li>x2</li>
+                    <li>x1.5</li>
+                    <li>x1.25</li>
+                    <li>x1</li>
+                </ul>
+            </div>
+            <div class="volume-container">
+                <i class="iconfont icon-24gl-volumeMiddle"></i> <input type="range" name="" id="volume-range" max="1"
+                    min="0" step="0.1">
+            </div>
+            <div class="fullScreen">
+                <i class='iconfont icon-quanping' id="fullScreen"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取video元素
+        const video = document.querySelector('.player');
+        // 获取控制栏
+        const playerControls = document.querySelector('.player-controls');
+        const playerContainer = document.querySelector('.player-container');
+        // 获取播放按钮
+        const play = playerControls.querySelector('.play');
+        const childrenArr = Array.prototype.slice.apply(play.children);
+        // 获取播放时间容器
+        const timeContainer = playerControls.querySelector('.time-container');
+        // 获取进度条
+        const progressBar = playerControls.querySelector('.progress-bar');
+        const progress = progressBar.querySelector('.progress');
+        const dot = progressBar.querySelector('.dot');
+        let progressBarWidth = parseInt(getComputedStyle(progressBar).width);
+        const dotWidth = parseInt(getComputedStyle(dot).width);
+        const progressBarLeft = progressBar.getBoundingClientRect().left;
+        // 获取倍数播放
+        const quickContainer = playerControls.querySelector('.quick-container');
+        const nowQuick = playerControls.querySelector('.nowQuick');
+        const quickUl = playerControls.querySelector('.quick-change');
+        const quickLi = quickUl.querySelectorAll('li');
+        const liArr = Array.prototype.slice.apply(quickLi);
+        // 获取音量
+        const volumeContainer = playerControls.querySelector('.volume-container');
+        const volumeInput = volumeContainer.querySelector('input');
+        // 获取全屏
+        const fullScreen = playerControls.querySelector('.fullScreen');
+        const fullIcon = fullScreen.querySelector('#fullScreen')
+        // 获取视频总时长和当前播放时间
+        let duration,
+            currentTime,
+            hour,
+            minute,
+            second,
+            currentHour,
+            currentMinute,
+            currentSecond;
+        let timerId;
+        // 进度条
+        function progressMove() {
+            progressBarWidth = parseInt(getComputedStyle(progressBar).width);
+            const ProgressWidth = currentTime / duration * progressBarWidth;
+            progress.style.width = ProgressWidth + 'px';
+            dot.style.left = ProgressWidth - dotWidth / 2 + 'px'
+        }
+        // 加载事件
+        video.addEventListener('loadeddata', function () {
+            duration = video.duration;
+            hour = Math.floor(duration / 3600).toString().padStart(2, '0');//小时
+            minute = Math.floor((duration % 3600) / 60).toString().padStart(2, '0');//分钟
+            second = Math.floor(duration % 3600 % 60).toString().padStart(2, '0');//秒
+            timeContainer.innerText = `00:00.00 : ${hour}:${minute}.${second}`;
+            dot.style.display = 'block';
+            video.volume = 0.5;
+        })
+        // currentTime事件
+        video.addEventListener('timeupdate', function () {
+            currentTime = video.currentTime;
+            currentHour = Math.floor(currentTime / 3600).toString().padStart(2, '0');//小时
+            currentMinute = Math.floor((currentTime % 3600) / 60).toString().padStart(2, '0');//分钟
+            currentSecond = Math.floor(currentTime % 3600 % 60).toString().padStart(2, '0');//秒
+            timeContainer.innerText = `${currentHour}:${currentMinute}.${currentSecond}: ${hour}:${minute}.${second}`;
+            progressMove();
+        })
+
+        // 控制器消失函数
+        function playerControlsDown() {
+            playerControls.style.transform = 'scaleY(1)';
+            clearTimeout(timerId);
+            timerId = setTimeout(function () {
+                playerControls.style.transform = 'scaleY(0)'
+            }, 1500)
+        }
+
+        // 全屏事件
+        window.onresize = function () {
+            if (!checkFull()) {
+                playerContainer.style.width = 1100 + 'px';
+                playerContainer.style.height = 500 + 'px';
+                video.style.width = 1000 + 'px';
+                video.style.height = '100%';
+                fullIcon.classList.add("icon-quanping");
+                fullIcon.classList.remove("icon-tuichuquanping-01");
+                clearTimeout(timerId);
+                video.removeEventListener("mousemove", playerControlsDown)
+                playerControls.style.transform = 'scaleY(1)'
+                playerContainer.addEventListener("mouseleave", function () {
+                    playerControls.style.transform = 'scaleY(0)'
+                })
+                playerContainer.addEventListener("mouseenter", function () {
+                    playerControls.style.transform = 'scaleY(1)'
+                })
+                progressMove();
+            }
+        }
+        // 是否全屏
+        function checkFull() {
+            let isFull = false;
+            if (document.fullscreenElement) {
+                isFull = true;
+                if (isFull === undefined) { isFull = false; }
+            }
+            return isFull;
+        }
+        fullScreen.addEventListener('click', function () {
+            const dom = document.documentElement;
+            if (document.fullscreenElement) {
+                if (document.fullscreenElement !== null) {
+                    document.exitFullscreen();
+                }
+            } else {
+                fullIcon.classList.remove("icon-quanping");
+                fullIcon.classList.add("icon-tuichuquanping-01");
+                fullIcon.style.fontSize = 24 + 'px';
+                playerContainer.style.width = dom.clientWidth + 'px';
+                playerContainer.style.height = '100vh';
+                video.style.width = dom.clientWidth + 'px';
+                video.style.height = '100vh';
+                dom.requestFullscreen();
+                video.addEventListener("mousemove", playerControlsDown)
+                playerControls.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scaleY(1)'
+                    clearTimeout(timerId);
+                    video.removeEventListener("mousemove", playerControlsDown)
+                })
+                playerControls.addEventListener('mouseleave', function () {
+                    video.addEventListener("mousemove", playerControlsDown)
+                })
+                progressMove()
+            }
+        })
+
+        // 播放暂停事件
+        play.addEventListener('click', function () {
+            // 判断视频状态
+            if (video.paused) {
+                video.play();
+                childrenArr.forEach(item => {
+                    if (item.nodeName === "I") {
+                        item.classList.remove('icon-shipinbofang');
+                        item.classList.add('icon-zanting1');
+                    } else {
+                        item.innerText = '暂停';
+                    }
+                }
+                )
+            } else {
+                video.pause();
+                childrenArr.forEach(item => {
+                    if (item.nodeName === "I") {
+                        item.classList.remove('icon-zanting1');
+                        item.classList.add('icon-shipinbofang');
+                    } else {
+                        item.innerText = '播放';
+                    }
+                }
+                )
+            }
+        })
+
+        // 进度条事件
+        progressBar.addEventListener('click', function (e) {
+            let TargetCurrentTime;
+            if (checkFull()) {
+                progressBarWidth = parseInt(getComputedStyle(progressBar).width);
+                TargetCurrentTime = e.pageX / progressBarWidth * duration;
+            } else {
+                TargetCurrentTime = (e.pageX - progressBarLeft) / progressBarWidth * duration;
+            }
+            video.currentTime = TargetCurrentTime;
+        })
+        // 滑动进度条事件
+        dot.addEventListener('mousedown', function () {
+            document.addEventListener('mousemove', moveDot)
+            document.addEventListener('mouseup', function (e) {
+                document.removeEventListener('mousemove', moveDot)
+            })
+        })
+        // 移动事件
+        function moveDot(e) {
+            let nowLeft;
+            if (checkFull()) {
+                progressBarWidth = parseInt(getComputedStyle(progressBar).width);
+                nowLeft = e.pageX;
+            } else {
+                nowLeft = e.pageX - progressBarLeft;
+            }
+            if (nowLeft < 0) {
+                nowLeft = 0
+            }
+            if (nowLeft > progressBarWidth) {
+                nowLeft = progressBarWidth
+            }
+            let TargetCurrentTime = nowLeft / progressBarWidth * duration;
+            video.currentTime = TargetCurrentTime;
+        }
+
+        // 视频倍率事件
+        quickContainer.addEventListener('click', function () {
+            if (quickUl.style.display === 'block') {
+                quickUl.style.display = 'none';
+            } else {
+                quickUl.style.display = 'block';
+            }
+        })
+        quickUl.addEventListener('mouseleave', function () {
+            quickUl.style.display = 'none';
+        })
+        playerContainer.addEventListener("mouseleave", function () {
+            quickUl.style.display = 'none';
+        })
+        liArr.forEach(item => {
+            item.addEventListener('click', function (e) {
+                nowQuick.innerText = this.innerText;
+                video.playbackRate = this.innerText.slice(1);
+            })
+        })
+
+        // 音量事件
+        volumeInput.addEventListener('change', function () {
+            if (this.value === "0") {
+                this.previousElementSibling.classList.add('icon-24gl-volumeCross');
+                this.previousElementSibling.classList.remove('icon-24gl-volumeMiddle');
+                this.previousElementSibling.classList.remove('icon-24gl-volumeHigh');
+            } else if (this.value === "1") {
+                this.previousElementSibling.classList.add('icon-24gl-volumeHigh');
+                this.previousElementSibling.classList.remove('icon-24gl-volumeMiddle');
+                this.previousElementSibling.classList.remove('icon-24gl-volumeCross');
+            } else {
+                this.previousElementSibling.classList.add('icon-24gl-volumeMiddle');
+            }
+            video.volume = this.value;
+        })
+
+        // 播放结束事件
+        video.addEventListener('ended', function () {
+            video.currentTime = 0;
+            childrenArr.forEach(item => {
+                if (item.nodeName === "I") {
+                    item.classList.remove('icon-zanting1');
+                    item.classList.add('icon-shipinbofang');
+                } else {
+                    item.innerText = '播放';
+                }
+            }
+            )
+        })
+    </script>
+</body>
+
+</html>

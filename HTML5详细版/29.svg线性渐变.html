@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- svg 线性渐变 -->
+
+    <!-- 知识点： -->
+    <!-- 1、线性渐变 定义需要放在defs标签内 -->
+    <!-- 2、linearGradient线性渐变的标签 且要给定一个id用于引用 linearGradient标签的属性：
+        x1：渐变开始点的x坐标
+        y1：渐变开始点的y坐标
+        x2：渐变结束点的x坐标
+        y2：渐变结束点的y坐标 -->
+    <!-- 3、linearGradient标签内放stop标签 用于定义渐变色的位置 属性：
+    offset 设置颜色的比例 百分比
+    style：stop-color  定义颜色
+    -->
+    <!-- 4、定义好渐变后 通过设置style样式中fill:url(渐变id)来使用 -->
+
+    <!-- 例子 -->
+    <svg width="500" height="500" style="border: 1px solid #000;">
+        <!-- defs标签 用于定义存储 不会直接展示 通过引用来使用 便于svg理解和规范 -->
+        <!-- <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#abcdef;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#008c8c;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <rect x="100" y="100" width="200" height="200" fill="url(#bg1)" /> -->
+    </svg>
+
+</body>
+
+</html>

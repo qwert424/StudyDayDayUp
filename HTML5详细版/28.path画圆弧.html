@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        path {
+            fill: transparent;
+            stroke: red;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- path 画圆弧 -->
+
+    <!-- 知识点： -->
+    <!-- 1、两个点 可以确定无数个圆 不共线三个点确定一个圆 -->
+    <!-- 2、两个点 加上x轴半径 y轴半径 可以确定两个圆 -->
+    <!-- 3、A为arcTO 画圆弧 参数：rx ry 圆转角度 大圆弧1/小圆弧0 顺时针1逆时针0 结束点坐标 -->
+    <!-- 4、大圆弧1/小圆弧0 就是两个圆会交汇 会分隔成4个圆弧 外面的为大圆弧 内部为小圆弧  -->
+    <!-- 5、顺时针1、逆时针0 是起始点沿着线到结束点的方向 -->
+
+    <!-- 例子 -->
+    <svg width="500" height="500" style="border:1px solid #000">
+        <!-- 大圆弧 顺时针 0角度-->
+        <!-- <path d="M100 100 A100 50 0 1 1 150 200"></path> -->
+        <!-- 大圆弧 逆时针 0角度-->
+        <!-- <path d="M100 100 A100 50 0 1 0 150 200"></path> -->
+        <!-- 小圆弧 顺时针 90角度-->
+        <!-- <path d="M100 100 A100 50 90 0 1 150 200"></path> -->
+        <!-- 大圆弧 逆时针 90角度-->
+        <!-- <path d="M100 100 A100 50 90 1 0 150 200"></path> -->
+    </svg>
+
+
+</body>
+
+</html>

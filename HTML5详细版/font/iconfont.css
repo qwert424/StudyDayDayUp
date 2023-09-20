@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4046451 */
+  src: url('iconfont.woff2?t=1695183422729') format('woff2'),
+       url('iconfont.woff?t=1695183422729') format('woff'),
+       url('iconfont.ttf?t=1695183422729') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tuichuquanping-01:before {
+  content: "\e612";
+}
+
+.icon-quanping:before {
+  content: "\ec13";
+}
+
+.icon-24gl-volumeCross:before {
+  content: "\ea0b";
+}
+
+.icon-24gl-volumeHigh:before {
+  content: "\ea0c";
+}
+
+.icon-24gl-volumeMiddle:before {
+  content: "\ea0d";
+}
+
+.icon-shipinbofang:before {
+  content: "\e600";
+}
+
+.icon-zanting1:before {
+  content: "\e601";
+}
+

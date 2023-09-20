@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- svg 高斯模糊 -->
+
+    <!-- 知识点： -->
+    <!-- 1、高斯模糊 也是通过在defs内定义滤镜 也需要id 通过style：filter=url（滤镜id）-->
+    <!-- 2、通过feGaussianBlur 来设置模糊 -->
+
+    <!-- 例子: -->
+    <!-- <svg width="500" height="500" style="border:1px solid #000">
+        <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#abcdef"></stop>
+                <stop offset="100%" stop-color="#008c8c"></stop>
+            </linearGradient>
+            <filter id="blur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="20"></feGaussianBlur>
+            </filter>
+        </defs>
+        <rect x="100" y="100" width="200" height="200" fill="url(#bg1)" filter="url(#blur)"></rect>
+    </svg> -->
+
+</body>
+
+</html>

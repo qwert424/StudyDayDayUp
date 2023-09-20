@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        svg {
+            border: 1px solid black;
+        }
+
+        path {
+            fill: none;
+            stroke: red;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <!-- path 路径 -->
+
+    <!-- 知识点： -->
+    <!-- 1、可以连续画线 -->
+    <!-- 2、属性：d 路径 -->
+    <!-- 3、d属性内 M为起始点(MoveTo)，L为直线(LineTo)，H画一个横线，V画一个竖线，Z为闭合 默认闭合填充-->
+    <!-- 4、区分大小写 即大写为绝对位置（相对坐标系） 小写为相对位置（相对当前点） -->
+
+    <!-- 例子 -->
+    <svg width="500" height="500">
+        <!-- 大写绝对位置-->
+        <!-- <path d="M100 100 L200 100 L200 200 " /> -->
+        <!-- <path d="M100 100 H200 V50" /> -->
+
+        <!-- 小写相对位置 -->
+        <!-- <path d="m100 100 l200 0 l0 200" /> -->
+        <!-- <path d="M100 100 h200 v50" /> -->
+
+        <!-- Z闭合 不区分大小写 -->
+        <!-- <path d="M100 100 L200 100 L200 200 Z" /> -->
+        <!-- <path d="M100 100 L200 100 L200 200 z" /> -->
+
+        <!-- H 和 V -->
+        <!-- <path d="M100 100 H200 V50" /> -->
+
+    </svg>
 </body>
+
 </html>
