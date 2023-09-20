@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .Item {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- requestAnimationFrame 动画帧数 函数 -->
+
+    <!-- 知识点 -->
+    <!-- 1、requestAnimationFrame 相当于屏幕刷新频率 每次执行依次 requestAnimationFrame该函数负责在下一帧渲染前，执行一次元素状态变化-->
+    <!-- 2、HTML5新增APIrequestAnimationFrame，用于在每一帧渲染之前做某些事 -->
+    <!-- 3、setInterval计时器 需要保证每次执行事件小于一帧 否则就会出现夹帧、跳帧 -->
+    <!-- 4、requestAnimationFrame 浏览器会根据每秒刷新次数来决定是否执行回调函数，所以回调函数的执行频率-->
+    <!-- 5、注意兼容性 -->
+    <!-- 6、cancelAnimationFrame取消动画帧数 类似于clearInterval -->
+
+    <!-- 例子 -->
+    <div class="Item"></div>
+    <script>
+        const Item = document.querySelector('.Item');
+        let timerId;
+        function move() {
+            const left = parseInt(getComputedStyle(Item).left)
+            if (left > 700) {
+                cancelAnimationFrame(timerId);
+                return;
+            }
+            Item.style.left = left + 5 + 'px';
+            timerId = requestAnimationFrame(move);
+        }
+        move()
+        // 定时器
+        // setInterval(move, 10);//不稳定的帧数变动
+
+        // setInterval(move, 1000 / 60);//稳定的帧数变动 但是在复杂的情况下 1/60 就不行所以 用requestAnimationFrame对比
+
+        // requestAnimationFrame(move);//只循行1次
+
+        // 兼容性问题解决
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+                return window.setInterval(callback, 1000 / 60);
+            }
+        })()
+
+        window.cancelAnimationFrame = (function () {
+            return window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || function (id) {
+                return window.clearInterval(id);
+            }
+        })()
+
+    </script>
+</body>
+
+</html>

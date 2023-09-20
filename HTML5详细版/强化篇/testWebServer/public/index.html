@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    1232
+    <div class="main"></div>
+    <script>
+        const mainContainer = document.querySelector('.main');
+        // 遥感事件 deviceorientation
+        window.addEventListener('deviceorientation', function (e) {
+            mainContainer.innerHTML = `<div>alpha:${e.alpha}</div><div>beta:${e.beta}</div><div>gamma:${e.gamma}</div>`;
+        })
+        // 摇一摇
+        window.addEventListener('devicemotion', function (e) {
+            const x = e.acceleration.x;
+            const y = e.acceleration.y;
+            const z = e.acceleration.z;
+            if (Math.abs(z) > 9 || Math.abs(y) > 9 || Math.abs(x) > 9) {
+                alert("在晃")
+            }
+        })
+    </script>
+</body>
+
+</html>

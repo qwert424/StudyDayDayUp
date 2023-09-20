@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 定位 -->
+
+    <!-- 知识点： -->
+    <!-- 1、通过GPS来定位 一般台式机、笔记本电脑没有GPS 手机大多数都有 -->
+    <!-- 2、通过网络来定位 基站定位 初略计算 -->
+    <!-- 3、通过html5 API window.navigator.geolocation.getCurrentPosition() 获取地理位置 -->
+    <!-- 4、http协议不能获得数据 https和file协议 可以获得返回数据 -->
+    <!-- 5、谷歌浏览器需要翻墙  -->
+    <!-- 6、window.navigator.geolocation.getCurrentPosition() 参数传入两个函数 一个是成功回调 一个失败回调 -->
+    <!-- 7、浏览器一般有用的数据为经纬度 因为客户端有更好的方式获取定位-->
+    <!-- 8、longitude经度 latitude维度-->
+
+    <!-- 例子： -->
+    <script>
+        window.navigator.geolocation.getCurrentPosition(function (position) { console.log(position); }, function (error, result) { console.log(error); console.log(result); })
+    </script>
+    <!-- 或者百度页面进行查询 -->
+</body>
+
+</html>

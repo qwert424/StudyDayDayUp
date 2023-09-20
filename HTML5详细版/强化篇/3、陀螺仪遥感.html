@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 陀螺仪 遥感 -->
+
+    <!-- 知识点： -->
+    <!-- 1、电脑上没有陀螺仪 所以通过手机的陀螺仪 我们可以知道手机的倾斜变化状态 -->
+    <!-- 2、通过事件监听 deviceorientation来监听 -->
+    <!-- 3、苹果设备需要在https协议下才可以使用这接口 -->
+    <!-- 4、事件会有三个参数： -->
+    <!-- 4.1、alpha:指北 （指南针） [0,360) 0为北 180为南 -->
+    <!-- 4.2、beta: 手机水平放置 值为0 短边接触桌面立起来 值为0-90 反方向立起来 值为0-（-90）  -->
+    <!-- 4.3、gamma:手机水平放置 值为0 长边边接触桌面立起来 向右倾斜 值为0-90 反方向向左立起来 值为0-（ -->
+
+    <script>
+        // 遥感事件 deviceorientation
+        window.addEventListener('deviceorientation', function (e) {
+            console.log(e)//alpha //beta //gamma
+        })
+    </script>
+</body>
+
+</html>
