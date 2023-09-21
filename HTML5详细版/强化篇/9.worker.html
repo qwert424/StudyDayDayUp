@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- worker “打工人” -->
+
+    <!-- 知识点： -->
+    <!-- 1、js单线程 -->
+    <!-- 2、worker 多线程 且不是伪多线程 -->
+    <!-- 3、worker局限性：不能操作dom、不能读取本地文件、没有window对象 但是可以ajax和计算  -->
+    <!-- 4、worker兼容较差 主要用于大规模计算  -->
+    <!-- 5、worker理论上可以在创建worker对象 但是实际上浏览器不兼容 -->
+    <!-- 6、worker之间通过postMessage进行通信 onMessage进行接受信息 -->
+    <!-- 7、外部通过调用worker.terminate() 结束worker线程 自身调用close结束自己 -->
+    <!-- 8、new Worker('./worker.js')创建 数据存在data内 -->
+    <!-- 9、还可以通过importScripts引入外部js 但是仍不可以操作dom元素 -->
+
+    <!-- 例子 -->
+    <!-- js单线程： -->
+    <!-- <script>
+        const beginData = Date.now()
+        console.log("================================================")
+        console.log("================================================")
+        // 计算
+        const count = 1000000;
+        let result = 0;
+        for (let i = 0; i < count; i++) {
+            result += i;
+        }
+        console.log(result)
+        console.log("================================================")
+        console.log("================================================")
+        const endData = Date.now()
+        console.log('运行时间：' + (+endData - +beginData))
+    </script> -->
+    <!-- worker展示 -->
+    <!-- <script>
+        const beginData = Date.now()
+        console.log("================================================")
+        console.log("================================================")
+        // 计算
+        const count = 1000000;
+        const worker = new Worker('./worker.js');
+        worker.postMessage({ count: count })
+        worker.onmessage = function (e) {
+            console.log(e.data);    
+        }
+        console.log("================================================")
+        console.log("================================================")
+        const endData = Date.now()
+        console.log('运行时间：' + (+endData - +beginData))
+    </script> -->
+
+    <!-- 可以看到 上面的两个方法 worker计算时间明显变的很少 下面展示删除worker-->
+    <!-- <script>
+        const beginData = Date.now()
+        console.log("================================================")
+        console.log("================================================")
+        // 计算
+        const count = 1000000;
+        const worker = new Worker('./worker.js');
+        worker.postMessage({ count: count })
+        worker.onmessage = function (e) {
+            console.log(e);
+        }
+        console.log("================================================")
+        console.log("================================================")
+        const endData = Date.now()
+        console.log('运行时间：' + (+endData - +beginData))
+        // worker.terminate()//外部删除
+    </script> -->
+</body>
+
+</html>

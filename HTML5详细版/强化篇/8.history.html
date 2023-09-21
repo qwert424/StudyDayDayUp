@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- history 历史记录 -->
+
+    <!-- 知识点： -->
+    <!-- 1、history.back() 返回上一页 history.forward() -->
+    <!-- 2、通过监听popstate事件，可以监听到历史记录的变化 或者hashchange事件监听hash变化 -->
+    <!-- 3、通过设置history.pushState({传入的值}，null,路径) 给history添加一个状态-->
+    <!-- 4、通过实践 hashchange 事件监听hash变化 但是history在改变state的时候 先出发popstate在触发hashchange -->
+    <!-- 5、只要url变化 popstate就会触发 hash变化触发hashchange实践 -->
+
+    <!-- 例子 -->
+    <div class="container">
+        <input type="text" name="" id="search"><button class="search">搜索</button>
+        <div class="searchAnswer"></div>
+    </div>
+    <script>
+        const dataSQL = [{ name: "HTML" }, { name: "CSS" }, { name: "JS" }, { name: "VUE" }, { name: "React" }];//数据
+        // 获取dom元素
+        const container = document.querySelector(".container");
+        const searchInput = container.querySelector("#search");
+        const btn = container.querySelector(".search");
+        // 匹配元素
+        function getData() {
+            if (!searchInput.value) {
+                return
+            }
+            const newdata = dataSQL.filter(item => item.name === searchInput.value)[0]
+            renderData(newdata)
+        }
+
+        // 展示元素
+        function renderData(data, ishistory) {
+            if (!data) {
+                alert('未查询到数据');
+                searchInput.value = "";
+                renderData(dataSQL);
+                return;
+            }
+            const searchAnswer = container.querySelector('.searchAnswer')
+            if (data.length > 1) {
+                searchAnswer.innerHTML = ""
+                data.forEach(item => {
+                    searchAnswer.innerHTML += `<div>${item.name}</div>`;
+                })
+            } else {
+                if (ishistory) {
+                    searchAnswer.innerHTML = `<div>${data.name}</div>`;
+                } else {
+                    searchAnswer.innerHTML = `<div>${data.name}</div>`;
+                    history.pushState({ name: data.name }, null, "#" + data.name)
+                }
+            }
+        }
+
+        // 点击函数
+        function handleClick() {
+            getData();
+        }
+
+        // 初始化
+        renderData(dataSQL);
+        // 事件
+        btn.addEventListener("click", handleClick);
+
+        searchInput.addEventListener('change', function () {
+            if (this.value.length === 0) {
+                renderData(dataSQL);
+            }
+        })
+
+        window.addEventListener('popstate', function (e) {
+            if (e.state) {
+                renderData(e.state, true);
+                searchInput.value = e.state.name
+            } else {
+                renderData(dataSQL);
+                searchInput.value = ""
+            }
+        })
+    </script>
+</body>
+
+</html>
