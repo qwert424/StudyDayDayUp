@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+/* 游戏容器 */
+.game-container{
+    margin: 0 auto;
+    position: relative;
+}
+
+/* 箱子默认样式 */
+.item{
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    background: no-repeat center center/contain;
+}
+
+/* 箱子样式 */
+/* 正确样式 */
+.item-correctBox{
+    background-image: url(./imgs/over_box.png);
+}
+
+/* 错误样式 */
+.item-wrongBox{
+    background-image: url(./imgs/box.png);
+}
+
+/* 墙的样式 */
+.item-wall{
+background-image: url(./imgs/wall.jpg);
+}
+
+/* 玩家样式 */
+.item-player{
+background-image: url(./imgs/player.png);
+}
+
+/* 正确位置 */
+.item-currect{
+    border: 3px solid green;
+}
