@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+/* 游戏容器 */
+.game-container {
+    width: 800px;
+    height: 600px;
+    border: 1px solid;
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 天空背景 */
+.game-container .sky {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    background: url('../img/sky.png') repeat-x center left;
+}
+
+/* 大地背景 */
+.game-container .land {
+    height: 112px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    background: url('../img/land.png') repeat-x center left;
+}
+
+/* 鸟背景 */
+.game-container .bird {
+    width: 42px;
+    height: 26px;
+    position: absolute;
+    /* top: 115px; */
+    /* left: 100px; */
+    background: url('../img/bird.png') no-repeat;
+}
+
+.game-container .bird.fly1 {
+    background-position: left center;
+}
+
+.game-container .bird.fly2 {
+    background-position: -55px center;
+}
+
+.game-container .bird.fly3 {
+    background-position: -110px center;
+}
+
+/* 管子背景 */
+.game-container .pipe {
+    width: 52px;
+    /* height: 100px; */
+    position: absolute;
+    /* left: 500px; */
+}
+
+.pipe.up {
+    background: url("../img/pipeUp.png");
+    top: 0;
+    background-position: bottom;
+}
+
+.pipe.down {
+    background: url("../img/pipeDown.png");
+    bottom: 112px;
+}
+
+/* 提示 */
+.tip {
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
