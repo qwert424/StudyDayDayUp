@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>得到所有的省份数据</button>
+    <script>
+        const url = 'http://study.yuanjin.tech/api/local';
+
+        function getHeaders() {
+            const headers = new Headers({
+                a: 1,
+                b: 2
+            });
+            // headers.append('Content-Type', 'application/json');
+            // headers.append('Accept', 'application/json, text/plain, */*');
+            return headers;
+        }
+
+        function getRequestInfo() {
+            const headers = getHeaders();
+            headers.set('a', 3);
+            const request = new Request(url, { headers });
+            printHeaders(headers)
+            return request;
+        }
+
+        function printHeaders(headers) {
+            const newheaders = headers.entries();
+            for (const prop of newheaders) {
+                console.log(`key: ${prop[0]}, value: ${prop[1]}`);
+            }
+        }
+
+        document.querySelector('button').onclick = getProvinces();
+        async function getProvinces() {
+            const resp = await fetch(getRequestInfo());
+            printHeaders(resp.headers)
+
+            const result = await getJSON(resp);
+            console.log(result);
+        }
+
+
+        async function getJSON(resp) {
+            return await resp.json();
+        }
+
+
+    </script>
+</body>
+
+</html>

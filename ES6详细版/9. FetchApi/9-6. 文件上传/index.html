@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="" alt="" id="img-container">
+    <input type="file" name="" id="fileUpload">
+    <button id="upload">上传</button>
+    <script>
+        const ImgContainer = document.querySelector('#img-container');
+        const FileUpload = document.querySelector('#fileUpload');
+        const btn = document.querySelector('#upload');
+        const url = 'http://study.yuanjin.tech/api/upload';
+        btn.onclick = async () => {
+            const resp = await getFetchData();
+            ImgContainer.src = resp.path
+        };
+
+        async function getFetchData() {
+            if (FileUpload.files.length === 0) {
+                alert('Please select a file');
+                return false;
+            }
+            const file = FileUpload.files[0];
+            const formData = new FormData();
+            formData.append('imagefile', file)
+            const resp = await fetch(url, {
+                method: 'POST',
+                body: formData
+            })
+            return await resp.json();
+        }
+    </script>
+</body>
+
+</html>

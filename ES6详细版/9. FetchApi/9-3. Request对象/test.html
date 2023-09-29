@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <button>得到所有的省份数据</button>
+  <script>
+    // let req;
+    // 一般推荐new一个全新的Request对象，如果要使用一个对象，可以通过clone方法克隆一个全新的request对象，然后配置一致
+
+    // function getRequestInfo() {
+    //   if (!req) {
+    //     const url = 'http://study.yuanjin.tech/api/local';
+    //     req = new Request(url, {});
+    //     console.log(req);
+    //   }
+    //   return req.clone(); //克隆一个全新的request对象，配置一致
+    // }
+
+    // const url = 'http://study.yuanjin.tech/api/local';
+
+    // function getRequestInfo(url, config) {
+    //   const req = new Request(url, {
+    //     method: "POST",
+    //     ContentType: "application/json;charset=UTF-8",
+    //     ...config
+    //   });
+    //   console.log(req);
+    //   return req;
+    // }
+
+    // const config = {
+    //   headers: {
+    //     a: 1
+    //   },
+    //   body: '{"name":"张三","age":18}'
+    // }
+
+    async function getProvinces() {
+      const resp = await fetch(getRequestInfo(url, config));
+      const result = await resp.json();
+      console.log(result);
+    }
+
+    document.querySelector('button').onclick = function () {
+      getProvinces();
+    };
+  </script>
+</body>
+
+</html>
