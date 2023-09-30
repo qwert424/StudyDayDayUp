@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <script>
+        // 根据可迭代协议 我们可以自己写一个迭代对象
+        // const obj = {
+        //     a: 1,
+        //     b: 2,
+        //     c: 3,
+        //     [Symbol.iterator]() {
+        //         let keys = Object.keys(this);
+        //         let i = 0;
+        //         return {
+        //             next: () => {
+        //                 const key = keys[i]
+        //                 const value = this[key];
+        //                 return {
+        //                     value: {
+        //                         key,
+        //                         value
+        //                     },
+        //                     done: i++ >= keys.length
+        //                 }
+        //             }
+        //         }
+        //     },
+        // }
+        // const iterator = obj[Symbol.iterator]()
+        // for (const prop of obj) {
+        //     console.log(prop)
+        // }
+
+        // const arr = [1, 2, 43]
+        // console.log(arr)//数组就是可迭代对象 即存在知名符号属性[Symbol.iterator]是一个迭代器生成函数
+        // const iterator = arr[Symbol.iterator]()
+
+        // 类数组也是可迭代对象 例子：
+        // const div = document.querySelectorAll('div')
+        // console.log(div)
+        // const iterator = div[Symbol.iterator]();
+        // let data = iterator.next()
+        // console.log(data.value)
+        // while (!data.done) {
+        //     data = iterator.next()
+        //     console.log(data.value)
+        // }
+
+        // for-of循环  循环用于遍历可迭代对象 即进行上面的生成迭代器 然后while循环
+        // for (const item of div) {
+        //     console.log(item)
+        // }
+        // 等价于上面的：
+        // const iterator = div[Symbol.iterator]();
+        // let data = iterator.next()
+        // console.log(data.value)
+        // while (!data.done) {
+        //     data = iterator.next()
+        //     console.log(data.value)
+        // }
+
+        // for (const item of arr) {
+        //     console.log(item)
+        // }
+
+        // 展开运算符作用域可迭代对象
+        // const obj = {
+        //     a: 1,
+        //     b: 2,
+        //     c: 3,
+        // }
+        // const arr = [...obj]//Uncaught TypeError: obj is not iterable
+        // const arr={...obj}//可以展开为对象 
+        // console.log(arr)
+        // 如果是可迭代对象 展开运算符号 就是将迭代结果 展开
+        const obj = {
+            a: 1,
+            b: 2,
+            c: 3,
+            [Symbol.iterator]() {
+                let keys = Object.keys(this);
+                let i = 0;
+                return {
+                    next: () => {
+                        const key = keys[i]
+                        const value = this[key];
+                        return {
+                            value: {
+                                key,
+                                value
+                            },
+                            done: i++ >= keys.length
+                        }
+                    }
+                }
+            },
+        }
+        const arr = [...obj]
+        console.log(arr)//(3) [{…}, {…}, {…}]
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 生成器的创建 通过生成器函数 自己写一个生成器函数 Generator Function
+        // function* createGenerator() {
+
+        // }
+        // const Generator = createGenerator();//Generator 就是一个生成器 即是迭代器也是迭代对象
+        // console.log(Generator);
+
+        // yield 关键字 只有在生成器内有效 下面展示yield关键字的用法 即函数体内部运行流程
+        // function* createGenerator() {
+        //     console.log("第一次运行");
+        //     yield 1;
+        //     console.log("第二次运行");
+        //     yield 2;
+        // }
+        // const generator = createGenerator();//只是创建生成器 只有在next才会运行函数体
+        // generator.next()
+
+        // 之前学习了迭代器对象 next value done等 比较麻烦 通过生成器 我们写一个数组迭代器
+        // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+        // function* createGenerator(arr) {
+        //     for (const prop of arr) {
+        //         yield prop
+        //     }
+        // }
+        // const arrIterator=createGenerator(arr)
+
+        //创建一个斐波拉契数列的迭代器
+        // function* createFeiboGenerator() {
+        //     let prov1 = 1,
+        //         prov2 = 1,
+        //         index = 1;
+        //     // 无限循环
+        //     while (true) {
+        //         if (index <= 2) {
+        //             yield 1;
+        //         } else {
+        //             const value = prov1 + prov2;
+        //             yield value;
+        //             prov1 = prov2;
+        //             prov2 = value;
+        //         }
+        //         index++;
+        //     }
+        // }
+        // const feiboGenerator = createFeiboGenerator()
+
+        // 函数体 return 返回值 就是第一个done为true是的value值
+        // function* createGenerator() {
+        //     yield 1;
+        //     yield 2;
+        //     return 3;
+        // }
+        // const generator = createGenerator();//{value: 3, done: true}
+
+        // 除第一次传入参数无意义 之后的参数会被用作yield表达式的返回值
+        // function* createGenerator() {
+        //     let info = yield 1//迭代器第一次运行到yield停止 不会把值赋给info 所以需要传入参数
+        //     console.log(info)
+        //     info = yield 3 + info
+        //     console.log(info)
+        //     return 4
+        // }
+        // const generator = createGenerator()
+        // console.log(generator.next())//{value: 1, done: false}
+        // console.log(generator.next(1))//1   {value: 4, done: false}
+        // console.log(generator.next())//undefined {value: 4, done: true} 因为没有传入参数 相当于传入undefined info赋值undefined
+
+        // 生成器内套生成器 就是使用* 就相当于把一个生成器复制过来
+        function* test() {
+            yield 1;
+            yield 2;
+        }
+        function* t1() {
+            test();//不会运行函数体 因为这是一个生成器函数 会生成一个生成器
+            yield test();//会将test生成器作为value值返回 {value: test, done: false}
+            yield* test();//这样才会运行test函数体 并且把test函数体返回的值赋给value 并且done为false
+            yield 3;
+            yield 4;
+        }
+        const generator = t1()
+    </script>   
+</body>
+
+</html>

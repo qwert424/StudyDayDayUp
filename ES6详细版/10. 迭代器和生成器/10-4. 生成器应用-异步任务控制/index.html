@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 用迭代器的思想 来生成当时没有的 async 和 await 语法糖效果  -->
+    <!-- 写一个函数 传入一个生成器 完成这个操作 -->
+    <script>
+        // 生成器函数
+        function* createGenerator() {
+            const a = yield 1;
+            console.log(a)
+            const resp = yield fetch("https://study.duyiedu.com/api/herolist")
+            const result = yield resp.json();
+            console.log(result)
+        }
+        run(createGenerator)
+        // 运行函数
+        function run(fn) {
+            const generator = fn();
+            let resp = generator.next();
+            handleResult()
+
+            // 参数类型验证函数
+            function handleResult() {
+                if (resp.done) {    
+                    return;
+                }
+                // 获取返回值
+                const value = resp.value;
+                if (typeof value.then === 'function') {
+                    // 异步返回值
+                    value.then(data => {
+                        resp = generator.next(data)
+                        handleResult()
+                    })
+                } else {
+                    // 普通函数
+                    resp = generator.next(resp);
+                    handleResult()
+                }
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

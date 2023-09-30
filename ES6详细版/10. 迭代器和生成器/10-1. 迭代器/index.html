@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 1、自己写一个迭代器 
+        // const arr = [2, 4, 6, 8, 3, 5, 8]
+        // const iterator = {
+        //     i: 0,
+        //     next() {
+        //         return {
+        //             value: arr[this.i++],
+        //             done: this.i >= arr.length
+        //         }
+        //     }
+        // }
+        // let data = iterator.next();
+        // console.log(data.value);
+        // while (!data.done) {
+        //     data = iterator.next();
+        //     console.log(data.value)
+        // }
+
+        // 2、上面的迭代器 适用性不高 如果有多个数组 需要迭代 需要写多个迭代器 那么就可以写一个迭代器生成函数
+        // function createIterator(arr) {
+        //     let i = 0;
+        //     return {
+        //         next() {
+        //             return {
+        //                 value: arr[i++],
+        //                 done: i >= arr.length
+        //             }
+        //         }
+        //     }
+        // }
+        // const arr = [2, 4, 6, 8, 3, 5, 8]
+        // const arr1 = [321, 432, 54, 54, 756]
+        // const iterator = createIterator(arr)
+        // const iterator1 = createIterator(arr1)
+        // let data = iterator.next()
+        // console.log(data.value);
+        // while (!data.done) {
+        //     data = iterator.next();
+        //     console.log(data.value);
+        // }
+        // let data1 = iterator1.next()
+        // console.log(data1.value);
+        // while (!data1.done) {
+        //     data1 = iterator1.next();
+        //     console.log(data1.value);
+        // }
+
+        // 3、写一个迭代器依次得到斐波拉契数列前面n位的值
+        // 1 1 2 3 5 8 13 .....
+        // 对于无限长度的数组，我们可以通过迭代器来迭代
+        function createFeiboIterator() {
+            let prve1 = 1, prve2 = 1, count = 1;
+            return {
+                next() {
+                    if (count <= 2) {
+                        value = 1;
+                    } else {
+                        value = prve1 + prve2;
+                    }
+                    prve1 = prve2;
+                    prve2 = value;
+                    count++;
+                    return {
+                        value,
+                        done: false,
+                    }
+                }
+            }
+        }
+        const iterator = createFeiboIterator();
+        
+
+    </script>
+</body>
+
+</html>
