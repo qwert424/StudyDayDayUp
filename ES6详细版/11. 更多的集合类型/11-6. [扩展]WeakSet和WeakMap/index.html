@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <script>
+        // weakMap WeakSet
+
+        // WeakSet
+        // 1. 只能存储对象
+        // let obj = {
+        //     name: 1,
+        //     age: 18
+        // }
+        // const num = [1]
+        // const ws = new WeakSet();
+        // // ws.add(1)//index.html:22 Uncaught TypeError: Invalid value used in weak set
+        // ws.add(obj)
+        // console.log(ws.has(obj), ws)
+        // obj = null;//2.弱引用，不被计入垃圾回收
+        // console.log(ws.has(obj), ws)
+
+        //weakMap
+        // 1、值只能是对象
+        // 一般用于数据绑定
+        // let lis = document.querySelectorAll('li');//可以获得li对象 且注意浏览器渲染用到li对象
+        // const wm = new WeakMap();
+        // for (const item of lis) {
+        //     wm.set(item, { name: ` item${item.innerHTML}` });
+        // }
+        // console.log(wm)
+        // lis[0].remove()
+        // lis = null;
+        // console.log(wm)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // set集合 不重复的集合
+        // 1、创建set集合方法
+        // const s1 = new Set();
+        // const s2 = new Set([1, 2, 3]);//传入可迭代对象iterable数组
+        // console.log(s1, s2)
+
+        // 2、set集合操作
+        // const s3 = new Set();
+        // s3.add(1);
+        // s3.add(new Set([1, 2, 3]))
+        // console.log(s3.has(2))
+        // s3.delete(2);
+        // console.log(s3);
+        // console.log(s3.size)
+        // s3.clear();
+        // console.log(s3)
+
+        // 3、set集合和数组转换
+        // set本身就是可迭代对象 就可以通过展开运算符来转换
+        // const s4 = new Set([1, 2, 3, 4])
+        // const arr = [...s4]
+        // console.log(arr)
+
+        // 4、set集合的遍历
+        // const s5 = new Set([1, 2, 4, 5, 1, 4])
+        // for (const item of s5) {
+        //     console.log(item)
+        // }
+        // s5.forEach((item, index, set) => console.log(item, index, set))//注set没有下标 所以删除delete也是通过data 而不是下标 forEach第二个参数也不是下标 和第一个相同
+
+        // const s6 = new Set('fafsdbre');//字符串也是可迭代对象 字符串去重的一个办法
+        // console.log(s6)
+        // const str = [...s6].join('');//通过数组拼接 完成set集合转字符串
+        // console.log(str)
+
+        // const s7 = new Set();
+        // s7.add(+0);
+        // s7.add(-0);//无效
+        // // size属性只读
+        // console.log(s7.size)
+        // s7.size = 1000;
+        // console.log(s7.size)//只读
+
+        // const s=new Set([1,2,{},{}])//对象存储地址
+        // console.log(s)
+
+    </script>
+</body>
+
+</html>

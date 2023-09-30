@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- set集合应用 交集、并集、差集 -->
+    <script>
+        const arr1 = [1, 77, 88, 93, 14, 7, 1, 22]
+        const arr2 = [77, 22, 35, 1, 67, 3]
+
+        // 并集
+        // const s1 = new Set(arr1.concat(arr2))
+        // const s2 = new Set([...arr1, ...arr2])
+        // console.log(s1, s2)
+
+        // 交集
+        // const s3 = [...new Set(arr1)].filter(item => new Set(arr2).has(item))//has 方法
+        // const s3 = [...new Set(arr1)].filter(item => arr2.indexOf(item)>=0)//indexOf
+        // console.log(s3)
+
+        // 差集
+        // const s3 = [...new Set(arr1)].filter(item => new Set(arr2).has(item))//has 方法
+        // const s4 = [...new Set(arr1)].filter(item => s3.indexOf(item) < 0)
+        // const s5 = [...new Set(arr2)].filter(item => s3.indexOf(item) < 0)
+        console.log("差集", [...new Set([...arr1, ...arr2])].filter(item => s3.indexOf(item) < 0))
+        // console.log(s4,s5)
+
+        // const s6 = [...new Set(arr1.concat(arr2))].filter(item => arr1.indexOf(item) >= 0 && arr2.indexOf(item) < 0|| arr1.indexOf(item) < 0 && arr2.indexOf(item) >= 0)
+        // console.log(s6) 
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- map<key,value>映射集合 -->
+    <script>
+        //  1、创建map集合
+        // const map1 = new Map();//Map(0) {size: 0}
+        // const map2 = new Map([1, 2, 3]);//index.html:15 Uncaught TypeError: Iterator value 1 is not an entry object
+        // const map3 = new Map([['a', 1], ['b', 2]]);// Map(2) {'a' => 1, 'b' => 2}
+        // console.log(map1, map3);
+
+        // 2、map集合操作
+        // const map = new Map([['a', 1], ['b', 2], ['a', 3], ['d', 4], ['e', 5]])
+        // console.log(map.get('a'))
+        // console.log(map.size)//4
+        // set(key,value)没有的key添加 有的修改value
+        // map.set({}, 1)
+        // map.set({}, 2)
+        // map.set(1, 55)
+        // console.log(map)//Map(7) {'a' => 3, 'b' => 2, 'd' => 4, 'e' => 5, {…} => 1, …}
+        // console.log(map.has("a"))//true
+        // map.delete("a");
+        // console.log(map)//Map(6) {'b' => 2, 'd' => 4, 'e' => 5, {…} => 1, {…} => 2, …}
+        // map.forEach((value, key, target) => console.log(key, value, target))//注意是值、键、本身
+        // for (const item of map) {
+        //     console.log(item)
+        //     // (2)['a', 3]
+        //     // (2)['b', 2]
+        //     // (2)['d', 4]
+        //     // (2)['e', 5]
+        // }
+        // map.clear()
+        // console.log(map)//Map(0) {size: 0}
+
+    </script>
+
+
+</body>
+
+</html>
