@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        // 观察者
+        // 原先 通过生成一个对象当作观察者 通过设置getter、setter函数来充当观察者 缺点：对象占空间
+
+        // const container = document.querySelector('#container');
+        // // 观察者函数 target被观察对象
+        // function observers(target) {
+        //     const ob = {}
+        //     for (const prop in target) {
+        //         Reflect.defineProperty(ob, prop, {
+        //             get() {
+        //                 return target[prop]
+        //             },
+        //             set(val) {
+        //                 target[prop] = val
+        //                 render()
+        //             },
+        //             enumerable: true,
+        //         })
+        //     }
+        //     render();
+
+        //     function render() {
+        //         container.innerHTML = ''
+        //         for (const prop in ob) {
+        //             container.innerHTML += `<h2>${prop}:${ob[prop]}</h2>`
+        //         }
+        //     }
+
+        //     return ob;
+        // }
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+
+        // const ob = observers(obj)
+
+        // 通过代理 proxy来实现 不占内存 优化
+
+        const container = document.querySelector('#container');
+        // 观察者函数 target被观察对象
+        function observers(target) {
+            const proxy = new Proxy(target, {
+                set(target, propertyKey, value) {
+                    Reflect.set(target, propertyKey, value)
+                    render()
+                },
+                get(target, propertyKey) {
+                    return Reflect.get(target, propertyKey)
+                }
+            });
+
+            render();
+
+            function render() {
+                container.innerHTML = ''
+                for (const prop in target) {
+                    container.innerHTML += `<h2>${prop}:${target[prop]}</h2>`
+                }
+            }
+
+            return proxy;
+        }
+        const obj = {
+            a: 1,
+            b: 2
+        }
+
+        const ob = observers(obj)
+
+
+    </script>
+</body>
+
+</html>

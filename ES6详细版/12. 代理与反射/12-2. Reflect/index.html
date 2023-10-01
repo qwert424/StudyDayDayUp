@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // reflect 反射 减少魔法 不可以被new 和直接调用 它只有静态方法
+
+        // 1、set方法
+        // 原先：
+        // const obj = {
+        //     a: 1
+        // }
+        // obj.a = 3
+        // console.log(obj.a)
+        // reflect方法 Reflect.set(target,  propertyKey, value)
+        // const obj = {
+        //     a: 1
+        // }
+        // Reflect.set(obj, 'a', 4)
+        // Reflect.set(obj, 'b', 4)
+        // console.log(obj.a, obj.b, obj)
+
+        // 2、get方法
+        // 原先
+        // const obj = {
+        //     a: 1
+        // }
+        // console.log(obj.a)
+        // reflect Reflect.get(target,propertyKey)
+        // const obj = {
+        //     a: 1
+        // }
+        // console.log(Reflect.get(obj, 'a'))
+
+        // 3、apply 函数调用
+        // 原先
+        // function sum(a, b) {
+        //     return a + b;
+        // }
+        // console.log(sum(1, 2))
+        // Reflect Reflect.apply(fn,thisArgument,argumentsList)
+        // function sum(a, b) {
+        //     return a + b;
+        // }
+        // console.log(Reflect.apply(sum, null, [1, 2]))
+
+        // 4、construct 构造函数
+        // 原先
+        // class Test {
+
+        // }
+        // const test = new Test();
+        // console.log(test)
+        // reflect Reflect.construct(target,argumentsList)
+        // class Test {
+
+        // }
+        // const test = Reflect.construct(Test, [])
+        // console.log(test)
+
+        // 5、has 属性名是否存在
+        // 原先
+        // const obj = {
+        //     a: 1
+        // }
+        // console.log("a" in obj)
+        // reflect Reflect.has(target, propertyKey)
+        // const obj = {
+        //     a: 1
+        // }
+        // console.log(Reflect.has(obj, 'a'))
+
+        // 6、delete 删除
+        // 原先
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+        // delete obj.a;
+        // console.log(obj)
+        // reflect Reflect.deleteProperty(target, propertyKey);
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+        // Reflect.deleteProperty(obj, 'a')
+        // console.log(obj)
+
+        // 7、defineProperty 定义属性
+        // 原先
+        // const obj = {}
+        // Object.defineProperty(obj, 'a', { value: 1 })
+        // console.log(obj.a)
+        // reflect Reflect.defineProperty(target,PropertyKey,attributes)
+        // const obj = {}
+        // Reflect.defineProperty(obj, 'a', { value: 1 })
+        // console.log(obj.a)
+        
+    </script>
+
+
+</body>
+
+</html>

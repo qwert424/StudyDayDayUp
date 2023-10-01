@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <span>姓名：</span>
+        <input type="text" id="name">
+    </p>
+    <p>
+        <span>年龄：</span>
+        <input type="number" name="" id="age">
+    </p>
+    <script>
+        // 属性描述符 Property Descriptor
+        // 1、Object.getOwnPropertyDescriptor(obj, prop) 获取属性描述符
+        // 2、Object.getOwnPropertyDescriptors(obj)获取属性描述符
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
+        // console.log(Object.getOwnPropertyDescriptors(obj))
+
+        // 3、Object.defineProperty(obj, prop, descriptor) 定义属性描述符
+        // const obj = {
+
+        // }
+        // Object.defineProperty(obj, 'a', { value: 1 })//其他不设置默认false
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
+        // for (const prop in obj) {
+        //     console.log(prop)
+        // }
+        // console.log(obj)
+
+        // 4、Object.defineProperties(obj, descriptors) 定义多个属性描述符
+        // const obj = {
+
+        // }
+        // Object.defineProperties(obj, {
+        //     a: { value: 1 },
+        //     b: { value: 2 }
+        // })//其他不设置默认false
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'b'))
+        // for (const prop in obj) {
+        //     console.log(prop)
+        // }
+        // console.log(obj)
+
+        // 5、存储器 即在属性描述符中有两个属性getter、setter使得属性变成不是一般的属性 赋值调用都是调用相应函数
+        // const obj = {}
+        // Object.defineProperty(obj, 'a', {
+        //     get() {
+        //         return obj._data
+        //     },
+        //     set(val) {
+        //         obj._data=val
+        //     }
+        // })
+        // console.log(obj.a)
+
+        // 存储器可以自己控制
+        // obj = {
+        //     name: "adsf"
+        // }
+
+        // Object.defineProperty(obj, "age", {
+        //     get() {
+        //         return obj._age;
+        //     },
+        //     set(val) {
+        //         if (typeof val !== "number") {
+        //             throw new TypeError("年龄必须是一个数字")
+        //         }
+        //         if (val < 0) {
+        //             val = 0;
+        //         } else if (val > 200) {
+        //             val = 200;
+        //         }
+        //         obj._age = val;
+        //     }
+        // })
+
+        // obj.age = "Asdfasasdf";
+        // console.log(obj.age);
+
+        // 存储器 可以相互关联数据 因为是get函数、和set函数
+        // const obj = {
+
+        // }
+        // const name = document.querySelector("#name")
+        // const age = document.querySelector("#age")
+
+        // Object.defineProperties(obj, {
+        //     name: {
+        //         get() {
+        //             return name.value
+        //         },
+        //         set(val) {
+        //             name.value = val
+        //         }
+        //     },
+        //     age: {
+        //         get() {
+        //             return age.value
+        //         },
+        //         set(val) {
+        //             if (typeof val !== "number") {
+        //                 throw new TypeError("年龄必须是一个数字")
+        //             }
+        //             if (val < 0) {
+        //                 val = 0;
+        //             } else if (val > 200) {
+        //                 val = 200;
+        //             }
+        //             age.value = val
+        //         }
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

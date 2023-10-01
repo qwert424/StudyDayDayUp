@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 构造函数简便 Reflect.construct  -->
+    <!-- 目标 不想要每次都书写this.xxx=xxx; 写一个构造函数代理 让他帮我们创建 -->
+    <script>
+        // 目标-构造对象
+        class Test {
+
+        }
+        // 生成代理函数 通用
+        // target:目标  args:参数？？
+        function createProxy(target, ...args) {
+            return new Proxy(target, {
+                construct(target, argumentsList) {
+                    const test = Reflect.construct(target, argumentsList);// 创建实例
+                    args.forEach((name, i) => {
+                        test[name] = argumentsList[i];
+                    })
+                    return test;
+                }
+            })
+        }
+        const testProxy = createProxy(Test, 'name', 'age');
+        const user = new testProxy('梵高', 111)
+        console.log(user)
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Proxy 代理
+        // 1. 创建一个代理对象
+        // const proxy =new Proxy(target,handler); 
+
+        // 下面生成一个对象代理 简单操作
+        const obj = {
+            a: 1,
+            b: 2
+        }
+
+        const proxy = new Proxy(obj, {
+            set(target, propertyKey, value) {
+                return Reflect.set(target, propertyKey, value)
+            },
+
+            get(target, propertyKey) {
+                if (Reflect.has(target, propertyKey)) {
+                    return Reflect.get(target, propertyKey)
+                } else {
+                    return -1;
+                }
+
+            },
+
+            has(target, propertyKey) {
+                return Reflect.has(target, propertyKey)
+            },
+
+            delete(target, propertyKey) {
+                Reflect.deleteProperty(target, propertyKey)
+            }
+        })
+        // console.log(proxy);
+        // proxy.a = 10;
+        // console.log(proxy.a, proxy, obj);
+
+        // delete proxy.a;
+        // console.log(proxy.a, proxy, obj);
+        // console.log(proxy.d);
+        // console.log("a" in proxy);
+
+
+    </script>
+</body>
+
+</html>

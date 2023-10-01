@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 可验证的函数参数 -->
+    <!-- 即：对传入参数进行类型验证 -->
+    <script>
+        // 原先
+        // function sum(a, b) {
+        //     return a + b;
+        // }
+
+        // function createProxy(target, ...args) {
+        //     return function (...arguments) {
+        //         // 验证参数
+        //         if (arguments.length !== args.length) {
+        //             throw new Error('参数数量不匹配');
+        //         }
+        //         // 验证类型
+        //         arguments.forEach((item, i) => {
+        //             if (typeof item !== args[i]) {
+        //                 throw new Error('参数类型不匹配');
+        //             }
+        //         })
+        //         return target(...arguments);
+        //     }
+        // }
+
+        // const proxy = createProxy(sum, 'number', 'number');
+        // const num = proxy(1, 2, 2)
+        // console.log(num);
+
+        // 通过proxy 进行代理 减少内存空间浪费 更加简洁
+        function sum(a, b) {
+            return a + b;
+        }
+        function createProxy(target, ...args) {
+            return new Proxy(target, {
+                apply(target, thisArg, argumentsList) {
+                    // 验证参数
+                    if (argumentsList.length !== args.length) {
+                        throw new Error('参数数量不匹配');
+                    }
+                    // 验证类型
+                    argumentsList.forEach((item, i) => {
+                        if (typeof item !== args[i]) {
+                            throw new Error('参数类型不匹配');
+                        }
+                    })
+                    return Reflect.apply(target, thisArg, argumentsList);
+                }
+            })
+        }
+
+        const proxy = createProxy(sum, 'number', 'number');
+        const num = proxy("2", 2)
+        console.log(num);
+
+
+
+    </script>
+</body>
+
+</html>
