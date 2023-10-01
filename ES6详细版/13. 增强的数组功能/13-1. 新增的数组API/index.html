@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <!-- 数组API练习 -->
+    <script>
+        // 1、静态方法of 用于代替原先的new Array() 创建数组
+        // 因为new Array在传入参数只有一个的时候就会被理解成生成一个长度为x的数组
+        // 而of是只要传入了指定数组项 不管是几位 都生成一个数组
+        // const arr1 = new Array(10);//(10) [空属性 × 10]
+        // const arr2 = Array.of(10); //[10]
+        // console.log(arr1, arr2)
+
+        // 2、静态方法 from 代替Array.propertype.slice.call() 类数组（可迭代的对象）转数组
+        // console.log(Array.prototype.slice.apply(document.querySelectorAll('li')))
+        // console.log(Array.from(document.querySelectorAll('li')))
+
+        // 3、实例方法 find 用法和filter一样 区别find找第一个符合条件的 filter 找全部符合条件的
+        // const arr = [{ name: 'aaa', id: 2 }, { name: 'bbb', id: 3 }, { name: 'ccc', id: 4 }]
+        // const find = arr.find(item => item.id === 3)
+        // console.log(find)
+
+        // 4、实例方法 findIndex 用法和find一样 区别findIndex找第一个符合条件的下标 区别indexOf indexOf传入一个值 对于对象不好查找 但是findIndex就很方便
+        // const arr = [{ name: 'aaa', id: 2 }, { name: 'bbb', id: 3 }, { name: 'ccc', id: 4 }]
+        // const index = arr.findIndex(item => item.id === 3)
+        // console.log(index)
+
+        // 5、实例方法 fill 填充
+        // const arr = new Array(10).fill(0)
+        // console.log(arr)
+
+        // 6、实例方法 includes 包含 代替之前通过indexOf>0的方法 更加符合“语义”
+        // const arr = [1, 2, 3, 4, 5]
+        // const result = arr.includes(3)
+        // console.log(result)
+
+        // 7、实例方法 copeWithin 复制（target、start？、end？）且end不能超出 不然就报错
+        // target在哪里开始 后面用其他进行覆盖 start默认0 end到整个数组最后 
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        // const newarr = arr.copyWithin(3, 1)//即从下标3开始 后面的数组 复制下标1后面的内容
+        const newarr = arr.copyWithin(3, 1, 3)//即从下标3开始 后面的数组 复制下标1后面的内容 复制2为 注意是3-1=2位
+
+        console.log(newarr)
+        // (9) [1, 2, 3, 2, 3, 4, 5, 6, 7]
+        // (9) [1, 2, 3, 2, 3, 6, 7, 8, 9]
+
+    </script>
+
+</body>
+
+</html>

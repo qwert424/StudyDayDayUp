@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        img {
+            width: 150px;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 背白照片 -->
+    <!-- /*
+    * 画布中的1个图像是由多个像素点组成，每个像素点拥有4个数据：红、绿、蓝、alpha
+    * 把一个图像变成黑白，只需要将图像的每个像素点设置成为红绿蓝的平均数即可
+    */ -->
+
+    <div class="container">
+        <img src="./img/liao.jpg" alt="">
+        <button>转换</button>
+        <canvas width="150px" height="170px"></canvas>
+    </div>
+    <script>
+        const container = document.querySelector('.container');
+        const btn = container.querySelector('button');
+        const img = container.querySelector('img');
+        const canvas = container.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        btn.addEventListener('click', generateImg)
+
+        // 画黑白图
+        function generateImg() {
+            if (!isCanvasBlank(canvas)) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                return
+            }
+            ctx.drawImage(img, 0, 0, 150, 170);
+            const ImageData = ctx.getImageData(0, 0, 150, 170);
+            ChangingRGBA(ImageData)
+            ctx.putImageData(ImageData, 0, 0);
+        }
+
+        // 平均颜色
+        function ChangingRGBA({ data }) {
+            for (let i = 0; i < data.length; i += 4) {
+                const red = data[i];
+                const green = data[i + 1];
+                const blue = data[i + 2];
+                const avg = (red + green + blue) / 3;
+                data[i] = data[i + 1] = data[i + 2] = avg;
+            }
+        }
+
+        //验证canvas画布是否为空
+        function isCanvasBlank(canvas) {
+            var blank = document.createElement('canvas');//系统获取一个空canvas对象
+            blank.width = canvas.width;
+            blank.height = canvas.height;
+            return canvas.toDataURL() == blank.toDataURL();//比较值相等则为空
+        }
+    </script>
+</body>
+
+</html>

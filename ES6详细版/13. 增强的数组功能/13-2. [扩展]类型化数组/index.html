@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 类型化数组 -->
+    <script>
+        // 1、创建类型化数组的方法
+        // const IntArr = new Int8Array();//长度为1
+        // const IntArr1 = new Int8Array(1);//长度为1
+        // const IntArr2 = Int8Array.of(1, 2, 3, 4)//of创建
+        // const IntArr3 = Int8Array.from([1, 2, 3])//from创建 可迭代对象转换
+        // const IntArr4 = new Int8Array(IntArr3)// 其他类型化数组
+        // console.log(IntArr, IntArr1, IntArr2, IntArr3, IntArr4)
+
+        // 查看元簌长度 字节长度
+        // console.log(IntArr.length, IntArr1.length, IntArr2.length, IntArr3.length, IntArr4.length)
+        // console.log(IntArr.byteLength, IntArr1.byteLength, IntArr2.byteLength, IntArr3.byteLength, IntArr4.byteLength)
+
+        // 判断通过其他类行化数组获得的是否相同
+        // console.log(IntArr3 === IntArr4);
+
+        // 注意点 通过其他类型化转换的时候要小心溢出现象 即 如果将16位转换为8位 容易出错
+        // const IntArr5 = Int16Array.of(3333, 10, 23)
+        // const IntArr6 = Int8Array.from(IntArr5)
+        // console.log(IntArr5, IntArr6)
+        // 且在对类型化数组进行map等操作的时候要小心溢出
+
+        // 2、类型化数组不能添加、删除
+        // const IntArr7 = new Int8Array(10)
+        // IntArr7[0] = 1//修改可以
+        // IntArr7.length = 2//不能修改长度
+        // IntArr7[11] = 222//无效
+        // delete IntArr7[1]//无效
+        // console.log(IntArr7)
+
+        // 3、返回的数组也是类型化数组
+        // const IntArr8 = Int8Array.of(1, 2, 3, 4)
+        // const newIntArr8 = IntArr8.map(item => item + 1)
+        // console.log(IntArr8, newIntArr8)
+
+    </script>
+</body>
+
+</html>

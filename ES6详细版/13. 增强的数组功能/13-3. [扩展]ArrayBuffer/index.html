@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ArrayBuffer 字节空间存储 -->
+    <script>
+        // 1. 创建一个ArrayBuffer对象 
+        // const buffer = new ArrayBuffer(10);//10字节的存储空间
+        // console.log(buffer);
+
+        // 2、slice对内存空间的划分
+        // const buffer = new ArrayBuffer(10);//10字节的存储空间
+        // const buffer1 = buffer.slice(2, 5);//2-5
+        // console.log(buffer1, buffer)
+
+        // 3、DataView来操作ArrayBuffer
+        // const buffer = new ArrayBuffer(10);
+        // const view = new DataView(buffer);
+        // console.log(view);
+        // console.log(view.byteLength === view.buffer.byteLength);//true
+        // const view2 = new DataView(buffer, 2, 5);
+        // console.log(view2);
+        // console.log(view2.byteLength === view2.buffer.byteLength);//false
+        // view.setInt16(1, 3)
+        // view2.setInt16(2, 1)
+        // console.log(view2)
+
+        // 4、new 类型化数组方法
+        // const bf = new ArrayBuffer(10);
+        // const IntBf = new Int8Array(bf);
+        // const IntBf1 = new Int16Array(bf);
+        // console.log(IntBf, IntBf1);
+        // console.log(IntBf === IntBf1);//false
+        // console.log(IntBf.buffer === IntBf1.buffer);//true
+        // IntBf1[0] = 300
+        // console.log(IntBf, IntBf1);
+
+        const bf = new ArrayBuffer(10); //10个字节的内存
+        const arr = new Int16Array(bf);
+        arr[0] = 2344; //操作了两个字节
+        console.log(arr);
+    </script>
+</body>
+
+</html>
