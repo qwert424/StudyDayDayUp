@@ -15,8 +15,8 @@
         }
 
         img {
-            width: 150px;
-            height: 170px;
+            width: 300px;
+            height: 250px;
             object-fit: cover;
         }
 
@@ -34,9 +34,9 @@
     */ -->
 
     <div class="container">
-        <img src="./img/liao.jpg" alt="">
+        <img src="./img/qiu.jpg" alt="">
         <button>转换</button>
-        <canvas width="150px" height="170px"></canvas>
+        <canvas width="300px" height="250px"></canvas>
     </div>
     <script>
         const container = document.querySelector('.container');
@@ -53,8 +53,8 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 return
             }
-            ctx.drawImage(img, 0, 0, 150, 170);
-            const ImageData = ctx.getImageData(0, 0, 150, 170);
+            ctx.drawImage(img, 0, 0, 300, 250);
+            const ImageData = ctx.getImageData(0, 0, 300, 250);
             ChangingRGBA(ImageData)
             ctx.putImageData(ImageData, 0, 0);
         }
@@ -78,6 +78,17 @@
             return canvas.toDataURL() == blank.toDataURL();//比较值相等则为空
         }
     </script>
+    <!-- <script>
+        async function test() {
+            const img = await fetch("./img/liao.jpg")
+            // 图片不能转json 用blob
+            const imgData = await img.blob()
+            const data = await imgData.arrayBuffer()
+            const arr = new Int8Array(data)
+            console.log(data, arr)
+        }
+        test()
+    </script> -->
 </body>
 
 </html>
