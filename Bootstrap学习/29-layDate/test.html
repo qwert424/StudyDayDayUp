@@ -19,8 +19,18 @@
 
 <body>
     <!-- 组件 -->
-    <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
-        <input type="text" class="layui-input" id="test1">
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="#">
+                    <div class="form-group form-inline">
+                        <label for="test1">用户名</label>
+                        <input type="text" class="form-control w-50" id="test1">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 
@@ -44,7 +54,7 @@
     <script src="//unpkg.com/layui@2.6.8/dist/layui.js"></script>
     <script>
         layui.config({
-            base: './29-layDate/modules/' //你存放新模块的目录，注意，不是 layui 的模块目录
+            base: './modules/' //你存放新模块的目录，注意，不是 layui 的模块目录
         }).use('index'); //加载入口
     </script>
 </body>
