@@ -1,0 +1,18 @@
+/* 页头 */
+.Header-Container {
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* 主区域 */
+.Content-Container{
+    padding: 0 48px;
+}
+
+/* 页尾 */
+.Footer-Container {
+    text-align: center;
+}
