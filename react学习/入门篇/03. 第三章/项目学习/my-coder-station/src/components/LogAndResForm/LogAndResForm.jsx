@@ -126,7 +126,12 @@ function LogAndResForm(props) {
                 // 通过id获取用户信息
                 try {
                     const getUserInfoByIdResp = await getUserInfoByIdApi(loginResp.data.data._id);
-                    dispatch(login(getUserInfoByIdResp.data));
+                    // 这里服务器返回了用户密码 这是不安全的 而且不应把密码存储在仓库
+                    const ProcessingData = {
+                        ...getUserInfoByIdResp.data,
+                        loginPwd: ""
+                    }
+                    dispatch(login(ProcessingData));
                 } catch (error) {
                     message.error('获取用户信息失败!稍后再试!');
                     getCaptchaData();
@@ -159,7 +164,12 @@ function LogAndResForm(props) {
                 if (!VerificationCaptcha(registerResp)) return;
                 // 注册成功
                 // 1、存储到本地仓库
-                dispatch(login(registerResp.data));
+                // 这里服务器返回了用户密码 这是不安全的 而且不应把密码存储在仓库
+                const ProcessingData = {
+                    ...registerResp.data,
+                    loginPwd: ""
+                }
+                dispatch(login(ProcessingData));
             } catch (error) {
                 message.warning('注册失败，稍后重试!');
                 getCaptchaData();

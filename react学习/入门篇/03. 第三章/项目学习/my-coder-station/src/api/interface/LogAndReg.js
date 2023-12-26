@@ -49,3 +49,12 @@ export async function getUserInfoByIdApi(id) {
     })
     return resp;
 }
+
+// 恢复登录
+export async function getUserByTokenApi() {
+    const resp = await request({
+        url: '/api/user/whoami',
+        method: "get"
+    })
+    return resp;
+}
