@@ -387,7 +387,8 @@ if (initialState) {
 可以通过 *useModel* 来进行获取，示例如下：
 
 ```js
-const { initialState } = useModel("@@ininitialState");
+const { initialState } = useModel("@@initialState");
+const { initialState, loading, refresh, setInitialState } = useModel('@@initialState');
 ```
 
 

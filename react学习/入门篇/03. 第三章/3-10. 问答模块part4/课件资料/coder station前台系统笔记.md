@@ -329,7 +329,7 @@ npm install --save @toast-ui/react-editor --force
 最直接的方案就是不生成 *sourcemap* 文件
 
 ```js
-"start": "GENERATE_SOURCEMAP=false node scripts/start.js",
+"start": "set GENERATE_SOURCEMAP=false&& node scripts/start.js",
 ```
 
 
@@ -355,4 +355,11 @@ npm install --save @toast-ui/react-editor --force
 如果是请求我们自己的服务器出现这样的问题，那就调整服务器的 *MIME* 信息。
 
 
+12. 通过事件总线进行通信
+```
+import { EventEmitter } from 'events';
+const eventBus = new EventEmitter();
+export default eventBus;
 
+eventBus.emit|eventBus.on
+```
