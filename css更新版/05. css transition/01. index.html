@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: #f00;
+        /* transition: 1s; */
+        /* 规定哪些属性进行过渡 all */
+        transition-property: background-color, width ;
+        /* 设置过渡时间 */
+        transition-duration: 5s, 10s;
+        /* 过渡的效果 */
+        transition-timing-function: steps(10);
+        /* 延迟时间 */
+        transition-delay: -2s;
+      }
+      .box:hover {
+        width: 300px;
+        background-color: #0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
